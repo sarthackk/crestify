@@ -8,6 +8,9 @@ import Contact from './pages/Contact.jsx';
 import Kaart from './pages/Kaart.jsx';
 import KaartServices from './pages/KaartServices.jsx';
 import Resources from './pages/Resources.jsx';
+import MarginCalculator from './pages/tools/MarginCalculator.jsx';
+import BudgetAllocator from './pages/tools/BudgetAllocator.jsx';
+import UGCBriefGenerator from './pages/tools/UGCBriefGenerator.jsx';
 
 export default function App() {
   return (
@@ -20,7 +23,10 @@ export default function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/kaart" element={<Kaart />} />
       <Route path="/kaart/services" element={<KaartServices />} />
-      <Route path="/resources" element={<Resources />} />
+      <Route path="/toolkit" element={<Resources />} />
+      <Route path="/toolkit/margin-calculator" element={<MarginCalculator />} />
+      <Route path="/toolkit/budget-allocator" element={<BudgetAllocator />} />
+      <Route path="/toolkit/ugc-brief" element={<UGCBriefGenerator />} />
     </Routes>
   );
 }

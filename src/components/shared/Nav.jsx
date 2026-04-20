@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const NAV_ITEMS = [
   { label: 'Work',      to: '/work',      key: 'work' },
   { label: 'Services',  to: '/services',  key: 'services' },
-  { label: 'Resources', to: '/resources', key: 'resources' },
+  { label: 'Toolkit', to: '/toolkit', key: 'toolkit' },
   { label: 'About',     to: '/about',     key: 'about' },
 ];
 
