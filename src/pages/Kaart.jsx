@@ -43,6 +43,7 @@ function KaartNav() {
           <a href="#work" className="nav-link" onClick={close} style={{ color: K.ink }}>Work</a>
           <a href="#process" className="nav-link" onClick={close} style={{ color: K.ink }}>Process</a>
           <a href="#pricing" className="nav-link" onClick={close} style={{ color: K.ink }}>Pricing</a>
+          <Link to="/resources" className="nav-link" onClick={close} style={{ color: K.green }}>Free Resources</Link>
           <Link to="/" className="nav-link" onClick={close} style={{ color: '#5a6760' }}>↩ Crestify</Link>
           <a href="#contact" className="nav-link nav-cta" onClick={close} style={{ background: K.green, color: 'white', marginLeft: 6 }}>Brief us →</a>
         </nav>

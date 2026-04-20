@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
-  { label: 'Work',     to: '/work',     key: 'work' },
-  { label: 'Services', to: '/services', key: 'services' },
-  { label: 'About',    to: '/about',    key: 'about' },
+  { label: 'Work',      to: '/work',      key: 'work' },
+  { label: 'Services',  to: '/services',  key: 'services' },
+  { label: 'Resources', to: '/resources', key: 'resources' },
+  { label: 'About',     to: '/about',     key: 'about' },
 ];
 
 export function Brand({ to = '/' }) {
