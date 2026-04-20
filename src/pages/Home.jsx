@@ -252,7 +252,7 @@ function Founders() {
             <h2 className="h2 reveal" style={{ marginTop: 16 }}>Founder-led, <span className="italic" style={{ color: 'var(--ink-3)' }}>end to end.</span></h2>
           </div>
           <p className="body-lg col-7" style={{ maxWidth: '54ch' }}>
-            The people who pitched the work are the people doing the work. Two operators with deep domain reps — not a sales team handing you off to juniors after the contract.
+            The founders pitch the work and stay accountable on every project. A close team of 15 people execute it — not a sales team handing you off to someone you've never met.
           </p>
         </div>
 

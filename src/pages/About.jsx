@@ -167,10 +167,10 @@ function Clients() {
 }
 
 const FAQS = [
-  { q: 'How is Crestify different from a typical agency?', a: 'No sales team, no juniors. The two founders pitch the work, scope it, and stay in the build until shipping. Our overhead is intentionally tiny so you pay for senior reps, not coordination.' },
+  { q: 'How is Crestify different from a typical agency?', a: 'We have a close team of 15 people who work across projects — but the founders pitch the work, scope it, and stay accountable on every engagement. You never get handed off to someone you have never met. The team executes, the founders own the outcome.' },
   { q: 'Do you take equity or only cash engagements?', a: 'Both. For early-stage product builds we sometimes take a small equity component alongside reduced cash. Mature companies pay standard retainers or fixed-bid project fees.' },
   { q: "What's the smallest engagement you'll take?", a: "Two weeks for an audit or strategy spike. Anything smaller and we can't do it well. Build engagements typically run 6–16 weeks." },
-  { q: 'Will I work with the founders or someone else?', a: 'The founders. Always. If we ever bring in a specialist for a sub-domain, we name them up front and stay accountable end-to-end.' },
+  { q: 'Will I work with the founders or someone else?', a: "You will always have the founders as your primary point of contact and accountability. We have a team of 15 people who work on projects, but Sarthak and Aditya stay involved end-to-end — from the first call to the final ship." },
   { q: 'Where are you located?', a: 'Toronto and London, with an extended team across five timezones. We work async-first but overlap with most North American and European business hours.' },
   { q: 'Do you sign NDAs before the first call?', a: "Yes. Send one over with your intro email. We'll counter-sign within 24 hours." },
 ];
