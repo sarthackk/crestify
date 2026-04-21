@@ -71,7 +71,7 @@ function HeroHome() {
       </div>
 
       <div style={{ marginTop: 'clamp(60px, 9vw, 110px)' }}>
-        <FeatureFilm />
+        {/* <FeatureFilm /> */}
       </div>
     </section>
   );
@@ -232,7 +232,7 @@ const FOUNDERS = [
     name: 'Sarthak Tiwari', role: 'Founder · Your prime POC', initials: 'ST',
     bio: 'Think of me as your fractional CTO. I work closely with founders and teams to turn ideas into structured, scalable systems — whether that means defining architecture, guiding product decisions, or getting deeply involved in execution.',
     bio2: "When you work with Crestify, you're not just hiring a team. You're getting a builder who has been through the process many times.",
-    socials: [{ label: 'X', href: 'https://x.com/sarthaktiwari' }, { label: 'Facebook', href: '#' }],
+    socials: [{ label: 'Portfolio', href: '/sarthak', internal: true }, { label: 'X', href: 'https://x.com/sarthaktiwari' }, { label: 'Facebook', href: '#' }],
   },
   {
     name: 'Aditya Tripathi', role: 'Operations · PM', initials: 'AT',
@@ -272,9 +272,9 @@ function Founders() {
               </div>
               <div style={{ display: 'flex', gap: 8, marginTop: 'auto', paddingTop: 14, borderTop: '1px solid var(--line)', flexWrap: 'wrap' }}>
                 {f.socials.map(s => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '7px 13px', borderRadius: 999 }}>
-                    {s.label} ↗
-                  </a>
+                  s.internal
+                    ? <Link key={s.label} to={s.href} className="mono" style={{ fontSize: 11, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--accent)', padding: '7px 13px', borderRadius: 999 }}>{s.label} →</Link>
+                    : <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '7px 13px', borderRadius: 999 }}>{s.label} ↗</a>
                 ))}
               </div>
             </article>

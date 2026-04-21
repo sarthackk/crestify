@@ -59,6 +59,7 @@ const FOUNDERS_LONG = [
     focus: ['System architecture', 'Product decisions', 'AI & automation', 'Full-stack delivery'],
     quote: "The people who pitch the work should do the work. We built the whole studio around that.",
     socials: [
+      { label: 'Portfolio', href: '/sarthak', internal: true },
       { label: 'X', href: 'https://x.com/sarthaktiwari' },
       { label: 'Facebook', href: '#' },
     ],
@@ -113,9 +114,9 @@ function FoundersDetailed() {
               </div>
               <div style={{ display: 'flex', gap: 16, marginTop: 32, flexWrap: 'wrap' }}>
                 {f.socials.map(s => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '8px 14px', borderRadius: 999 }}>
-                    {s.label} ↗
-                  </a>
+                  s.internal
+                    ? <Link key={s.label} to={s.href} className="mono" style={{ fontSize: 11, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--accent)', padding: '8px 14px', borderRadius: 999 }}>{s.label} →</Link>
+                    : <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '8px 14px', borderRadius: 999 }}>{s.label} ↗</a>
                 ))}
               </div>
             </div>

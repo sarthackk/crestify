@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+function PersonIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M2.5 13.5C2.5 10.7386 5.01472 9 8 9C10.9853 9 13.5 10.7386 13.5 13.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
 const NAV_ITEMS = [
   { label: 'Work',      to: '/work',      key: 'work' },
   { label: 'Services',  to: '/services',  key: 'services' },
@@ -52,6 +61,30 @@ export default function Nav() {
           ))}
           <Link to="/kaart" className="nav-link" onClick={close} style={{ color: '#0d9b6a' }}>
             Kaart Studio ↗
+          </Link>
+          <Link
+            to="/sarthak"
+            onClick={close}
+            title="Sarthak Tiwari · Founder portfolio"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 36,
+              height: 36,
+              borderRadius: '50%',
+              border: `1.5px solid ${active === 'sarthak' ? 'var(--accent)' : 'var(--line-strong)'}`,
+              background: active === 'sarthak' ? 'var(--accent)' : 'var(--bg-elev)',
+              color: active === 'sarthak' ? 'white' : 'var(--accent)',
+              padding: 0,
+              flexShrink: 0,
+              transition: 'background 0.2s, border-color 0.2s, color 0.2s',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'white'; }}
+            onMouseLeave={e => { if (active !== 'sarthak') { e.currentTarget.style.background = 'var(--bg-elev)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; e.currentTarget.style.color = 'var(--accent)'; }}}
+          >
+            <PersonIcon />
           </Link>
           <Link
             to="/contact"
