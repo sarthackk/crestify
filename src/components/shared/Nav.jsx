@@ -66,25 +66,18 @@ export default function Nav() {
             to="/sarthak"
             onClick={close}
             title="Sarthak Tiwari · Founder portfolio"
+            className="nav-icon-btn"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 36,
-              height: 36,
-              borderRadius: '50%',
               border: `1.5px solid ${active === 'sarthak' ? 'var(--accent)' : 'var(--line-strong)'}`,
               background: active === 'sarthak' ? 'var(--accent)' : 'var(--bg-elev)',
               color: active === 'sarthak' ? 'white' : 'var(--accent)',
-              padding: 0,
-              flexShrink: 0,
-              transition: 'background 0.2s, border-color 0.2s, color 0.2s',
-              textDecoration: 'none',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'white'; }}
             onMouseLeave={e => { if (active !== 'sarthak') { e.currentTarget.style.background = 'var(--bg-elev)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; e.currentTarget.style.color = 'var(--accent)'; }}}
           >
-            <PersonIcon />
+            <span className="nav-icon-svg"><PersonIcon /></span>
+            <span className="nav-icon-label">Sarthak Tiwari</span>
+            <span className="nav-icon-arrow">→</span>
           </Link>
           <Link
             to="/contact"

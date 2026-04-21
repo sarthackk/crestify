@@ -557,3 +557,188 @@ section { position: relative; }
   animation-duration: 60s;
 }
 .ticker-dot { color: var(--accent); }
+
+/* ── Nav person icon ───────────────────────────────────────────────────── */
+.nav-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.nav-icon-label { display: none; }
+.nav-icon-arrow { display: none; }
+
+/* ── Sarthak page layout classes ────────────────────────────────────────── */
+.st-hero-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.st-hero-actions {
+  display: flex;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.st-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #ffffff14;
+}
+.st-stats-grid > * {
+  padding: clamp(20px, 3vw, 36px) 0;
+  border-right: 1px solid #ffffff10;
+  padding-right: 28px;
+}
+.st-stats-grid > *:last-child { border-right: none; }
+
+.st-venture-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.st-agency-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+.st-brand-wall {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.st-brand-wall-cell {
+  padding: 18px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: clamp(11px, 1.4vw, 15px);
+  color: var(--ink-4);
+  letter-spacing: 0.04em;
+  text-align: center;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+.st-brand-wall-cell:nth-child(6n) { border-right: none; }
+.st-brand-wall-cell:nth-last-child(-n+6) { border-bottom: none; }
+
+.st-community-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.st-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.st-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+.st-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+.st-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+.st-ventures-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.st-timeline-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0;
+}
+.st-venture-visual { display: flex; }
+
+@media (max-width: 760px) {
+  /* Nav icon — show as full-width labelled row in mobile menu */
+  .nav-links.menu-open .nav-icon-btn {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    padding: 20px 0;
+    border: none !important;
+    border-bottom: 1px solid var(--line-strong) !important;
+    background: transparent !important;
+    justify-content: flex-start;
+    gap: 14px;
+    font-size: 24px;
+    color: var(--accent) !important;
+  }
+  .nav-links.menu-open .nav-icon-label { display: inline; font-family: var(--sans); font-size: 24px; font-weight: 400; letter-spacing: 0; color: var(--ink); }
+  .nav-links.menu-open .nav-icon-arrow { display: inline; margin-left: auto; color: var(--accent); font-size: 20px; }
+  .nav-links.menu-open .nav-icon-svg { display: none; }
+
+  /* Sarthak hero */
+  .st-hero-layout { grid-template-columns: 1fr; }
+  .st-hero-photo { display: none; }
+  .st-hero-actions { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .st-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .st-stats-grid > *:nth-child(2) { border-right: none; }
+  .st-stats-grid > *:nth-child(3) { border-right: 1px solid #ffffff10; }
+  .st-stats-grid > *:nth-child(3),
+  .st-stats-grid > *:nth-child(4) { border-top: 1px solid #ffffff10; }
+
+  /* Ventures */
+  .st-venture-inner { grid-template-columns: 1fr; }
+  .st-venture-visual { display: none; }
+
+  /* Agency */
+  .st-agency-grid { grid-template-columns: 1fr; }
+  .st-brand-wall { grid-template-columns: repeat(3, 1fr); }
+  .st-brand-wall-cell:nth-child(6n) { border-right: 1px solid var(--line-strong); }
+  .st-brand-wall-cell:nth-child(3n) { border-right: none; }
+  .st-brand-wall-cell:nth-last-child(-n+6) { border-bottom: 1px solid var(--line-strong); }
+  .st-brand-wall-cell:nth-last-child(-n+3) { border-bottom: none; }
+
+  /* Community */
+  .st-community-inner { grid-template-columns: 1fr; }
+  .st-photo-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Timeline */
+  .st-timeline-row { grid-template-columns: 52px 1fr; }
+
+  /* Skills */
+  .st-skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* CTA */
+  .st-cta-grid { grid-template-columns: 1fr; }
+
+  /* Projects */
+  .st-projects-grid { grid-template-columns: 1fr; }
+
+  /* Ventures header */
+  .st-ventures-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .st-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .st-skills-grid { grid-template-columns: 1fr; }
+  .st-brand-wall { grid-template-columns: repeat(2, 1fr); }
+  .st-brand-wall-cell:nth-child(3n) { border-right: 1px solid var(--line-strong); }
+  .st-brand-wall-cell:nth-child(2n) { border-right: none; }
+  .st-brand-wall-cell:nth-last-child(-n+3) { border-bottom: 1px solid var(--line-strong); }
+  .st-brand-wall-cell:nth-last-child(-n+2) { border-bottom: none; }
+}

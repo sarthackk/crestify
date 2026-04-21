@@ -7,48 +7,47 @@ import { useReveal } from '../components/shared/useReveal.js';
 
 function Hero() {
   const stats = [
-    { n: '35+', l: 'Brands Built' },
-    { n: '5+',  l: 'Years Operating' },
-    { n: '5',   l: 'Active Ventures' },
-    { n: '200+', l: 'Community Members Taught' },
+    { n: '35+',  l: 'Brands Built' },
+    { n: '5+',   l: 'Years Operating' },
+    { n: '5',    l: 'Active Ventures' },
+    { n: '200+', l: 'People Taught' },
   ];
 
   return (
     <section style={{ background: 'var(--bg-deep)', color: 'var(--bg)', paddingTop: 80, paddingBottom: 'clamp(72px, 10vw, 130px)', position: 'relative', overflow: 'hidden' }}>
-      {/* Ambient glow */}
       <div aria-hidden style={{ position: 'absolute', top: -160, right: '-5%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, #ff4d1f14 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div aria-hidden style={{ position: 'absolute', bottom: -80, left: '15%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, #0d9b6a0a 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="container" style={{ position: 'relative' }}>
         {/* Eyebrow */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 56 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 48 }}>
           <span className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.18em' }}>Sarthak Tiwari · Founder Portfolio</span>
           <div style={{ height: 1, flex: 1, maxWidth: 120, background: '#ffffff14' }} />
         </div>
 
-        {/* Two-col layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'start' }}>
+        {/* Two-col on desktop, stacks on mobile */}
+        <div className="st-hero-layout">
           <div>
-            <h1 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(48px, 8.5vw, 136px)', lineHeight: 1.0, letterSpacing: '-0.028em', color: '#f0ede6', maxWidth: '14ch' }}>
+            <h1 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(52px, 9vw, 136px)', lineHeight: 1.0, letterSpacing: '-0.028em', color: '#f0ede6', maxWidth: '14ch' }}>
               Builder.<br />
               <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Operator.</span><br />
               Founder.
             </h1>
 
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(17px, 1.5vw, 21px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '52ch', marginTop: 'clamp(28px, 4vw, 48px)' }}>
+            <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(16px, 1.5vw, 21px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '52ch', marginTop: 'clamp(24px, 4vw, 48px)' }}>
               I've spent the last 5 years building brands, communities, and products from the ground up — across blockchain, ecommerce, design, and SaaS. Now I'm building <span style={{ color: '#f0ede6' }}>Crestify</span> and <span style={{ color: '#0d9b6a' }}>Kaart Studio.</span>
             </p>
 
-            <div style={{ display: 'flex', gap: 12, marginTop: 'clamp(28px, 4vw, 44px)', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: 'clamp(24px, 4vw, 40px)', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <Link to="/contact" className="btn btn-accent" style={{ fontSize: 15, padding: '14px 24px' }}>Start a project →</Link>
               <a href="mailto:sarthak@crestify.co" className="btn" style={{ border: '1px solid #ffffff22', color: '#f0ede6', fontSize: 15, padding: '14px 24px' }}>sarthak@crestify.co</a>
             </div>
 
-            <div style={{ display: 'flex', gap: 12, marginTop: 20, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 10, marginTop: 16, flexWrap: 'wrap' }}>
               {[
                 { l: 'X / Twitter', h: 'https://x.com/sarthaktiwari' },
-                { l: 'LinkedIn', h: '#' },
-                { l: 'GitHub', h: '#' },
+                { l: 'LinkedIn',    h: '#' },
+                { l: 'GitHub',      h: '#' },
               ].map(s => (
                 <a key={s.l} href={s.h} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #ffffff18', padding: '6px 12px', borderRadius: 999, transition: 'all 0.2s' }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
@@ -58,22 +57,22 @@ function Hero() {
             </div>
           </div>
 
-          {/* Photo placeholder */}
-          <div style={{ flexShrink: 0, width: 'clamp(200px, 20vw, 320px)' }}>
-            <div style={{ aspectRatio: '3 / 4', background: '#1a1a1a', border: '1px solid #ffffff12', borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-              <div style={{ width: 56, height: 56, borderRadius: '50%', background: '#ff4d1f22', border: '1px solid #ff4d1f33', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 22, color: 'var(--accent)' }}>ST</span>
+          {/* Photo — hidden on mobile via CSS */}
+          <div className="st-hero-photo" style={{ flexShrink: 0, width: 'clamp(180px, 18vw, 300px)' }}>
+            <div style={{ aspectRatio: '3 / 4', background: '#1a1a1a', border: '1px solid #ffffff12', borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+              <div style={{ width: 52, height: 52, borderRadius: '50%', background: '#ff4d1f22', border: '1px solid #ff4d1f33', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 20, color: 'var(--accent)' }}>ST</span>
               </div>
-              <span className="mono" style={{ fontSize: 9, color: '#4a4a45', textTransform: 'uppercase', letterSpacing: '0.12em', textAlign: 'center', padding: '0 20px' }}>Founder photo<br />coming soon</span>
+              <span className="mono" style={{ fontSize: 9, color: '#3a3a3a', textTransform: 'uppercase', letterSpacing: '0.1em', textAlign: 'center', padding: '0 20px' }}>Photo<br />coming soon</span>
             </div>
           </div>
         </div>
 
-        {/* Stat bar */}
-        <div style={{ marginTop: 'clamp(56px, 8vw, 100px)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '1px solid #ffffff14' }}>
-          {stats.map((s, i) => (
-            <div key={s.l} style={{ padding: 'clamp(20px, 3vw, 36px) 0', borderRight: i < stats.length - 1 ? '1px solid #ffffff10' : 'none', paddingRight: 28 }}>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(36px, 4.5vw, 64px)', lineHeight: 0.92, letterSpacing: '-0.025em', color: '#f0ede6' }}>{s.n}</div>
+        {/* Stat bar — 4-col desktop, 2-col mobile */}
+        <div className="st-stats-grid" style={{ marginTop: 'clamp(48px, 8vw, 100px)' }}>
+          {stats.map(s => (
+            <div key={s.l}>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(34px, 4.5vw, 64px)', lineHeight: 0.92, letterSpacing: '-0.025em', color: '#f0ede6' }}>{s.n}</div>
               <div className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 10 }}>{s.l}</div>
             </div>
           ))}
@@ -137,7 +136,7 @@ const VENTURES = [
     accent: '#6366f1',
     bg: '#07070f',
     desc: 'Built in-house at Crestify to power our own workflows. An AI SaaS product currently used internally — with broader plans ahead.',
-    detail: 'Started as an internal tool. Grew into something we use on every project. Broader release is coming.',
+    detail: 'Started as an internal tool. Grew into something we use on every project. Broader release coming.',
     tags: ['AI SaaS', 'Internal Tool', 'Automation'],
     href: '/work/mockzy',
     cta: 'Learn more',
@@ -158,14 +157,13 @@ const VENTURES = [
   },
 ];
 
-function VentureCard({ v, idx }) {
-  const isEven = idx % 2 === 0;
+function VentureCard({ v }) {
   return (
     <article className="reveal" style={{ background: v.bg, border: '1px solid #ffffff0e', borderRadius: 10, overflow: 'hidden' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: isEven ? '1fr 1fr' : '1fr 1fr', gap: 0 }}>
+      <div className="st-venture-inner">
         {/* Info side */}
-        <div style={{ padding: 'clamp(32px, 4vw, 56px)', borderRight: '1px solid #ffffff08', display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <div style={{ display: 'flex', align: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <div style={{ padding: 'clamp(28px, 4vw, 52px)', borderRight: '1px solid #ffffff08', display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
             <span className="mono" style={{ fontSize: 9, color: v.statusColor, textTransform: 'uppercase', letterSpacing: '0.14em', background: `${v.statusColor}18`, padding: '3px 10px', borderRadius: 999, border: `1px solid ${v.statusColor}30`, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: v.statusColor, display: 'inline-block' }} />
               {v.status}
@@ -174,40 +172,36 @@ function VentureCard({ v, idx }) {
           </div>
 
           <div>
-            <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.0, color: '#f0ede6' }}>{v.name}</h3>
-            <div className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 8 }}>{v.role}</div>
+            <h3 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.0, color: '#f0ede6' }}>{v.name}</h3>
+            <div className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 6 }}>{v.role}</div>
           </div>
 
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '38ch' }}>{v.desc}</p>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.75, color: '#9c9b95' }}>{v.desc}</p>
 
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             {v.tags.map(t => (
-              <span key={t} className="mono" style={{ fontSize: 9.5, color: '#6a6a65', background: '#ffffff08', padding: '4px 9px', borderRadius: 4, letterSpacing: '0.06em', border: '1px solid #ffffff0c' }}>{t}</span>
+              <span key={t} className="mono" style={{ fontSize: 9.5, color: '#6a6a65', background: '#ffffff08', padding: '4px 9px', borderRadius: 4, border: '1px solid #ffffff0c', letterSpacing: '0.06em' }}>{t}</span>
             ))}
           </div>
 
-          <div style={{ marginTop: 'auto', paddingTop: 8 }}>
-            <a href={v.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 11, color: v.accent, textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: `1px solid ${v.accent}44`, padding: '10px 18px', borderRadius: 999, transition: 'all 0.2s' }}
+          <div style={{ marginTop: 'auto', paddingTop: 4 }}>
+            <a href={v.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 11, color: v.accent, textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: `1px solid ${v.accent}44`, padding: '10px 18px', borderRadius: 999, transition: 'background 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.background = `${v.accent}18`; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
             >{v.cta} ↗</a>
           </div>
         </div>
 
-        {/* Visual side */}
-        <div style={{ background: '#ffffff04', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(32px, 4vw, 56px)', gap: 16, minHeight: 280 }}>
-          {/* Logo placeholder */}
-          <div style={{ width: 72, height: 72, borderRadius: 16, background: `${v.accent}18`, border: `1px solid ${v.accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 24, color: v.accent }}>{v.name[0]}</span>
+        {/* Visual side — hidden on mobile */}
+        <div className="st-venture-visual" style={{ background: '#ffffff04', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(28px, 4vw, 52px)', gap: 16, minHeight: 260 }}>
+          <div style={{ width: 64, height: 64, borderRadius: 14, background: `${v.accent}18`, border: `1px solid ${v.accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 22, color: v.accent }}>{v.name[0]}</span>
           </div>
-          {/* Mockup/screenshot placeholder */}
-          <div style={{ width: '100%', maxWidth: 300, aspectRatio: '16 / 9', background: '#ffffff06', border: '1px solid #ffffff0e', borderRadius: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 6, background: `${v.accent}22`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: v.accent, fontSize: 12 }}>⊡</span>
-            </div>
-            <span className="mono" style={{ fontSize: 8.5, color: '#4a4a45', textTransform: 'uppercase', letterSpacing: '0.12em', textAlign: 'center' }}>Screenshot / Mockup</span>
+          <div style={{ width: '100%', maxWidth: 280, aspectRatio: '16 / 9', background: '#ffffff06', border: '1px solid #ffffff0e', borderRadius: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+            <span style={{ color: '#3a3a3a', fontSize: 20 }}>⊡</span>
+            <span className="mono" style={{ fontSize: 8.5, color: '#3a3a3a', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Screenshot / Mockup</span>
           </div>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, lineHeight: 1.6, color: '#4a4a45', maxWidth: '22ch', textAlign: 'center' }}>{v.detail}</p>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, lineHeight: 1.6, color: '#3a3a3a', maxWidth: '22ch', textAlign: 'center' }}>{v.detail}</p>
         </div>
       </div>
     </article>
@@ -218,7 +212,7 @@ function Ventures() {
   return (
     <section className="section-pad" style={{ background: 'var(--bg-deep)', borderTop: '1px solid #ffffff0c' }}>
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 'clamp(40px, 6vw, 72px)', flexWrap: 'wrap', gap: 20 }}>
+        <div className="st-ventures-header" style={{ marginBottom: 'clamp(36px, 6vw, 64px)' }}>
           <div>
             <span className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.14em', display: 'block', marginBottom: 12 }}>01 · Ventures</span>
             <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(36px, 6vw, 80px)', lineHeight: 1.0, letterSpacing: '-0.022em', color: '#f0ede6' }}>
@@ -226,12 +220,12 @@ function Ventures() {
             </h2>
           </div>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 16, lineHeight: 1.7, color: '#6a6a65', maxWidth: '36ch' }}>
-            Five ventures — two active agencies, one launchpad, one AI tool, and one app in development.
+            Five ventures — two active agencies, one cohort program, one AI tool, and one app in development.
           </p>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(20px, 2.5vw, 32px)' }}>
-          {VENTURES.map((v, i) => <VentureCard key={v.name} v={v} idx={i} />)}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 2.5vw, 28px)' }}>
+          {VENTURES.map(v => <VentureCard key={v.name} v={v} />)}
         </div>
       </div>
     </section>
@@ -250,7 +244,6 @@ const AGENCIES = [
     accent: '#f59e0b',
     badge: 'Shark Tank India Brands',
     desc: 'Shopify agency. Led design and project management across 20+ brands. Coordinated directly with founders, managed internal teams of designers and developers, and handled end-to-end delivery from brief to launch. Worked with brands featured on Shark Tank India, including Barker Bookie.',
-    brands: ['Barker Bookie', 'Shark Tank India', '+ 18 more brands'],
     bullets: ['End-to-end Shopify brand delivery', 'Figma design to live store', 'Internal team management', 'Direct founder relationships'],
   },
   {
@@ -262,7 +255,6 @@ const AGENCIES = [
     accent: '#e8e8e0',
     badge: null,
     desc: 'Shopify agency. Led design across 15+ ecommerce projects over 8 months. Figma, Shopify, team management, and implementation — including coding where needed given technical background.',
-    brands: ['15+ ecommerce brands', 'D2C, Fashion, Lifestyle'],
     bullets: ['UI/UX design in Figma', 'Shopify theme implementation', 'Custom frontend development', 'Team coordination'],
   },
 ];
@@ -271,13 +263,10 @@ function AgencyYears() {
   return (
     <section className="section-pad" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(36px, 6vw, 64px)' }}>
           <div className="col-4">
             <span className="eyebrow" style={{ display: 'block', marginBottom: 12 }}>02 · Agency Years</span>
-            <h2 className="h2">
-              35+ brands built.<br />
-              <span className="italic" style={{ color: 'var(--ink-3)' }}>Here's where.</span>
-            </h2>
+            <h2 className="h2">35+ brands built.<br /><span className="italic" style={{ color: 'var(--ink-3)' }}>Here's where.</span></h2>
           </div>
           <div className="col-8" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <p className="body-lg" style={{ maxWidth: '48ch' }}>
@@ -286,13 +275,12 @@ function AgencyYears() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--gap)' }}>
+        <div className="st-agency-grid">
           {AGENCIES.map(a => (
             <div key={a.name} className="reveal" style={{ border: '1px solid var(--line-strong)', borderRadius: 8, overflow: 'hidden', background: 'var(--bg-elev)' }}>
               {/* Header */}
-              <div style={{ background: 'var(--bg-deep)', padding: 'clamp(24px, 3vw, 36px)', borderBottom: '1px solid #ffffff0e', position: 'relative' }}>
+              <div style={{ background: 'var(--bg-deep)', padding: 'clamp(22px, 3vw, 36px)', borderBottom: '1px solid #ffffff0e' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-                  {/* Logo placeholder */}
                   <div style={{ width: 52, height: 52, borderRadius: 10, background: `${a.accent}18`, border: `1px solid ${a.accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 18, color: a.accent }}>{a.name[0]}</span>
                   </div>
@@ -302,15 +290,14 @@ function AgencyYears() {
                 </div>
                 <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#f0ede6', lineHeight: 1.1 }}>{a.name}</div>
                 <div className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 6 }}>{a.role} · {a.period}</div>
-                {/* Stat */}
-                <div style={{ marginTop: 20, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                  <span style={{ fontFamily: 'var(--serif)', fontSize: 48, lineHeight: 1, letterSpacing: '-0.02em', color: a.accent }}>{a.stat}</span>
+                <div style={{ marginTop: 18, display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(40px, 5vw, 56px)', lineHeight: 1, letterSpacing: '-0.02em', color: a.accent }}>{a.stat}</span>
                   <span className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{a.statLabel}</span>
                 </div>
               </div>
 
               {/* Body */}
-              <div style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
+              <div style={{ padding: 'clamp(22px, 3vw, 36px)' }}>
                 <p className="body" style={{ fontSize: 14.5, lineHeight: 1.7, marginBottom: 20 }}>{a.desc}</p>
                 <div className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>What I did</div>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -321,9 +308,8 @@ function AgencyYears() {
                     </li>
                   ))}
                 </ul>
-
                 {/* Portfolio grid placeholder */}
-                <div style={{ marginTop: 24 }}>
+                <div style={{ marginTop: 22 }}>
                   <div className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Portfolio samples</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
                     {[1, 2, 3].map(i => (
@@ -339,16 +325,14 @@ function AgencyYears() {
         </div>
 
         {/* Brand logo wall */}
-        <div style={{ marginTop: 'clamp(48px, 6vw, 80px)', border: '1px solid var(--line-strong)', borderRadius: 8, padding: 'clamp(28px, 3.5vw, 48px)', background: 'var(--bg-elev)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28, flexWrap: 'wrap', gap: 12 }}>
+        <div style={{ marginTop: 'clamp(40px, 6vw, 72px)', border: '1px solid var(--line-strong)', borderRadius: 8, padding: 'clamp(24px, 3.5vw, 48px)', background: 'var(--bg-elev)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
             <span className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Brands worked with across both agencies</span>
-            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1, color: 'var(--ink)' }}>35+ brands</span>
+            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(24px, 4vw, 48px)', lineHeight: 1, color: 'var(--ink)' }}>35+ brands</span>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, border: '1px solid var(--line-strong)', borderRadius: 4, overflow: 'hidden' }}>
-            {['Barker Bookie', 'Brand 02', 'Brand 03', 'Brand 04', 'Brand 05', 'Brand 06', 'Brand 07', 'Brand 08', 'Brand 09', 'Brand 10', 'Brand 11', 'Brand 12'].map((b, i) => (
-              <div key={b} style={{ padding: '18px 10px', borderRight: (i + 1) % 6 === 0 ? 'none' : '1px solid var(--line-strong)', borderBottom: i < 6 ? '1px solid var(--line-strong)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--serif)', fontSize: 'clamp(11px, 1.4vw, 15px)', color: 'var(--ink-4)', letterSpacing: '0.04em', textAlign: 'center' }}>
-                {b}
-              </div>
+          <div className="st-brand-wall">
+            {['Barker Bookie', 'Brand 02', 'Brand 03', 'Brand 04', 'Brand 05', 'Brand 06', 'Brand 07', 'Brand 08', 'Brand 09', 'Brand 10', 'Brand 11', 'Brand 12'].map(b => (
+              <div key={b} className="st-brand-wall-cell">{b}</div>
             ))}
           </div>
         </div>
@@ -367,7 +351,7 @@ const COMMUNITIES = [
     accent: '#6366f1',
     bg: '#07070f',
     headline: 'The largest blockchain community in Uttarakhand. Possibly North India.',
-    desc: "A community-based startup built from college. Organized and hosted blockchain developer events at colleges across the region, partnering with some of the biggest names in the blockchain space. As a Filecoin Ambassador, hosted sessions, gave public talks, and took teams to colleges across North India to run on-ground events.",
+    desc: 'A community-based startup built from college. Organized and hosted blockchain developer events at colleges across the region, partnering with some of the biggest names in the blockchain space. As a Filecoin Ambassador, hosted sessions, gave public talks, and took teams to colleges across North India to run on-ground events.',
     details: ['Events: Genesis, DeHashed, and more', 'Filecoin Ambassador — ran sessions and college tours', 'Took teams across North India', 'On-ground activations at colleges'],
     partners: ['Filecoin', 'Shardium', 'MOI Technology', 'Chainlink', 'Berachain', 'Avocado'],
     photoCount: 6,
@@ -392,21 +376,21 @@ function CommunitySection() {
   return (
     <section className="section-pad" style={{ background: 'var(--bg-deep)', borderTop: '1px solid #ffffff0c' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+        <div style={{ marginBottom: 'clamp(36px, 6vw, 64px)' }}>
           <span className="mono" style={{ fontSize: 10, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.14em', display: 'block', marginBottom: 12 }}>03 · Community & Stage Presence</span>
-          <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(36px, 6vw, 80px)', lineHeight: 1.0, letterSpacing: '-0.022em', color: '#f0ede6', maxWidth: '16ch' }}>
+          <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(34px, 6vw, 80px)', lineHeight: 1.0, letterSpacing: '-0.022em', color: '#f0ede6', maxWidth: '18ch' }}>
             Before the companies, there was the <span style={{ fontStyle: 'italic', color: '#9c9b95' }}>community.</span>
           </h2>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(28px, 4vw, 48px)' }}>
-          {COMMUNITIES.map((c, idx) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 4vw, 40px)' }}>
+          {COMMUNITIES.map(c => (
             <div key={c.name} className="reveal" style={{ background: c.bg, border: '1px solid #ffffff0e', borderRadius: 10, overflow: 'hidden' }}>
-              {/* Top bar */}
-              <div style={{ padding: 'clamp(28px, 4vw, 48px)', borderBottom: '1px solid #ffffff08' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap', marginBottom: 24 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    <div style={{ width: 52, height: 52, borderRadius: 12, background: `${c.accent}1a`, border: `1px solid ${c.accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {/* Top block */}
+              <div style={{ padding: 'clamp(24px, 4vw, 48px)', borderBottom: '1px solid #ffffff08' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 20 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <div style={{ width: 48, height: 48, borderRadius: 12, background: `${c.accent}1a`, border: `1px solid ${c.accent}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 18, color: c.accent }}>{c.name[0]}</span>
                     </div>
                     <div>
@@ -416,19 +400,15 @@ function CommunitySection() {
                   </div>
                   <span className="mono" style={{ fontSize: 9, color: c.accent, textTransform: 'uppercase', letterSpacing: '0.12em', background: `${c.accent}18`, padding: '5px 12px', borderRadius: 999, border: `1px solid ${c.accent}30`, alignSelf: 'flex-start' }}>{c.badge}</span>
                 </div>
-
-                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(18px, 2.2vw, 28px)', lineHeight: 1.3, color: c.accent, maxWidth: '36ch', marginBottom: 16 }}>
-                  "{c.headline}"
-                </p>
-                <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '64ch' }}>{c.desc}</p>
+                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(17px, 2.2vw, 28px)', lineHeight: 1.3, color: c.accent, maxWidth: '40ch', marginBottom: 14 }}>"{c.headline}"</p>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '68ch' }}>{c.desc}</p>
               </div>
 
-              {/* Details + Photos grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                {/* Details */}
-                <div style={{ padding: 'clamp(24px, 3vw, 40px)', borderRight: '1px solid #ffffff08' }}>
-                  <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 16 }}>Highlights</div>
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {/* Details + Photos */}
+              <div className="st-community-inner">
+                <div style={{ padding: 'clamp(20px, 3vw, 36px)', borderRight: '1px solid #ffffff08' }}>
+                  <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>Highlights</div>
+                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11 }}>
                     {c.details.map(d => (
                       <li key={d} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
                         <span style={{ color: c.accent, fontSize: 9, flexShrink: 0 }}>→</span>
@@ -436,10 +416,9 @@ function CommunitySection() {
                       </li>
                     ))}
                   </ul>
-
-                  <div style={{ marginTop: 28 }}>
-                    <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>Partners</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  <div style={{ marginTop: 24 }}>
+                    <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 12 }}>Partners</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                       {c.partners.map(p => (
                         <span key={p} className="mono" style={{ fontSize: 10, color: '#6a6a65', background: '#ffffff06', padding: '5px 10px', borderRadius: 4, border: '1px solid #ffffff0a', letterSpacing: '0.06em' }}>{p}</span>
                       ))}
@@ -447,18 +426,18 @@ function CommunitySection() {
                   </div>
                 </div>
 
-                {/* Photo gallery placeholder */}
-                <div style={{ padding: 'clamp(24px, 3vw, 40px)' }}>
-                  <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 16 }}>Event Photos</div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+                {/* Photo gallery */}
+                <div style={{ padding: 'clamp(20px, 3vw, 36px)' }}>
+                  <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>Event Photos</div>
+                  <div className="st-photo-grid">
                     {Array.from({ length: c.photoCount }).map((_, i) => (
-                      <div key={i} style={{ aspectRatio: i === 0 ? '1/1' : '1/1', background: '#ffffff06', border: '1px solid #ffffff0c', borderRadius: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4, gridColumn: i === 0 ? 'span 2' : 'span 1', gridRow: i === 0 ? 'span 2' : 'span 1' }}>
-                        <span style={{ color: '#3a3a3a', fontSize: 16 }}>📷</span>
-                        <span className="mono" style={{ fontSize: 7.5, color: '#3a3a3a', textTransform: 'uppercase', letterSpacing: '0.1em', textAlign: 'center' }}>Event photo {i + 1}</span>
+                      <div key={i} style={{ aspectRatio: '1 / 1', background: '#ffffff06', border: '1px solid #ffffff0c', borderRadius: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4, gridColumn: i === 0 ? 'span 2' : 'span 1', gridRow: i === 0 ? 'span 2' : 'span 1' }}>
+                        <span style={{ color: '#3a3a3a', fontSize: 18 }}>📷</span>
+                        <span className="mono" style={{ fontSize: 7.5, color: '#3a3a3a', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Photo {i + 1}</span>
                       </div>
                     ))}
                   </div>
-                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#4a4a45', marginTop: 12, lineHeight: 1.5 }}>Photos from Genesis, DeHashed, and college events coming soon.</p>
+                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#4a4a45', marginTop: 10, lineHeight: 1.5 }}>Event photos coming soon.</p>
                 </div>
               </div>
             </div>
@@ -486,7 +465,7 @@ function Timeline() {
   return (
     <section className="section-pad" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(36px, 6vw, 64px)' }}>
           <div className="col-4">
             <span className="eyebrow" style={{ display: 'block', marginBottom: 12 }}>04 · The Path</span>
             <h2 className="h2">How I got <span className="italic" style={{ color: 'var(--ink-3)' }}>here.</span></h2>
@@ -497,28 +476,25 @@ function Timeline() {
         </div>
 
         <div style={{ position: 'relative' }}>
-          {/* Timeline line */}
-          <div style={{ position: 'absolute', left: 72, top: 0, bottom: 0, width: 1, background: 'var(--line-strong)' }} />
+          {/* Vertical line */}
+          <div className="hide-mobile" style={{ position: 'absolute', left: 72, top: 0, bottom: 0, width: 1, background: 'var(--line-strong)' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {TIMELINE.map((t, i) => (
-              <div key={i} className="reveal" style={{ display: 'grid', gridTemplateColumns: '72px 1fr', gap: 0, padding: 'clamp(18px, 2.5vw, 28px) 0', borderBottom: i < TIMELINE.length - 1 ? '1px solid var(--line)' : 'none', position: 'relative' }}>
+              <div key={i} className="reveal st-timeline-row" style={{ padding: 'clamp(16px, 2.5vw, 26px) 0', borderBottom: i < TIMELINE.length - 1 ? '1px solid var(--line)' : 'none', position: 'relative' }}>
                 {/* Year */}
-                <div style={{ paddingRight: 20, textAlign: 'right', paddingTop: 2 }}>
-                  <span className="mono" style={{ fontSize: 9.5, color: t.highlight ? 'var(--accent)' : 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', whiteSpace: 'nowrap' }}>{t.year}</span>
+                <div style={{ paddingRight: 16, textAlign: 'right', paddingTop: 3 }}>
+                  <span className="mono" style={{ fontSize: 9, color: t.highlight ? 'var(--accent)' : 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', whiteSpace: 'nowrap' }}>{t.year}</span>
                 </div>
 
                 {/* Dot + Content */}
-                <div style={{ paddingLeft: 28, position: 'relative' }}>
-                  {/* Dot */}
-                  <div style={{ position: 'absolute', left: -5, top: 6, width: 9, height: 9, borderRadius: '50%', background: t.highlight ? 'var(--accent)' : t.accent || 'var(--line-strong)', border: `2px solid ${t.highlight ? 'var(--accent)' : t.accent || 'var(--bg)'}`, outline: t.highlight ? '3px solid #ff4d1f33' : 'none' }} />
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
+                <div style={{ paddingLeft: 24, position: 'relative' }}>
+                  <div className="hide-mobile" style={{ position: 'absolute', left: -5, top: 6, width: 9, height: 9, borderRadius: '50%', background: t.highlight ? 'var(--accent)' : t.accent || 'var(--line-strong)', border: `2px solid ${t.bg || 'var(--bg)'}`, outline: t.highlight ? '3px solid #ff4d1f33' : 'none' }} />
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(17px, 1.6vw, 22px)', lineHeight: 1.2, color: t.highlight ? 'var(--ink)' : 'var(--ink)', fontWeight: 400 }}>{t.event}</div>
-                      <p className="body" style={{ fontSize: 13.5, marginTop: 5, color: 'var(--ink-3)' }}>{t.note}</p>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(16px, 1.6vw, 22px)', lineHeight: 1.2, color: 'var(--ink)' }}>{t.event}</div>
+                      <p className="body" style={{ fontSize: 13.5, marginTop: 4, color: 'var(--ink-3)' }}>{t.note}</p>
                     </div>
-                    {/* Logo placeholder pill */}
                     {t.logo && (
                       <span className="mono" style={{ fontSize: 9, color: t.accent || 'var(--ink-5)', textTransform: 'uppercase', letterSpacing: '0.1em', background: t.highlight ? '#ff4d1f10' : 'var(--bg-elev)', padding: '4px 10px', borderRadius: 999, border: `1px solid ${t.accent ? t.accent + '40' : 'var(--line-strong)'}`, flexShrink: 0, alignSelf: 'flex-start', marginTop: 2 }}>{t.logo}</span>
                     )}
@@ -536,35 +512,35 @@ function Timeline() {
 /* ─── Skills ────────────────────────────────────────────────────────────── */
 
 const SKILL_GROUPS = [
-  { cat: 'Design', items: ['Figma', 'UI/UX', 'Product Design', 'Brand Identity', 'Ecommerce Design', 'Graphic Design'] },
+  { cat: 'Design',      items: ['Figma', 'UI/UX', 'Product Design', 'Brand Identity', 'Ecommerce Design', 'Graphic Design'] },
   { cat: 'Development', items: ['Shopify Custom', 'Blockchain Dev', 'Frontend', 'React', 'Node.js'] },
-  { cat: 'No-Code', items: ['Bubble', 'Zapier', 'Make', 'Shopify', 'Webflow'] },
-  { cat: 'Marketing', items: ['Klaviyo', 'WhatsApp Automation', 'Email Marketing', 'UGC', 'Performance Marketing'] },
-  { cat: 'Leadership', items: ['Team Management', 'Project Management', 'Community Building', 'Program Management', 'Founder Relations'] },
-  { cat: 'Domains', items: ['Ecommerce', 'SaaS', 'AI SaaS', 'Blockchain', 'EdTech', 'No-Code'] },
+  { cat: 'No-Code',     items: ['Bubble', 'Zapier', 'Make', 'Shopify', 'Webflow'] },
+  { cat: 'Marketing',   items: ['Klaviyo', 'WhatsApp Automation', 'Email Marketing', 'UGC', 'Performance Marketing'] },
+  { cat: 'Leadership',  items: ['Team Management', 'Project Management', 'Community Building', 'Program Management', 'Founder Relations'] },
+  { cat: 'Domains',     items: ['Ecommerce', 'SaaS', 'AI SaaS', 'Blockchain', 'EdTech', 'No-Code'] },
 ];
 
 function Skills() {
   return (
     <section className="section-pad" style={{ background: 'var(--bg-elev)', borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 64px)' }}>
+        <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(36px, 6vw, 56px)' }}>
           <div className="col-4">
             <span className="eyebrow" style={{ display: 'block', marginBottom: 12 }}>05 · Skills</span>
             <h2 className="h2">The full <span className="italic" style={{ color: 'var(--ink-3)' }}>stack.</span></h2>
           </div>
           <div className="col-8" style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <p className="body-lg" style={{ maxWidth: '44ch' }}>Design, code, marketing, and ops — I've worked across all of them, and I know when to go deep vs. when to delegate.</p>
+            <p className="body-lg" style={{ maxWidth: '44ch' }}>Design, code, marketing, and ops — I've worked across all of them.</p>
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(24px, 3vw, 40px)' }}>
+        <div className="st-skills-grid">
           {SKILL_GROUPS.map(g => (
             <div key={g.cat} className="reveal">
-              <div className="mono" style={{ fontSize: 10.5, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--line-strong)' }}>{g.cat}</div>
+              <div className="mono" style={{ fontSize: 10.5, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 14, paddingBottom: 12, borderBottom: '1px solid var(--line-strong)' }}>{g.cat}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                 {g.items.map(item => (
-                  <span key={item} style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--ink-2)', background: 'var(--bg)', padding: '5px 12px', borderRadius: 999, border: '1px solid var(--line-strong)', letterSpacing: '-0.003em' }}>{item}</span>
+                  <span key={item} style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--ink-2)', background: 'var(--bg)', padding: '5px 12px', borderRadius: 999, border: '1px solid var(--line-strong)' }}>{item}</span>
                 ))}
               </div>
             </div>
@@ -585,14 +561,14 @@ function ClosingCTA() {
 
       <div className="container" style={{ position: 'relative' }}>
         <span className="mono" style={{ fontSize: 11, color: '#9c9b95', textTransform: 'uppercase', letterSpacing: '0.18em', display: 'block', marginBottom: 20 }}>06 · Let's connect</span>
-        <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(56px, 10vw, 160px)', lineHeight: 1.0, letterSpacing: '-0.028em', color: '#f0ede6', maxWidth: '14ch' }}>
+        <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(52px, 10vw, 160px)', lineHeight: 1.0, letterSpacing: '-0.028em', color: '#f0ede6' }}>
           Building<br />something?<br />
           <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Let's talk.</span>
         </h2>
 
-        <div style={{ marginTop: 'clamp(40px, 6vw, 72px)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--gap)', alignItems: 'start' }}>
+        <div className="st-cta-grid" style={{ marginTop: 'clamp(40px, 6vw, 72px)' }}>
           <div>
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(16px, 1.4vw, 20px)', lineHeight: 1.7, color: '#9c9b95', maxWidth: '40ch', marginBottom: 32 }}>
+            <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(16px, 1.4vw, 20px)', lineHeight: 1.7, color: '#9c9b95', maxWidth: '40ch', marginBottom: 28 }}>
               Whether you need a product built, a brand scaled, or just want to compare notes — I'm reachable. Direct line, no gatekeeping.
             </p>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -601,28 +577,26 @@ function ClosingCTA() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Where I operate from</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[
-                { name: 'Crestify', desc: 'Product & engineering studio', href: '/', color: '#ff4d1f' },
-                { name: 'Kaart Studio', desc: 'D2C ecommerce agency', href: '/kaart', color: '#0d9b6a' },
-              ].map(l => (
-                <a key={l.name} href={l.href} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px 20px', background: '#ffffff06', border: '1px solid #ffffff0e', borderRadius: 8, textDecoration: 'none', transition: 'background 0.2s' }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#ffffff0e'}
-                  onMouseLeave={e => e.currentTarget.style.background = '#ffffff06'}
-                >
-                  <div style={{ width: 36, height: 36, borderRadius: 8, background: `${l.color}18`, border: `1px solid ${l.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 14, color: l.color }}>{l.name[0]}</span>
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 500, color: '#f0ede6' }}>{l.name}</div>
-                    <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 2 }}>{l.desc}</div>
-                  </div>
-                  <span style={{ color: l.color, marginLeft: 'auto', fontSize: 16 }}>↗</span>
-                </a>
-              ))}
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div className="mono" style={{ fontSize: 10, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Where I operate</div>
+            {[
+              { name: 'Crestify', desc: 'Product & engineering studio', href: '/', color: '#ff4d1f' },
+              { name: 'Kaart Studio', desc: 'D2C ecommerce agency', href: '/kaart', color: '#0d9b6a' },
+            ].map(l => (
+              <a key={l.name} href={l.href} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px', background: '#ffffff06', border: '1px solid #ffffff0e', borderRadius: 8, textDecoration: 'none', transition: 'background 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.background = '#ffffff0e'}
+                onMouseLeave={e => e.currentTarget.style.background = '#ffffff06'}
+              >
+                <div style={{ width: 34, height: 34, borderRadius: 8, background: `${l.color}18`, border: `1px solid ${l.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 14, color: l.color }}>{l.name[0]}</span>
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 500, color: '#f0ede6' }}>{l.name}</div>
+                  <div className="mono" style={{ fontSize: 9.5, color: '#6a6a65', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 2 }}>{l.desc}</div>
+                </div>
+                <span style={{ color: l.color, marginLeft: 'auto', fontSize: 16 }}>↗</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
