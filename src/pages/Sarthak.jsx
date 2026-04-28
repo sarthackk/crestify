@@ -7,7 +7,7 @@ import { useReveal } from '../components/shared/useReveal.js';
 
 function Hero() {
   const stats = [
-    { n: '35+',  l: 'Brands Built' },
+    { n: '50+',  l: 'Brands Built' },
     { n: '5+',   l: 'Years Operating' },
     { n: '5',    l: 'Active Ventures' },
     { n: '200+', l: 'People Taught' },
@@ -266,7 +266,7 @@ function AgencyYears() {
         <div className="grid" style={{ gap: 'var(--gap)', marginBottom: 'clamp(36px, 6vw, 64px)' }}>
           <div className="col-4">
             <span className="eyebrow" style={{ display: 'block', marginBottom: 12 }}>02 · Agency Years</span>
-            <h2 className="h2">35+ brands built.<br /><span className="italic" style={{ color: 'var(--ink-3)' }}>Here's where.</span></h2>
+            <h2 className="h2">50+ brands built.<br /><span className="italic" style={{ color: 'var(--ink-3)' }}>Here's where.</span></h2>
           </div>
           <div className="col-8" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <p className="body-lg" style={{ maxWidth: '48ch' }}>
@@ -328,7 +328,7 @@ function AgencyYears() {
         <div style={{ marginTop: 'clamp(40px, 6vw, 72px)', border: '1px solid var(--line-strong)', borderRadius: 8, padding: 'clamp(24px, 3.5vw, 48px)', background: 'var(--bg-elev)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
             <span className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Brands worked with across both agencies</span>
-            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(24px, 4vw, 48px)', lineHeight: 1, color: 'var(--ink)' }}>35+ brands</span>
+            <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 'clamp(24px, 4vw, 48px)', lineHeight: 1, color: 'var(--ink)' }}>50+ brands</span>
           </div>
           <div className="st-brand-wall">
             {['Barker Bookie', 'Brand 02', 'Brand 03', 'Brand 04', 'Brand 05', 'Brand 06', 'Brand 07', 'Brand 08', 'Brand 09', 'Brand 10', 'Brand 11', 'Brand 12'].map(b => (
