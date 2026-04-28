@@ -57,6 +57,9 @@ export default function Nav() {
               className={`nav-link ${active === item.key ? 'active' : ''}`}
             >
               {item.label}
+              {item.key === 'toolkit' && active !== 'toolkit' && (
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginLeft: 5, width: 16, height: 16, borderRadius: '50%', background: 'var(--accent)', color: 'white', fontFamily: 'var(--mono)', fontSize: 8, fontWeight: 700, letterSpacing: 0, verticalAlign: 'middle', lineHeight: 1, flexShrink: 0 }}>8</span>
+              )}
             </Link>
           ))}
           <Link to="/kaart" className="nav-link" onClick={close} style={{ color: '#0d9b6a' }}>

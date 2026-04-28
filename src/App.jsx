@@ -12,6 +12,11 @@ import Sarthak from './pages/Sarthak.jsx';
 import MarginCalculator from './pages/tools/MarginCalculator.jsx';
 import BudgetAllocator from './pages/tools/BudgetAllocator.jsx';
 import UGCBriefGenerator from './pages/tools/UGCBriefGenerator.jsx';
+import LTVCalculator from './pages/tools/LTVCalculator.jsx';
+import MRRProjector from './pages/tools/MRRProjector.jsx';
+import CODCalculator from './pages/tools/CODCalculator.jsx';
+import AppStackBuilder from './pages/tools/AppStackBuilder.jsx';
+import EmailFlowPlanner from './pages/tools/EmailFlowPlanner.jsx';
 
 export default function App() {
   return (
@@ -26,9 +31,14 @@ export default function App() {
       <Route path="/kaart/services" element={<KaartServices />} />
       <Route path="/sarthak" element={<Sarthak />} />
       <Route path="/toolkit" element={<Resources />} />
-      <Route path="/toolkit/margin-calculator" element={<MarginCalculator />} />
-      <Route path="/toolkit/budget-allocator" element={<BudgetAllocator />} />
-      <Route path="/toolkit/ugc-brief" element={<UGCBriefGenerator />} />
+      <Route path="/toolkit/margin-calculator"  element={<MarginCalculator />} />
+      <Route path="/toolkit/budget-allocator"   element={<BudgetAllocator />} />
+      <Route path="/toolkit/ugc-brief"          element={<UGCBriefGenerator />} />
+      <Route path="/toolkit/ltv-calculator"     element={<LTVCalculator />} />
+      <Route path="/toolkit/mrr-projector"      element={<MRRProjector />} />
+      <Route path="/toolkit/cod-calculator"     element={<CODCalculator />} />
+      <Route path="/toolkit/app-stack-builder"  element={<AppStackBuilder />} />
+      <Route path="/toolkit/email-flow-planner" element={<EmailFlowPlanner />} />
     </Routes>
   );
 }

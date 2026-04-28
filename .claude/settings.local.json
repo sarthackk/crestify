@@ -39,7 +39,16 @@
       "WebFetch(domain:claude.ai)",
       "Bash(cp \"C:\\\\Users\\\\sarth\\\\Downloads\\\\influencer_playbook.docx\" \"C:\\\\Users\\\\sarth\\\\Documents\\\\crestify\\\\public\\\\downloads\\\\influencer_playbook.docx\")",
       "Bash(cp \"C:\\\\Users\\\\sarth\\\\Downloads\\\\meta_ads_framework.docx\" \"C:\\\\Users\\\\sarth\\\\Documents\\\\crestify\\\\public\\\\downloads\\\\meta_ads_framework.docx\")",
-      "Bash(cp \"C:\\\\Users\\\\sarth\\\\Downloads\\\\ecommerce_launch_blueprint.docx\" \"C:\\\\Users\\\\sarth\\\\Documents\\\\crestify\\\\public\\\\downloads\\\\ecommerce_launch_blueprint.docx\")"
+      "Bash(cp \"C:\\\\Users\\\\sarth\\\\Downloads\\\\ecommerce_launch_blueprint.docx\" \"C:\\\\Users\\\\sarth\\\\Documents\\\\crestify\\\\public\\\\downloads\\\\ecommerce_launch_blueprint.docx\")",
+      "Bash(where vercel *)",
+      "Bash(where netlify *)",
+      "Bash(npx --yes vercel --version)",
+      "Bash(npx vercel *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(wait)",
+      "Bash(git commit -m 'Update brand count to 50+ across Sarthak portfolio page *)"
     ]
   }
 }

@@ -558,6 +558,17 @@ section { position: relative; }
 }
 .ticker-dot { color: var(--accent); }
 
+/* ── Tool pages shared grid ─────────────────────────────────────────────── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .tool-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Nav person icon ───────────────────────────────────────────────────── */
 .nav-icon-btn {
   display: inline-flex;
