@@ -17,6 +17,15 @@ import MRRProjector from './pages/tools/MRRProjector.jsx';
 import CODCalculator from './pages/tools/CODCalculator.jsx';
 import AppStackBuilder from './pages/tools/AppStackBuilder.jsx';
 import EmailFlowPlanner from './pages/tools/EmailFlowPlanner.jsx';
+import Blog from './pages/Blog.jsx';
+import BlogPost from './pages/BlogPost.jsx';
+import SendAgreement from './pages/admin/SendAgreement.jsx';
+import AdminPortals from './pages/admin/AdminPortals.jsx';
+import ClientPortal from './pages/ClientPortal.jsx';
+import Sign from './pages/Sign.jsx';
+import ShopifyDevelopment from './pages/seo/ShopifyDevelopment.jsx';
+import SaaSDevelopment from './pages/seo/SaaSDevelopment.jsx';
+import MVPDevelopment from './pages/seo/MVPDevelopment.jsx';
 
 export default function App() {
   return (
@@ -39,6 +48,19 @@ export default function App() {
       <Route path="/toolkit/cod-calculator"     element={<CODCalculator />} />
       <Route path="/toolkit/app-stack-builder"  element={<AppStackBuilder />} />
       <Route path="/toolkit/email-flow-planner" element={<EmailFlowPlanner />} />
+      {/* Blog */}
+      <Route path="/blog"        element={<Blog />} />
+      <Route path="/blog/:slug"  element={<BlogPost />} />
+      {/* E-sign & Admin */}
+      <Route path="/admin/agreements" element={<SendAgreement />} />
+      <Route path="/admin/portals"    element={<AdminPortals />} />
+      {/* Client portals */}
+      <Route path="/clients/:slug"    element={<ClientPortal />} />
+      <Route path="/sign"             element={<Sign />} />
+      {/* SEO landing pages */}
+      <Route path="/shopify-development" element={<ShopifyDevelopment />} />
+      <Route path="/saas-development"    element={<SaaSDevelopment />} />
+      <Route path="/mvp-development"     element={<MVPDevelopment />} />
     </Routes>
   );
 }

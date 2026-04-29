@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
+import SEO, { orgSchema, websiteSchema } from '../components/shared/SEO.jsx';
 import Placeholder from '../components/shared/Placeholder.jsx';
 import { useReveal } from '../components/shared/useReveal.js';
 import { MarkFoldedK } from '../components/kaart-logo/marks.jsx';
@@ -421,6 +422,13 @@ export default function Home() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="Product Development Studio for Startups &amp; D2C Brands"
+        description="Crestify is a founder-led product development studio. We design, build, and ship SaaS products, AI tools, and ecommerce experiences — end to end. No juniors, no handoffs."
+        canonical="/"
+        keywords="product development studio India, SaaS development company India, startup product studio, MVP development India, tech agency India"
+        schema={[orgSchema, websiteSchema]}
+      />
       <Nav />
       <HeroHome />
       <Ticker />

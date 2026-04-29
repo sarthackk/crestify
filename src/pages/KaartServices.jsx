@@ -330,6 +330,20 @@ function ServicesContact() {
   );
 }
 
+function KaartFooter() {
+  return (
+    <footer style={{ background: '#04100a', color: '#a4afa9', padding: 'clamp(50px, 7vw, 80px) var(--pad) 28px' }}>
+      <div style={{ maxWidth: 'var(--maxw)', margin: '0 auto' }}>
+        <div className="serif" style={{ fontSize: 'clamp(60px, 16vw, 240px)', lineHeight: 0.85, color: K.cream, fontStyle: 'italic', letterSpacing: '-0.04em' }}>kaart*</div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 50, paddingTop: 24, borderTop: '1px solid #ffffff1c', flexWrap: 'wrap', gap: 16 }}>
+          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>© Kaart Studio · A <Link to="/" style={{ color: K.green }} className="u-link">Crestify</Link> studio</span>
+          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Shopify-only · 7 stores live · Taking new projects</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export default function KaartServicesPage() {
   useReveal();
   return (
@@ -364,6 +378,9 @@ export default function KaartServicesPage() {
 
       {/* Contact */}
       <ServicesContact />
+
+      {/* Footer */}
+      <KaartFooter />
     </div>
   );
 }

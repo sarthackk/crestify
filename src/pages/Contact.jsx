@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -11,7 +12,7 @@ function HeroContact() {
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   });
-  const tor = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'America/Toronto' });
+  const ist = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Kolkata' });
   const lon = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'Europe/London' });
   return (
     <section style={{ paddingTop: 64, paddingBottom: 'clamp(40px, 5vw, 60px)' }}>
@@ -19,7 +20,7 @@ function HeroContact() {
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 40 }}>
           <Eyebrow index="01">Start a project</Eyebrow>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            <div className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>● TOR · {tor}</div>
+            <div className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>● IST · {ist}</div>
             <div className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>● LON · {lon}</div>
           </div>
         </div>
@@ -190,6 +191,12 @@ export default function Contact() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="Start a Project — Work With Crestify"
+        description="Tell us what you're building. We'll scope it, design it, and ship it. Founder-to-founder, direct line. No lengthy RFP process."
+        canonical="/contact"
+        keywords="hire product developers India, start a tech project, work with Crestify, product development inquiry"
+      />
       <Nav />
       <HeroContact />
       <ContactForm />

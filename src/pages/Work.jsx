@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -202,6 +203,12 @@ export default function Work() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="Work — Selected Projects & Case Studies"
+        description="SaaS products, ecommerce platforms, AI tools, and mobile apps we've built from the ground up. Case studies from Prepnest, Mockzy, Match Trackers, and more."
+        canonical="/work"
+        keywords="product development case studies, SaaS portfolio India, startup projects, ecommerce development portfolio"
+      />
       <Nav />
       <HeroWork />
       <CaseGrid />

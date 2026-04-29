@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO, { orgSchema } from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -24,7 +25,7 @@ function HeroAbout() {
               Crestify was started by two operators tired of agencies that spec'd things they wouldn't ship themselves. We took the model apart and rebuilt it around a single rule: <em className="serif italic">the people who pitch the work do the work.</em>
             </p>
             <p className="body-lg" style={{ marginTop: 18, color: 'var(--ink-3)', maxWidth: '52ch' }}>
-              Five years in, we're a tight team of senior practitioners across software and commerce. No juniors warming chairs. No outsourced delivery. No frameworks for sale.
+              Five years on, we're a tight team of 11 senior practitioners across software and commerce. No juniors warming chairs. No outsourced delivery. No frameworks for sale.
             </p>
           </div>
         </div>
@@ -129,7 +130,7 @@ function FoundersDetailed() {
 
 function StatsAbout() {
   const stats = [
-    { n: '7+', l: 'Years operating' }, { n: '40+', l: 'Engagements shipped' },
+    { n: '5+', l: 'Years operating' }, { n: '40+', l: 'Engagements shipped' },
     { n: '11', l: 'Senior operators' }, { n: '92%', l: 'Client retention' },
     { n: '2.4y', l: 'Avg. partnership' }, { n: '3', l: 'Internal products' },
   ];
@@ -168,11 +169,11 @@ function Clients() {
 }
 
 const FAQS = [
-  { q: 'How is Crestify different from a typical agency?', a: 'We have a close team of 15 people who work across projects — but the founders pitch the work, scope it, and stay accountable on every engagement. You never get handed off to someone you have never met. The team executes, the founders own the outcome.' },
+  { q: 'How is Crestify different from a typical agency?', a: 'We have a close team of 11 senior operators who work across projects — but the founders pitch the work, scope it, and stay accountable on every engagement. You never get handed off to someone you have never met. The team executes, the founders own the outcome.' },
   { q: 'Do you take equity or only cash engagements?', a: 'Both. For early-stage product builds we sometimes take a small equity component alongside reduced cash. Mature companies pay standard retainers or fixed-bid project fees.' },
   { q: "What's the smallest engagement you'll take?", a: "Two weeks for an audit or strategy spike. Anything smaller and we can't do it well. Build engagements typically run 6–16 weeks." },
-  { q: 'Will I work with the founders or someone else?', a: "You will always have the founders as your primary point of contact and accountability. We have a team of 15 people who work on projects, but Sarthak and Aditya stay involved end-to-end — from the first call to the final ship." },
-  { q: 'Where are you located?', a: 'Toronto and London, with an extended team across five timezones. We work async-first but overlap with most North American and European business hours.' },
+  { q: 'Will I work with the founders or someone else?', a: "You will always have the founders as your primary point of contact and accountability. We have a team of 11 senior operators who work on projects, but Sarthak and Aditya stay involved end-to-end — from the first call to the final ship." },
+  { q: 'Where are you located?', a: 'Dehradun, India, with an extended remote team. We work primarily across Indian and Asian timezones but regularly overlap with European business hours.' },
   { q: 'Do you sign NDAs before the first call?', a: "Yes. Send one over with your intro email. We'll counter-sign within 24 hours." },
 ];
 
@@ -231,6 +232,13 @@ export default function About() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="About — Founder-Led Product Studio"
+        description="Crestify was founded by operators tired of agencies that spec'd work they wouldn't ship themselves. Meet the team behind the products — Sarthak Tiwari and Aditya Tripathi."
+        canonical="/about"
+        keywords="about Crestify, product studio founders India, founder-led agency, senior developers India"
+        schema={orgSchema}
+      />
       <Nav />
       <HeroAbout />
       <ManifestoQuote />

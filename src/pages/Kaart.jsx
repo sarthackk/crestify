@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO, { faqSchema } from '../components/shared/SEO.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import { useReveal } from '../components/shared/useReveal.js';
 import { MarkFoldedK } from '../components/kaart-logo/marks.jsx';
@@ -578,8 +579,16 @@ function KaartFooter() {
 
 export default function Kaart() {
   useReveal();
+  const kaartFaqSchema = faqSchema(KAART_FAQS.map(f => ({ q: f.q, a: f.a })));
   return (
     <div className="page" style={{ background: K.cream }}>
+      <SEO
+        title="Kaart Studio — Shopify Development & D2C Growth Agency India"
+        description="Kaart Studio is a Shopify-only agency for serious D2C brands. Store design, Hydrogen builds, Klaviyo retention, and Meta/TikTok ad ops — all under one team."
+        canonical="/kaart"
+        keywords="Shopify development agency India, D2C ecommerce agency, Shopify Hydrogen development, Klaviyo agency India, D2C brand building"
+        schema={kaartFaqSchema}
+      />
       <KaartNav />
       <KaartHero />
       <KaartBand />

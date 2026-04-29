@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO, { serviceSchema } from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -173,6 +174,13 @@ export default function Services() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="Services — SaaS, AI, Ecommerce & Mobile Development"
+        description="From solution architecture to shipped product. Crestify builds SaaS applications, AI tools, MVP products, mobile apps, and ecommerce systems for startups and D2C brands."
+        canonical="/services"
+        keywords="SaaS development India, MVP development startup, AI product development, mobile app development India, ecommerce development agency"
+        schema={serviceSchema('Software Product Development', 'End-to-end product development for SaaS, AI tools, ecommerce, and mobile — from architecture to launch.', '/services')}
+      />
       <Nav />
       <HeroServices />
       <ServicesList />

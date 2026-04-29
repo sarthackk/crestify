@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
+import SEO, { breadcrumbSchema } from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -63,8 +64,21 @@ export default function CaseStudy() {
   const prev = CASE_STUDIES[idx - 1];
   const next = CASE_STUDIES[idx + 1];
 
+  const crumbs = breadcrumbSchema([
+    { name: 'Home', href: '/' },
+    { name: 'Work', href: '/work' },
+    { name: c.client, href: `/work/${c.slug}` },
+  ]);
+
   return (
     <div className="page">
+      <SEO
+        title={`${c.client} Case Study — ${c.sector} · Crestify`}
+        description={c.summary}
+        canonical={`/work/${c.slug}`}
+        keywords={`${c.client} case study, ${c.sector} development, ${c.tag}, product development India`}
+        schema={crumbs}
+      />
       <Nav />
 
       {/* Hero */}

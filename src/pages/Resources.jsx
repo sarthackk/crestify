@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import Eyebrow from '../components/shared/Eyebrow.jsx';
@@ -179,6 +180,12 @@ export default function Resources() {
 
   return (
     <div className="page">
+      <SEO
+        title="Free Toolkit — Calculators & Playbooks for D2C & SaaS Founders"
+        description="Free tools built from real client work. Margin calculators, MRR projectors, COD return calculators, Shopify app stack builders, and more — no email required."
+        canonical="/toolkit"
+        keywords="D2C profit margin calculator, MRR calculator, Shopify app stack, ecommerce tools free, COD returns calculator India"
+      />
       <Nav />
 
       {/* Hero */}
@@ -187,9 +194,8 @@ export default function Resources() {
           <div style={{ marginBottom: 36 }}><Eyebrow index="01">Free toolkit</Eyebrow></div>
           <div className="grid" style={{ gap: 'var(--gap)', alignItems: 'end' }}>
             <div className="col-7">
-              <h1 className="display reveal" style={{ maxWidth: '18ch' }}>
-                Tools and playbooks built from{' '}
-                <span className="italic" style={{ color: 'var(--ink-3)' }}>real work.</span>
+              <h1 className="display reveal" style={{ maxWidth: '14ch' }}>
+                Free tools. <span className="italic" style={{ color: 'var(--ink-3)' }}>Real work.</span>
               </h1>
             </div>
             <div className="col-5">

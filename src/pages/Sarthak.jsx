@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
 import Footer from '../components/shared/Footer.jsx';
 import { useReveal } from '../components/shared/useReveal.js';
@@ -610,6 +611,12 @@ export default function Sarthak() {
   useReveal();
   return (
     <div className="page">
+      <SEO
+        title="Sarthak Tiwari — Founder, Builder & Product Operator"
+        description="Founder of Crestify & Kaart Studio. Built 50+ brands, shipped AI products, embedded with startups for 5+ years. This is my full operator story."
+        canonical="/sarthak"
+        keywords="Sarthak Tiwari, founder Crestify, product builder India, startup operator, Shopify developer India, SaaS founder"
+      />
       <Nav />
       <Hero />
       <Ventures />
