@@ -48,6 +48,19 @@ const SERVICES = [
   },
 ];
 
+const REELS = {
+  influencer: [
+    { id: 'DYhW1eKSkpH', caption: 'Influencer collab' },
+    { id: 'DYRvkLoJ9D6', caption: 'Influencer collab' },
+    { id: 'DX4hxRQBJrd', caption: 'Influencer collab' },
+  ],
+  inhouse: [
+    { id: 'DWY1EuAyQ-7', caption: 'In-house unboxing' },
+    { id: 'DWlmIXKSIBY', caption: 'In-house unboxing' },
+    { id: 'DW_dKRSDO1f', caption: 'In-house unboxing' },
+  ],
+};
+
 const PROCESS = [
   { step: '01', t: 'Brand immersion', d: 'Before a single brief goes out, we study the product, the aesthetic, the price point, and the customer. Nirakaar is a specific kind of brand — and the content has to be too.' },
   { step: '02', t: 'Creator matching', d: 'We identify creators by lifestyle fit, not follower count. A creator whose apartment already looks like a Nirakaar customer\'s home is worth ten times a generic homewares influencer.' },
@@ -154,13 +167,70 @@ function NirakaarServices() {
   );
 }
 
+function ReelEmbed({ id }) {
+  return (
+    <div style={{ position: 'relative', width: '100%', paddingBottom: '177.78%', borderRadius: 10, overflow: 'hidden', background: '#0a1510', border: `1px solid ${K.border}` }}>
+      <iframe
+        src={`https://www.instagram.com/reel/${id}/embed/`}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+        scrolling="no"
+        allowTransparency="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        title={`Nirakaar reel ${id}`}
+      />
+    </div>
+  );
+}
+
+function NirakaarContent() {
+  return (
+    <section style={{ background: K.bg, color: K.cream, padding: 'clamp(60px, 9vw, 120px) 0', borderTop: `1px solid ${K.border}` }}>
+      <div className="container">
+        {/* Heading */}
+        <div className="grid reveal" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 70px)', alignItems: 'end' }}>
+          <div className="col-4">
+            <span className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.14em' }}>§02 · The content</span>
+          </div>
+          <div className="col-8">
+            <h2 className="h2" style={{ color: K.cream }}>
+              Real work. <span className="italic" style={{ color: K.green }}>Real creators.</span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Influencer collabs */}
+        <div className="reveal" style={{ marginBottom: 'clamp(40px, 6vw, 70px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: K.green }} />
+            <span className="mono" style={{ fontSize: 10, color: K.muted, textTransform: 'uppercase', letterSpacing: '0.16em' }}>Influencer Collaborations</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            {REELS.influencer.map(r => <ReelEmbed key={r.id} id={r.id} />)}
+          </div>
+        </div>
+
+        {/* In-house content */}
+        <div className="reveal">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: K.green }} />
+            <span className="mono" style={{ fontSize: 10, color: K.muted, textTransform: 'uppercase', letterSpacing: '0.16em' }}>In-House Content</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            {REELS.inhouse.map(r => <ReelEmbed key={r.id} id={r.id} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function NirakaarProcess() {
   return (
     <section style={{ background: K.bg, color: K.cream, padding: 'clamp(60px, 9vw, 120px) 0', borderTop: `1px solid ${K.border}` }}>
       <div className="container">
         <div className="grid reveal" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 70px)', alignItems: 'end' }}>
           <div className="col-4">
-            <span className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.14em' }}>§02 · How we work</span>
+            <span className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.14em' }}>§03 · How we work</span>
           </div>
           <div className="col-8">
             <h2 className="h2" style={{ color: K.cream }}>
@@ -231,6 +301,7 @@ export default function KaartNirakaar() {
       />
       <NirakaarHero />
       <NirakaarServices />
+      <NirakaarContent />
       <NirakaarProcess />
       <NirakaarCTA />
       <div style={{ background: K.bg }}>
