@@ -43,7 +43,7 @@ function KaartNav() {
           <Link to="/kaart/services" className="nav-link" onClick={close} style={{ color: K.ink }}>Services</Link>
           <a href="#work" className="nav-link" onClick={close} style={{ color: K.ink }}>Work</a>
           <a href="#process" className="nav-link" onClick={close} style={{ color: K.ink }}>Process</a>
-          <a href="#pricing" className="nav-link" onClick={close} style={{ color: K.ink }}>Pricing</a>
+          <a href="#pricing" className="nav-link" onClick={close} style={{ color: K.ink }}>Packages</a>
           <Link to="/toolkit" className="nav-link" onClick={close} style={{ color: K.green }}>Free Toolkit</Link>
           <Link to="/" className="nav-link" onClick={close} style={{ color: '#5a6760' }}>↩ Crestify</Link>
           <a href="#contact" className="nav-link nav-cta" onClick={close} style={{ background: K.green, color: 'white', marginLeft: 6 }}>Brief us →</a>
@@ -62,11 +62,11 @@ function KaartHero() {
           <span className="mono" style={{ fontSize: 11, color: K.greenDeep, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
             <span style={{ color: K.green }}>§01</span>&nbsp;&nbsp;Shopify-only · A Crestify studio
           </span>
-          <span className="mono" style={{ fontSize: 11, color: '#5a6760', textTransform: 'uppercase', letterSpacing: '0.12em' }}>● Taking new projects · 7 stores live</span>
+          <span className="mono" style={{ fontSize: 11, color: '#5a6760', textTransform: 'uppercase', letterSpacing: '0.12em' }}>● Taking new projects</span>
         </div>
 
         <h1 className="display reveal" style={{ maxWidth: '13ch', color: K.ink }}>
-          Shopify, <span className="italic" style={{ color: K.green }}>done</span><br />like it's yours.
+          Your store. <span className="italic" style={{ color: K.green }}>Our obsession.</span>
         </h1>
 
         <div className="grid reveal" style={{ gap: 'var(--gap)', marginTop: 'clamp(40px, 6vw, 70px)', alignItems: 'end' }}>
@@ -96,8 +96,48 @@ function KaartHero() {
   );
 }
 
+const KAART_PRESS = [
+  'Hindustan Times',
+  'Daily Hunt',
+  'Google News',
+  'Ahmedabad Mirror',
+  'Lokmat Times',
+  'Republic India',
+  'The Startup Story',
+  'Financial Telegraph',
+];
+
+function KaartPressMarquee() {
+  const items = [...KAART_PRESS, ...KAART_PRESS, ...KAART_PRESS, ...KAART_PRESS];
+  return (
+    <div className="press-strip press-dark">
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="press-strip-label">As seen in</div>
+        <div className="marquee" style={{ flex: 1 }}>
+          <div className="marquee-track">
+            {items.map((name, i) => (
+              <span key={i} className="press-item">
+                {name}
+                <span className="press-item-dot" />
+              </span>
+            ))}
+          </div>
+          <div className="marquee-track" aria-hidden>
+            {items.map((name, i) => (
+              <span key={i} className="press-item">
+                {name}
+                <span className="press-item-dot" />
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function KaartBand() {
-  const items = ['Shopify-only studio', '7 live stores', 'Brand · Store · Growth', 'UGC & Ads engine', 'End-to-end management', 'Dehradun · Remote India', '12-member team'];
+  const items = ['Shopify-only studio', '50+ stores shipped', 'Brand · Store · Growth', 'UGC & Ads engine', 'End-to-end management', 'Dehradun · Remote India', '12-member team'];
   const arr = [...items, ...items, ...items];
   return (
     <div style={{ background: K.green, color: '#04261a', padding: '14px 0', overflow: 'hidden' }}>
@@ -202,16 +242,16 @@ function KaartServices() {
 const KAART_PROJECTS = [
   {
     n: '01', size: 'large',
-    name: 'Nirakaar', sector: 'Home Décor · Lifestyle', tag: 'End-to-end · Social · UGC',
-    href: 'https://nirakaar.in',
-    headline: 'Took a sculptural home décor brand from zero to a full e-commerce engine — store, social, and UGC, all under one roof.',
-    summary: 'Nirakaar designs limited-batch, hand-finished sculptural objects for modern spaces. We handle everything: custom Shopify store, day-to-day operations, content creation, UGC campaigns, and social media — so their team can focus entirely on designing and crafting.',
-    metrics: [{ k: 'Full', v: 'E-to-E mgmt' }, { k: 'UGC', v: 'Content engine' }, { k: 'Social', v: 'Ads & organic' }],
+    name: 'Nirakaar', sector: 'Home Décor · Lifestyle', tag: 'Content · UGC · Social · Ads',
+    href: 'https://nirakaar.in', to: '/kaart/nirakaar', img: '/nirakaar.png',
+    headline: 'Built the full content engine for a sculptural home décor brand — UGC sourcing, content production, social, and paid ads.',
+    summary: 'Nirakaar designs limited-batch, hand-finished sculptural objects for modern spaces. We source and brief UGC creators, produce all content, run their social channels day-to-day, and manage paid ad campaigns — a complete content operation so their team stays focused on craft.',
+    metrics: [{ k: 'UGC', v: 'Creator sourcing' }, { k: 'Full', v: 'Content engine' }, { k: 'Paid', v: 'Ads & organic' }],
   },
   {
     n: '02', size: 'medium',
     name: 'Berserk Mode', sector: 'Fitness · Compression Wear', tag: 'Theme dev · Integrations',
-    href: 'https://berserkmode.com',
+    href: 'https://berserkmode.com', img: '/bersekr.png',
     headline: 'High-performance Shopify theme for India\'s premium gym compression wear — built for real athletes.',
     summary: 'Custom theme build with full integration stack — influencer affiliate flows, discount systems, product comparison, and a conversion-optimised checkout for a brand whose customers are serious about their physique.',
     metrics: [{ k: 'Custom', v: 'Shopify theme' }, { k: '9+', v: 'Influencer flows' }, { k: 'Live', v: 'Pan-India' }],
@@ -219,7 +259,7 @@ const KAART_PROJECTS = [
   {
     n: '03', size: 'medium',
     name: 'Veda Jewel', sector: 'Luxury Jewellery', tag: 'Embedded dev support',
-    href: 'https://vedajewel.co',
+    href: 'https://vedajewel.co', img: '/veda.png',
     headline: 'Embedded inside Veda\'s team to build and scale a heritage jewellery store where pieces sell for up to ₹7.4 lakhs.',
     summary: 'Dev support embedded directly into the Veda Jewel team. Shipping new collection pages, performance improvements, and custom features for a store where speed and trust signals directly impact high-ticket conversions.',
     metrics: [{ k: '₹7.4L', v: 'Top ticket item' }, { k: 'Heritage', v: 'Luxury store' }, { k: 'Embedded', v: 'Dev support' }],
@@ -227,7 +267,7 @@ const KAART_PROJECTS = [
   {
     n: '04', size: 'medium',
     name: 'James Aston', sector: 'Leather Goods · Fashion', tag: 'Custom Shopify dev',
-    href: 'https://jamesaston.in',
+    href: 'https://jamesaston.in', img: '/jamesaston.png',
     headline: 'Custom storefront for India\'s premium vegetable-tanned leather brand — built to age as well as their products.',
     summary: "Full custom Shopify build for James Aston's belts, bags, briefcases, and corporate gifting line. The store reflects their slow-craft ethos: deliberate, detailed, and built to last — with LWG-certified leather sourcing front and centre.",
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'Corporate', v: 'Gifting flow' }, { k: 'Live', v: 'Pan-India' }],
@@ -235,7 +275,7 @@ const KAART_PROJECTS = [
   {
     n: '05', size: 'medium',
     name: 'Goddess Naturals', sector: 'Intimate Wellness', tag: 'Custom Shopify build',
-    href: 'https://goddessnaturals.com',
+    href: 'https://goddessnaturals.com', img: '/goddess naturals.png',
     headline: 'A premium intimate wellness brand needed a storefront as clean and science-backed as their formulas.',
     summary: 'Custom Shopify build for a CBD & THC intimate wellness line — doctor-reviewed, triple-lab-tested products. The store had to build immediate trust, communicate scientific credibility, and convert visitors who were new to the category.',
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'cGMP', v: 'Trust signals' }, { k: 'Live', v: 'USA market' }],
@@ -243,7 +283,7 @@ const KAART_PROJECTS = [
   {
     n: '06', size: 'medium',
     name: 'Paradise Pleasure', sector: 'Adult Wellness · Tech', tag: 'Custom Shopify dev',
-    href: 'https://paradisepleasureproducts.com',
+    href: 'https://paradisepleasureproducts.com', img: '/paradise.png',
     headline: 'A tech-forward adult wellness brand — app-controlled, LED-integrated products — needed a store as innovative as the hardware.',
     summary: "Custom Shopify dev for Paradise's Illumination Series. App connectivity docs, 18+ age gating, complex product variants (colour profiles, intensity modes), and a premium editorial feel that matches the brand's sophisticated positioning.",
     metrics: [{ k: 'Custom', v: 'Shopify dev' }, { k: '18+', v: 'Age gating' }, { k: 'Live', v: 'USA + Global' }],
@@ -251,7 +291,7 @@ const KAART_PROJECTS = [
   {
     n: '07', size: 'large',
     name: 'Furnicheer', sector: 'Furniture · Heritage Crafts', tag: 'Shopify store build',
-    href: 'https://furnicheer.com',
+    href: 'https://furnicheer.com', img: '/furnicheer.png',
     headline: 'A heritage furniture brand featured in Architectural Digest needed a store that could sell ₹60k pieces the way they deserve.',
     summary: "Shopify store build for Furnicheer's handcrafted Indian contemporary furniture — home temples, swings, armchairs, and sculptural décor. Global shipping, lifetime warranty positioning, and an editorial experience that matches their Architectural Digest and Elle Decor features.",
     metrics: [{ k: 'Arch Digest', v: 'Featured in' }, { k: 'Global', v: 'Shipping setup' }, { k: 'Live', v: 'India + Global' }],
@@ -299,22 +339,33 @@ function KaartWhyUs() {
 }
 
 function KaartProjectCard({ p }) {
+  const cls = `reveal lift ${p.size === 'large' ? 'col-12' : 'col-6'}`;
   return (
-    <a
-      href={p.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`reveal lift ${p.size === 'large' ? 'col-12' : 'col-6'}`}
-      style={{ display: 'block', textDecoration: 'none', color: K.cream }}
-    >
+    <a href={p.href} target="_blank" rel="noopener noreferrer"
+      className={cls} style={{ display: 'block', textDecoration: 'none', color: K.cream }}>
       {/* Image area */}
-      <div style={{ position: 'relative', aspectRatio: p.size === 'large' ? '24 / 10' : '14 / 11', background: '#0f1a14', borderRadius: 6, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #ffffff0a' }}>
-        <span className="serif italic" style={{ fontSize: 'clamp(48px, 8vw, 120px)', color: '#1a2e22', letterSpacing: '-0.03em', userSelect: 'none' }}>{p.name}</span>
+      <div style={{ position: 'relative', aspectRatio: p.size === 'large' ? '24 / 10' : '14 / 11', background: '#0f1a14', borderRadius: 6, overflow: 'hidden', border: '1px solid #ffffff0a' }}>
+        {p.img ? (
+          <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(0.5) brightness(0.4)' }} />
+        ) : (
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span className="serif italic" style={{ fontSize: 'clamp(48px, 8vw, 120px)', color: '#1a2e22', letterSpacing: '-0.03em', userSelect: 'none' }}>{p.name}</span>
+          </div>
+        )}
+        {/* overlay */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,16,10,0.92) 0%, rgba(4,16,10,0.3) 50%, rgba(4,16,10,0.15) 100%)' }} />
+        {/* top-left: sector */}
         <div style={{ position: 'absolute', top: 14, left: 16 }}>
-          <span className="mono" style={{ fontSize: 10, color: '#7d8a83', textTransform: 'uppercase', letterSpacing: '0.14em' }}>{p.sector}</span>
+          <span className="mono" style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>{p.sector}</span>
         </div>
-        <div style={{ position: 'absolute', bottom: 14, right: 16 }}>
-          <span style={{ fontSize: 11, color: K.green, fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Visit store ↗</span>
+        {/* top-right: tag pill */}
+        <div style={{ position: 'absolute', top: 12, right: 14 }}>
+          <span className="mono" style={{ fontSize: 9, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', padding: '3px 9px', borderRadius: 999 }}>{p.tag}</span>
+        </div>
+        {/* bottom: brand name + visit */}
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 20px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <span className="serif italic" style={{ fontSize: 'clamp(22px, 3vw, 38px)', color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>{p.name}</span>
+          <span style={{ fontSize: 11, color: K.green, fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '0.12em', flexShrink: 0 }}>Visit store ↗</span>
         </div>
       </div>
 
@@ -329,13 +380,19 @@ function KaartProjectCard({ p }) {
         <p className="body" style={{ marginTop: 10, color: '#7d8a83', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', maxWidth: '60ch' }}>
           {p.summary}
         </p>
-        <div style={{ display: 'flex', gap: 24, marginTop: 18, paddingTop: 18, borderTop: '1px solid #ffffff14' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginTop: 18, paddingTop: 18, borderTop: '1px solid #ffffff14', flexWrap: 'wrap' }}>
           {p.metrics.map(m => (
             <div key={m.v}>
               <div className="serif italic" style={{ fontSize: 22, color: K.green, lineHeight: 1 }}>{m.k}</div>
               <div className="mono" style={{ fontSize: 10, color: '#5a6760', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{m.v}</div>
             </div>
           ))}
+          {p.to && (
+            <Link to={p.to} onClick={e => e.stopPropagation()}
+              style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, background: `${K.green}18`, border: `1px solid ${K.green}44`, borderRadius: 6, padding: '8px 14px', fontFamily: 'var(--mono)', fontSize: 10, color: K.green, textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', flexShrink: 0 }}>
+              Our work →
+            </Link>
+          )}
         </div>
       </div>
     </a>
@@ -351,7 +408,7 @@ function KaartWork() {
             <span className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.12em' }}>§04&nbsp;&nbsp;Client stores</span>
           </div>
           <div className="col-8" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16 }}>
-            <h2 className="h2" style={{ color: K.cream }}>40+ brands. <span className="italic" style={{ color: K.green }}>All live.</span></h2>
+            <h2 className="h2" style={{ color: K.cream }}>50+ brands. <span className="italic" style={{ color: K.green }}>All live.</span></h2>
             <a href="#contact" className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Work with us →</a>
           </div>
         </div>
@@ -411,9 +468,9 @@ function KaartProcess() {
 }
 
 const KAART_PRICING = [
-  { name: 'Theme', price: 'from $14k', dur: '4–6 weeks', items: ['Custom Liquid theme', 'Mobile-first design', 'Up to 8 templates', 'Performance budget'], hi: false },
-  { name: 'Headless', price: 'from $48k', dur: '8–14 weeks', items: ['Hydrogen / Next storefront', 'Headless CMS integration', 'Edge deployment', 'Sub-1s LCP target'], hi: true },
-  { name: 'Run', price: 'from $9k/mo', dur: 'monthly retainer', items: ['Klaviyo + flows', 'Paid social ops', 'Merchandising & CRO', 'UGC content engine'], hi: false },
+  { name: 'Theme', tag: 'Store Build', dur: '4–6 weeks', items: ['Custom Liquid theme', 'Mobile-first design', 'Up to 8 templates', 'Performance budget'], hi: false },
+  { name: 'Headless', tag: 'Store Build', dur: '8–14 weeks', items: ['Hydrogen / Next storefront', 'Headless CMS integration', 'Edge deployment', 'Sub-1s LCP target'], hi: true },
+  { name: 'Run', tag: 'Growth Retainer', dur: 'Monthly', items: ['Klaviyo + flows', 'Paid social ops', 'Merchandising & CRO', 'UGC content engine'], hi: false },
 ];
 
 function KaartPricing() {
@@ -421,17 +478,23 @@ function KaartPricing() {
     <section id="pricing" style={{ background: '#fdfcf6', color: K.ink, padding: 'clamp(70px, 10vw, 130px) 0', borderTop: '1px solid #0e141122' }}>
       <div className="container">
         <div className="grid reveal" style={{ gap: 'var(--gap)', marginBottom: 'clamp(40px, 6vw, 70px)' }}>
-          <div className="col-4"><span className="mono" style={{ fontSize: 11, color: K.greenDeep, textTransform: 'uppercase', letterSpacing: '0.12em' }}><span style={{ color: K.green }}>§06</span>&nbsp;&nbsp;What it costs</span></div>
-          <h2 className="h2 col-8">Honest pricing. <span className="italic" style={{ color: K.green }}>Up front.</span></h2>
+          <div className="col-4"><span className="mono" style={{ fontSize: 11, color: K.greenDeep, textTransform: 'uppercase', letterSpacing: '0.12em' }}><span style={{ color: K.green }}>§06</span>&nbsp;&nbsp;Packages</span></div>
+          <div className="col-8">
+            <h2 className="h2">Three ways to work. <span className="italic" style={{ color: K.green }}>One direction.</span></h2>
+            <p className="body" style={{ marginTop: 14, color: '#5a6760', maxWidth: '46ch' }}>Scope and investment are quoted per project — brief us and we'll come back with a clear number within 48 hours.</p>
+          </div>
         </div>
         <div className="grid-3" style={{ gap: 'var(--gap)' }}>
           {KAART_PRICING.map((p, i) => (
             <div key={p.name} className="reveal lift" style={{ '--i': i, padding: 'clamp(24px, 3vw, 40px)', borderRadius: 6, background: p.hi ? K.ink : K.cream, color: p.hi ? K.cream : K.ink, border: p.hi ? `1px solid ${K.green}` : '1px solid #0e141122', display: 'flex', flexDirection: 'column', gap: 20, position: 'relative' }}>
               {p.hi && <span className="mono" style={{ position: 'absolute', top: -10, left: 28, background: K.green, color: '#0a100d', padding: '4px 10px', borderRadius: 4, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Most chosen</span>}
-              <div className="mono" style={{ fontSize: 11, color: p.hi ? K.green : K.greenDeep, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{p.dur}</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+                <div className="mono" style={{ fontSize: 11, color: p.hi ? K.green : K.greenDeep, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{p.tag}</div>
+                <div className="mono" style={{ fontSize: 10, color: p.hi ? '#a4afa9' : '#8a9490', letterSpacing: '0.1em', textTransform: 'uppercase', background: p.hi ? '#ffffff10' : '#0e141108', padding: '3px 8px', borderRadius: 3 }}>{p.dur}</div>
+              </div>
               <div>
                 <div className="serif" style={{ fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1, fontStyle: 'italic' }}>{p.name}</div>
-                <div className="serif" style={{ fontSize: 26, marginTop: 12, color: p.hi ? '#a4afa9' : '#5a6760' }}>{p.price}</div>
+                <div className="mono" style={{ fontSize: 11, marginTop: 10, color: p.hi ? '#6a8a7a' : '#8a9490', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Quoted per scope →</div>
               </div>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 16, borderTop: p.hi ? '1px solid #ffffff22' : '1px solid #0e141122' }}>
                 {p.items.map(it => <li key={it} style={{ display: 'flex', gap: 12, alignItems: 'baseline', fontSize: 14.5 }}><span style={{ color: K.green }}>→</span>{it}</li>)}
@@ -526,6 +589,41 @@ function KaartFAQ() {
 }
 
 function KaartContact() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', store: '', brief: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw9sYMSCxNAVzLqS8MxAhEqQchcZ349WIl1GukDyymNDUfHE3I0RUaHhBf1IVZsNtdc/exec';
+
+  const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const canSubmit = form.name && form.email && form.brief;
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    setLoading(true);
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'Kaart Studio',
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.store,
+          brief: form.brief,
+        }),
+      });
+    } catch (_) { /* no-cors — data is sent regardless */ }
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  const iStyle = { width: '100%', padding: '14px 0', border: 'none', borderBottom: '1px solid #ffffff22', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 16, color: K.cream, outline: 'none' };
+  const lStyle = { fontFamily: 'var(--mono)', fontSize: 10, color: '#7d8a83', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4, display: 'block' };
+
   return (
     <section id="contact" style={{ background: K.ink, color: K.cream, padding: 'clamp(80px, 12vw, 160px) 0', position: 'relative', overflow: 'hidden' }}>
       <div aria-hidden style={{ position: 'absolute', inset: 0, background: `radial-gradient(circle at 80% 20%, ${K.green}22, transparent 60%)`, pointerEvents: 'none' }} />
@@ -535,12 +633,52 @@ function KaartContact() {
           Got a Shopify <span className="italic" style={{ color: K.green }}>problem?</span>
         </h2>
         <p className="body-lg reveal" style={{ color: '#a4afa9', marginTop: 28, maxWidth: '52ch' }}>
-          Tell us about your brand, product, and where you're stuck — store, ads, content, or all three. We'll come back with a clear plan within 48 hours.
+          Tell us about your brand and where you're stuck — store, speed, conversions, or all three. We'll reply with a clear plan within 48 hours.
         </p>
-        <div className="reveal" style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <a href="mailto:contact@crestify.co" className="btn" style={{ background: K.green, color: '#04261a', fontSize: 16, padding: '18px 28px' }}>contact@crestify.co <span className="arr">→</span></a>
-          <a href="https://wa.me/917992028684" target="_blank" rel="noopener noreferrer" className="btn" style={{ border: '1px solid #ffffff44', color: K.cream, fontSize: 16, padding: '18px 28px' }}>WhatsApp us ↗</a>
+
+        {/* Form */}
+        <div className="reveal" style={{ marginTop: 56, maxWidth: 640 }}>
+          {submitted ? (
+            <div style={{ padding: 'clamp(28px, 4vw, 48px)', border: `1px solid ${K.green}44`, borderRadius: 4, background: '#0d9b6a11' }}>
+              <div className="mono" style={{ fontSize: 11, color: K.green, textTransform: 'uppercase', letterSpacing: '0.12em' }}>● Brief received</div>
+              <p style={{ marginTop: 14, fontSize: 18, color: K.cream }}>Thanks, {form.name.split(' ')[0]}. We'll be back within 48 hours with a plan.</p>
+            </div>
+          ) : (
+            <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div>
+                  <label style={lStyle}>Your name *</label>
+                  <input style={iStyle} value={form.name} onChange={e => update('name', e.target.value)} placeholder="Jane Doe" required />
+                </div>
+                <div>
+                  <label style={lStyle}>Email *</label>
+                  <input type="email" style={iStyle} value={form.email} onChange={e => update('email', e.target.value)} placeholder="jane@brand.co" required />
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div>
+                  <label style={lStyle}>Phone</label>
+                  <input type="tel" style={iStyle} value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+91 98765 43210" />
+                </div>
+                <div>
+                  <label style={lStyle}>Store URL</label>
+                  <input style={iStyle} value={form.store} onChange={e => update('store', e.target.value)} placeholder="yourbrand.com" />
+                </div>
+              </div>
+              <div>
+                <label style={lStyle}>What do you need help with? *</label>
+                <textarea rows={4} style={{ ...iStyle, resize: 'vertical' }} value={form.brief} onChange={e => update('brief', e.target.value)} placeholder="Tell us about your brand, what's broken, and what success looks like." required />
+              </div>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                <button type="submit" disabled={loading || !canSubmit} className="btn" style={{ background: K.green, color: '#04261a', fontSize: 16, padding: '16px 28px', opacity: canSubmit && !loading ? 1 : 0.5 }}>
+                  {loading ? 'Sending…' : <>Send brief <span className="arr">→</span></>}
+                </button>
+                <a href="https://wa.me/917992028684" target="_blank" rel="noopener noreferrer" className="btn" style={{ border: '1px solid #ffffff33', color: K.cream, fontSize: 15, padding: '16px 24px' }}>WhatsApp ↗</a>
+              </div>
+            </form>
+          )}
         </div>
+
         <div className="grid-3 reveal" style={{ gap: 'var(--gap)', marginTop: 80, paddingTop: 40, borderTop: '1px solid #ffffff1c' }}>
           <div>
             <div className="mono" style={{ fontSize: 11, color: '#7d8a83', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Studio</div>
@@ -570,7 +708,7 @@ function KaartFooter() {
         <div className="serif" style={{ fontSize: 'clamp(60px, 16vw, 240px)', lineHeight: 0.85, color: K.cream, fontStyle: 'italic', letterSpacing: '-0.04em' }}>kaart*</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 50, paddingTop: 24, borderTop: '1px solid #ffffff1c', flexWrap: 'wrap', gap: 16 }}>
           <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>© Kaart Studio · A <Link to="/" style={{ color: K.green }} className="u-link">Crestify</Link> studio</span>
-          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Shopify-only · 7 stores live · Taking new projects</span>
+          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Shopify-only · 50+ stores shipped · Taking new projects</span>
         </div>
       </div>
     </footer>
@@ -593,6 +731,7 @@ export default function Kaart() {
       <KaartHero />
       <KaartBand />
       <KaartStats />
+      <KaartPressMarquee />
       <KaartServices />
       <KaartWhyUs />
       <KaartWork />
