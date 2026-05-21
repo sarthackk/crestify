@@ -178,6 +178,8 @@ function ReelEmbed({ id }) {
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         title={`Nirakaar reel ${id}`}
       />
+      {/* Cover the likes / action bar at the bottom */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 52, background: '#fff', zIndex: 2 }} />
     </div>
   );
 }
