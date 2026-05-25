@@ -289,6 +289,18 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
 
 /* ─── SAFE AREA FOR MOBILE NAV ───────────────── */
 @media (max-width: 1099px) { body { padding-bottom: 64px; } }
+
+/* ─── PHASE ROWS MOBILE ──────────────────────── */
+@media (max-width: 639px) {
+  .phase-inner {
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .phase-inner > div:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+  .ph-item { white-space: nowrap; }
+}
 </style>
 </head>
 <body>
