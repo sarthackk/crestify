@@ -75,6 +75,7 @@ export default function App() {
       <Route path="/saas-development"    element={<SaaSDevelopment />} />
       <Route path="/mvp-development"     element={<MVPDevelopment />} />
 
+      {/* ── Proposals (unlinked, client-share only) ── */}
       {/* ── PM System (separate from existing client portals) ── */}
       <Route path="/pm/login" element={<PMLogin />} />
       <Route path="/pm" element={<PMProtected><PMDashboard /></PMProtected>} />
