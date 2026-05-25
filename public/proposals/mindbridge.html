@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBridge — Project Proposal by Crestify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:        #0f1a14;
+  --forest:     #162210;
+  --mid:        #2d5a3d;
+  --sage:       #5a9a6e;
+  --sage-lt:    #8ab89a;
+  --leaf:       #c8e6d0;
+  --warm-white: #fafaf7;
+  --amber:      #b87333;
+  --amber-lt:   #d4a56a;
+  --amber-pale: #f5ead8;
+  --rose:       #7a1f30;
+  --rose-pale:  #f5e8eb;
+  --violet:     #3d2a6e;
+  --border:     #e2ddd5;
+  --text:       #1c2b20;
+  --muted:      #6b7d72;
+  --light-bg:   #f4f8f5;
+  --pad:        clamp(20px, 6vw, 80px);
+  --section-v:  clamp(60px, 8vw, 96px);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+/* ─── COVER ──────────────────────────────────── */
+.cover {
+  min-height: 100svh;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(28px,5vw,60px) var(--pad) clamp(32px,4vw,52px);
+  position: relative;
+  overflow: hidden;
+  gap: 40px;
+}
+.cover-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+.orb1 { width: 70vw; height: 70vw; max-width: 600px; max-height: 600px; top: -15%; right: -10%;
+  background: radial-gradient(circle at 40% 40%, rgba(45,90,61,0.6) 0%, transparent 70%);
+  filter: blur(60px); animation: drift 12s ease-in-out infinite; }
+.orb2 { width: 50vw; height: 50vw; max-width: 400px; max-height: 400px; bottom: -5%; left: 5%;
+  background: radial-gradient(circle, rgba(184,115,51,0.18) 0%, transparent 70%);
+  filter: blur(50px); animation: drift 9s ease-in-out infinite reverse; }
+@keyframes drift { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+
+.cover-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.cover-from { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); }
+.cover-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+
+.cover-mid { position: relative; z-index: 1; }
+.cover-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: clamp(20px,3vw,32px); padding: 6px 14px;
+  border: 1px solid rgba(90,154,110,0.3); border-radius: 40px;
+}
+.cover-eyebrow span { width: 5px; height: 5px; background: var(--sage); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.cover-title { font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 10vw, 6.5rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.03em; color: #fff; margin-bottom: 8px; }
+.cover-title em { font-style: italic; font-weight: 400; color: var(--sage); }
+.cover-tagline { font-family: 'Fraunces', serif; font-size: clamp(0.95rem, 2.5vw, 1.35rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.4); margin-top: 14px; margin-bottom: clamp(24px,3vw,40px); }
+
+.cover-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em; padding: 6px 14px; border-radius: 40px; text-transform: uppercase; }
+.pill-sage  { background: rgba(90,154,110,0.15); color: var(--sage-lt); border: 1px solid rgba(90,154,110,0.3); }
+.pill-amber { background: rgba(184,115,51,0.15); color: var(--amber-lt); border: 1px solid rgba(184,115,51,0.3); }
+.pill-white { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.12); }
+
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 1; flex-wrap: wrap; gap: 16px; }
+.cover-stats { display: flex; gap: clamp(20px,4vw,48px); flex-wrap: wrap; }
+.cs-item { display: flex; flex-direction: column; gap: 3px; }
+.cs-val { font-family: 'Fraunces', serif; font-size: clamp(1.4rem,3vw,1.8rem); font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.02em; }
+.cs-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-lt); }
+.cover-scroll { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); display: none; }
+@media (min-width: 600px) { .cover-scroll { display: flex; align-items: center; gap: 8px; writing-mode: vertical-rl; }
+  .cover-scroll::before { content: ''; width: 1px; height: 36px; background: rgba(255,255,255,0.12); } }
+
+/* ─── SHARED ─────────────────────────────────── */
+.section { padding: var(--section-v) var(--pad); }
+.inner { max-width: 1160px; margin: 0 auto; }
+
+.label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.label::before { content: ''; width: 18px; height: 1px; background: var(--sage); flex-shrink: 0; }
+
+h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.025em; color: var(--text); margin-bottom: 14px; }
+h2 em { font-style: italic; font-weight: 400; color: var(--mid); }
+.sub { font-size: 0.98rem; color: var(--muted); line-height: 1.8; font-weight: 300; max-width: 540px; margin-bottom: clamp(32px,5vw,56px); }
+
+.divider { border: none; border-top: 1px solid var(--border); }
+
+/* ─── FADE IN ────────────────────────────────── */
+.fi { opacity: 0; transform: translateY(22px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.1), transform 0.6s cubic-bezier(.22,.68,0,1.1); }
+.fi.v { opacity: 1; transform: none; }
+.fi.d1 { transition-delay: 0.06s; } .fi.d2 { transition-delay: 0.13s; } .fi.d3 { transition-delay: 0.2s; } .fi.d4 { transition-delay: 0.27s; }
+
+/* ─── INTRO ──────────────────────────────────── */
+.intro-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 768px) { .intro-grid { grid-template-columns: 1fr 1fr; gap: 72px; } }
+
+.intro-body { font-size: 1rem; line-height: 1.85; color: var(--text); font-weight: 300; }
+.intro-body p + p { margin-top: 18px; }
+.intro-body strong { font-weight: 600; color: var(--mid); }
+
+.intro-cards { display: flex; flex-direction: column; gap: 14px; }
+.intro-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
+.intro-card:hover { border-color: var(--sage); transform: translateX(4px); }
+.ic-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+.ic-title { font-weight: 600; font-size: 0.92rem; color: var(--text); margin-bottom: 4px; }
+.ic-desc  { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── SCOPE TABLE ────────────────────────────── */
+.scope-wrap { background: var(--light-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.scope-table { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: #fff; }
+
+.st-head { display: grid; grid-template-columns: 1fr auto; background: var(--ink); padding: 12px 18px; gap: 12px; }
+@media (min-width: 600px) { .st-head { grid-template-columns: 2.6fr 1fr 2.8fr auto; } }
+.st-head span { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); }
+.st-head .hide-sm { display: none; } @media (min-width: 600px) { .st-head .hide-sm { display: block; } }
+
+.st-row { display: grid; grid-template-columns: 1fr auto; padding: 12px 18px; border-bottom: 1px solid var(--border); align-items: center; gap: 12px; transition: background 0.15s; }
+@media (min-width: 600px) { .st-row { grid-template-columns: 2.6fr 1fr 2.8fr auto; } }
+.st-row:last-child { border-bottom: none; }
+.st-row:hover { background: var(--light-bg); }
+.st-feat { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+.st-portal { font-size: 0.78rem; color: var(--muted); display: none; } @media (min-width: 600px) { .st-portal { display: block; } }
+.st-approach { font-size: 0.78rem; color: var(--muted); display: none; } @media (min-width: 600px) { .st-approach { display: block; } }
+
+.badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+.badge-in         { background: #e8f4ec; color: #2d6e42; border: 1px solid #b8ddc4; }
+.badge-simplified { background: var(--amber-pale); color: #7a4f1a; border: 1px solid #ddb580; }
+.badge-deferred   { background: var(--rose-pale); color: var(--rose); border: 1px solid #d4a0aa; }
+
+/* ─── PORTALS ────────────────────────────────── */
+.portals-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 640px) { .portals-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .portals-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.portal-card { border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: #fff; transition: transform 0.25s, box-shadow 0.25s; }
+.portal-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.07); }
+
+.pc-head { padding: 22px 24px 18px; }
+.pc-head-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.pc-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: var(--text); }
+
+.pc-body { padding: 0 24px 24px; }
+.pc-step { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--border); }
+.pc-step:last-child { border-bottom: none; }
+.pc-num { width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 500; margin-top: 1px; }
+.pc-step-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.pc-step-desc  { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+.pc-step-impl  { display: inline-block; margin-top: 4px; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.pc-client    .pc-head { background: #f0f7f2; } .pc-client    .pc-head-label { color: var(--mid); } .pc-client    .pc-num { background: #e0f0e6; color: var(--mid); } .pc-client    .pc-step-impl { color: var(--mid); }
+.pc-therapist .pc-head { background: #faf4ea; } .pc-therapist .pc-head-label { color: var(--amber); } .pc-therapist .pc-num { background: #fce8cc; color: var(--amber); } .pc-therapist .pc-step-impl { color: var(--amber); }
+.pc-admin     .pc-head { background: #f3f0f9; } .pc-admin     .pc-head-label { color: var(--violet); } .pc-admin     .pc-num { background: #e6e0f5; color: var(--violet); } .pc-admin     .pc-step-impl { color: var(--violet); }
+
+/* ─── TECH ───────────────────────────────────── */
+.tech-wrap { background: var(--ink); }
+.tech-wrap h2 { color: #fff; }
+.tech-wrap .sub { color: rgba(255,255,255,0.4); }
+.tech-wrap .label { color: var(--sage); } .tech-wrap .label::before { background: var(--sage); }
+
+.tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (min-width: 560px) { .tech-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .tech-grid { grid-template-columns: repeat(5, 1fr); } }
+
+.tech-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 18px 16px; transition: border-color 0.25s, background 0.25s, transform 0.2s; }
+.tech-card:hover { border-color: rgba(90,154,110,0.4); background: rgba(90,154,110,0.06); transform: translateY(-3px); }
+.tc-type { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
+.tc-build { color: var(--sage); } .tc-oss { color: var(--amber-lt); }
+.tc-name { font-size: 0.88rem; font-weight: 600; color: #fff; margin-bottom: 5px; }
+.tc-desc { font-size: 0.74rem; color: rgba(255,255,255,0.38); line-height: 1.55; }
+
+/* ─── BUDGET ─────────────────────────────────── */
+.phase-row { background: #fff; border: 1px solid var(--border); border-radius: 14px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
+.phase-row:hover { border-color: var(--sage); }
+
+.phase-inner { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 18px 20px; }
+@media (min-width: 640px) { .phase-inner { grid-template-columns: 44px 160px 1fr 100px; align-items: center; } }
+
+.ph-badge { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 900; color: #fff; flex-shrink: 0; }
+.ph-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 2px; }
+.ph-weeks { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.04em; }
+.ph-bar-track { height: 5px; background: #f0ece6; border-radius: 3px; overflow: hidden; margin-bottom: 9px; }
+.ph-bar-fill { height: 100%; border-radius: 3px; }
+.ph-items { display: flex; flex-wrap: wrap; gap: 5px; }
+.ph-item { font-size: 0.7rem; padding: 3px 9px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); }
+.ph-amount { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 900; color: var(--text); text-align: right; display: none; }
+.ph-pct { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); text-align: right; display: none; }
+@media (min-width: 640px) { .ph-amount { display: block; } .ph-pct { display: block; } }
+
+.budget-total-row { background: var(--mid); border-radius: 14px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; flex-wrap: wrap; gap: 12px; }
+.btr-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--leaf); margin-bottom: 3px; }
+.btr-note { font-size: 0.76rem; color: rgba(255,255,255,0.5); }
+.btr-amount { font-family: 'Fraunces', serif; font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; }
+
+/* ─── SCREENS ────────────────────────────────── */
+.screens-wrap { background: var(--light-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.screens-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 560px) { .screens-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px) { .screens-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.screen-col { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.sc-head { padding: 14px 18px; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.sc-client    .sc-head { background: #eef6f1; color: var(--mid); }
+.sc-therapist .sc-head { background: #faf2e8; color: var(--amber); }
+.sc-admin     .sc-head { background: #f1edf9; color: var(--violet); }
+.sc-body { padding: 8px 0; }
+.sc-item { display: flex; align-items: center; gap: 10px; padding: 8px 18px; font-size: 0.8rem; color: var(--text); border-bottom: 1px solid var(--border); transition: background 0.15s; }
+.sc-item:last-child { border-bottom: none; }
+.sc-item:hover { background: var(--light-bg); }
+.sc-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+.screens-footer { text-align: center; margin-top: 16px; padding: 14px 20px; background: #fff; border: 1px solid var(--border); border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.03em; }
+.screens-footer strong { color: var(--mid); }
+
+/* ─── TIMELINE ───────────────────────────────── */
+.tl-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 768px) { .tl-grid { grid-template-columns: 1fr 1fr; gap: 72px; } }
+
+.how-we-work { font-size: 0.85rem; color: var(--muted); line-height: 1.75; padding: 18px 22px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; }
+.how-we-work strong { color: var(--text); display: block; margin-bottom: 7px; }
+
+.timeline { position: relative; padding-left: 28px; border-left: 2px solid var(--border); }
+.tl-item { position: relative; margin-bottom: 32px; padding-left: 24px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: -37px; top: 3px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--border); flex-shrink: 0; }
+.tl-week { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; }
+.tl-phase { font-family: 'Fraunces', serif; font-size: 1.08rem; font-weight: 700; color: var(--text); margin-bottom: 7px; }
+.tl-items { display: flex; flex-wrap: wrap; gap: 5px; }
+.tl-tag { font-size: 0.72rem; padding: 3px 10px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); }
+
+/* ─── QUESTIONS ──────────────────────────────── */
+.q-wrap { background: var(--light-bg); border-top: 1px solid var(--border); }
+.q-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 640px) { .q-grid { grid-template-columns: 1fr 1fr; } }
+
+.q-item { display: flex; gap: 12px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
+.q-item:hover { border-color: var(--sage); }
+.q-n { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--sage); letter-spacing: 0.05em; flex-shrink: 0; padding-top: 1px; width: 26px; }
+.q-text { font-size: 0.85rem; color: var(--text); line-height: 1.65; }
+
+/* ─── CLOSING ────────────────────────────────── */
+.closing { background: var(--ink); padding: var(--section-v) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.closing::before { content: ''; position: absolute; top: 50%; left: 50%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(45,90,61,0.3) 0%, transparent 70%); transform: translate(-50%,-50%); border-radius: 50%; filter: blur(70px); }
+.closing > * { position: relative; z-index: 1; }
+.closing h2 { color: #fff; margin-bottom: 14px; }
+.closing .sub { margin: 0 auto clamp(32px,5vw,48px); color: rgba(255,255,255,0.4); }
+
+.from-block { display: inline-flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 36px; }
+.from-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-lt); }
+.from-name { font-family: 'Fraunces', serif; font-size: clamp(1.4rem,4vw,1.8rem); font-weight: 900; color: #fff; }
+.from-url { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--sage); text-decoration: none; letter-spacing: 0.06em; }
+.from-url:hover { color: var(--leaf); }
+
+.closing-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 900; color: #fff; }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+
+/* ─── SIDE NAV ───────────────────────────────── */
+.page-nav { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 100; display: none; flex-direction: column; gap: 8px; }
+@media (min-width: 1100px) { .page-nav { display: flex; } }
+.pn-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(90,154,110,0.3); border: 1px solid rgba(90,154,110,0.5); cursor: pointer; transition: background 0.2s, transform 0.2s; display: block; text-decoration: none; }
+.pn-dot:hover { background: var(--sage); transform: scale(1.4); }
+.pn-dot.active { background: var(--sage); transform: scale(1.25); }
+
+/* ─── MOBILE NAV ─────────────────────────────── */
+.mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(15,26,20,0.95); backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.08); padding: 10px 16px 12px; display: flex; justify-content: space-around; }
+@media (min-width: 1100px) { .mobile-nav { display: none; } }
+.mn-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; padding: 4px 8px; border-radius: 8px; }
+.mn-item:hover, .mn-item.active { color: var(--sage); }
+.mn-icon { font-size: 1rem; line-height: 1; }
+
+/* ─── SAFE AREA FOR MOBILE NAV ───────────────── */
+@media (max-width: 1099px) { body { padding-bottom: 64px; } }
+</style>
+</head>
+<body>
+
+<!-- Side nav (desktop) -->
+<nav class="page-nav" id="pageNav">
+  <a class="pn-dot active" href="#cover"    title="Cover"></a>
+  <a class="pn-dot"        href="#intro"    title="Overview"></a>
+  <a class="pn-dot"        href="#scope"    title="Scope"></a>
+  <a class="pn-dot"        href="#portals"  title="Portals"></a>
+  <a class="pn-dot"        href="#tech"     title="Tech"></a>
+  <a class="pn-dot"        href="#budget"   title="Budget"></a>
+  <a class="pn-dot"        href="#screens"  title="Screens"></a>
+  <a class="pn-dot"        href="#timeline" title="Timeline"></a>
+  <a class="pn-dot"        href="#questions"title="Questions"></a>
+</nav>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <a class="mn-item" href="#intro">    <span class="mn-icon">📄</span>Brief</a>
+  <a class="mn-item" href="#scope">    <span class="mn-icon">✅</span>Scope</a>
+  <a class="mn-item" href="#portals">  <span class="mn-icon">🏛</span>Portals</a>
+  <a class="mn-item" href="#budget">   <span class="mn-icon">₹</span>Budget</a>
+  <a class="mn-item" href="#timeline"> <span class="mn-icon">📅</span>Timeline</a>
+  <a class="mn-item" href="#questions"><span class="mn-icon">❓</span>Questions</a>
+</nav>
+
+<!-- ══ COVER ══════════════════════════════════ -->
+<section class="cover" id="cover">
+  <div class="cover-orb orb1"></div>
+  <div class="cover-orb orb2"></div>
+
+  <div class="cover-top">
+    <div class="cover-from">Prepared by Crestify · crestify.co</div>
+    <div class="cover-date">May 2025</div>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-eyebrow"><span></span>Project Proposal</div>
+    <div class="cover-title">Mind<em>Bridge</em></div>
+    <div class="cover-tagline">A mental health scheduling platform — custom built, fully scoped.</div>
+    <div class="cover-pills">
+      <span class="pill pill-sage">3 Portals</span>
+      <span class="pill pill-sage">Full Custom Code</span>
+      <span class="pill pill-amber">₹70,000 Budget</span>
+      <span class="pill pill-white">6 Weeks</span>
+      <span class="pill pill-white">28 Screens</span>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stats">
+      <div class="cs-item"><span class="cs-val">3</span><span class="cs-label">Portals</span></div>
+      <div class="cs-item"><span class="cs-val">28</span><span class="cs-label">Screens</span></div>
+      <div class="cs-item"><span class="cs-val">6wk</span><span class="cs-label">Timeline</span></div>
+      <div class="cs-item"><span class="cs-val">₹70k</span><span class="cs-label">Budget</span></div>
+    </div>
+    <div class="cover-scroll">Scroll to explore</div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW ═══════════════════════════════ -->
+<section class="section" id="intro">
+  <div class="inner">
+    <div class="intro-grid">
+      <div>
+        <div class="label fi">The Brief</div>
+        <h2 class="fi d1">What we're<br><em>building together</em></h2>
+        <div class="intro-body fi d2">
+          <p>You're building a platform that connects people seeking mental health support with the right therapists — through an intelligent matching system that <strong>protects user privacy until they're ready to commit.</strong></p>
+          <p>The platform needs three distinct portals: one for clients finding and booking therapists, one for therapists managing their availability and session notes, and one for admins overseeing the entire ecosystem.</p>
+          <p>We're approaching this as a <strong>full custom-code build</strong> — but smart about it. Where the problem is already solved (scheduling, video, payments), we integrate best-in-class open-source tools. Where it differentiates your product (matching, anonymization, notes), we build it ourselves.</p>
+        </div>
+      </div>
+      <div class="intro-cards fi d3">
+        <div class="intro-card">
+          <div class="ic-icon">🎯</div>
+          <div>
+            <div class="ic-title">Privacy-first matching</div>
+            <div class="ic-desc">Therapist identity is hidden at the recommendation stage — name and photo revealed only after the client commits to booking. Enforced at the API level, not just the UI.</div>
+          </div>
+        </div>
+        <div class="intro-card">
+          <div class="ic-icon">🔧</div>
+          <div>
+            <div class="ic-title">Custom code where it matters</div>
+            <div class="ic-desc">Matching algorithm, RBAC session notes, admin oversight — all built custom. Scheduling, video, and payments handled by Cal.com, Daily.co, and Stripe.</div>
+          </div>
+        </div>
+        <div class="intro-card">
+          <div class="ic-icon">📦</div>
+          <div>
+            <div class="ic-title">One lean codebase</div>
+            <div class="ic-desc">All three portals in a single Next.js monorepo with tRPC and Prisma — type-safe end to end, easy to maintain, one deployment pipeline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURE SCOPE ══════════════════════════ -->
+<section class="section scope-wrap" id="scope">
+  <div class="inner">
+    <div class="label fi">Feature Scope</div>
+    <h2 class="fi d1">What's in, simplified,<br><em>and what's deferred</em></h2>
+    <p class="sub fi d2">Every feature from your brief is accounted for. Some are simplified for the budget; a few are deferred to v2 to keep quality high.</p>
+
+    <div class="scope-table fi d3">
+      <div class="st-head">
+        <span>Feature</span>
+        <span class="hide-sm">Portal</span>
+        <span class="hide-sm">Our Approach</span>
+        <span>Status</span>
+      </div>
+      <div class="st-row"><span class="st-feat">Onboarding intake form</span><span class="st-portal">Client</span><span class="st-approach">Custom multi-step form with auto-save</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Therapist matching algorithm</span><span class="st-portal">Admin</span><span class="st-approach">Rule-based — specialization, availability, language</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Anonymized therapist cards</span><span class="st-portal">Client</span><span class="st-approach">Custom UI — name and photo hidden pre-booking</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Scheduling & availability</span><span class="st-portal">Therapist</span><span class="st-approach">Cal.com embed + custom API wrapper</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Video sessions</span><span class="st-portal">All</span><span class="st-approach">Daily.co rooms generated per booking, one-click join</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Session notes & remarks</span><span class="st-portal">Therapist</span><span class="st-approach">Custom form — private remarks admin-only via RBAC</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Admin dashboard & oversight</span><span class="st-portal">Admin</span><span class="st-approach">Sessions, clients, therapists — custom built</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Manual therapist assignment</span><span class="st-portal">Admin</span><span class="st-approach">Dropdown override on match screen</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Payments</span><span class="st-portal">Client</span><span class="st-approach">Stripe Checkout — no marketplace split for v1</span><span><span class="badge badge-in">In Scope</span></span></div>
+      <div class="st-row"><span class="st-feat">Notifications</span><span class="st-portal">All</span><span class="st-approach">Email only via Resend — no in-app notifications v1</span><span><span class="badge badge-simplified">Simplified</span></span></div>
+      <div class="st-row"><span class="st-feat">Session recording</span><span class="st-portal">—</span><span class="st-approach">Legal complexity — needs jurisdiction confirmation</span><span><span class="badge badge-deferred">Deferred</span></span></div>
+      <div class="st-row"><span class="st-feat">In-app chat / messaging</span><span class="st-portal">—</span><span class="st-approach">Not in scope for v1</span><span><span class="badge badge-deferred">Deferred</span></span></div>
+      <div class="st-row"><span class="st-feat">Native mobile app</span><span class="st-portal">—</span><span class="st-approach">Responsive web — mobile app is a v2 consideration</span><span><span class="badge badge-deferred">Deferred</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THREE PORTALS ══════════════════════════ -->
+<section class="section" id="portals">
+  <div class="inner">
+    <div class="label fi">Architecture</div>
+    <h2 class="fi d1">Three portals,<br><em>one platform</em></h2>
+    <p class="sub fi d2">Each portal is route-separated in the monorepo — shared codebase, distinct experiences and access controls.</p>
+
+    <div class="portals-grid fi d3">
+      <div class="portal-card pc-client">
+        <div class="pc-head">
+          <div class="pc-head-label">👤 Client Portal — 11 screens</div>
+          <div class="pc-title">The person seeking therapy</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-step"><div class="pc-num">1</div><div><div class="pc-step-title">Landing & Sign Up</div><div class="pc-step-desc">Marketing page + Supabase Auth</div><span class="pc-step-impl">Next.js + Supabase</span></div></div>
+          <div class="pc-step"><div class="pc-num">2</div><div><div class="pc-step-title">Intake Form</div><div class="pc-step-desc">Multi-step questionnaire with auto-save</div><span class="pc-step-impl">Custom React Form</span></div></div>
+          <div class="pc-step"><div class="pc-num">3</div><div><div class="pc-step-title">Therapist Recommendations</div><div class="pc-step-desc">2–5 anonymised cards with match scores</div><span class="pc-step-impl">Rule-based Algorithm</span></div></div>
+          <div class="pc-step"><div class="pc-num">4</div><div><div class="pc-step-title">Book & Pay</div><div class="pc-step-desc">Live calendar slots + Stripe Checkout</div><span class="pc-step-impl">Cal.com + Stripe</span></div></div>
+          <div class="pc-step"><div class="pc-num">5</div><div><div class="pc-step-title">Join Session + Dashboard</div><div class="pc-step-desc">One-click video room + session history</div><span class="pc-step-impl">Daily.co API</span></div></div>
+        </div>
+      </div>
+
+      <div class="portal-card pc-therapist">
+        <div class="pc-head">
+          <div class="pc-head-label">🧑‍⚕️ Therapist Portal — 9 screens</div>
+          <div class="pc-title">The verified professional</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-step"><div class="pc-num">1</div><div><div class="pc-step-title">Apply & Get Verified</div><div class="pc-step-desc">Submit credentials, admin approves via toggle</div><span class="pc-step-impl">Custom Form</span></div></div>
+          <div class="pc-step"><div class="pc-num">2</div><div><div class="pc-step-title">Profile Setup</div><div class="pc-step-desc">Specializations, bio, credentials, pricing</div><span class="pc-step-impl">Custom → Postgres</span></div></div>
+          <div class="pc-step"><div class="pc-num">3</div><div><div class="pc-step-title">Set Availability</div><div class="pc-step-desc">Recurring weekly slots or one-off dates</div><span class="pc-step-impl">Cal.com API</span></div></div>
+          <div class="pc-step"><div class="pc-num">4</div><div><div class="pc-step-title">Manage Bookings & Join</div><div class="pc-step-desc">Notification, confirm/reschedule, video join</div><span class="pc-step-impl">Resend + Daily.co</span></div></div>
+          <div class="pc-step"><div class="pc-num">5</div><div><div class="pc-step-title">Post-Session Notes</div><div class="pc-step-desc">Summary, mood, progress, private remarks</div><span class="pc-step-impl">Custom RBAC Form</span></div></div>
+        </div>
+      </div>
+
+      <div class="portal-card pc-admin">
+        <div class="pc-head">
+          <div class="pc-head-label">🛡️ Admin Portal — 8 screens</div>
+          <div class="pc-title">Full platform oversight</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-step"><div class="pc-num">1</div><div><div class="pc-step-title">KPI Dashboard</div><div class="pc-step-desc">Sessions today, pending approvals, key metrics</div><span class="pc-step-impl">Recharts</span></div></div>
+          <div class="pc-step"><div class="pc-num">2</div><div><div class="pc-step-title">Approve Therapists</div><div class="pc-step-desc">Review credentials, toggle active status</div><span class="pc-step-impl">Custom Admin Table</span></div></div>
+          <div class="pc-step"><div class="pc-num">3</div><div><div class="pc-step-title">Client Management</div><div class="pc-step-desc">View profiles, intake responses, history</div><span class="pc-step-impl">Filterable Table</span></div></div>
+          <div class="pc-step"><div class="pc-num">4</div><div><div class="pc-step-title">Manual Assignment</div><div class="pc-step-desc">Override algorithm, assign therapist to client</div><span class="pc-step-impl">Dropdown + Confirm</span></div></div>
+          <div class="pc-step"><div class="pc-num">5</div><div><div class="pc-step-title">Session Notes Access</div><div class="pc-step-desc">Read all therapist notes + private remarks</div><span class="pc-step-impl">RBAC-gated Viewer</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TECH STACK ══════════════════════════════ -->
+<section class="section tech-wrap" id="tech">
+  <div class="inner">
+    <div class="label fi">Tech Stack</div>
+    <h2 class="fi d1">Custom built.<br><em style="color:var(--sage)">Smart integrations.</em></h2>
+    <p class="sub fi d2">We build where it differentiates. We integrate where the problem is already solved.</p>
+
+    <div class="tech-grid fi d3">
+      <div class="tech-card"><div class="tc-type tc-build">Custom Build</div><div class="tc-name">Next.js 14 + TypeScript</div><div class="tc-desc">Monorepo. 3 portals via route separation. App Router.</div></div>
+      <div class="tech-card"><div class="tc-type tc-build">Custom Build</div><div class="tc-name">tRPC + Prisma ORM</div><div class="tc-desc">Type-safe API + schema-first DB with migrations.</div></div>
+      <div class="tech-card"><div class="tc-type tc-build">Custom Build</div><div class="tc-name">Matching Algorithm</div><div class="tc-desc">Rule-based scoring — specialization, availability, language, budget.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">OSS / SaaS</div><div class="tc-name">Supabase</div><div class="tc-desc">Managed Postgres + Auth. Free tier covers MVP scale.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">OSS / API</div><div class="tc-name">Cal.com</div><div class="tc-desc">Scheduling & availability. API-wrapped into the platform.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">API</div><div class="tc-name">Daily.co</div><div class="tc-desc">Video rooms per booking. One-click join, no downloads.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">API</div><div class="tc-name">Stripe Checkout</div><div class="tc-desc">Session payments. Simple flow, no marketplace split for v1.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">API</div><div class="tc-name">Resend</div><div class="tc-desc">Transactional email. Confirmations + reminders. ~$0 at MVP scale.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">SaaS</div><div class="tc-name">Vercel + Supabase</div><div class="tc-desc">Hosting on free tiers at MVP scale. Upgrade on demand.</div></div>
+      <div class="tech-card"><div class="tc-type tc-oss">OSS</div><div class="tc-name">Recharts + shadcn/ui</div><div class="tc-desc">Admin charts + accessible components. No custom design system needed.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BUDGET ══════════════════════════════════ -->
+<section class="section" id="budget">
+  <div class="inner" style="max-width:860px">
+    <div class="label fi">Investment</div>
+    <h2 class="fi d1">₹70,000 across<br><em>four clear phases</em></h2>
+    <p class="sub fi d2">Every rupee is accounted for. Each phase has a defined output so you can track progress week by week.</p>
+
+    <div class="fi d3">
+      <div class="phase-row">
+        <div class="phase-inner">
+          <div class="ph-badge" style="background:#2d5a3d">1</div>
+          <div><div class="ph-title">Foundation</div><div class="ph-weeks">Weeks 1–2</div></div>
+          <div>
+            <div class="ph-bar-track"><div class="ph-bar-fill" style="width:24%;background:#5a9a6e"></div></div>
+            <div class="ph-items">
+              <span class="ph-item">Auth (3 roles) + RBAC</span><span class="ph-item">DB Schema</span><span class="ph-item">Intake Form</span><span class="ph-item">Therapist Profile</span><span class="ph-item">Basic Admin Panel</span><span class="ph-item">Landing Page</span>
+            </div>
+          </div>
+          <div><div class="ph-amount" style="color:#2d5a3d">₹18,000</div><div class="ph-pct">24%</div></div>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-inner">
+          <div class="ph-badge" style="background:#b87333">2</div>
+          <div><div class="ph-title">Matching & Booking</div><div class="ph-weeks">Weeks 2–4</div></div>
+          <div>
+            <div class="ph-bar-track"><div class="ph-bar-fill" style="width:29%;background:#b87333"></div></div>
+            <div class="ph-items">
+              <span class="ph-item">Matching Algorithm</span><span class="ph-item">Anonymised Cards</span><span class="ph-item">Cal.com Integration</span><span class="ph-item">Booking Flow</span><span class="ph-item">Stripe Checkout</span><span class="ph-item">Email Notifications</span>
+            </div>
+          </div>
+          <div><div class="ph-amount" style="color:#b87333">₹22,000</div><div class="ph-pct">29%</div></div>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-inner">
+          <div class="ph-badge" style="background:#3d2a6e">3</div>
+          <div><div class="ph-title">Sessions & Notes</div><div class="ph-weeks">Weeks 4–5</div></div>
+          <div>
+            <div class="ph-bar-track"><div class="ph-bar-fill" style="width:27%;background:#6b5ab8"></div></div>
+            <div class="ph-items">
+              <span class="ph-item">Daily.co Video</span><span class="ph-item">Session Join Flow</span><span class="ph-item">Notes Form</span><span class="ph-item">Admin Notes Viewer</span><span class="ph-item">Session Dashboards</span><span class="ph-item">Manual Assignment</span>
+            </div>
+          </div>
+          <div><div class="ph-amount" style="color:#6b5ab8">₹20,000</div><div class="ph-pct">27%</div></div>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-inner">
+          <div class="ph-badge" style="background:#7a1f30">4</div>
+          <div><div class="ph-title">Polish & Deploy</div><div class="ph-weeks">Week 6</div></div>
+          <div>
+            <div class="ph-bar-track"><div class="ph-bar-fill" style="width:20%;background:#a03348"></div></div>
+            <div class="ph-items">
+              <span class="ph-item">Reschedule / Cancel</span><span class="ph-item">Mobile Polish</span><span class="ph-item">End-to-End QA</span><span class="ph-item">Security Review</span><span class="ph-item">Production Deploy</span><span class="ph-item">Buffer</span>
+            </div>
+          </div>
+          <div><div class="ph-amount" style="color:#a03348">₹10,000</div><div class="ph-pct">20%</div></div>
+        </div>
+      </div>
+
+      <div class="budget-total-row">
+        <div>
+          <div class="btr-label">Total Fixed Price</div>
+          <div class="btr-note">Tool costs: ~₹0–2,000/month at MVP scale · Vercel free · Supabase free · Daily.co pay-per-use</div>
+        </div>
+        <div class="btr-amount">₹70,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCREEN INVENTORY ════════════════════════ -->
+<section class="section screens-wrap" id="screens">
+  <div class="inner">
+    <div class="label fi">Screen Inventory</div>
+    <h2 class="fi d1">28 screens across<br><em>three portals</em></h2>
+    <p class="sub fi d2">Rationalised down from 40+ in an unconstrained scope. Every screen earns its place.</p>
+
+    <div class="screens-grid fi d3">
+      <div class="screen-col sc-client">
+        <div class="sc-head">👤 Client — 11 screens</div>
+        <div class="sc-body">
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Landing / Marketing Page</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Sign Up / Login</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Onboarding Intake (multi-step)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Therapist Recommendation Cards</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Therapist Profile (gated)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Book Session (Cal.com embed)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Stripe Checkout</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Video Room (Daily.co embed)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Post-Session Feedback</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Client Dashboard</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#5a9a6e"></div>Session History</div>
+        </div>
+      </div>
+      <div class="screen-col sc-therapist">
+        <div class="sc-head">🧑‍⚕️ Therapist — 9 screens</div>
+        <div class="sc-body">
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Application Form</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Therapist Onboarding / Profile</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Dashboard (Home)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Availability Manager (Cal.com)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Bookings List</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Video Room (Daily.co embed)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Post-Session Notes Form</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Client History View</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#b87333"></div>Account Settings</div>
+        </div>
+      </div>
+      <div class="screen-col sc-admin">
+        <div class="sc-head">🛡️ Admin — 8 screens</div>
+        <div class="sc-body">
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Admin Dashboard (KPIs)</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Therapist Applications</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Therapist List & Detail</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Client List & Detail</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>All Sessions List</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Session Notes Viewer</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Manual Assignment UI</div>
+          <div class="sc-item"><div class="sc-dot" style="background:#6b5ab8"></div>Platform Settings</div>
+        </div>
+      </div>
+    </div>
+    <div class="screens-footer fi d4">
+      <strong>28 total screens</strong> · Down from 40+ in unconstrained scope · Same complete feature set, simpler flows
+    </div>
+  </div>
+</section>
+
+<!-- ══ TIMELINE ════════════════════════════════ -->
+<section class="section" id="timeline">
+  <div class="inner">
+    <div class="tl-grid">
+      <div>
+        <div class="label fi">Delivery Plan</div>
+        <h2 class="fi d1">6 weeks to<br><em>production</em></h2>
+        <p class="sub fi d2">Four phases, tight but achievable with parallel workstreams. Clear deliverables at the end of each phase — you'll always know exactly where we are.</p>
+        <div class="how-we-work fi d3">
+          <strong>How we work</strong>
+          Twice-weekly async updates via Loom. Each phase ends with a live demo before we move on. Code is yours from day one — no lock-in, no black box. You'll have full GitHub access throughout.
+        </div>
+      </div>
+
+      <div class="timeline fi d2">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#5a9a6e;box-shadow:0 0 0 3px #e0f0e6"></div>
+          <div class="tl-week">Weeks 1–2</div>
+          <div class="tl-phase">Phase 1 — Foundation</div>
+          <div class="tl-items">
+            <span class="tl-tag">Auth + RBAC</span><span class="tl-tag">DB Schema</span><span class="tl-tag">Intake Form</span><span class="tl-tag">Therapist Profile</span><span class="tl-tag">Admin Panel</span><span class="tl-tag">Landing Page</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#b87333;box-shadow:0 0 0 3px #fce8cc"></div>
+          <div class="tl-week">Weeks 2–4</div>
+          <div class="tl-phase">Phase 2 — Matching & Booking</div>
+          <div class="tl-items">
+            <span class="tl-tag">Matching Algorithm</span><span class="tl-tag">Anon Cards</span><span class="tl-tag">Cal.com</span><span class="tl-tag">Stripe</span><span class="tl-tag">Email Notifications</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#6b5ab8;box-shadow:0 0 0 3px #e8e4f8"></div>
+          <div class="tl-week">Weeks 4–5</div>
+          <div class="tl-phase">Phase 3 — Sessions & Notes</div>
+          <div class="tl-items">
+            <span class="tl-tag">Daily.co Video</span><span class="tl-tag">Session Flow</span><span class="tl-tag">Notes Form</span><span class="tl-tag">Admin Viewer</span><span class="tl-tag">Dashboards</span>
+          </div>
+        </div>
+        <div class="tl-item" style="margin-bottom:0">
+          <div class="tl-dot" style="background:#a03348;box-shadow:0 0 0 3px #f5e0e5"></div>
+          <div class="tl-week">Week 6</div>
+          <div class="tl-phase">Phase 4 — Polish & Deploy</div>
+          <div class="tl-items">
+            <span class="tl-tag">QA</span><span class="tl-tag">Security Review</span><span class="tl-tag">Mobile Polish</span><span class="tl-tag">Production Deploy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OPEN QUESTIONS ══════════════════════════ -->
+<section class="section q-wrap" id="questions">
+  <div class="inner">
+    <div class="label fi">Before We Start</div>
+    <h2 class="fi d1">A few things to<br><em>confirm at kickoff</em></h2>
+    <p class="sub fi d2">These decisions affect architecture choices. Ideally we nail these down before writing a line of code.</p>
+
+    <div class="q-grid fi d3">
+      <div class="q-item"><span class="q-n">Q1</span><span class="q-text">Is payment collected on-platform, or does the client pay the therapist directly?</span></div>
+      <div class="q-item"><span class="q-n">Q2</span><span class="q-text">What jurisdiction will this operate in? HIPAA and GDPR affect data storage choices.</span></div>
+      <div class="q-item"><span class="q-n">Q3</span><span class="q-text">Self-hosted Cal.com or Cal.com cloud? Self-hosted is free but needs infra; cloud has a monthly cost.</span></div>
+      <div class="q-item"><span class="q-n">Q4</span><span class="q-text">What matching criteria matter most — specialization, availability, language, pricing?</span></div>
+      <div class="q-item"><span class="q-n">Q5</span><span class="q-text">Can clients switch therapists after being matched? What's the cancellation policy?</span></div>
+      <div class="q-item"><span class="q-n">Q6</span><span class="q-text">Does the platform take a commission on sessions? If yes, we'll need Stripe Connect for payouts.</span></div>
+      <div class="q-item"><span class="q-n">Q7</span><span class="q-text">Therapists — employees of the startup, or independent contractors?</span></div>
+      <div class="q-item"><span class="q-n">Q8</span><span class="q-text">Who manages therapist onboarding — admin manually, or self-serve application flow?</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ═════════════════════════════════ -->
+<section class="closing">
+  <div class="label fi" style="justify-content:center;color:var(--sage)">From Crestify</div>
+  <h2 class="fi d1" style="color:#fff;margin-bottom:14px">Let's build something<br><em style="color:var(--sage)">that matters</em></h2>
+  <p class="sub fi d2">We've thought through every detail of this platform. When you're ready to start, we're ready to build.</p>
+
+  <div class="from-block fi d3">
+    <span class="from-label">Prepared by</span>
+    <span class="from-name">Crestify</span>
+    <a href="https://crestify.co" class="from-url" target="_blank">crestify.co</a>
+  </div>
+
+  <div class="closing-pills fi d4">
+    <span class="pill pill-sage">Full Custom Code</span>
+    <span class="pill pill-amber">₹70,000 Fixed Price</span>
+    <span class="pill pill-white">6 Weeks</span>
+    <span class="pill pill-white">Code Ownership — Yours</span>
+    <span class="pill pill-white">Twice-weekly Updates</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">MindBridge</div>
+  <div class="footer-copy">Proposal by Crestify · May 2025 · Confidential</div>
+  <div class="footer-copy">crestify.co</div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+// Desktop side nav active
+const allIds = ['cover','intro','scope','portals','tech','budget','screens','timeline','questions'];
+const dots   = document.querySelectorAll('.pn-dot');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      dots.forEach(d => d.classList.remove('active'));
+      const d = document.querySelector(`.pn-dot[href="#${e.target.id}"]`);
+      if (d) d.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+allIds.forEach(id => { const el = document.getElementById(id); if (el) navObs.observe(el); });
+
+// Mobile bottom nav active
+const mobileLinks = document.querySelectorAll('.mn-item');
+const mobObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      mobileLinks.forEach(l => l.classList.remove('active'));
+      const l = document.querySelector(`.mn-item[href="#${e.target.id}"]`);
+      if (l) l.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+['intro','scope','portals','budget','timeline','questions'].forEach(id => {
+  const el = document.getElementById(id); if (el) mobObs.observe(el);
+});
+</script>
+</body>
+</html>
