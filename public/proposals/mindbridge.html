@@ -315,7 +315,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
   <a class="pn-dot"        href="#budget"   title="Budget"></a>
   <a class="pn-dot"        href="#screens"  title="Screens"></a>
   <a class="pn-dot"        href="#timeline" title="Timeline"></a>
-  <a class="pn-dot"        href="#questions"title="Questions"></a>
 </nav>
 
 <!-- Mobile bottom nav -->
@@ -325,7 +324,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
   <a class="mn-item" href="#portals">  <span class="mn-icon">🏛</span>Portals</a>
   <a class="mn-item" href="#budget">   <span class="mn-icon">₹</span>Budget</a>
   <a class="mn-item" href="#timeline"> <span class="mn-icon">📅</span>Timeline</a>
-  <a class="mn-item" href="#questions"><span class="mn-icon">❓</span>Questions</a>
 </nav>
 
 <!-- ══ COVER ══════════════════════════════════ -->
@@ -528,7 +526,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
               <span class="ph-item">Auth (3 roles) + RBAC</span><span class="ph-item">DB Schema</span><span class="ph-item">Intake Form</span><span class="ph-item">Therapist Profile</span><span class="ph-item">Basic Admin Panel</span><span class="ph-item">Landing Page</span>
             </div>
           </div>
-          <div><div class="ph-amount" style="color:#2d5a3d">₹18,000</div><div class="ph-pct">24%</div></div>
         </div>
       </div>
 
@@ -542,7 +539,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
               <span class="ph-item">Matching Algorithm</span><span class="ph-item">Anonymised Cards</span><span class="ph-item">Cal.com Integration</span><span class="ph-item">Booking Flow</span><span class="ph-item">Stripe Checkout</span><span class="ph-item">Email Notifications</span>
             </div>
           </div>
-          <div><div class="ph-amount" style="color:#b87333">₹22,000</div><div class="ph-pct">29%</div></div>
         </div>
       </div>
 
@@ -556,7 +552,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
               <span class="ph-item">Daily.co Video</span><span class="ph-item">Session Join Flow</span><span class="ph-item">Notes Form</span><span class="ph-item">Admin Notes Viewer</span><span class="ph-item">Session Dashboards</span><span class="ph-item">Manual Assignment</span>
             </div>
           </div>
-          <div><div class="ph-amount" style="color:#6b5ab8">₹20,000</div><div class="ph-pct">27%</div></div>
         </div>
       </div>
 
@@ -570,16 +565,26 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
               <span class="ph-item">Reschedule / Cancel</span><span class="ph-item">Mobile Polish</span><span class="ph-item">End-to-End QA</span><span class="ph-item">Security Review</span><span class="ph-item">Production Deploy</span><span class="ph-item">Buffer</span>
             </div>
           </div>
-          <div><div class="ph-amount" style="color:#a03348">₹10,000</div><div class="ph-pct">20%</div></div>
         </div>
       </div>
 
-      <div class="budget-total-row">
+      <div class="budget-total-row" style="flex-direction:column;align-items:flex-start;gap:16px">
         <div>
-          <div class="btr-label">Total Fixed Price</div>
+          <div class="btr-label">Total Fixed Price — ₹70,000</div>
           <div class="btr-note">Tool costs: ~₹0–2,000/month at MVP scale · Vercel free · Supabase free · Daily.co pay-per-use</div>
         </div>
-        <div class="btr-amount">₹70,000</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;width:100%">
+          <div style="flex:1;min-width:180px;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;border:1px solid rgba(255,255,255,0.15)">
+            <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--leaf);margin-bottom:6px">Milestone 1</div>
+            <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;color:#fff">50% Advance</div>
+            <div style="font-size:0.76rem;color:rgba(255,255,255,0.5);margin-top:4px">Due before work begins</div>
+          </div>
+          <div style="flex:1;min-width:180px;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;border:1px solid rgba(255,255,255,0.15)">
+            <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--leaf);margin-bottom:6px">Milestone 2</div>
+            <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;color:#fff">50% Before Go-Live</div>
+            <div style="font-size:0.76rem;color:rgba(255,255,255,0.5);margin-top:4px">Due before production deploy</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -695,26 +700,6 @@ footer { background: #0a130d; padding: 24px var(--pad); display: flex; justify-c
   </div>
 </section>
 
-<!-- ══ OPEN QUESTIONS ══════════════════════════ -->
-<section class="section q-wrap" id="questions">
-  <div class="inner">
-    <div class="label fi">Before We Start</div>
-    <h2 class="fi d1">A few things to<br><em>confirm at kickoff</em></h2>
-    <p class="sub fi d2">These decisions affect architecture choices. Ideally we nail these down before writing a line of code.</p>
-
-    <div class="q-grid fi d3">
-      <div class="q-item"><span class="q-n">Q1</span><span class="q-text">Is payment collected on-platform, or does the client pay the therapist directly?</span></div>
-      <div class="q-item"><span class="q-n">Q2</span><span class="q-text">What jurisdiction will this operate in? HIPAA and GDPR affect data storage choices.</span></div>
-      <div class="q-item"><span class="q-n">Q3</span><span class="q-text">Self-hosted Cal.com or Cal.com cloud? Self-hosted is free but needs infra; cloud has a monthly cost.</span></div>
-      <div class="q-item"><span class="q-n">Q4</span><span class="q-text">What matching criteria matter most — specialization, availability, language, pricing?</span></div>
-      <div class="q-item"><span class="q-n">Q5</span><span class="q-text">Can clients switch therapists after being matched? What's the cancellation policy?</span></div>
-      <div class="q-item"><span class="q-n">Q6</span><span class="q-text">Does the platform take a commission on sessions? If yes, we'll need Stripe Connect for payouts.</span></div>
-      <div class="q-item"><span class="q-n">Q7</span><span class="q-text">Therapists — employees of the startup, or independent contractors?</span></div>
-      <div class="q-item"><span class="q-n">Q8</span><span class="q-text">Who manages therapist onboarding — admin manually, or self-serve application flow?</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ CLOSING ═════════════════════════════════ -->
 <section class="closing">
   <div class="label fi" style="justify-content:center;color:var(--sage)">From Crestify</div>
@@ -750,7 +735,7 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 
 // Desktop side nav active
-const allIds = ['cover','intro','scope','portals','tech','budget','screens','timeline','questions'];
+const allIds = ['cover','intro','scope','portals','tech','budget','screens','timeline'];
 const dots   = document.querySelectorAll('.pn-dot');
 const navObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -774,7 +759,7 @@ const mobObs = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.4 });
-['intro','scope','portals','budget','timeline','questions'].forEach(id => {
+['intro','scope','portals','budget','timeline'].forEach(id => {
   const el = document.getElementById(id); if (el) mobObs.observe(el);
 });
 </script>
