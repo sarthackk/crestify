@@ -137,7 +137,7 @@ function BankSettings() {
 
 const EMPTY_FORM = {
   clientShort: '', clientFull: '', slug: '',
-  startDate: '', duration: '2 months', dailyHours: '9', retainerMonthly: '',
+  startDate: '', duration: '2 months', dailyHours: '9', retainerMonthly: '', retainerLabel: 'Monthly Retainer',
   signingUrl: '', scopeSummary: '',
   invoiceNumber: '',
   milestones: [
@@ -228,7 +228,7 @@ function PortalForm({ onCreated, onCancel }) {
 
       {/* Section: Deal */}
       <div style={section}>02 · Deal</div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 14, marginBottom: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', gap: 14, marginBottom: 24 }}>
         <div>
           <label style={label}>Start Date</label>
           <input style={field} value={form.startDate} onChange={e => update('startDate', e.target.value)} placeholder="30 April 2026" />
@@ -242,7 +242,11 @@ function PortalForm({ onCreated, onCancel }) {
           <input style={field} type="number" value={form.dailyHours} onChange={e => update('dailyHours', e.target.value)} placeholder="9" />
         </div>
         <div>
-          <label style={label}>Monthly Retainer (₹)</label>
+          <label style={label}>Amount Label</label>
+          <input style={field} value={form.retainerLabel} onChange={e => update('retainerLabel', e.target.value)} placeholder="Monthly Retainer" />
+        </div>
+        <div>
+          <label style={label}>Amount (₹)</label>
           <input style={field} value={form.retainerMonthly} onChange={e => update('retainerMonthly', e.target.value)} placeholder="1,10,000" />
         </div>
       </div>
@@ -251,8 +255,8 @@ function PortalForm({ onCreated, onCancel }) {
       <div style={section}>03 · Document</div>
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 14, marginBottom: 24 }}>
         <div>
-          <label style={label}>eSignatures.io Signing URL (paste from dashboard)</label>
-          <input style={field} value={form.signingUrl} onChange={e => update('signingUrl', e.target.value)} placeholder="https://esignatures.io/contracts/..." />
+          <label style={label}>Documenso Signing URL (paste from dashboard)</label>
+          <input style={field} value={form.signingUrl} onChange={e => update('signingUrl', e.target.value)} placeholder="https://app.documenso.com/sign/..." />
         </div>
         <div>
           <label style={label}>Scope Summary (one-liner)</label>
