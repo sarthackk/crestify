@@ -349,10 +349,10 @@ function InvoiceTab({ data }) {
             </tr>
           </thead>
           <tbody>
-            {(data.milestones || []).map((m, i) => (
+            {(data.milestones || []).filter(m => m.label || m.amount).map((m, i) => (
               <tr key={i}>
                 <td style={td}>{m.label}</td>
-                <td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 15, color: C.accent, textAlign: 'right', whiteSpace: 'nowrap' }}>₹{m.amount}</td>
+                <td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 15, color: C.accent, textAlign: 'right', whiteSpace: 'nowrap' }}>{m.amount ? `₹${m.amount}` : '—'}</td>
                 <td style={{ ...td, fontFamily: 'var(--mono)', fontSize: 12, color: C.muted, textAlign: 'right', whiteSpace: 'nowrap' }}>{m.due}</td>
               </tr>
             ))}

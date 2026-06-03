@@ -141,9 +141,8 @@ const EMPTY_FORM = {
   signingUrl: '', scopeSummary: '',
   invoiceNumber: '',
   milestones: [
-    { label: '50% Advance — confirm engagement',           amount: '', due: 'Before Day 1' },
-    { label: 'End of Month 1 — M1 balance + M2 advance',  amount: '', due: 'End of Month 1' },
-    { label: 'End of Month 2 — Final balance',             amount: '', due: 'End of Month 2' },
+    { label: '50% Advance', amount: '', due: 'Before Day 1' },
+    { label: '50% Before Go-Live', amount: '', due: 'Pre Delivery' },
   ],
 };
 
@@ -279,12 +278,22 @@ function PortalForm({ onCreated, onCancel }) {
       </div>
       <div style={{ marginBottom: 24 }}>
         {form.milestones.map((m, i) => (
-          <div key={i} style={{ display: 'grid', gridTemplateColumns: '3fr 1fr 1fr', gap: 10, marginBottom: 10 }}>
+          <div key={i} style={{ display: 'grid', gridTemplateColumns: '3fr 1fr 1fr auto', gap: 10, marginBottom: 10, alignItems: 'center' }}>
             <input style={field} value={m.label} onChange={e => updateMilestone(i, 'label', e.target.value)} placeholder={`Milestone ${i + 1} label`} />
             <input style={field} value={m.amount} onChange={e => updateMilestone(i, 'amount', e.target.value)} placeholder="₹ Amount" />
             <input style={field} value={m.due} onChange={e => updateMilestone(i, 'due', e.target.value)} placeholder="Due date" />
+            <button
+              onClick={() => setForm(f => ({ ...f, milestones: f.milestones.filter((_, j) => j !== i) }))}
+              disabled={form.milestones.length <= 1}
+              style={{ background: 'none', border: '1px solid var(--line-strong)', borderRadius: 4, padding: '9px 12px', cursor: form.milestones.length <= 1 ? 'default' : 'pointer', color: 'var(--ink-4)', fontSize: 14, opacity: form.milestones.length <= 1 ? 0.3 : 1 }}
+              title="Remove row"
+            >✕</button>
           </div>
         ))}
+        <button
+          onClick={() => setForm(f => ({ ...f, milestones: [...f.milestones, { label: '', amount: '', due: '' }] }))}
+          style={{ background: 'none', border: '1px dashed var(--line-strong)', borderRadius: 4, padding: '8px 16px', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}
+        >+ Add milestone</button>
       </div>
 
       {/* Generate */}
