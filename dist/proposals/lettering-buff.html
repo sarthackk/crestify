@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kaart Studio × Lettering Buff</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #161616;
+  --black10: rgba(22,22,22,0.1);
+  --orange:  #FF4D1F;
+  --cream:   #F6F4EE;
+  --white:   #FFFFFF;
+  --tp:      #0E0E0E;
+  --ts:      #4A4A48;
+  --green:   #1A6B4A;
+  --mint:    #1DB972;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 30s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(246,244,238,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--mint); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--pad); background: rgba(246,244,238,0.88);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--green); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero {
+  padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px);
+  border-bottom: 1px solid var(--black10);
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(29,185,114,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,77,31,0.05) 0%, transparent 70%);
+}
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts);
+  margin-bottom: 32px; padding: 6px 14px;
+  border: 1px solid var(--black10); border-radius: 40px;
+  background: rgba(246,244,238,0.6);
+}
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 28px; }
+.hero h1 em { font-style: italic; color: var(--green); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 480px; margin-bottom: 52px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; gap: 0; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange { color: var(--orange); }
+.hm-v.green  { color: var(--green); }
+
+/* DARK BAR */
+.dark-bar {
+  background: var(--black);
+  padding: clamp(28px, 5vw, 44px) var(--pad);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 3vw, 0px);
+  position: relative; overflow: hidden;
+}
+.dark-bar::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(29,185,114,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(32px, 5vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--mint); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts);
+  border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px;
+}
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--green); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 560px; line-height: 1.8; margin-bottom: 40px; }
+
+/* AUDIT GRID */
+.audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.ac {
+  background: var(--cream); padding: 28px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ac:hover { border-left-color: var(--orange); background: #fff; }
+.ac-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); margin-bottom: 10px; }
+.ac h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 8px; }
+.ac p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+
+/* SCOPE LIST */
+.scope-item {
+  display: grid; grid-template-columns: 20px 1fr auto; gap: 20px;
+  align-items: start; padding: 22px 0; border-bottom: 1px solid var(--black10);
+  transition: background 0.15s;
+}
+.scope-item:last-child { border-bottom: none; }
+.scope-item:hover { background: rgba(22,22,22,0.02); margin: 0 calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad); }
+.si-arrow { color: var(--mint); font-size: 13px; padding-top: 3px; transition: transform 0.2s; }
+.scope-item:hover .si-arrow { transform: translateX(4px); }
+.si-title { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+.si-desc { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.si-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.si-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.scope-item:hover .si-tag { border-color: rgba(29,185,114,0.3); color: var(--green); }
+.si-days { font-size: 11px; color: var(--orange); white-space: nowrap; padding-top: 4px; font-weight: 500; }
+
+/* PHASE TABS */
+.phase-wrap { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--black10); border-radius: 4px; overflow: hidden; }
+.phase-list { border-right: 1px solid var(--black10); }
+.ptab { padding: 16px 20px; border-bottom: 1px solid var(--black10); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.15s; }
+.ptab:last-child { border-bottom: none; }
+.ptab:hover { background: rgba(22,22,22,0.03); }
+.ptab.active { background: var(--black); }
+.ptab .pn { font-size: 9px; letter-spacing: 1.5px; color: var(--mint); margin-bottom: 3px; }
+.ptab .pm { font-family: var(--serif); font-size: 15px; color: var(--tp); transition: color 0.15s; }
+.ptab.active .pm { color: #fff; }
+.ptab .pd { font-size: 10px; color: var(--ts); }
+.ptab.active .pd { color: rgba(255,255,255,0.4); }
+.ppanel { display: none; padding: 36px; }
+.ppanel.active { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.pp-step { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
+.ppanel h3 { font-family: var(--serif); font-size: 28px; font-style: italic; margin-bottom: 12px; }
+.ppanel p { font-size: 13px; color: var(--ts); line-height: 1.8; margin-bottom: 16px; }
+.ptasks { list-style: none; }
+.ptasks li { font-size: 13px; color: var(--ts); padding: 7px 0 7px 16px; position: relative; border-bottom: 1px solid var(--black10); transition: color 0.15s; }
+.ptasks li:last-child { border-bottom: none; }
+.ptasks li:hover { color: var(--tp); }
+.ptasks li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 10px; top: 10px; }
+.progress-row { display: flex; gap: 5px; margin-top: 20px; }
+.pip { height: 3px; flex: 1; background: var(--black10); border-radius: 3px; transition: background 0.3s; }
+.pip.on { background: var(--mint); }
+
+/* INVESTMENT */
+.inv-wrap { background: var(--black); padding: clamp(32px, 5vw, 56px); border-radius: 4px; position: relative; overflow: hidden; }
+.inv-wrap::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(29,185,114,0.1) 0%, transparent 60%);
+}
+.inv-wrap > * { position: relative; }
+.inv-total-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+.inv-total-label { font-family: var(--serif); font-size: 20px; font-style: italic; color: rgba(255,255,255,0.5); }
+.inv-total-amt { font-family: var(--serif); font-size: clamp(40px, 7vw, 64px); font-weight: 400; color: #fff; line-height: 1; letter-spacing: -0.02em; }
+.inv-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 32px 0; }
+.pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.pay-card { background: rgba(22,22,22,0.6); padding: 28px; transition: background 0.2s; }
+.pay-card:hover { background: rgba(29,185,114,0.08); }
+.pay-card .pc-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--mint); margin-bottom: 12px; }
+.pay-card .pc-a { font-family: var(--serif); font-size: clamp(24px, 4vw, 32px); font-style: italic; color: #fff; margin-bottom: 6px; }
+.pay-card .pc-w { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.inv-note { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 28px; line-height: 1.7; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); border-radius: 4px; overflow: hidden; }
+.tc { background: var(--cream); padding: 24px 28px; transition: background 0.2s; }
+.tc:hover { background: #fff; }
+.tc h4 { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.tc p { font-size: 12px; color: var(--ts); line-height: 1.7; }
+
+/* TESTIMONIAL */
+.testi { background: var(--green); padding: clamp(48px, 7vw, 72px) var(--pad); position: relative; overflow: hidden; }
+.testi::before {
+  content: '\201C'; position: absolute; top: -20px; left: calc(var(--pad) - 12px);
+  font-family: var(--serif); font-size: 200px; color: rgba(255,255,255,0.06);
+  line-height: 1; pointer-events: none;
+}
+.testi blockquote { font-family: var(--serif); font-size: clamp(20px, 3vw, 36px); color: #fff; line-height: 1.35; max-width: 700px; margin-bottom: 24px; position: relative; }
+.testi cite { font-size: 12px; color: rgba(255,255,255,0.55); font-style: normal; }
+.testi cite strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+/* CTA */
+.cta { background: var(--black); padding: clamp(48px, 8vw, 80px) var(--pad); position: relative; overflow: hidden; }
+.cta::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 50% 60% at 90% 50%, rgba(255,77,31,0.08) 0%, transparent 60%);
+}
+.cta > * { position: relative; }
+.cta-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+.cta h2 { font-family: var(--serif); font-size: clamp(36px, 5.5vw, 64px); color: #fff; line-height: 1.05; margin-bottom: 16px; letter-spacing: -0.01em; }
+.cta h2 em { font-style: italic; color: var(--mint); }
+.cta p { font-size: 13px; color: rgba(255,255,255,0.45); max-width: 420px; line-height: 1.8; margin-bottom: 36px; }
+.cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-g { background: var(--mint); color: var(--black); padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s, transform 0.15s; }
+.btn-g:hover { background: #18c76a; transform: translateY(-1px); }
+.btn-gh { background: transparent; color: rgba(255,255,255,0.55); padding: 12px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); font-size: 13px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+.btn-gh:hover { border-color: rgba(255,255,255,0.4); color: #fff; transform: translateY(-1px); }
+
+/* FOOTER */
+footer { background: #0f0f0f; padding: 28px var(--pad); border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.fw { font-family: var(--serif); font-size: 40px; font-style: italic; color: rgba(255,255,255,0.08); }
+.fw span { color: rgba(255,255,255,0.25); font-size: 28px; vertical-align: super; }
+.fr { font-size: 10px; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.9; letter-spacing: 0.5px; }
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+  .hm:last-child { grid-column: 1 / -1; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .audit-grid { grid-template-columns: 1fr; }
+  .scope-item { grid-template-columns: 20px 1fr; }
+  .si-days { display: none; }
+  .scope-item:hover { margin: 0; padding-left: 0; padding-right: 0; }
+  .phase-wrap { grid-template-columns: 1fr; }
+  .phase-list { border-right: none; border-bottom: 1px solid var(--black10); display: grid; grid-template-columns: repeat(5, 1fr); overflow-x: auto; }
+  .ptab { border-bottom: none; border-right: 1px solid var(--black10); flex-direction: column; align-items: flex-start; padding: 12px 14px; min-width: 80px; }
+  .ptab:last-child { border-right: none; }
+  .ptab .pd { display: none; }
+  .pay-grid { grid-template-columns: 1fr; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .nav-right { display: none; }
+}
+@media (max-width: 480px) {
+  .hero-meta { grid-template-columns: 1fr; }
+  .hm:last-child { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Shopify-only studio</span><span class="dot">●</span><span>50+ stores shipped</span><span class="dot">●</span><span>Brand → Store → Growth</span><span class="dot">●</span><span>Taking new projects</span><span class="dot">●</span><span>End-to-end management</span><span class="dot">●</span><span>India + Remote</span><span class="dot">●</span>
+    <span>Shopify-only studio</span><span class="dot">●</span><span>50+ stores shipped</span><span class="dot">●</span><span>Brand → Store → Growth</span><span class="dot">●</span><span>Taking new projects</span><span class="dot">●</span><span>End-to-end management</span><span class="dot">●</span><span>India + Remote</span><span class="dot">●</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co/kaart" class="nav-logo">
+    <div class="k-box">K</div>
+    Kaart Studio
+    <span class="nav-badge">+Crestify</span>
+  </a>
+  <div class="nav-right">Proposal for <span>Lettering Buff</span> · June 2026</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal"><span class="pulse"></span> Shopify-only · A Crestify Studio &nbsp;·&nbsp; <span style="color:var(--orange)">Proposal — Confidential</span></div>
+  <h1 class="reveal d1">Lettering<br>Buff.</h1>
+  <p class="hero-sub reveal d2">Full redesign, custom Shopify development, and complete migration from Wix — for Delhi's premier calligraphy and luxury gifting boutique.</p>
+  <div class="hero-meta reveal d3">
+    <div class="hm"><div class="hm-l">Prepared For</div><div class="hm-v">Lettering Buff</div></div>
+    <div class="hm"><div class="hm-l">Total Investment</div><div class="hm-v orange">₹80,000</div></div>
+    <div class="hm"><div class="hm-l">Timeline</div><div class="hm-v green">30 – 45 days</div></div>
+  </div>
+</div>
+
+<!-- DARK BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn counter" data-target="3">0</div><div class="sl">Years in e-commerce</div></div>
+  <div class="stat reveal d1"><div class="sn counter" data-target="12">0</div><div class="sl">Close-knit team</div></div>
+  <div class="stat stat-accent reveal d2"><div class="sn counter" data-target="50">0</div><div class="sl">Stores shipped</div></div>
+  <div class="stat reveal d3"><div class="sn">3</div><div class="sl">Service pillars, one team</div></div>
+</div>
+
+<!-- §01 AUDIT -->
+<div class="sec">
+  <div class="sec-hd reveal"><span class="sec-num">§01</span><span class="sec-tag">WHAT WE FOUND</span></div>
+  <div class="sec-title reveal d1">The brand is there.<br><em>The platform isn't.</em></div>
+  <div class="audit-grid">
+    <div class="ac reveal"><div class="ac-num">§01 · PLATFORM</div><h3>Wix caps your growth</h3><p>Limited payment gateways, weak inventory control, restricted SEO access, and poor app support. It works — until you want to scale.</p></div>
+    <div class="ac reveal d1"><div class="ac-num">§02 · CHECKOUT</div><h3>Custom orders have no proper flow</h3><p>Personalisation inputs for engraving are an afterthought. No gift messaging, no upsells, no mobile-optimised checkout that actually converts.</p></div>
+    <div class="ac reveal d2"><div class="ac-num">§03 · DESIGN</div><h3>The site doesn't feel like the brand</h3><p>A luxury calligraphy boutique with Versace and Lenskart clients deserves more than a generic Wix template.</p></div>
+    <div class="ac reveal d3"><div class="ac-num">§04 · SERVICES</div><h3>High-value clients have no intake path</h3><p>Corporate and wedding live-engraving enquiries — your highest-revenue segment — have no structured flow. Leads go to WhatsApp chaos.</p></div>
+    <div class="ac reveal"><div class="ac-num">§05 · SEO</div><h3>Wix limits your organic reach</h3><p>Known crawlability issues, slow mobile loads, and uncompressed images suppress rankings for high-intent search terms.</p></div>
+    <div class="ac reveal d1"><div class="ac-num">§06 · OPERATIONS</div><h3>Product management doesn't scale</h3><p>Managing personalised SKUs, workshop tickets, and hampers in Wix is friction at every step. Shopify's system eliminates that entirely.</p></div>
+  </div>
+</div>
+
+<!-- §02 SCOPE -->
+<div class="sec">
+  <div class="sec-hd reveal"><span class="sec-num">§02</span><span class="sec-tag">SCOPE OF WORK</span></div>
+  <div class="sec-title reveal d1">Everything we <em>build.</em></div>
+
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Discovery & Brand Strategy</div><div class="si-desc">Kickoff, sitemap, buyer journey mapping, and content inventory from Wix.</div><div class="si-tags"><span class="si-tag">brand-audit</span><span class="si-tag">sitemap</span><span class="si-tag">persona-mapping</span></div></div>
+    <div class="si-days">Days 1–5</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Custom Shopify Theme Design</div><div class="si-desc">Bespoke, luxury-editorial theme built for Lettering Buff — not adapted from a template. Mobile-first, conversion-focused.</div><div class="si-tags"><span class="si-tag">custom-liquid</span><span class="si-tag">mobile-first</span><span class="si-tag">editorial-layout</span><span class="si-tag">CRO</span></div></div>
+    <div class="si-days">Days 6–15</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Full Shopify Development</div><div class="si-desc">Homepage · Shop + filters · Product pages with engraving input fields · Services · Workshop booking · Corporate enquiry · Blog · Contact.</div><div class="si-tags"><span class="si-tag">PDP-personalisation</span><span class="si-tag">collection-filters</span><span class="si-tag">booking-form</span><span class="si-tag">corporate-intake</span></div></div>
+    <div class="si-days">Days 16–28</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Wix → Shopify Migration</div><div class="si-desc">Zero-loss migration of all products, images, blog posts, and pages. 301 redirects mapped so SEO equity is fully preserved.</div><div class="si-tags"><span class="si-tag">product-catalogue</span><span class="si-tag">image-assets</span><span class="si-tag">301-redirects</span><span class="si-tag">blog-posts</span></div></div>
+    <div class="si-days">Days 16–28</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Payment Gateway & Checkout</div><div class="si-desc">Razorpay / PayU, COD, gift message field, abandoned cart recovery, and a checkout built to convert Indian buyers.</div><div class="si-tags"><span class="si-tag">razorpay</span><span class="si-tag">payu</span><span class="si-tag">COD</span><span class="si-tag">gift-messaging</span><span class="si-tag">abandoned-cart</span></div></div>
+    <div class="si-days">Days 22–28</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Integrations & Automations</div><div class="si-desc">GA4 · Meta Pixel · Klaviyo email flows · Instagram Shop · WhatsApp chat · Product reviews · Google Search Console.</div><div class="si-tags"><span class="si-tag">GA4</span><span class="si-tag">meta-pixel</span><span class="si-tag">klaviyo</span><span class="si-tag">instagram</span><span class="si-tag">whatsapp</span></div></div>
+    <div class="si-days">Days 26–34</div>
+  </div>
+  <div class="scope-item reveal">
+    <div class="si-arrow">→</div>
+    <div><div class="si-title">Launch, Training & 30-Day Support</div><div class="si-desc">Go-live, DNS cutover, recorded admin training, full documentation, and 30-day post-launch bug-fix support included.</div><div class="si-tags"><span class="si-tag">go-live</span><span class="si-tag">admin-training</span><span class="si-tag">documentation</span><span class="si-tag">30-day-support</span></div></div>
+    <div class="si-days">Days 39–45</div>
+  </div>
+</div>
+
+<!-- §03 TIMELINE -->
+<div class="sec">
+  <div class="sec-hd reveal"><span class="sec-num">§03</span><span class="sec-tag">HOW IT RUNS</span></div>
+  <div class="sec-title reveal d1">From day one to <em>scale.</em></div>
+  <div class="phase-wrap reveal d2">
+    <div class="phase-list">
+      <div class="ptab active" onclick="switchPhase(0)"><div><div class="pn">§01</div><div class="pm">Discovery</div></div><div class="pd">Days 1–5</div></div>
+      <div class="ptab" onclick="switchPhase(1)"><div><div class="pn">§02</div><div class="pm">CX Design</div></div><div class="pd">Days 6–15</div></div>
+      <div class="ptab" onclick="switchPhase(2)"><div><div class="pn">§03</div><div class="pm">Build</div></div><div class="pd">Days 16–34</div></div>
+      <div class="ptab" onclick="switchPhase(3)"><div><div class="pn">§04</div><div class="pm">QA & Review</div></div><div class="pd">Days 32–40</div></div>
+      <div class="ptab" onclick="switchPhase(4)"><div><div class="pn">§05</div><div class="pm">Launch & Grow</div></div><div class="pd">Days 39–45+</div></div>
+    </div>
+    <div>
+      <div class="ppanel active" id="p0">
+        <div class="pp-step">Step 01 · Days 1–5</div><h3>Discovery</h3>
+        <p>Kickoff call, full Wix site audit, sitemap approval, and content inventory. Sets the foundation before a single pixel is designed.</p>
+        <ul class="ptasks"><li>Kickoff call and requirement documentation</li><li>Wix audit — all pages, products, blogs</li><li>Sitemap and page hierarchy sign-off</li><li>Shopify plan and domain transfer plan</li></ul>
+        <div class="progress-row"><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="ppanel" id="p1">
+        <div class="pp-step">Step 02 · Days 6–15</div><h3>CX Design</h3>
+        <p>High-fidelity mockups for all pages reviewed and approved before development begins. Up to 2 revision rounds included.</p>
+        <ul class="ptasks"><li>Homepage, PDP and collection page mockups</li><li>Mobile and desktop wireframes</li><li>Visual language — type, colour, spacing</li><li>Client review and sign-off</li></ul>
+        <div class="progress-row"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="ppanel" id="p2">
+        <div class="pp-step">Step 03 · Days 16–34</div><h3>Build</h3>
+        <p>Custom Shopify theme development, Wix migration, payment setup, and all integrations running in parallel. Progress updates every 3 days.</p>
+        <ul class="ptasks"><li>Custom Liquid theme development</li><li>Full Wix → Shopify data migration</li><li>Payment gateway and checkout setup</li><li>All app integrations connected</li></ul>
+        <div class="progress-row"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="ppanel" id="p3">
+        <div class="pp-step">Step 04 · Days 32–40</div><h3>QA & Review</h3>
+        <p>End-to-end QA across browsers and devices, SEO implementation, performance tuning, and final client walkthrough before go-live.</p>
+        <ul class="ptasks"><li>Cross-browser and device testing</li><li>SEO, schema, and 301 redirect setup</li><li>Core Web Vitals and speed tuning</li><li>Full order-flow and payment testing</li></ul>
+        <div class="progress-row"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div>
+      </div>
+      <div class="ppanel" id="p4">
+        <div class="pp-step">Step 05 · Days 39–45+</div><h3>Launch & Grow</h3>
+        <p>Go-live, admin training, full documentation handover, and 30-day post-launch support. Optional growth retainer available after launch.</p>
+        <ul class="ptasks"><li>DNS cutover and domain pointing</li><li>Recorded admin training walkthrough</li><li>Full documentation handover</li><li>30-day post-launch support begins</li></ul>
+        <div class="progress-row"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- §04 INVESTMENT -->
+<div class="sec">
+  <div class="sec-hd reveal"><span class="sec-num">§04</span><span class="sec-tag">INVESTMENT</span></div>
+  <div class="sec-title reveal d1">One number.<br><em>No surprises.</em></div>
+  <div class="inv-wrap reveal d2">
+    <div class="inv-total-row">
+      <div class="inv-total-label">Total investment</div>
+      <div class="inv-total-amt">₹80,000</div>
+    </div>
+    <div class="inv-divider"></div>
+    <div class="pay-grid">
+      <div class="pay-card">
+        <div class="pc-l">50% — On signing</div>
+        <div class="pc-a">₹40,000</div>
+        <div class="pc-w">Advance on contract signing.<br>Project kicks off immediately.</div>
+      </div>
+      <div class="pay-card">
+        <div class="pc-l">50% — Before go-live</div>
+        <div class="pc-a">₹40,000</div>
+        <div class="pc-w">Cleared before the store<br>goes live on your domain.</div>
+      </div>
+    </div>
+    <div class="inv-note">* Excludes Shopify plan (~₹1,994/mo Basic, billed annually), Razorpay/PayU transaction fees, and any paid app subscriptions. We walk you through every platform cost before you commit to anything.</div>
+  </div>
+</div>
+
+<!-- §05 TERMS -->
+<div class="sec">
+  <div class="sec-hd reveal"><span class="sec-num">§05</span><span class="sec-tag">TERMS</span></div>
+  <div class="sec-title reveal d1">Clear expectations.<br><em>Smooth execution.</em></div>
+  <div class="terms-grid reveal d2">
+    <div class="tc"><h4>Content</h4><p>Client supplies final images, brand assets, and any copy not being migrated from Wix. Delays impact the timeline.</p></div>
+    <div class="tc"><h4>Revisions</h4><p>Two design revision rounds per phase. Additional revisions at ₹1,500/hr, submitted in writing per round.</p></div>
+    <div class="tc"><h4>Scope changes</h4><p>Any additions beyond this proposal are quoted separately and require written approval before work begins.</p></div>
+    <div class="tc"><h4>Ownership</h4><p>Full code and design ownership transfers to client on final payment. Kaart retains portfolio rights.</p></div>
+    <div class="tc"><h4>Post-launch support</h4><p>30-day window covers bugs related to delivered scope only. New features are outside this window.</p></div>
+    <div class="tc"><h4>Validity</h4><p>This proposal is valid for 15 days from issue. Pricing subject to change based on availability after this window.</p></div>
+  </div>
+</div>
+
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-l reveal">§06 · Brief us</div>
+  <h2 class="reveal d1">Got a Shopify<br><em>problem?</em></h2>
+  <p class="reveal d2">Tell us about your brand and where you're stuck — store, speed, conversions, or all three. We'll reply with a clear plan within 48 hours.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-g">Send brief →</a>
+    <a href="https://wa.me/919999999999" class="btn-gh" target="_blank" rel="noopener">WhatsApp ↗</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fw">kaart<span>*</span></div>
+  <div class="fr">© Kaart Studio · A Crestify Studio<br>Shopify-only · 50+ stores shipped<br>Prepared for Lettering Buff · June 2026</div>
+</footer>
+
+<script>
+// Phase switcher
+function switchPhase(i){
+  document.querySelectorAll('.ptab').forEach((t,j)=>t.classList.toggle('active',i===j));
+  document.querySelectorAll('.ppanel').forEach((p,j)=>p.classList.toggle('active',i===j));
+}
+
+// Scroll reveal
+const revObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); }});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// Counter animation
+function animateCounter(el, target, suffix=''){
+  const dur = 1200, step = 16;
+  let current = 0;
+  const inc = target / (dur / step);
+  const timer = setInterval(()=>{
+    current = Math.min(current + inc, target);
+    el.textContent = Math.floor(current) + (current >= target ? suffix : '');
+    if(current >= target) clearInterval(timer);
+  }, step);
+}
+const cntObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el = e.target;
+      const t = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || (t === 3 ? '+' : t === 50 ? '+' : '');
+      animateCounter(el, t, suffix);
+      cntObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(el=>cntObs.observe(el));
+</script>
+</body>
+</html>
