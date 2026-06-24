@@ -240,7 +240,6 @@ const PROJECTS = [
   { n: '06', col: 'col-5', dark: true,  client: 'Match Trackers',  sector: 'Sports Tech',             headline: '100k+ users. Live scores and deep stats for cricket & football.',                                        metric: '100k+ users',         tag: 'MERN · Real-time',   slug: 'match-trackers',         ratio: '5 / 5', img: '/matchtrackers.png' },
   { n: '07', col: 'col-7', dark: false, client: 'Equip Rentals',   sector: 'Construction Tech',       headline: 'Took construction equipment rental from phone calls to a live booking app.',                            metric: 'Dual portal · Live',  tag: 'React Native',       slug: 'equip-rentals',          ratio: '7 / 5', img: '/equip rentals.png' },
   { n: '08', col: 'col-5', dark: false, client: 'Quickhunt',       sector: 'SaaS · Product Design',   headline: 'Redesigned the website and webapp UI for a feedback & roadmap SaaS — lifting trial signups.',           metric: 'Signups ↑',          tag: 'Product Design',     slug: 'quickhunt',              ratio: '5 / 5', img: '/quickhunt.png' },
-  { n: '09', col: 'col-12', dark: true, client: 'Common Time',     sector: 'Café · E-commerce',       headline: 'Custom-designed and built the e-commerce site for a specialty coffee brand — elevated rituals, online.', metric: 'Live',                tag: 'Custom Design · Dev', href: 'https://commontime.in',  ratio: '12 / 5', img: '/commontime.png' },
 ];
 
 function ProjectCard({ p }) {

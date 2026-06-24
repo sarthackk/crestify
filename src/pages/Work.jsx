@@ -83,6 +83,16 @@ export const CASE_STUDIES = [
     tag: 'AI · SaaS', size: 'large',
     img: '/mockzy.png',
   },
+  {
+    slug: 'common-time',
+    n: '09', client: 'Common Time', sector: 'Café · E-commerce', year: '2025',
+    headline: 'Custom-designed and built the e-commerce store for a specialty coffee brand.',
+    summary: "Common Time is a specialty coffee and café brand. We designed and developed their e-commerce site end to end — a warm, editorial storefront that sells beans and merch while carrying the calm, considered feel of the café into every screen.",
+    metrics: [{ k: 'Custom', v: 'Design & build' }, { k: 'E-commerce', v: 'Shop & order' }, { k: 'Live', v: 'commontime.in' }],
+    tag: 'Custom Design · Dev', size: 'large',
+    img: '/commontime.png',
+    href: 'https://commontime.in',
+  },
 ];
 
 function HeroWork() {
