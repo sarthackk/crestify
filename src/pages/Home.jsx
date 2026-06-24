@@ -102,11 +102,6 @@ const BRAND_CLIENTS = [
   { name: 'Nirakaar',      img: '/logos/nirakaar.svg',   sector: 'Wellness' },
   { name: 'James Aston',   img: '/logos/jamesaston.png', sector: 'Fashion' },
   { name: 'Prepnest',      img: '/logos/prepnest.png',   sector: 'Career Tech' },
-  { name: 'Veda',          img: null,                    sector: 'Lifestyle' },
-  { name: 'Match Trackers',img: null,                    sector: 'Sports Tech' },
-  { name: 'Hubble',        img: null,                    sector: 'Design' },
-  { name: 'Bersekr',       img: null,                    sector: 'Fitness' },
-  { name: 'Quickhunt',     img: null,                    sector: 'Tech' },
 ];
 
 function BrandLogo({ brand }) {
