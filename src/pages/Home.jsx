@@ -101,6 +101,8 @@ const BRAND_CLIENTS = [
   { name: "Haldiram's",    img: '/logos/haldirams.webp', sector: 'F&B' },
   { name: 'Nirakaar',      img: '/logos/nirakaar.svg',   sector: 'Wellness' },
   { name: 'James Aston',   img: '/logos/jamesaston.png', sector: 'Fashion' },
+  { name: 'Veda',          img: '/logos/veda.png',       sector: 'Jewellery' },
+  { name: 'Berserk',       img: '/logos/berserkmode.png',sector: 'Fitness' },
   { name: 'Prepnest',      img: '/logos/prepnest.png',   sector: 'Career Tech' },
 ];
 
