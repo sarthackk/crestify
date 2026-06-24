@@ -162,9 +162,14 @@ function ContactCTAServices() {
         <h2 className="display" style={{ color: 'white', marginTop: 18, fontSize: 'clamp(48px, 9vw, 140px)', maxWidth: '14ch' }}>
           Something <span className="italic">lasting.</span>
         </h2>
-        <Link to="/contact" className="btn" style={{ background: '#fff', color: 'var(--accent)', fontSize: 16, padding: '18px 28px', marginTop: 32 }}>
-          Start a project <span className="arr">→</span>
-        </Link>
+        <div style={{ display: 'flex', gap: 16, marginTop: 32, flexWrap: 'wrap', alignItems: 'center' }}>
+          <Link to="/contact" className="btn" style={{ background: '#fff', color: 'var(--accent)', fontSize: 16, padding: '18px 28px' }}>
+            Start a project <span className="arr">→</span>
+          </Link>
+          <Link to="/blog/why-choose-crestify-shopify-agency" className="mono" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+            Why brands choose Crestify →
+          </Link>
+        </div>
       </div>
     </section>
   );

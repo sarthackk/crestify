@@ -24,7 +24,7 @@ const WHAT_YOU_GET = [
 const RESULTS = [
   { k: '8–12', v: 'Weeks to MVP' },
   { k: '0→1', v: 'Our specialty' },
-  { k: '40+', v: 'Products shipped' },
+  { k: '50+', v: 'Products shipped' },
   { k: '92%', v: 'Client retention' },
 ];
 
@@ -260,8 +260,8 @@ export default function MVPDevelopment() {
             <Link to="/contact" className="btn" style={{ background: '#fff', color: 'var(--accent)', fontSize: 16, padding: '18px 28px' }}>
               Brief us <span className="arr">→</span>
             </Link>
-            <a href="mailto:hello@crestify.co" className="mono" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-              hello@crestify.co
+            <a href="mailto:contact@crestify.co" className="mono" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              contact@crestify.co
             </a>
           </div>
         </div>

@@ -184,6 +184,17 @@ export default function BlogPost() {
                     ))}
                   </div>
                 </div>
+                {post.author && (
+                  <div style={{ marginTop: 8, paddingTop: 16, borderTop: '1px solid var(--line-strong)' }}>
+                    <div className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>Written by</div>
+                    <div className="body" style={{ fontSize: 13, color: 'var(--ink-2)' }}>{post.author}</div>
+                    <div className="body" style={{ fontSize: 11, color: 'var(--ink-4)', marginTop: 4, lineHeight: 1.5 }}>
+                      The Shopify specialists behind{' '}
+                      <Link to="/kaart" style={{ color: 'var(--accent)' }}>The Kaart Studio</Link>
+                      {' '}— <a href="https://crestify.co" style={{ color: 'var(--ink-3)' }}>crestify.co</a> · <a href="https://kaart.studio" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink-3)' }}>kaart.studio</a>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -239,8 +250,8 @@ export default function BlogPost() {
             <Link to="/contact" className="btn" style={{ background: 'var(--accent)', color: 'white', fontSize: 16, padding: '18px 28px' }}>
               Brief us <span className="arr">→</span>
             </Link>
-            <a href="mailto:hello@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-              hello@crestify.co
+            <a href="mailto:contact@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              contact@crestify.co
             </a>
           </div>
         </div>

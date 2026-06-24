@@ -9,52 +9,79 @@ import { useReveal } from '../components/shared/useReveal.js';
 
 export const CASE_STUDIES = [
   {
+    slug: 'distrute',
+    n: '01', client: 'Distrute', sector: 'Distribution OS · In-house', year: '2025',
+    headline: 'Distribution OS for SaaS founders. Run influencer campaigns built for software — not lifestyle brands.',
+    summary: 'SaaS founders struggle to distribute through channels built for D2C. Distrute is the first platform dedicated to influencer-led distribution for software products — pairing SaaS founders with relevant creators, automating campaign workflows, and tracking software-specific metrics. Currently in private alpha.',
+    metrics: [{ k: 'Alpha', v: 'Now live' }, { k: 'Influencer', v: 'Campaigns' }, { k: 'SaaS', v: 'Distribution' }],
+    tag: 'SaaS · Distribution', size: 'large', dark: true,
+    img: '/distrute.png',
+    href: 'https://distrute.vercel.app',
+    alpha: true,
+  },
+  {
     slug: 'prepnest',
-    n: '01', client: 'Prepnest', sector: 'Career Tech', year: '2024',
+    n: '02', client: 'Prepnest', sector: 'Career Tech', year: '2024',
     headline: 'Built the hiring OS for colleges, students, mentors, and HR — in one platform.',
     summary: 'End-to-end commercial placement platform with four separate portals, AI resume scoring, mentor scheduling, and direct employer connections. Now live across multiple colleges and recruiting teams.',
     metrics: [{ k: '4', v: 'User portals' }, { k: 'AI', v: 'Resume screening' }, { k: 'Live', v: 'Commercial deploy' }],
     tag: 'Full Stack · AI', size: 'large',
+    img: '/prepnest.png',
   },
   {
     slug: 'pms-asset-builder',
-    n: '02', client: 'PMS Asset Builder', sector: 'Maritime · Enterprise', year: '2024',
+    n: '03', client: 'PMS Asset Builder', sector: 'Maritime · Enterprise', year: '2024',
     headline: 'Turned thousands of ship manuals into a searchable, AI-classified library.',
     summary: 'Enterprise internal tool for The Cadet Labs: OCR pipeline ingests heavy documentation, AI classifies by vessel and equipment type. What took hours now takes seconds across MV Atlas, ZX Shipping, Blue Ocean, and Neptune Cargo.',
     metrics: [{ k: 'OCR', v: 'Doc ingestion' }, { k: 'AI', v: 'Classification' }, { k: '4+', v: 'Ship projects' }],
     tag: 'Enterprise AI', size: 'medium', dark: true,
+    img: '/pms asset builder.png',
   },
   {
     slug: 'match-trackers',
-    n: '03', client: 'Match Trackers', sector: 'Sports Tech', year: '2023',
+    n: '04', client: 'Match Trackers', sector: 'Sports Tech', year: '2023',
     headline: '100k+ users. Live scores, deep stats, and ODDS — built to survive tournament traffic.',
     summary: 'MERN stack sports platform for cricket and football. Custom real-time data pipelines, league navigation, player rankings, point tables, and upcoming fixtures. Held up through Asia Cup coverage without breaking.',
     metrics: [{ k: '100k+', v: 'Active users' }, { k: 'Live', v: 'Score pipelines' }, { k: 'Asia Cup', v: 'Traffic handled' }],
     tag: 'MERN · Real-time', size: 'medium',
+    img: '/matchtrackers.png',
+    img2: '/matchtrackers2.png',
   },
   {
     slug: 'equip-rentals',
-    n: '04', client: 'Equip Rentals', sector: 'Construction Tech', year: '2024',
+    n: '05', client: 'Equip Rentals', sector: 'Construction Tech', year: '2024',
     headline: 'Took construction equipment rental from phone calls to a live booking app.',
     summary: 'Hybrid iOS + Android app with dual portals. Workers search by equipment type and location, book with delivery slots, track orders. Vendors list their fleet, manage requests, and track active rentals. Real vendors onboarded.',
     metrics: [{ k: 'iOS+Android', v: 'Hybrid app' }, { k: '2', v: 'Portal types' }, { k: 'Live', v: 'Vendors onboarded' }],
     tag: 'React Native', size: 'medium',
+    img: '/equip rentals.png',
   },
   {
     slug: 'quickhunt',
-    n: '05', client: 'Quickhunt', sector: 'SaaS · Product Design', year: '2023',
+    n: '06', client: 'Quickhunt', sector: 'SaaS · Product Design', year: '2023',
     headline: 'Redesigned a complex SaaS product so visitors finally understood — and converted.',
     summary: 'Full redesign of Quickhunt\'s website and webapp UI. Simplified feedback collection, roadmap management, and changelog broadcasting into clear conversion flows. Significantly improved trial signup rate.',
     metrics: [{ k: '↑', v: 'Trial signups' }, { k: 'Full', v: 'UI redesign' }, { k: 'Figma', v: 'Design system' }],
     tag: 'Product Design', size: 'medium', dark: true,
+    img: '/quickhunt.png',
+  },
+  {
+    slug: 'hubble-health',
+    n: '07', client: 'Hubble Health', sector: 'Healthcare · Web', year: '2025',
+    headline: 'Built the digital front door for Kanpur\'s first zero-radiation diagnostic centre.',
+    summary: 'Full website design and development for Hubble Health — a fetal medicine, radiology, and pathology centre in Kanpur. Appointment booking, services showcase, doctor profiles, and an opening-hours widget. Live at hubblehealth.in.',
+    metrics: [{ k: 'Live', v: 'hubblehealth.in' }, { k: 'Zero', v: 'Radiation DX' }, { k: 'Kanpur', v: '1st of kind' }],
+    tag: 'Web Design · Healthcare', size: 'large',
+    img: '/hubble.png',
   },
   {
     slug: 'mockzy',
-    n: '06', client: 'Mockzy', sector: 'AI Product · In-house', year: '2025',
+    n: '08', client: 'Mockzy', sector: 'AI Product · In-house', year: '2025',
     headline: 'A smartphone photo in. Photorealistic ad-grade imagery out. No prompts, no designer.',
     summary: 'AI creative studio for D2C brands: upload a product photo, get professional mockups, lifestyle images, and video content. Workspace management, quick-start templates, and batch catalog generation. Live with paying users.',
     metrics: [{ k: 'Live', v: 'Paying users' }, { k: 'AI', v: 'Image pipeline' }, { k: 'Batch', v: 'Catalog gen' }],
     tag: 'AI · SaaS', size: 'large',
+    img: '/mockzy.png',
   },
 ];
 
@@ -93,24 +120,48 @@ function Filters() {
 }
 
 function CaseCard({ c }) {
+  const ratio = c.size === 'large' ? '24 / 12' : '14 / 11';
+  const isExternal = !!c.href;
+  const Wrapper = ({ children }) => isExternal
+    ? <a href={c.href} target="_blank" rel="noopener noreferrer" className={`lift ${c.size === 'large' ? 'col-12' : 'col-6'}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>{children}</a>
+    : <Link to={`/work/${c.slug}`} className={`lift ${c.size === 'large' ? 'col-12' : 'col-6'}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>{children}</Link>;
+
   return (
-    <Link
-      to={`/work/${c.slug}`}
-      className={`lift ${c.size === 'large' ? 'col-12' : 'col-6'}`}
-      style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
-    >
-      <Placeholder
-        label={`${c.client.toUpperCase()} · ${c.sector}`}
-        dim={c.size === 'large' ? '2400 × 1200' : '1400 × 1100'}
-        ratio={c.size === 'large' ? '24 / 12' : '14 / 11'}
-        dark={c.dark}
-      />
+    <Wrapper>
+      <div style={{ position: 'relative' }}>
+        {c.img ? (
+          <div style={{ aspectRatio: ratio, borderRadius: 6, overflow: 'hidden', background: c.dark ? '#0e0e14' : '#f0ede4' }}>
+            <img
+              src={c.img}
+              alt={`${c.client} — ${c.sector}`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        ) : (
+          <Placeholder
+            label={`${c.client.toUpperCase()} · ${c.sector}`}
+            dim={c.size === 'large' ? '2400 × 1200' : '1400 × 1100'}
+            ratio={c.size === 'large' ? '24 / 12' : '14 / 11'}
+            dark={c.dark}
+          />
+        )}
+        {c.alpha && (
+          <span className="mono" style={{
+            position: 'absolute', top: 14, left: 14,
+            background: '#6c47ff', color: 'white',
+            fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.12em',
+            padding: '4px 10px', borderRadius: 999,
+          }}>
+            Alpha · In-house
+          </span>
+        )}
+      </div>
       <div style={{ marginTop: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
           <div className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
             §{c.n} · {c.year}
           </div>
-          <span className="mono" style={{ fontSize: 11, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>{c.tag}</span>
+          <span className="mono" style={{ fontSize: 11, color: c.alpha ? '#6c47ff' : 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>{c.tag}</span>
         </div>
         <h3 className="serif" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)', lineHeight: 1.15, letterSpacing: '-0.012em', maxWidth: '32ch' }}>
           {c.headline}
@@ -121,16 +172,18 @@ function CaseCard({ c }) {
         <div style={{ display: 'flex', gap: 24, marginTop: 22, paddingTop: 20, borderTop: '1px solid var(--line-strong)' }}>
           {c.metrics.map(m => (
             <div key={m.v}>
-              <div className="serif italic" style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>{m.k}</div>
+              <div className="serif italic" style={{ fontSize: 24, color: c.alpha ? '#6c47ff' : 'var(--accent)', lineHeight: 1 }}>{m.k}</div>
               <div className="mono" style={{ fontSize: 10, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 5 }}>{m.v}</div>
             </div>
           ))}
           <div style={{ marginLeft: 'auto', alignSelf: 'center' }}>
-            <span className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Case study →</span>
+            <span className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              {isExternal ? 'Visit site ↗' : 'Case study →'}
+            </span>
           </div>
         </div>
       </div>
-    </Link>
+    </Wrapper>
   );
 }
 
@@ -189,8 +242,8 @@ function ContactCTAWork() {
             <Link to="/contact" className="btn" style={{ background: 'var(--accent)', color: 'white', fontSize: 16, padding: '18px 28px', marginTop: 8 }}>
               Brief us <span className="arr">→</span>
             </Link>
-            <a href="mailto:hello@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-              hello@crestify.co
+            <a href="mailto:contact@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              contact@crestify.co
             </a>
           </div>
         </div>

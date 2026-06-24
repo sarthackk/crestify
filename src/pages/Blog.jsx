@@ -188,8 +188,8 @@ export default function Blog() {
               <Link to="/contact" className="btn btn-accent" style={{ fontSize: 16, padding: '18px 28px' }}>
                 Brief us <span className="arr">→</span>
               </Link>
-              <a href="mailto:hello@crestify.co" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-                hello@crestify.co
+              <a href="mailto:contact@crestify.co" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                contact@crestify.co
               </a>
             </div>
           </div>

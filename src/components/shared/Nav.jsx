@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useDrawer } from './ContactDrawer.jsx';
 
 function PersonIcon() {
   return (
@@ -31,6 +32,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const active = pathname === '/' ? 'home' : pathname.replace('/', '').split('/')[0];
   const close = () => setMenuOpen(false);
+  const { setOpen: openDrawer } = useDrawer();
 
   return (
     <header className={`nav${menuOpen ? ' menu-is-open' : ''}`}>
@@ -57,7 +59,7 @@ export default function Nav() {
               className={`nav-link ${active === item.key ? 'active' : ''}`}
             >
               {item.label}
-              {item.key === 'toolkit' && active !== 'toolkit' && (
+              {item.key === 'toolkit' && (
                 <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginLeft: 5, width: 16, height: 16, borderRadius: '50%', background: 'var(--accent)', color: 'white', fontFamily: 'var(--mono)', fontSize: 8, fontWeight: 700, letterSpacing: 0, verticalAlign: 'middle', lineHeight: 1, flexShrink: 0 }}>8</span>
               )}
             </Link>
@@ -82,17 +84,17 @@ export default function Nav() {
             <span className="nav-icon-label">Sarthak Tiwari</span>
             <span className="nav-icon-arrow">→</span>
           </Link>
-          <Link
-            to="/contact"
-            onClick={close}
-            className={`nav-link nav-cta ${active === 'contact' ? 'active' : ''}`}
+          <button
+            onClick={() => { close(); openDrawer(true); }}
+            className="nav-link nav-cta"
             style={{
-              background: active === 'contact' ? 'var(--ink)' : 'var(--accent)',
-              color: 'white',
+              background: 'var(--accent)', color: 'white',
+              border: 'none', cursor: 'pointer',
+              fontFamily: 'inherit',
             }}
           >
-            Start a project →
-          </Link>
+            Brief us →
+          </button>
         </nav>
       </div>
     </header>

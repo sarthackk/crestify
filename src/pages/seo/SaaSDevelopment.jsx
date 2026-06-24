@@ -21,7 +21,7 @@ const STACK = [
 ];
 
 const RESULTS = [
-  { k: '40+', v: 'Products shipped' },
+  { k: '50+', v: 'Products shipped' },
   { k: '0→1', v: 'Specialist team' },
   { k: 'AI', v: 'Native capability' },
   { k: '5yr', v: 'Operating track record' },
@@ -208,8 +208,8 @@ export default function SaaSDevelopment() {
             <Link to="/contact" className="btn" style={{ background: 'var(--accent)', color: 'white', fontSize: 16, padding: '18px 28px' }}>
               Brief us <span className="arr">→</span>
             </Link>
-            <a href="mailto:hello@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-              hello@crestify.co
+            <a href="mailto:contact@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              contact@crestify.co
             </a>
           </div>
         </div>

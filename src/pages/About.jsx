@@ -18,7 +18,7 @@ function HeroAbout() {
         <div className="grid" style={{ gap: 'var(--gap)', marginTop: 'clamp(40px, 6vw, 80px)', alignItems: 'start' }}>
           <div className="col-4">
             <Eyebrow>Started in</Eyebrow>
-            <div className="serif" style={{ fontSize: 56, marginTop: 8, lineHeight: 1 }}>2021</div>
+            <div className="serif" style={{ fontSize: 56, marginTop: 8, lineHeight: 1 }}>2023</div>
           </div>
           <div className="col-8">
             <p className="body-lg" style={{ maxWidth: '52ch' }}>
@@ -55,26 +55,27 @@ function ManifestoQuote() {
 const FOUNDERS_LONG = [
   {
     name: 'Sarthak Tiwari', initials: 'ST', role: 'Founder · Your prime POC',
+    photo: '/sarthak .jpeg',
     bio: "Think of me as your fractional CTO. I work closely with founders and teams to turn ideas into structured, scalable systems — whether that means defining architecture, guiding product decisions, or getting deeply involved in execution.",
     bio2: "When you work with Crestify, you're not just hiring a team. You're getting a builder who has been through the process many times.",
     focus: ['System architecture', 'Product decisions', 'AI & automation', 'Full-stack delivery'],
     quote: "The people who pitch the work should do the work. We built the whole studio around that.",
     socials: [
       { label: 'Portfolio', href: '/sarthak', internal: true },
-      { label: 'X', href: 'https://x.com/sarthaktiwari' },
-      { label: 'Facebook', href: '#' },
+      { label: 'X', href: 'https://x.com/nosarthack' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sarthackk/' },
+      { label: 'Instagram', href: 'https://www.instagram.com/nosrthack' },
     ],
   },
   {
     name: 'Aditya Tripathi', initials: 'AT', role: 'Operations · PM',
+    photo: '/aditya.jpeg',
     bio: "Aditya ensures that projects move smoothly from planning to execution. With a background in business, commerce, and sales, he focuses on aligning timelines, communication, and delivery, helping teams and clients stay organised and ensuring every system we build moves forward with clarity.",
     bio2: null,
     focus: ['Project management', 'Client operations', 'Sales & commerce', 'Delivery systems'],
     quote: "Clarity in delivery is a feature. We make sure nothing falls between the cracks.",
     socials: [
-      { label: 'X', href: '#' },
-      { label: 'Facebook', href: '#' },
-      { label: 'YouTube', href: '#' },
+      { label: 'Instagram', href: 'https://www.instagram.com/trippy_thi/' },
     ],
   },
 ];
@@ -92,8 +93,10 @@ function FoundersDetailed() {
           <article key={f.name} className="grid" style={{ gap: 'var(--gap)', padding: 'clamp(40px, 5vw, 64px) 0', borderTop: '1px solid var(--line-strong)', borderBottom: i === FOUNDERS_LONG.length - 1 ? '1px solid var(--line-strong)' : 'none' }}>
             <div className="col-4">
               <div style={{ aspectRatio: '4 / 5', background: 'var(--ink)', position: 'relative', borderRadius: 4, overflow: 'hidden' }}>
-                <Placeholder dark label={`PORTRAIT · ${f.name}`} dim="800 × 1000" ratio="4 / 5" />
-                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontFamily: 'var(--serif)', fontSize: 96, fontStyle: 'italic', color: '#3a3a3a', pointerEvents: 'none' }}>{f.initials}</div>
+                {f.photo
+                  ? <img src={f.photo} alt={f.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }} />
+                  : <><Placeholder dark label={`PORTRAIT · ${f.name}`} dim="800 × 1000" ratio="4 / 5" /><div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontFamily: 'var(--serif)', fontSize: 96, fontStyle: 'italic', color: '#3a3a3a', pointerEvents: 'none' }}>{f.initials}</div></>
+                }
               </div>
               <div style={{ marginTop: 18 }}>
                 <div className="serif" style={{ fontSize: 28 }}>{f.name}</div>
@@ -130,7 +133,7 @@ function FoundersDetailed() {
 
 function StatsAbout() {
   const stats = [
-    { n: '5+', l: 'Years operating' }, { n: '40+', l: 'Engagements shipped' },
+    { n: '2+', l: 'Years operating' }, { n: '50+', l: 'Engagements shipped' },
     { n: '11', l: 'Senior operators' }, { n: '92%', l: 'Client retention' },
     { n: '2.4y', l: 'Avg. partnership' }, { n: '3', l: 'Internal products' },
   ];
@@ -233,10 +236,10 @@ export default function About() {
   return (
     <div className="page">
       <SEO
-        title="About — Founder-Led Product Studio"
-        description="Crestify was founded by operators tired of agencies that spec'd work they wouldn't ship themselves. Meet the team behind the products — Sarthak Tiwari and Aditya Tripathi."
+        title="About Crestify Studio | The Kaart Studio | Shopify Agency &amp; Product Studio"
+        description="Crestify Studio — also known as The Kaart Studio — is a founder-led product development studio and full-stack Shopify agency for D2C brands. Meet the team: Sarthak Tiwari and Aditya Tripathi."
         canonical="/about"
-        keywords="about Crestify, product studio founders India, founder-led agency, senior developers India"
+        keywords="about crestify, crestify studio, kaart studio, the kaart studio, about kaart, founder-led agency India, product studio founders India"
         schema={orgSchema}
       />
       <Nav />

@@ -242,6 +242,22 @@ function KaartServices() {
 const KAART_PROJECTS = [
   {
     n: '01', size: 'large',
+    name: 'Giva', sector: 'Jewellery · E-commerce', tag: 'Shopify · Dev Retainer',
+    href: 'https://giva.co', to: '/kaart/giva', img: '/giva-store.png',
+    headline: 'Embedded inside Giva\'s team as their Shopify dev retainer — shipping across multiple stores for India\'s fastest-growing fine jewellery brand.',
+    summary: 'Giva sells 925 sterling silver and lab-grown diamond jewellery across multiple Shopify storefronts. We operate as an embedded dev team — sprint planning, building custom features, performance improvements, and keeping all stores in sync.',
+    metrics: [{ k: 'Multi', v: 'Store retainer' }, { k: 'Embedded', v: 'Dev team' }, { k: 'Live', v: 'Ongoing' }],
+  },
+  {
+    n: '02', size: 'medium',
+    name: "Haldiram's UK", sector: 'F&B · Signage & Design', tag: 'Signage · Launch Design',
+    href: null, to: '/kaart/haldirams', img: '/haldirams-london.jpg',
+    headline: "Designed the launch signage for Haldiram's first UK store — bringing India's most iconic snack brand to London.",
+    summary: "Haldiram's is opening their first UK location in London. We designed the full window signage suite for the store launch — large-format banners, brand panels, and coming-soon graphics that introduce the brand to a new market.",
+    metrics: [{ k: 'London', v: 'First UK store' }, { k: 'Launch', v: 'Signage suite' }, { k: 'Live', v: 'Installed' }],
+  },
+  {
+    n: '03', size: 'large',
     name: 'Nirakaar', sector: 'Home Décor · Lifestyle', tag: 'Content · UGC · Social · Ads',
     href: 'https://nirakaar.in', to: '/kaart/nirakaar', img: '/nirakaar.png',
     headline: 'Built the full content engine for a sculptural home décor brand — UGC sourcing, content production, social, and paid ads.',
@@ -249,7 +265,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'UGC', v: 'Creator sourcing' }, { k: 'Full', v: 'Content engine' }, { k: 'Paid', v: 'Ads & organic' }],
   },
   {
-    n: '02', size: 'medium',
+    n: '04', size: 'medium',
     name: 'Berserk Mode', sector: 'Fitness · Compression Wear', tag: 'Theme dev · Integrations',
     href: 'https://berserkmode.com', img: '/bersekr.png',
     headline: 'High-performance Shopify theme for India\'s premium gym compression wear — built for real athletes.',
@@ -257,7 +273,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify theme' }, { k: '9+', v: 'Influencer flows' }, { k: 'Live', v: 'Pan-India' }],
   },
   {
-    n: '03', size: 'medium',
+    n: '05', size: 'medium',
     name: 'Veda Jewel', sector: 'Luxury Jewellery', tag: 'Embedded dev support',
     href: 'https://vedajewel.co', img: '/veda.png',
     headline: 'Embedded inside Veda\'s team to build and scale a heritage jewellery store where pieces sell for up to ₹7.4 lakhs.',
@@ -265,7 +281,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: '₹7.4L', v: 'Top ticket item' }, { k: 'Heritage', v: 'Luxury store' }, { k: 'Embedded', v: 'Dev support' }],
   },
   {
-    n: '04', size: 'medium',
+    n: '06', size: 'medium',
     name: 'James Aston', sector: 'Leather Goods · Fashion', tag: 'Custom Shopify dev',
     href: 'https://jamesaston.in', img: '/jamesaston.png',
     headline: 'Custom storefront for India\'s premium vegetable-tanned leather brand — built to age as well as their products.',
@@ -273,7 +289,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'Corporate', v: 'Gifting flow' }, { k: 'Live', v: 'Pan-India' }],
   },
   {
-    n: '05', size: 'medium',
+    n: '07', size: 'medium',
     name: 'Goddess Naturals', sector: 'Intimate Wellness', tag: 'Custom Shopify build',
     href: 'https://goddessnaturals.com', img: '/goddess naturals.png',
     headline: 'A premium intimate wellness brand needed a storefront as clean and science-backed as their formulas.',
@@ -281,7 +297,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'cGMP', v: 'Trust signals' }, { k: 'Live', v: 'USA market' }],
   },
   {
-    n: '06', size: 'medium',
+    n: '08', size: 'medium',
     name: 'Paradise Pleasure', sector: 'Adult Wellness · Tech', tag: 'Custom Shopify dev',
     href: 'https://paradisepleasureproducts.com', img: '/paradise.png',
     headline: 'A tech-forward adult wellness brand — app-controlled, LED-integrated products — needed a store as innovative as the hardware.',
@@ -289,7 +305,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify dev' }, { k: '18+', v: 'Age gating' }, { k: 'Live', v: 'USA + Global' }],
   },
   {
-    n: '07', size: 'large',
+    n: '09', size: 'large',
     name: 'Furnicheer', sector: 'Furniture · Heritage Crafts', tag: 'Shopify store build',
     href: 'https://furnicheer.com', img: '/furnicheer.png',
     headline: 'A heritage furniture brand featured in Architectural Digest needed a store that could sell ₹60k pieces the way they deserve.',
@@ -340,9 +356,9 @@ function KaartWhyUs() {
 
 function KaartProjectCard({ p }) {
   const cls = `reveal lift ${p.size === 'large' ? 'col-12' : 'col-6'}`;
-  return (
-    <a href={p.href} target="_blank" rel="noopener noreferrer"
-      className={cls} style={{ display: 'block', textDecoration: 'none', color: K.cream }}>
+  const sharedStyle = { display: 'block', textDecoration: 'none', color: K.cream };
+  const inner = (
+    <>
       {/* Image area */}
       <div style={{ position: 'relative', aspectRatio: p.size === 'large' ? '24 / 10' : '14 / 11', background: '#0f1a14', borderRadius: 6, overflow: 'hidden', border: '1px solid #ffffff0a' }}>
         {p.img ? (
@@ -352,26 +368,22 @@ function KaartProjectCard({ p }) {
             <span className="serif italic" style={{ fontSize: 'clamp(48px, 8vw, 120px)', color: '#1a2e22', letterSpacing: '-0.03em', userSelect: 'none' }}>{p.name}</span>
           </div>
         )}
-        {/* overlay */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,16,10,0.92) 0%, rgba(4,16,10,0.3) 50%, rgba(4,16,10,0.15) 100%)' }} />
-        {/* top-left: sector */}
         <div style={{ position: 'absolute', top: 14, left: 16 }}>
           <span className="mono" style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>{p.sector}</span>
         </div>
-        {/* top-right: tag pill */}
         <div style={{ position: 'absolute', top: 12, right: 14 }}>
           <span className="mono" style={{ fontSize: 9, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', padding: '3px 9px', borderRadius: 999 }}>{p.tag}</span>
         </div>
-        {/* bottom: brand name + visit */}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 20px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <span className="serif italic" style={{ fontSize: 'clamp(22px, 3vw, 38px)', color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>{p.name}</span>
-          <span style={{ fontSize: 11, color: K.green, fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '0.12em', flexShrink: 0 }}>Visit store ↗</span>
+          {p.href && !p.to && <span style={{ fontSize: 11, color: K.green, fontFamily: 'var(--mono)', textTransform: 'uppercase', letterSpacing: '0.12em', flexShrink: 0 }}>Visit store ↗</span>}
         </div>
       </div>
 
       {/* Info */}
       <div style={{ marginTop: 22 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <div style={{ marginBottom: 12 }}>
           <span className="mono" style={{ fontSize: 11, color: '#7d8a83', textTransform: 'uppercase', letterSpacing: '0.12em' }}>§{p.n} · {p.tag}</span>
         </div>
         <h3 className="serif" style={{ fontSize: 'clamp(20px, 2vw, 28px)', lineHeight: 1.15, letterSpacing: '-0.012em', color: K.cream, maxWidth: '38ch' }}>
@@ -387,16 +399,18 @@ function KaartProjectCard({ p }) {
               <div className="mono" style={{ fontSize: 10, color: '#5a6760', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{m.v}</div>
             </div>
           ))}
-          {p.to && (
-            <Link to={p.to} onClick={e => e.stopPropagation()}
-              style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, background: `${K.green}18`, border: `1px solid ${K.green}44`, borderRadius: 6, padding: '8px 14px', fontFamily: 'var(--mono)', fontSize: 10, color: K.green, textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', flexShrink: 0 }}>
-              Our work →
-            </Link>
-          )}
         </div>
       </div>
-    </a>
+    </>
   );
+
+  if (p.to) return (
+    <Link to={p.to} className={cls} style={sharedStyle}>{inner}</Link>
+  );
+  if (p.href) return (
+    <a href={p.href} target="_blank" rel="noopener noreferrer" className={cls} style={sharedStyle}>{inner}</a>
+  );
+  return <div className={cls} style={sharedStyle}>{inner}</div>;
 }
 
 function KaartWork() {

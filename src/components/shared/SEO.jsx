@@ -60,18 +60,42 @@ export default function SEO({
 export const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://crestify.co/#organization',
   name: 'Crestify',
+  alternateName: ['Crestify Studio', 'The Kaart Studio', 'Kaart Studio'],
   url: 'https://crestify.co',
-  logo: 'https://crestify.co/logo.png',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://crestify.co/logo.png',
+  },
+  description: 'Crestify (also known as The Kaart Studio) is a full-stack Shopify agency and product development studio for D2C brands. We design, build, and grow high-converting Shopify stores — from first store to Shopify Plus.',
+  foundingDate: '2022',
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 6 },
   sameAs: [
+    'https://kaart.studio',
+    'https://www.linkedin.com/company/crestify',
+    'https://instagram.com/crestify',
     'https://x.com/crestifyco',
+    'https://twitter.com/crestify',
     'https://github.com/sarthackk',
+  ],
+  areaServed: ['US', 'GB', 'IN', 'AE'],
+  serviceType: [
+    'Shopify Store Development',
+    'Shopify Migration',
+    'Ecommerce CRO',
+    'Performance Marketing',
+    'Email Marketing Automation',
+    'Shopify Plus Implementation',
+    'SaaS Development',
+    'MVP Development',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'contact@crestify.co',
     contactType: 'customer service',
-    areaServed: ['IN', 'CA', 'GB', 'US'],
+    url: 'https://crestify.co/contact',
+    areaServed: ['IN', 'US', 'GB', 'AE'],
   },
   address: {
     '@type': 'PostalAddress',
@@ -83,11 +107,16 @@ export const orgSchema = {
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': 'https://crestify.co/#website',
   name: 'Crestify',
   url: 'https://crestify.co',
+  publisher: { '@id': 'https://crestify.co/#organization' },
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://crestify.co/work?q={search_term_string}',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://crestify.co/?s={search_term_string}',
+    },
     'query-input': 'required name=search_term_string',
   },
 };

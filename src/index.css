@@ -402,7 +402,7 @@ section { position: relative; }
 .footer-inner { max-width: var(--maxw); margin: 0 auto; }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 56px;
   border-bottom: 1px solid #ffffff14;
@@ -532,7 +532,8 @@ section { position: relative; }
   }
 
   /* ── Footer ── */
-  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
   .footer-wordmark { font-size: clamp(52px, 16vw, 120px); }
 
@@ -557,6 +558,71 @@ section { position: relative; }
   animation-duration: 60s;
 }
 .ticker-dot { color: var(--accent); }
+
+/* ── Press marquee ──────────────────────────────────────────────────────── */
+.press-strip {
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 22px 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+.press-strip-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-4);
+  padding: 0 32px 0 var(--pad);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--line-strong);
+  margin-right: 40px;
+}
+.press-strip .marquee-track {
+  gap: 64px;
+  align-items: center;
+  animation-duration: 45s;
+}
+.press-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-3);
+  white-space: nowrap;
+  opacity: 0.72;
+  transition: opacity 0.2s;
+  gap: 64px;
+}
+.press-item:hover { opacity: 1; }
+.press-item-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Kaart dark variant */
+.press-strip.press-dark {
+  background: #04100a;
+  border-color: #ffffff14;
+}
+.press-strip.press-dark .press-strip-label {
+  color: #7d8a83;
+  border-color: #ffffff14;
+}
+.press-strip.press-dark .press-item {
+  color: #a4afa9;
+}
+.press-strip.press-dark .press-item-dot {
+  background: #ffffff22;
+}
 
 /* ── Tool pages shared grid ─────────────────────────────────────────────── */
 .tool-grid {

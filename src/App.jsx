@@ -14,6 +14,8 @@ import Contact from './pages/Contact.jsx';
 import Kaart from './pages/Kaart.jsx';
 import KaartServices from './pages/KaartServices.jsx';
 import KaartNirakaar from './pages/KaartNirakaar.jsx';
+import KaartGiva from './pages/KaartGiva.jsx';
+import KaartHaldirams from './pages/KaartHaldirams.jsx';
 import Resources from './pages/Resources.jsx';
 import Sarthak from './pages/Sarthak.jsx';
 import MarginCalculator from './pages/tools/MarginCalculator.jsx';
@@ -49,6 +51,8 @@ export default function App() {
       <Route path="/kaart" element={<Kaart />} />
       <Route path="/kaart/services" element={<KaartServices />} />
       <Route path="/kaart/nirakaar" element={<KaartNirakaar />} />
+      <Route path="/kaart/giva" element={<KaartGiva />} />
+      <Route path="/kaart/haldirams" element={<KaartHaldirams />} />
       <Route path="/sarthak" element={<Sarthak />} />
       <Route path="/toolkit" element={<Resources />} />
       <Route path="/toolkit/margin-calculator"  element={<MarginCalculator />} />

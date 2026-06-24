@@ -9,7 +9,7 @@ import { useReveal } from '../components/shared/useReveal.js';
 function Hero() {
   const stats = [
     { n: '50+',  l: 'Brands Built' },
-    { n: '5+',   l: 'Years Operating' },
+    { n: '4+',   l: 'Years Operating' },
     { n: '5',    l: 'Active Ventures' },
     { n: '200+', l: 'People Taught' },
   ];
@@ -30,13 +30,13 @@ function Hero() {
         <div className="st-hero-layout">
           <div>
             <h1 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(52px, 9vw, 136px)', lineHeight: 1.0, letterSpacing: '-0.028em', color: '#f0ede6', maxWidth: '14ch' }}>
-              Builder.<br />
-              <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Operator.</span><br />
-              Founder.
+              I build<br />
+              what others<br />
+              <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>pitch.</span>
             </h1>
 
             <p style={{ fontFamily: 'var(--sans)', fontSize: 'clamp(16px, 1.5vw, 21px)', lineHeight: 1.75, color: '#9c9b95', maxWidth: '52ch', marginTop: 'clamp(24px, 4vw, 48px)' }}>
-              I've spent the last 5 years building brands, communities, and products from the ground up — across blockchain, ecommerce, design, and SaaS. Now I'm building <span style={{ color: '#f0ede6' }}>Crestify</span> and <span style={{ color: '#0d9b6a' }}>Kaart Studio.</span>
+              I've spent the last 4 years building brands, communities, and products from the ground up — across blockchain, ecommerce, design, and SaaS. Now I'm building <span style={{ color: '#f0ede6' }}>Crestify</span> and <span style={{ color: '#0d9b6a' }}>Kaart Studio.</span>
             </p>
 
             <div style={{ marginTop: 'clamp(24px, 4vw, 40px)', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -60,11 +60,12 @@ function Hero() {
 
           {/* Photo — hidden on mobile via CSS */}
           <div className="st-hero-photo" style={{ flexShrink: 0, width: 'clamp(180px, 18vw, 300px)' }}>
-            <div style={{ aspectRatio: '3 / 4', background: '#1a1a1a', border: '1px solid #ffffff12', borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-              <div style={{ width: 52, height: 52, borderRadius: '50%', background: '#ff4d1f22', border: '1px solid #ff4d1f33', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 20, color: 'var(--accent)' }}>ST</span>
-              </div>
-              <span className="mono" style={{ fontSize: 9, color: '#3a3a3a', textTransform: 'uppercase', letterSpacing: '0.1em', textAlign: 'center', padding: '0 20px' }}>Photo<br />coming soon</span>
+            <div style={{ aspectRatio: '3 / 4', background: '#1a1a1a', border: '1px solid #ffffff12', borderRadius: 8, overflow: 'hidden' }}>
+              <img
+                src="/sarthak .jpeg"
+                alt="Sarthak Tiwari"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+              />
             </div>
           </div>
         </div>
@@ -613,7 +614,7 @@ export default function Sarthak() {
     <div className="page">
       <SEO
         title="Sarthak Tiwari — Founder, Builder & Product Operator"
-        description="Founder of Crestify & Kaart Studio. Built 50+ brands, shipped AI products, embedded with startups for 5+ years. This is my full operator story."
+        description="Founder of Crestify & Kaart Studio. Built 50+ brands, shipped AI products, embedded with startups for 4+ years. This is my full operator story."
         canonical="/sarthak"
         keywords="Sarthak Tiwari, founder Crestify, product builder India, startup operator, Shopify developer India, SaaS founder"
       />

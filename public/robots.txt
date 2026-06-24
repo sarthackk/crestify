@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://crestify.co/sitemap.xml
+Sitemap: https://www.crestify.co/sitemap.xml
 
 # Disallow admin or private routes (none currently, but good practice)
 Disallow: /404

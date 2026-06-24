@@ -167,31 +167,23 @@ nav {
 .bundle-price { font-family: var(--serif); font-size: clamp(44px, 6vw, 60px); color: var(--amber); line-height: 1; letter-spacing: -0.02em; }
 .bundle-save { font-size: 11px; color: rgba(196,122,46,0.7); margin-top: 6px; }
 
-/* PHASES */
-.phase-wrap { display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--black10); border-radius: 4px; overflow: hidden; }
-.phase-list { border-right: 1px solid var(--black10); }
-.ptab { padding: 16px 20px; border-bottom: 1px solid var(--black10); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.15s; }
-.ptab:last-child { border-bottom: none; }
-.ptab:hover { background: rgba(22,22,22,0.03); }
-.ptab.active { background: var(--black); }
-.ptab .pn { font-size: 9px; letter-spacing: 1.5px; color: var(--caramel); margin-bottom: 3px; }
-.ptab .pm { font-family: var(--serif); font-size: 15px; color: var(--tp); }
-.ptab.active .pm { color: #fff; }
-.ptab .pd { font-size: 10px; color: var(--ts); }
-.ptab.active .pd { color: rgba(255,255,255,0.4); }
-.ppanel { display: none; padding: 36px; }
-.ppanel.active { display: block; animation: fadeIn 0.25s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.pp-step { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
-.ppanel h3 { font-family: var(--serif); font-size: 28px; font-style: italic; margin-bottom: 12px; }
-.ppanel p { font-size: 13px; color: var(--ts); line-height: 1.8; margin-bottom: 16px; }
-.ptasks { list-style: none; }
-.ptasks li { font-size: 13px; color: var(--ts); padding: 7px 0 7px 16px; position: relative; border-bottom: 1px solid var(--black10); }
-.ptasks li:last-child { border-bottom: none; }
-.ptasks li::before { content: '→'; position: absolute; left: 0; color: var(--caramel); font-size: 10px; top: 10px; }
-.progress-row { display: flex; gap: 5px; margin-top: 20px; }
-.pip { height: 3px; flex: 1; background: var(--black10); border-radius: 3px; }
-.pip.on { background: var(--amber); }
+/* MODULE BREAKDOWN TABLE */
+.mbr-table { width: 100%; border-collapse: collapse; }
+.mbr-table thead tr { border-bottom: 1px solid var(--black10); }
+.mbr-table th { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); padding: 10px 16px 10px 0; text-align: left; font-weight: 400; }
+.mbr-table th:last-child { text-align: right; padding-right: 0; }
+.mbr-table tbody tr { border-bottom: 1px solid var(--black10); transition: background 0.15s; }
+.mbr-table tbody tr:hover { background: rgba(22,22,22,0.03); }
+.mbr-table tbody tr:last-child { border-bottom: none; }
+.mbr-table td { padding: 20px 16px 20px 0; vertical-align: top; }
+.mbr-table td:last-child { text-align: right; padding-right: 0; }
+.mbr-num { font-size: 10px; color: var(--ts); font-family: monospace; white-space: nowrap; width: 32px; }
+.mbr-name { font-family: var(--serif); font-size: 17px; margin-bottom: 5px; }
+.mbr-desc { font-size: 12px; color: var(--ts); line-height: 1.65; }
+.mbr-price { font-family: var(--serif); font-size: 20px; color: var(--caramel); font-style: italic; white-space: nowrap; padding-top: 4px; }
+.mbr-total { border-top: 1px solid var(--black10) !important; }
+.mbr-total td { padding-top: 20px; }
+.mbr-total .mbr-price { color: var(--tp); font-size: 22px; }
 
 /* TIMELINE */
 .timeline { display: flex; flex-direction: column; gap: 0; }
@@ -243,10 +235,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
   .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
   .module-grid { grid-template-columns: 1fr; }
-  .phase-wrap { grid-template-columns: 1fr; }
-  .phase-list { border-right: none; border-bottom: 1px solid var(--black10); display: grid; grid-template-columns: repeat(3, 1fr); }
-  .ptab { padding: 12px 14px; border-bottom: none; border-right: 1px solid var(--black10); flex-direction: column; align-items: flex-start; }
-  .ptab:last-child { border-right: none; }
   .bundle-card { flex-direction: column; }
   .bundle-right { text-align: left; }
   .terms-grid { grid-template-columns: 1fr; }
@@ -512,95 +500,80 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </div>
 </div>
 
-<!-- ENGAGEMENT PHASES -->
+<!-- MODULE BREAKDOWN -->
 <section class="sec">
   <div class="sec-hd">
     <span class="sec-num">02</span>
-    <span class="sec-tag">Engagement</span>
+    <span class="sec-tag">Price Breakdown</span>
   </div>
-  <div class="sec-title reveal">How we <em>work.</em></div>
-  <p class="sec-lead reveal d1">Three phases from first pixel to final handover — with weekly check-ins throughout.</p>
+  <div class="sec-title reveal">Module-by-module <em>breakdown.</em></div>
+  <p class="sec-lead reveal d1">Each module is scoped and priced independently. Build any combination — or go all-in with the bundle.</p>
 
-  <div class="phase-wrap reveal d2">
-    <div class="phase-list">
-      <div class="ptab active" onclick="switchPhase(0)">
-        <div>
-          <div class="pn">Phase 01</div>
-          <div class="pm">Prototype</div>
-          <div class="pd">1 week</div>
-        </div>
-        <div class="pip-indicator">›</div>
-      </div>
-      <div class="ptab" onclick="switchPhase(1)">
-        <div>
-          <div class="pn">Phase 02</div>
-          <div class="pm">Build</div>
-          <div class="pd">4–5 weeks</div>
-        </div>
-      </div>
-      <div class="ptab" onclick="switchPhase(2)">
-        <div>
-          <div class="pn">Phase 03</div>
-          <div class="pm">Handover</div>
-          <div class="pd">Final week</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ppanel active" id="ph0">
-      <div class="pp-step">Phase 01</div>
-      <h3>Interactive Prototype</h3>
-      <p>We start with design — not code. Every screen across all six modules gets designed and wired into a fully clickable prototype. You walk through the entire product before a single line of code is written.</p>
-      <ul class="ptasks">
-        <li>Brand-aligned design system (colour, type, spacing)</li>
-        <li>All guest app screens — menu, ordering, loyalty, tracking</li>
-        <li>All admin screens — orders, menu, inventory, offers, dashboard</li>
-        <li>Clickable Figma prototype for team walkthrough</li>
-        <li>Revisions based on your feedback before build begins</li>
-      </ul>
-      <div class="progress-row">
-        <div class="pip on"></div>
-        <div class="pip"></div>
-        <div class="pip"></div>
-      </div>
-    </div>
-
-    <div class="ppanel" id="ph1">
-      <div class="pp-step">Phase 02</div>
-      <h3>Full Build</h3>
-      <p>Approved designs go into development. All six modules built and integrated — guest app, admin panel, loyalty engine, inventory, and reporting. Weekly check-ins keep everyone aligned.</p>
-      <ul class="ptasks">
-        <li>Guest app — menu browse, ordering, live tracking</li>
-        <li>Loyalty engine — points, tiers, rewards, birthday offers</li>
-        <li>Admin — live order queue and menu management</li>
-        <li>Admin — inventory tracking, adjustments, alerts</li>
-        <li>Admin — offers config, customer view, sales dashboard</li>
-        <li>Weekly progress check-ins throughout</li>
-      </ul>
-      <div class="progress-row">
-        <div class="pip on"></div>
-        <div class="pip on"></div>
-        <div class="pip"></div>
-      </div>
-    </div>
-
-    <div class="ppanel" id="ph2">
-      <div class="pp-step">Phase 03</div>
-      <h3>Handover &amp; Support</h3>
-      <p>We walk through the complete product with your team, set up the admin, and make sure everyone is confident running it day-to-day. A support window follows for any questions or tweaks.</p>
-      <ul class="ptasks">
-        <li>Full team walkthrough of all admin features</li>
-        <li>Menu, loyalty, and offers configured for go-live</li>
-        <li>Documentation for managing day-to-day operations</li>
-        <li>Post-launch support window</li>
-      </ul>
-      <div class="progress-row">
-        <div class="pip on"></div>
-        <div class="pip on"></div>
-        <div class="pip on"></div>
-      </div>
-    </div>
-  </div>
+  <table class="mbr-table reveal d2">
+    <thead>
+      <tr>
+        <th style="width:32px;"></th>
+        <th>Module</th>
+        <th>Deliverables</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mbr-num">01</td>
+        <td>
+          <div class="mbr-name">Experience &amp; UI Design</div>
+        </td>
+        <td class="mbr-desc">Brand-aligned design system · All customer &amp; admin screens · Interactive clickable prototype</td>
+        <td><div class="mbr-price">₹18,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">02</td>
+        <td>
+          <div class="mbr-name">Menu &amp; Ordering</div>
+        </td>
+        <td class="mbr-desc">Visual menu with photos · Dine-in &amp; takeaway ordering · Order-from-anywhere pickup · Live tracking</td>
+        <td><div class="mbr-price">₹22,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">03</td>
+        <td>
+          <div class="mbr-name">Loyalty &amp; Rewards</div>
+        </td>
+        <td class="mbr-desc">Points &amp; tiers · Redeemable rewards catalogue · Birthday discounts · Happy-hour offers</td>
+        <td><div class="mbr-price">₹16,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">04</td>
+        <td>
+          <div class="mbr-name">Admin · Orders &amp; Menu</div>
+        </td>
+        <td class="mbr-desc">Live order queue with status updates · Menu &amp; price management · Sold-out toggles</td>
+        <td><div class="mbr-price">₹16,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">05</td>
+        <td>
+          <div class="mbr-name">Admin · Inventory</div>
+        </td>
+        <td class="mbr-desc">Stock list by category · Quick +/− adjustments · Adjustment log · Low-stock alerts</td>
+        <td><div class="mbr-price">₹14,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">06</td>
+        <td>
+          <div class="mbr-name">Admin · Offers, Loyalty &amp; Dashboard</div>
+        </td>
+        <td class="mbr-desc">Happy-hour &amp; birthday offer config · Customer &amp; loyalty view · Sales dashboard &amp; reports</td>
+        <td><div class="mbr-price">₹14,000</div></td>
+      </tr>
+      <tr class="mbr-total">
+        <td class="mbr-num"></td>
+        <td colspan="2" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ts);padding-top:20px;">All 6 modules · Bundle price</td>
+        <td><div class="mbr-price" style="color:var(--caramel);font-size:26px;">₹85,000</div></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- TIMELINE -->
@@ -678,18 +651,59 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     </div>
   </div>
 
-  <div class="pay-cards reveal d2">
-    <div class="pay-card">
-      <div class="pay-card-label">50% Advance</div>
-      <div class="pay-card-amt">₹42,500</div>
-      <div class="pay-card-note">Due before work begins</div>
-    </div>
-    <div class="pay-card">
-      <div class="pay-card-label">50% On Delivery</div>
-      <div class="pay-card-amt">₹42,500</div>
-      <div class="pay-card-note">Due before handover</div>
-    </div>
-  </div>
+  <table class="mbr-table reveal d2" style="margin-top:28px;">
+    <thead>
+      <tr>
+        <th style="width:32px;"></th>
+        <th>Module</th>
+        <th>Due</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mbr-num">01</td>
+        <td><div class="mbr-name" style="font-size:15px;">Experience &amp; UI Design</div></td>
+        <td class="mbr-desc">Before design begins</td>
+        <td><div class="mbr-price">₹18,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">02</td>
+        <td><div class="mbr-name" style="font-size:15px;">Menu &amp; Ordering</div></td>
+        <td class="mbr-desc">On module handover</td>
+        <td><div class="mbr-price">₹22,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">03</td>
+        <td><div class="mbr-name" style="font-size:15px;">Loyalty &amp; Rewards</div></td>
+        <td class="mbr-desc">On module handover</td>
+        <td><div class="mbr-price">₹16,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">04</td>
+        <td><div class="mbr-name" style="font-size:15px;">Admin · Orders &amp; Menu</div></td>
+        <td class="mbr-desc">On module handover</td>
+        <td><div class="mbr-price">₹16,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">05</td>
+        <td><div class="mbr-name" style="font-size:15px;">Admin · Inventory</div></td>
+        <td class="mbr-desc">On module handover</td>
+        <td><div class="mbr-price">₹14,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">06</td>
+        <td><div class="mbr-name" style="font-size:15px;">Admin · Offers, Loyalty &amp; Dashboard</div></td>
+        <td class="mbr-desc">On final handover</td>
+        <td><div class="mbr-price">₹14,000</div></td>
+      </tr>
+      <tr class="mbr-total">
+        <td class="mbr-num"></td>
+        <td colspan="2" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ts);padding-top:20px;">Total · Bundle price</td>
+        <td><div class="mbr-price" style="color:var(--caramel);font-size:26px;">₹85,000</div></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- CTA -->
@@ -710,12 +724,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 </footer>
 
 <script>
-// Phase tabs
-function switchPhase(i) {
-  document.querySelectorAll('.ptab').forEach((t, j) => t.classList.toggle('active', j === i));
-  document.querySelectorAll('.ppanel').forEach((p, j) => p.classList.toggle('active', j === i));
-}
-
 // Scroll reveal
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });

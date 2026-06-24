@@ -337,7 +337,7 @@ function KaartFooter() {
         <div className="serif" style={{ fontSize: 'clamp(60px, 16vw, 240px)', lineHeight: 0.85, color: K.cream, fontStyle: 'italic', letterSpacing: '-0.04em' }}>kaart*</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 50, paddingTop: 24, borderTop: '1px solid #ffffff1c', flexWrap: 'wrap', gap: 16 }}>
           <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>© Kaart Studio · A <Link to="/" style={{ color: K.green }} className="u-link">Crestify</Link> studio</span>
-          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Shopify-only · 7 stores live · Taking new projects</span>
+          <span className="mono" style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Shopify-only · 50+ stores shipped · Taking new projects</span>
         </div>
       </div>
     </footer>

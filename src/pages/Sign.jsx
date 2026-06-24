@@ -43,7 +43,7 @@ export default function Sign() {
         <div className="serif" style={{ fontSize: 36 }}>Link not found.</div>
         <p className="body" style={{ color: 'var(--ink-3)', maxWidth: '40ch', textAlign: 'center' }}>
           This signing link appears to be invalid or expired. Please contact{' '}
-          <a href="mailto:hello@crestify.co" style={{ color: 'var(--accent)' }}>hello@crestify.co</a>{' '}
+          <a href="mailto:contact@crestify.co" style={{ color: 'var(--accent)' }}>contact@crestify.co</a>{' '}
           for a new one.
         </p>
       </div>

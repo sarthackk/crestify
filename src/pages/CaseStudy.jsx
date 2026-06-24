@@ -43,6 +43,13 @@ const DETAILS = {
     stack: ['Figma', 'React', 'Framer Motion', 'Tailwind CSS'],
     quote: { text: 'We shipped the same features. The redesign was what made people finally get it.', attr: 'CEO, Quickhunt' },
   },
+  'hubble-health': {
+    challenge: "Hubble Health had a compelling clinical story — Kanpur's first zero-radiation diagnostic centre offering fetal medicine, radiology, and pathology at a level the city had never seen. But their digital presence didn't match their clinical ambition. Patients couldn't easily find services, understand what made Hubble different, or book an appointment without calling.",
+    solution: "We designed and built the full website with a focus on trust and clarity. A dark, authoritative hero anchored around 'Advanced. Accurate. Assured.' leads into service pages for each specialty. Doctor profiles build credibility. An opening-hours widget tells patients at a glance if the centre is open. The appointment booking flow was kept minimal — one decision, one click.",
+    outcome: 'The site went live at hubblehealth.in and became the primary patient acquisition channel for the centre. Patients now arrive at consultations already familiar with Hubble\'s specialties and doctors — reducing the time clinical staff spend on introductory explanations.',
+    stack: ['React', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+    quote: { text: "Patients tell us they booked because the website felt like we knew what we were doing. That's exactly what we were going for.", attr: 'Founder, Hubble Health' },
+  },
   mockzy: {
     challenge: "D2C brands need professional product imagery for every SKU — on white backgrounds, in lifestyle settings, in video. A photo studio shoot costs thousands and takes weeks. AI image tools require prompt expertise and produce inconsistent results. The gap between \"we need more content\" and \"we have more content\" was too expensive.",
     solution: "We built Mockzy: upload a smartphone photo of your product, and the AI pipeline generates photorealistic mockups, lifestyle scenes, and short-form video content — no prompting required. Workspace management lets teams organise by brand and campaign. Quick-start templates handle the most common use cases. Batch mode generates an entire catalog overnight.",
@@ -105,12 +112,22 @@ export default function CaseStudy() {
 
       {/* Cover image */}
       <div className="container" style={{ marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-        <Placeholder
-          label={`${c.client.toUpperCase()} · ${c.sector}`}
-          dim="2400 × 1200"
-          ratio="24 / 10"
-          dark={c.dark}
-        />
+        {(c.img2 || c.img) ? (
+          <div style={{ aspectRatio: '24 / 10', borderRadius: 6, overflow: 'hidden', background: c.dark ? '#0e0e14' : '#f0ede4' }}>
+            <img
+              src={c.img2 || c.img}
+              alt={`${c.client} — ${c.sector}`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        ) : (
+          <Placeholder
+            label={`${c.client.toUpperCase()} · ${c.sector}`}
+            dim="2400 × 1200"
+            ratio="24 / 10"
+            dark={c.dark}
+          />
+        )}
       </div>
 
       {/* Body */}
@@ -205,8 +222,8 @@ export default function CaseStudy() {
             <Link to="/contact" className="btn" style={{ background: 'var(--accent)', color: 'white', fontSize: 16, padding: '18px 28px' }}>
               Brief us <span className="arr">→</span>
             </Link>
-            <a href="mailto:hello@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-              hello@crestify.co
+            <a href="mailto:contact@crestify.co" className="mono" style={{ color: '#9c9b95', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+              contact@crestify.co
             </a>
           </div>
         </div>

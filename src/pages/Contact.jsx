@@ -36,22 +36,35 @@ function HeroContact() {
 }
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: '', company: '', email: '', service: '', budget: '', timeline: '', brief: '' });
+  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', service: '', budget: '', timeline: '', brief: '' });
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [refNum] = useState(() => Math.floor(Math.random() * 9000 + 1000));
 
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw9sYMSCxNAVzLqS8MxAhEqQchcZ349WIl1GukDyymNDUfHE3I0RUaHhBf1IVZsNtdc/exec';
+
   const services = ['Commerce systems', 'Software platforms', 'Embedded team', 'Not sure yet'];
-  const budgets = ['<$50k', '$50k–$150k', '$150k–$500k', '$500k+'];
+  const budgets = ['₹50k–₹1L', '₹1L–₹3L', '₹3L–₹5L', '₹5L–₹10L', '₹10L+'];
   const timelines = ['ASAP', 'Next quarter', '6+ months out', 'Just exploring'];
 
   const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
   const isInvalid = (k) => touched[k] && !form[k];
   const canSubmit = form.name && form.email && form.brief && form.brief.length > 20;
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!canSubmit) { setTouched({ name: true, email: true, brief: true }); return; }
+    setLoading(true);
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, source: 'Crestify Contact' }),
+      });
+    } catch (_) { /* no-cors — data is sent regardless */ }
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -100,11 +113,11 @@ function ContactForm() {
           <aside className="col-4">
             <Eyebrow index="02">Brief us</Eyebrow>
             <p className="serif" style={{ fontSize: 26, lineHeight: 1.18, marginTop: 22, fontStyle: 'italic' }}>
-              Six fields. The more specific, the faster we can say yes or no.
+              Seven fields. The more specific, the faster we can say yes or no.
             </p>
             <div style={{ marginTop: 36, padding: 20, border: '1px solid var(--line-strong)', borderRadius: 4 }}>
               <div className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Or skip the form</div>
-              <a href="mailto:hello@crestify.co" className="serif" style={{ fontSize: 20, marginTop: 8, display: 'block', textDecoration: 'underline' }}>hello@crestify.co</a>
+              <a href="mailto:contact@crestify.co" className="serif" style={{ fontSize: 20, marginTop: 8, display: 'block', textDecoration: 'underline' }}>contact@crestify.co</a>
               <div className="small" style={{ marginTop: 12 }}>NDA available on request. Encrypted briefs accepted.</div>
             </div>
           </aside>
@@ -121,36 +134,42 @@ function ContactForm() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={labelStyle}>03 / Email *</label>
-              <input type="email" style={{ ...fieldStyle, borderColor: isInvalid('email') ? 'var(--accent)' : 'var(--line-strong)' }} value={form.email} onChange={e => update('email', e.target.value)} onBlur={() => setTouched(t => ({ ...t, email: true }))} placeholder="jane@acme.co" />
+            <div className="grid-2" style={{ gap: 28 }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <label style={labelStyle}>03 / Email *</label>
+                <input type="email" style={{ ...fieldStyle, borderColor: isInvalid('email') ? 'var(--accent)' : 'var(--line-strong)' }} value={form.email} onChange={e => update('email', e.target.value)} onBlur={() => setTouched(t => ({ ...t, email: true }))} placeholder="jane@acme.co" />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <label style={labelStyle}>04 / Phone</label>
+                <input type="tel" style={fieldStyle} value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+91 98765 43210" />
+              </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={labelStyle}>04 / What kind of help?</label>
+              <label style={labelStyle}>05 / What kind of help?</label>
               <Pills field="service" options={services} />
             </div>
 
             <div className="grid-2" style={{ gap: 28 }}>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <label style={labelStyle}>05 / Budget range</label>
+                <label style={labelStyle}>06 / Budget range</label>
                 <Pills field="budget" options={budgets} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <label style={labelStyle}>06 / Timeline</label>
+                <label style={labelStyle}>07 / Timeline</label>
                 <Pills field="timeline" options={timelines} />
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={labelStyle}>07 / The brief * <span style={{ color: 'var(--ink-4)', textTransform: 'none', letterSpacing: 0 }}>· min 20 chars · {form.brief.length}</span></label>
+              <label style={labelStyle}>08 / The brief * <span style={{ color: 'var(--ink-4)', textTransform: 'none', letterSpacing: 0 }}>· min 20 chars · {form.brief.length}</span></label>
               <textarea rows={6} style={{ ...fieldStyle, resize: 'vertical', borderColor: isInvalid('brief') ? 'var(--accent)' : 'var(--line-strong)' }} value={form.brief} onChange={e => update('brief', e.target.value)} onBlur={() => setTouched(t => ({ ...t, brief: true }))} placeholder="What are you trying to ship? What's blocking you? What does success look like in 90 days?" />
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap', paddingTop: 8 }}>
               <div className="small">By sending this you agree to our <a href="#" style={{ textDecoration: 'underline' }}>privacy notice</a>. We don't share briefs.</div>
-              <button type="submit" className="btn btn-accent" style={{ fontSize: 16, padding: '18px 28px', opacity: canSubmit ? 1 : 0.5 }}>
-                Send the brief <span className="arr">→</span>
+              <button type="submit" className="btn btn-accent" disabled={loading} style={{ fontSize: 16, padding: '18px 28px', opacity: canSubmit && !loading ? 1 : 0.5 }}>
+                {loading ? 'Sending…' : <> Send the brief <span className="arr">→</span> </>}
               </button>
             </div>
           </form>
@@ -162,8 +181,8 @@ function ContactForm() {
 
 function ContactSecondary() {
   const blocks = [
-    { eyebrow: 'For press', t: 'press@crestify.co', d: 'Founder bios, hi-res portraits, and brand assets on request.' },
-    { eyebrow: 'For partnerships', t: 'partners@crestify.co', d: 'Tooling vendors, agencies seeking referrals, ecosystem partners.' },
+    { eyebrow: 'For press', t: 'team@crestify.co', d: 'Founder bios, hi-res portraits, and brand assets on request.' },
+    { eyebrow: 'For partnerships', t: 'contact@crestify.co', d: 'Tooling vendors, agencies seeking referrals, ecosystem partners.' },
     { eyebrow: 'For careers', t: 'team@crestify.co', d: 'We hire 1–2 senior operators a year. Always reading.' },
   ];
   return (
@@ -192,10 +211,10 @@ export default function Contact() {
   return (
     <div className="page">
       <SEO
-        title="Start a Project — Work With Crestify"
-        description="Tell us what you're building. We'll scope it, design it, and ship it. Founder-to-founder, direct line. No lengthy RFP process."
+        title="Work With Crestify | The Kaart Studio | Shopify Agency for D2C Brands"
+        description="Start a conversation with Crestify (The Kaart Studio). We work with D2C brands on Shopify design, development, migration, and growth — plus SaaS and product development. Founder-to-founder, direct line."
         canonical="/contact"
-        keywords="hire product developers India, start a tech project, work with Crestify, product development inquiry"
+        keywords="work with crestify, hire crestify studio, kaart studio contact, hire product developers India, Shopify agency inquiry"
       />
       <Nav />
       <HeroContact />

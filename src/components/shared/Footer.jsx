@@ -25,16 +25,17 @@ const COLS = [
     heading: 'Learn',
     links: [
       { label: 'Blog', to: '/blog' },
-      { label: 'Shopify Dev Guide', to: '/blog/how-to-choose-a-shopify-development-agency-india' },
-      { label: 'MVP Timeline Guide', to: '/blog/mvp-development-how-long-does-it-take' },
-      { label: 'D2C Metrics Guide', to: '/blog/d2c-brand-metrics-that-actually-matter' },
+      { label: 'SaaS Directory', to: '/directory' },
+      { label: 'About Crestify', to: '/blog/about-crestify-shopify-agency' },
+      { label: 'Crestify Studio Reviews', to: '/blog/crestify-studio-reviews' },
+      { label: 'Why Choose Crestify', to: '/blog/why-choose-crestify-shopify-agency' },
       { label: 'Sarthak Tiwari', to: '/sarthak' },
     ],
   },
   {
     heading: 'Contact',
     links: [
-      { label: 'hello@crestify.co', href: 'mailto:hello@crestify.co' },
+      { label: 'contact@crestify.co', href: 'mailto:contact@crestify.co' },
       { label: 'Start a project', to: '/contact' },
       { label: 'Press inquiries', href: 'mailto:press@crestify.co' },
       { label: '+91 7992028684', href: 'tel:+917992028684' },
@@ -48,7 +49,7 @@ export default function Footer() {
       <div className="footer-inner">
 
         {/* Top: brand blurb + nav columns */}
-        <div className="footer-top" style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', alignItems: 'start' }}>
+        <div className="footer-top" style={{ alignItems: 'start' }}>
 
           {/* Brand column */}
           <div style={{ gridColumn: '1 / 2' }}>
@@ -57,9 +58,9 @@ export default function Footer() {
               A founder-led execution studio building software and ecommerce systems with small, accountable teams.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 20, flexWrap: 'wrap' }}>
-              <span className="tag" style={{ borderColor: '#ffffff22', color: '#9c9b95', fontSize: 10 }}>EST. 2021</span>
+              <span className="tag" style={{ borderColor: '#ffffff22', color: '#9c9b95', fontSize: 10 }}>EST. 2023</span>
               <span className="tag" style={{ borderColor: '#ffffff22', color: '#9c9b95', fontSize: 10 }}>Remote · Global</span>
-              <span className="tag" style={{ borderColor: '#ffffff22', color: '#9c9b95', fontSize: 10 }}>40+ shipped</span>
+              <span className="tag" style={{ borderColor: '#ffffff22', color: '#9c9b95', fontSize: 10 }}>50+ shipped</span>
             </div>
           </div>
 
@@ -86,7 +87,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <span>© 2021–2026 Crestify Studio</span>
+          <span>© 2023–2026 Crestify Studio</span>
           <span>Solution-first · Founder-led</span>
           <span>v3.1 — updated April 2026</span>
         </div>
