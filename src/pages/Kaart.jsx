@@ -265,7 +265,15 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'UGC', v: 'Creator sourcing' }, { k: 'Full', v: 'Content engine' }, { k: 'Paid', v: 'Ads & organic' }],
   },
   {
-    n: '04', size: 'medium',
+    n: '04', size: 'large',
+    name: 'Common Time', sector: 'Café · E-commerce', tag: 'Custom Design · Dev',
+    href: 'https://commontime.in', img: '/commontime.png',
+    headline: 'Custom-designed and built the e-commerce store for a specialty coffee brand — elevated rituals, online.',
+    summary: "Common Time is a specialty coffee and café brand. We designed and developed their e-commerce site end to end — a warm, editorial storefront that sells beans and merch while carrying the calm, considered feel of the café into every screen.",
+    metrics: [{ k: 'Custom', v: 'Design & build' }, { k: 'E-commerce', v: 'Shop & order' }, { k: 'Live', v: 'commontime.in' }],
+  },
+  {
+    n: '05', size: 'medium',
     name: 'Berserk Mode', sector: 'Fitness · Compression Wear', tag: 'Theme dev · Integrations',
     href: 'https://berserkmode.com', img: '/bersekr.png',
     headline: 'High-performance Shopify theme for India\'s premium gym compression wear — built for real athletes.',
@@ -273,7 +281,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify theme' }, { k: '9+', v: 'Influencer flows' }, { k: 'Live', v: 'Pan-India' }],
   },
   {
-    n: '05', size: 'medium',
+    n: '06', size: 'medium',
     name: 'Veda Jewel', sector: 'Luxury Jewellery', tag: 'Embedded dev support',
     href: 'https://vedajewel.co', img: '/veda.png',
     headline: 'Embedded inside Veda\'s team to build and scale a heritage jewellery store where pieces sell for up to ₹7.4 lakhs.',
@@ -281,7 +289,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: '₹7.4L', v: 'Top ticket item' }, { k: 'Heritage', v: 'Luxury store' }, { k: 'Embedded', v: 'Dev support' }],
   },
   {
-    n: '06', size: 'medium',
+    n: '07', size: 'medium',
     name: 'James Aston', sector: 'Leather Goods · Fashion', tag: 'Custom Shopify dev',
     href: 'https://jamesaston.in', img: '/jamesaston.png',
     headline: 'Custom storefront for India\'s premium vegetable-tanned leather brand — built to age as well as their products.',
@@ -289,7 +297,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'Corporate', v: 'Gifting flow' }, { k: 'Live', v: 'Pan-India' }],
   },
   {
-    n: '07', size: 'medium',
+    n: '08', size: 'medium',
     name: 'Goddess Naturals', sector: 'Intimate Wellness', tag: 'Custom Shopify build',
     href: 'https://goddessnaturals.com', img: '/goddess naturals.png',
     headline: 'A premium intimate wellness brand needed a storefront as clean and science-backed as their formulas.',
@@ -297,7 +305,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify store' }, { k: 'cGMP', v: 'Trust signals' }, { k: 'Live', v: 'USA market' }],
   },
   {
-    n: '08', size: 'medium',
+    n: '09', size: 'medium',
     name: 'Paradise Pleasure', sector: 'Adult Wellness · Tech', tag: 'Custom Shopify dev',
     href: 'https://paradisepleasureproducts.com', img: '/paradise.png',
     headline: 'A tech-forward adult wellness brand — app-controlled, LED-integrated products — needed a store as innovative as the hardware.',
@@ -305,7 +313,7 @@ const KAART_PROJECTS = [
     metrics: [{ k: 'Custom', v: 'Shopify dev' }, { k: '18+', v: 'Age gating' }, { k: 'Live', v: 'USA + Global' }],
   },
   {
-    n: '09', size: 'large',
+    n: '10', size: 'large',
     name: 'Furnicheer', sector: 'Furniture · Heritage Crafts', tag: 'Shopify store build',
     href: 'https://furnicheer.com', img: '/furnicheer.png',
     headline: 'A heritage furniture brand featured in Architectural Digest needed a store that could sell ₹60k pieces the way they deserve.',
