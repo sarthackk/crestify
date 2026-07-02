@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Daroot — Custom Shopify Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #191410;
+  --black10: rgba(25,20,16,0.1);
+  --orange:  #C14A2B;
+  --cream:   #F4EFE6;
+  --white:   #FFFFFF;
+  --tp:      #14100C;
+  --ts:      #4A443C;
+  --caramel: #A9722E;
+  --amber:   #C98A34;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.40s; }
+.reveal.d6 { transition-delay: 0.48s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 36s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(244,239,230,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--pad); background: rgba(244,239,230,0.88);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--caramel); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero {
+  padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px);
+  border-bottom: 1px solid var(--black10);
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(169,114,46,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(193,74,43,0.06) 0%, transparent 70%);
+}
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts);
+  margin-bottom: 32px; padding: 6px 14px;
+  border: 1px solid var(--black10); border-radius: 40px;
+  background: rgba(244,239,230,0.6);
+}
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 28px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 500px; margin-bottom: 52px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange  { color: var(--orange); }
+.hm-v.amber   { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar {
+  background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  position: relative; overflow: hidden;
+}
+.dark-bar::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(169,114,46,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(32px, 5vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--amber); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 560px; line-height: 1.8; margin-bottom: 40px; }
+
+/* MODULE GRID */
+.module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.mod { background: var(--cream); padding: 28px 32px; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.mod:hover { border-left-color: var(--caramel); background: #fff; }
+.mod-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); }
+.mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+.mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.mod-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.mod:hover .mod-tag { border-color: rgba(169,114,46,0.35); color: var(--caramel); }
+.mod-price { font-family: var(--serif); font-size: 22px; color: var(--caramel); font-style: italic; margin-top: auto; padding-top: 14px; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(169,114,46,0.12) 0%, transparent 60%);
+}
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--amber); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 36px; max-width: 480px; line-height: 1.7; }
+
+/* MODULE TABLE */
+.mod-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
+.mod-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.mod-table th { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 10px 14px 10px 0; text-align: left; font-weight: 400; }
+.mod-table th:last-child { text-align: right; padding-right: 0; }
+.mod-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; }
+.mod-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.mod-table td { font-size: 13px; color: rgba(255,255,255,0.6); padding: 14px 14px 14px 0; vertical-align: top; }
+.mod-table td:first-child { font-size: 10px; color: rgba(255,255,255,0.25); font-family: monospace; white-space: nowrap; padding-right: 20px; width: 40px; }
+.mod-table td:last-child { text-align: right; padding-right: 0; font-family: var(--serif); font-size: 16px; color: rgba(255,255,255,0.8); font-style: italic; white-space: nowrap; }
+.mod-table tbody tr:last-child td { border-bottom: none; }
+.mod-table .total-row td { color: rgba(255,255,255,0.35); padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-family: var(--sans); }
+.mod-table .total-row td:last-child { color: rgba(255,255,255,0.45); font-size: 13px; }
+
+/* BUNDLE CARD */
+.bundle-card {
+  background: rgba(169,114,46,0.1); border: 1px solid rgba(169,114,46,0.3);
+  border-radius: 6px; padding: 32px 36px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.bundle-left {}
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(169,114,46,0.18); color: var(--amber); border: 1px solid rgba(169,114,46,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 380px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-was { font-size: 12px; color: rgba(255,255,255,0.25); text-decoration: line-through; margin-bottom: 4px; }
+.bundle-price { font-family: var(--serif); font-size: clamp(44px, 6vw, 60px); color: var(--amber); line-height: 1; letter-spacing: -0.02em; }
+.bundle-save { font-size: 11px; color: rgba(169,114,46,0.8); margin-top: 6px; }
+
+/* MODULE BREAKDOWN TABLE */
+.mbr-table { width: 100%; border-collapse: collapse; }
+.mbr-table thead tr { border-bottom: 1px solid var(--black10); }
+.mbr-table th { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); padding: 10px 16px 10px 0; text-align: left; font-weight: 400; }
+.mbr-table th:last-child { text-align: right; padding-right: 0; }
+.mbr-table tbody tr { border-bottom: 1px solid var(--black10); transition: background 0.15s; }
+.mbr-table tbody tr:hover { background: rgba(22,22,22,0.03); }
+.mbr-table tbody tr:last-child { border-bottom: none; }
+.mbr-table td { padding: 20px 16px 20px 0; vertical-align: top; }
+.mbr-table td:last-child { text-align: right; padding-right: 0; }
+.mbr-num { font-size: 10px; color: var(--ts); font-family: monospace; white-space: nowrap; width: 32px; }
+.mbr-name { font-family: var(--serif); font-size: 17px; margin-bottom: 5px; }
+.mbr-desc { font-size: 12px; color: var(--ts); line-height: 1.65; }
+.mbr-price { font-family: var(--serif); font-size: 20px; color: var(--caramel); font-style: italic; white-space: nowrap; padding-top: 4px; }
+.mbr-total { border-top: 1px solid var(--black10) !important; }
+.mbr-total td { padding-top: 20px; }
+.mbr-total .mbr-price { color: var(--tp); font-size: 22px; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-row { display: grid; grid-template-columns: 100px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--black10); align-items: start; }
+.tl-row:last-child { border-bottom: none; }
+.tl-week { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-weight: 500; padding-top: 3px; }
+.tl-body {}
+.tl-name { font-family: var(--serif); font-size: 17px; margin-bottom: 4px; }
+.tl-desc { font-size: 12px; color: var(--ts); line-height: 1.7; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+
+/* PAYMENT CARDS */
+.pay-cards { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.pay-card { flex: 1; min-width: 180px; background: rgba(22,22,22,0.04); border: 1px solid var(--black10); border-radius: 5px; padding: 20px 22px; }
+.pay-card-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 6px; }
+.pay-card-amt { font-family: var(--serif); font-size: 24px; color: var(--caramel); font-style: italic; margin-bottom: 4px; }
+.pay-card-note { font-size: 11px; color: var(--ts); }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(169,114,46,0.1) 0%, transparent 70%);
+}
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--amber); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+/* FOOTER */
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+/* ── MOBILE ── */
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .module-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .mod-table td:first-child { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Daroot Carpets</span><span class="dot">·</span>
+    <span>Custom Shopify Store</span><span class="dot">·</span>
+    <span>5 Modules</span><span class="dot">·</span>
+    <span>100 Products</span><span class="dot">·</span>
+    <span>₹65,000 All-In Bundle</span><span class="dot">·</span>
+    <span>30–40 Days</span><span class="dot">·</span>
+    <span>Proposal · Valid 30 Days</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Daroot Carpets</span><span class="dot">·</span>
+    <span>Custom Shopify Store</span><span class="dot">·</span>
+    <span>5 Modules</span><span class="dot">·</span>
+    <span>100 Products</span><span class="dot">·</span>
+    <span>₹65,000 All-In Bundle</span><span class="dot">·</span>
+    <span>30–40 Days</span><span class="dot">·</span>
+    <span>Proposal · Valid 30 Days</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>30 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Daroot Carpets
+  </div>
+  <h1 class="reveal d1">
+    Custom<br>
+    <em>Shopify</em><br>
+    Store
+  </h1>
+  <p class="hero-sub reveal d2">
+    A bespoke storefront for Daroot — custom-designed, custom-built, and ready to sell. 100 products uploaded, payments and delivery wired in, and a shopping experience made for carpets: texture-forward, filterable by room, size, and material, and fast on every device.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Type</div>
+      <div class="hm-v">Shopify Store</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Bundle Price</div>
+      <div class="hm-v orange">₹65,000</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Timeline</div>
+      <div class="hm-v amber">30–40 Days</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal">
+    <div class="sn">5</div>
+    <div class="sl">Modules</div>
+  </div>
+  <div class="stat reveal d1">
+    <div class="sn">₹65k</div>
+    <div class="sl">All-in bundle</div>
+  </div>
+  <div class="stat reveal d2">
+    <div class="sn">100</div>
+    <div class="sl">Products uploaded</div>
+  </div>
+  <div class="stat stat-accent reveal d3">
+    <div class="sn">50/30/20</div>
+    <div class="sl">Payment split</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">00</span>
+    <span class="sec-tag">Overview</span>
+  </div>
+  <div class="sec-title reveal">A <em>custom-built</em> store,<br>made for Daroot.</div>
+  <p class="sec-lead reveal d1">
+    Daroot's store is designed and developed from scratch — not a template dressed up. Every page reflects the brand: the weave, the materials, the craft. Carpets are a considered, tactile purchase, so the storefront is built around that — large imagery, room and size filters, high-resolution zoom, and clear detail on every product.
+  </p>
+  <p class="sec-lead reveal d2" style="margin-bottom:0;">
+    Behind the storefront, payments, shipping, and delivery are fully integrated so orders flow from cart to doorstep without a hitch. Design, development, catalog, and integrations — delivered as one cohesive build, with a single handover.
+  </p>
+</section>
+
+<!-- SCOPE MODULES -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">01</span>
+    <span class="sec-tag">Scope &amp; Modules</span>
+  </div>
+  <div class="sec-title reveal">What we're <em>building.</em></div>
+  <p class="sec-lead reveal d1">Five focused modules, designed and developed as one store.</p>
+
+  <div class="module-grid">
+
+    <div class="mod reveal d1">
+      <div class="mod-num">01</div>
+      <h3>Custom UI/UX Design</h3>
+      <p>A brand-aligned design system using Daroot's colours, type, and logo. Every page designed from scratch — home, collections, product, cart, checkout, about, and contact — as an interactive, clickable prototype signed off before build.</p>
+      <div class="mod-tags">
+        <span class="mod-tag">Design System</span>
+        <span class="mod-tag">All Pages</span>
+        <span class="mod-tag">Prototype</span>
+      </div>
+      <div class="mod-price">₹18,000</div>
+    </div>
+
+    <div class="mod reveal d2">
+      <div class="mod-num">02</div>
+      <h3>Custom Shopify Theme Development</h3>
+      <p>A pixel-perfect custom theme built from the design — not an off-the-shelf template. Fully responsive, with size &amp; material variants, filtering by room, style, size and colour, high-res product zoom, sticky add-to-cart, and speed-optimised throughout.</p>
+      <div class="mod-tags">
+        <span class="mod-tag">Custom Theme</span>
+        <span class="mod-tag">Variants</span>
+        <span class="mod-tag">Filtering</span>
+        <span class="mod-tag">Responsive</span>
+      </div>
+      <div class="mod-price">₹24,000</div>
+    </div>
+
+    <div class="mod reveal d3">
+      <div class="mod-num">03</div>
+      <h3>Product Catalog · 100 Products</h3>
+      <p>Upload of 100 products with full variants (sizes, materials, colours), pricing, descriptions, and images. Organised into clean collections — by room, style, and size — with SEO-ready titles and meta on every product.</p>
+      <div class="mod-tags">
+        <span class="mod-tag">100 Products</span>
+        <span class="mod-tag">Variants</span>
+        <span class="mod-tag">Collections</span>
+        <span class="mod-tag">SEO Fields</span>
+      </div>
+      <div class="mod-price">₹14,000</div>
+    </div>
+
+    <div class="mod reveal d4">
+      <div class="mod-num">04</div>
+      <h3>Integrations · Payments, Shipping &amp; Delivery</h3>
+      <p>Payment gateway setup (UPI, cards, netbanking, wallets) and shipping &amp; delivery integration with rate calculation, order tracking, and COD if needed. Plus WhatsApp &amp; email order notifications and analytics (GA4, Meta Pixel).</p>
+      <div class="mod-tags">
+        <span class="mod-tag">Payments</span>
+        <span class="mod-tag">Shipping</span>
+        <span class="mod-tag">Delivery</span>
+        <span class="mod-tag">Notifications</span>
+        <span class="mod-tag">Analytics</span>
+      </div>
+      <div class="mod-price">₹12,000</div>
+    </div>
+
+    <div class="mod reveal d5">
+      <div class="mod-num">05</div>
+      <h3>Store Setup, QA &amp; Launch</h3>
+      <p>Domain connection, store settings, taxes, and policy pages (shipping, returns, privacy). On-page SEO basics, speed optimisation, and full cross-device QA — then go-live, a team walkthrough, and a post-launch support window.</p>
+      <div class="mod-tags">
+        <span class="mod-tag">Domain &amp; Settings</span>
+        <span class="mod-tag">Policies</span>
+        <span class="mod-tag">QA</span>
+        <span class="mod-tag">Go-Live</span>
+        <span class="mod-tag">Support</span>
+      </div>
+      <div class="mod-price">₹12,000</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">Investment</div>
+  <div class="inv-heading reveal d1">Transparent pricing,<br><em>one decision.</em></div>
+  <p class="inv-sub reveal d2">Each module is priced individually. Build the full store together and save ₹15,000 — no compromises on scope.</p>
+
+  <table class="mod-table reveal d1">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Module</th>
+        <th style="text-align:right;">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>Custom UI/UX Design</td>
+        <td>₹18,000</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>Custom Shopify Theme Development</td>
+        <td>₹24,000</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Product Catalog · 100 Products</td>
+        <td>₹14,000</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>Integrations · Payments, Shipping &amp; Delivery</td>
+        <td>₹12,000</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>Store Setup, QA &amp; Launch</td>
+        <td>₹12,000</td>
+      </tr>
+      <tr class="total-row">
+        <td></td>
+        <td>All modules priced individually</td>
+        <td>₹80,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="bundle-card reveal d2">
+    <div class="bundle-left">
+      <div class="bundle-badge">Recommended · All-In Bundle</div>
+      <div class="bundle-title">Build the full store together</div>
+      <p class="bundle-desc">One scope, one timeline, one team. Design, development, catalog, and integrations delivered as a single cohesive store — no handoff gaps, no integration overhead.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-was">₹80,000 if individual</div>
+      <div class="bundle-price">₹65,000</div>
+      <div class="bundle-save">Save ₹15,000</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE BREAKDOWN -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">02</span>
+    <span class="sec-tag">Price Breakdown</span>
+  </div>
+  <div class="sec-title reveal">Module-by-module <em>breakdown.</em></div>
+  <p class="sec-lead reveal d1">Each module is scoped and priced independently. Go all-in with the bundle for the full custom store.</p>
+
+  <table class="mbr-table reveal d2">
+    <thead>
+      <tr>
+        <th style="width:32px;"></th>
+        <th>Module</th>
+        <th>Deliverables</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mbr-num">01</td>
+        <td><div class="mbr-name">Custom UI/UX Design</div></td>
+        <td class="mbr-desc">Brand-aligned design system · All pages designed from scratch · Interactive clickable prototype</td>
+        <td><div class="mbr-price">₹18,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">02</td>
+        <td><div class="mbr-name">Custom Shopify Theme Development</div></td>
+        <td class="mbr-desc">Pixel-perfect custom theme · Size &amp; material variants · Room/size/colour filtering · High-res zoom · Fully responsive</td>
+        <td><div class="mbr-price">₹24,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">03</td>
+        <td><div class="mbr-name">Product Catalog · 100 Products</div></td>
+        <td class="mbr-desc">100 products with variants, pricing &amp; images · Collections by room, style &amp; size · SEO titles &amp; meta</td>
+        <td><div class="mbr-price">₹14,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">04</td>
+        <td><div class="mbr-name">Integrations · Payments, Shipping &amp; Delivery</div></td>
+        <td class="mbr-desc">Payment gateway · Shipping &amp; delivery with tracking &amp; COD · WhatsApp &amp; email notifications · GA4 &amp; Meta Pixel</td>
+        <td><div class="mbr-price">₹12,000</div></td>
+      </tr>
+      <tr>
+        <td class="mbr-num">05</td>
+        <td><div class="mbr-name">Store Setup, QA &amp; Launch</div></td>
+        <td class="mbr-desc">Domain, settings, taxes &amp; policies · SEO basics &amp; speed optimisation · Cross-device QA · Go-live &amp; support window</td>
+        <td><div class="mbr-price">₹12,000</div></td>
+      </tr>
+      <tr class="mbr-total">
+        <td class="mbr-num"></td>
+        <td colspan="2" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ts);padding-top:20px;">All 5 modules · Bundle price</td>
+        <td><div class="mbr-price" style="color:var(--caramel);font-size:26px;">₹65,000</div></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">03</span>
+    <span class="sec-tag">Timeline</span>
+  </div>
+  <div class="sec-title reveal">Delivered in <em>30–40 days.</em></div>
+
+  <div class="timeline">
+    <div class="tl-row reveal">
+      <div class="tl-week">Days 1–7</div>
+      <div class="tl-body">
+        <div class="tl-name">Design &amp; Prototype</div>
+        <div class="tl-desc">Design system, all page designs, and an interactive prototype. Feedback and sign-off before development begins.</div>
+      </div>
+    </div>
+    <div class="tl-row reveal d1">
+      <div class="tl-week">Days 8–24</div>
+      <div class="tl-body">
+        <div class="tl-name">Custom Theme Development</div>
+        <div class="tl-desc">The custom Shopify theme built from the design — variants, filtering, product zoom, cart &amp; checkout, fully responsive.</div>
+      </div>
+    </div>
+    <div class="tl-row reveal d2">
+      <div class="tl-week">Days 20–30</div>
+      <div class="tl-body">
+        <div class="tl-name">Product Upload &amp; Integrations</div>
+        <div class="tl-desc">100 products and collections loaded (runs in parallel), then payments, shipping &amp; delivery, notifications, and analytics wired in.</div>
+      </div>
+    </div>
+    <div class="tl-row reveal d3">
+      <div class="tl-week">Days 31–40</div>
+      <div class="tl-body">
+        <div class="tl-name">QA, Launch &amp; Handover</div>
+        <div class="tl-desc">Testing across devices and browsers, speed optimisation, policy &amp; SEO setup, go-live, a team walkthrough, and the support window opens.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">04</span>
+    <span class="sec-tag">Terms</span>
+  </div>
+  <div class="sec-title reveal">Simple <em>terms.</em></div>
+
+  <div class="terms-grid reveal d1">
+    <div class="tg">
+      <div class="tg-l">Pricing</div>
+      <div class="tg-v">Fixed price — no surprises</div>
+    </div>
+    <div class="tg">
+      <div class="tg-l">Currency</div>
+      <div class="tg-v">INR, taxes as applicable</div>
+    </div>
+    <div class="tg">
+      <div class="tg-l">Scope</div>
+      <div class="tg-v">Modules listed above</div>
+    </div>
+    <div class="tg">
+      <div class="tg-l">Externals</div>
+      <div class="tg-v">Shopify subscription, gateway &amp; app fees, domain at actuals</div>
+    </div>
+    <div class="tg">
+      <div class="tg-l">Content</div>
+      <div class="tg-v">Product images &amp; copy provided by Daroot</div>
+    </div>
+    <div class="tg">
+      <div class="tg-l">Check-ins</div>
+      <div class="tg-v">Weekly throughout the build</div>
+    </div>
+  </div>
+
+  <!-- PAYMENT SCHEDULE -->
+  <div class="pay-cards reveal d2">
+    <div class="pay-card">
+      <div class="pay-card-label">50% · To begin</div>
+      <div class="pay-card-amt">₹32,500</div>
+      <div class="pay-card-note">Kicks off design &amp; project setup</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">30% · Development handover</div>
+      <div class="pay-card-amt">₹19,500</div>
+      <div class="pay-card-note">On custom theme completion</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">20% · On go-live</div>
+      <div class="pay-card-amt">₹13,000</div>
+      <div class="pay-card-note">Final handover &amp; launch</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to build?</div>
+  <div class="cta-title reveal d1">Let's bring<br><em>Daroot</em> online.</div>
+  <p class="cta-sub reveal d2">Reply to confirm, and we'll get started within the week.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="fl">Crestify · crestify.co · Proposal for Daroot Carpets</span>
+  <span class="fr">Valid 30 days · Confidential</span>
+</footer>
+
+<script>
+// Scroll reveal
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
