@@ -126,6 +126,18 @@ nav {
 .mod:hover .mod-tag { border-color: rgba(169,114,46,0.35); color: var(--caramel); }
 .mod-price { font-family: var(--serif); font-size: 22px; color: var(--caramel); font-style: italic; margin-top: auto; padding-top: 14px; }
 
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(169,114,46,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(25,20,16,0.08); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; gap: 12px; }
+.work-name { font-family: var(--serif); font-size: 20px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); text-align: right; }
+.work-note { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); }
+
 /* INVESTMENT (DARK) */
 .inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
 .inv-section::before {
@@ -235,6 +247,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
   .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
   .module-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
   .bundle-card { flex-direction: column; }
   .bundle-right { text-align: left; }
   .terms-grid { grid-template-columns: 1fr; }
@@ -322,7 +335,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <div class="sl">Products uploaded</div>
   </div>
   <div class="stat stat-accent reveal d3">
-    <div class="sn">50/30/20</div>
+    <div class="sn">50/50</div>
     <div class="sl">Payment split</div>
   </div>
 </div>
@@ -362,7 +375,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <span class="mod-tag">All Pages</span>
         <span class="mod-tag">Prototype</span>
       </div>
-      <div class="mod-price">₹18,000</div>
     </div>
 
     <div class="mod reveal d2">
@@ -375,7 +387,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <span class="mod-tag">Filtering</span>
         <span class="mod-tag">Responsive</span>
       </div>
-      <div class="mod-price">₹24,000</div>
     </div>
 
     <div class="mod reveal d3">
@@ -388,7 +399,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <span class="mod-tag">Collections</span>
         <span class="mod-tag">SEO Fields</span>
       </div>
-      <div class="mod-price">₹14,000</div>
     </div>
 
     <div class="mod reveal d4">
@@ -402,7 +412,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <span class="mod-tag">Notifications</span>
         <span class="mod-tag">Analytics</span>
       </div>
-      <div class="mod-price">₹12,000</div>
     </div>
 
     <div class="mod reveal d5">
@@ -416,136 +425,109 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <span class="mod-tag">Go-Live</span>
         <span class="mod-tag">Support</span>
       </div>
-      <div class="mod-price">₹12,000</div>
     </div>
 
   </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">02</span>
+    <span class="sec-tag">Selected Work</span>
+  </div>
+  <div class="sec-title reveal">Stores we've <em>built.</em></div>
+  <p class="sec-lead reveal d1">We build premium e-commerce for brands that care about craft — jewellery, furniture, leather, home décor. A carpet brand sits right at home here.</p>
+
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://furnicheer.com" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/furnicheer.png" alt="Furnicheer" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Furnicheer</div>
+        <div class="work-sector">Furniture · Shopify<br><span class="work-note">Featured in Architectural Digest</span></div>
+      </div>
+    </a>
+    <a class="work-card reveal d2" href="https://giva.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Giva</div>
+        <div class="work-sector">Jewellery · Shopify<br><span class="work-note">Multi-store dev retainer</span></div>
+      </div>
+    </a>
+    <a class="work-card reveal d3" href="https://jamesaston.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/jamesaston.png" alt="James Aston" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">James Aston</div>
+        <div class="work-sector">Leather Goods · Shopify<br><span class="work-note">Custom storefront</span></div>
+      </div>
+    </a>
+    <a class="work-card reveal d4" href="https://nirakaar.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/nirakaar.png" alt="Nirakaar" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Nirakaar</div>
+        <div class="work-sector">Home Décor<br><span class="work-note">Full content &amp; store</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<div class="dark-bar">
+  <div class="stat reveal">
+    <div class="sn">50+</div>
+    <div class="sl">Brands served</div>
+  </div>
+  <div class="stat reveal d1">
+    <div class="sn">11+</div>
+    <div class="sl">Industries</div>
+  </div>
+  <div class="stat reveal d2">
+    <div class="sn">92%</div>
+    <div class="sl">Client retention</div>
+  </div>
+  <div class="stat stat-accent reveal d3">
+    <div class="sn">100%</div>
+    <div class="sl">Founder-led</div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-hd">
+    <span class="sec-num">03</span>
+    <span class="sec-tag">Who You're Working With</span>
+  </div>
+  <div class="sec-title reveal">Not an agency.<br>A <em>build team.</em></div>
+  <p class="sec-lead reveal d1">
+    Through Kaart, our dedicated e-commerce studio, we've designed and shipped stores for 50+ brands — from fast-growing D2C labels to household names like Haldiram's. Jewellery, furniture, fashion, food, wellness, home. We embed directly with founders and own the build end to end.
+  </p>
+  <p class="sec-lead reveal d2" style="margin-bottom:0;">
+    No juniors, no handoffs, no middle-man. The people who design your store are the people who build it — and they're still there after launch.
+  </p>
 </section>
 
 <!-- INVESTMENT -->
 <div class="inv-section">
   <div class="inv-label reveal">Investment</div>
-  <div class="inv-heading reveal d1">Transparent pricing,<br><em>one decision.</em></div>
-  <p class="inv-sub reveal d2">Each module is priced individually. Build the full store together and save ₹15,000 — no compromises on scope.</p>
+  <div class="inv-heading reveal d1">One price.<br><em>Everything included.</em></div>
+  <p class="inv-sub reveal d2">Custom design, custom development, a 100-product catalog, and every integration — delivered as one complete store. No per-module fees, no surprises.</p>
 
-  <table class="mod-table reveal d1">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Module</th>
-        <th style="text-align:right;">Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>01</td>
-        <td>Custom UI/UX Design</td>
-        <td>₹18,000</td>
-      </tr>
-      <tr>
-        <td>02</td>
-        <td>Custom Shopify Theme Development</td>
-        <td>₹24,000</td>
-      </tr>
-      <tr>
-        <td>03</td>
-        <td>Product Catalog · 100 Products</td>
-        <td>₹14,000</td>
-      </tr>
-      <tr>
-        <td>04</td>
-        <td>Integrations · Payments, Shipping &amp; Delivery</td>
-        <td>₹12,000</td>
-      </tr>
-      <tr>
-        <td>05</td>
-        <td>Store Setup, QA &amp; Launch</td>
-        <td>₹12,000</td>
-      </tr>
-      <tr class="total-row">
-        <td></td>
-        <td>All modules priced individually</td>
-        <td>₹80,000</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="bundle-card reveal d2">
+  <div class="bundle-card reveal d1">
     <div class="bundle-left">
-      <div class="bundle-badge">Recommended · All-In Bundle</div>
-      <div class="bundle-title">Build the full store together</div>
-      <p class="bundle-desc">One scope, one timeline, one team. Design, development, catalog, and integrations delivered as a single cohesive store — no handoff gaps, no integration overhead.</p>
+      <div class="bundle-badge">All-In · Custom Shopify Store</div>
+      <div class="bundle-title">Complete build, start to launch</div>
+      <p class="bundle-desc">Custom design, custom theme development, 100 products uploaded, and payments, shipping &amp; delivery fully integrated — one team, one timeline, one handover.</p>
     </div>
     <div class="bundle-right">
-      <div class="bundle-was">₹80,000 if individual</div>
       <div class="bundle-price">₹65,000</div>
-      <div class="bundle-save">Save ₹15,000</div>
+      <div class="bundle-save">All-inclusive · 30–40 days</div>
     </div>
   </div>
 </div>
 
-<!-- MODULE BREAKDOWN -->
-<section class="sec">
-  <div class="sec-hd">
-    <span class="sec-num">02</span>
-    <span class="sec-tag">Price Breakdown</span>
-  </div>
-  <div class="sec-title reveal">Module-by-module <em>breakdown.</em></div>
-  <p class="sec-lead reveal d1">Each module is scoped and priced independently. Go all-in with the bundle for the full custom store.</p>
-
-  <table class="mbr-table reveal d2">
-    <thead>
-      <tr>
-        <th style="width:32px;"></th>
-        <th>Module</th>
-        <th>Deliverables</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="mbr-num">01</td>
-        <td><div class="mbr-name">Custom UI/UX Design</div></td>
-        <td class="mbr-desc">Brand-aligned design system · All pages designed from scratch · Interactive clickable prototype</td>
-        <td><div class="mbr-price">₹18,000</div></td>
-      </tr>
-      <tr>
-        <td class="mbr-num">02</td>
-        <td><div class="mbr-name">Custom Shopify Theme Development</div></td>
-        <td class="mbr-desc">Pixel-perfect custom theme · Size &amp; material variants · Room/size/colour filtering · High-res zoom · Fully responsive</td>
-        <td><div class="mbr-price">₹24,000</div></td>
-      </tr>
-      <tr>
-        <td class="mbr-num">03</td>
-        <td><div class="mbr-name">Product Catalog · 100 Products</div></td>
-        <td class="mbr-desc">100 products with variants, pricing &amp; images · Collections by room, style &amp; size · SEO titles &amp; meta</td>
-        <td><div class="mbr-price">₹14,000</div></td>
-      </tr>
-      <tr>
-        <td class="mbr-num">04</td>
-        <td><div class="mbr-name">Integrations · Payments, Shipping &amp; Delivery</div></td>
-        <td class="mbr-desc">Payment gateway · Shipping &amp; delivery with tracking &amp; COD · WhatsApp &amp; email notifications · GA4 &amp; Meta Pixel</td>
-        <td><div class="mbr-price">₹12,000</div></td>
-      </tr>
-      <tr>
-        <td class="mbr-num">05</td>
-        <td><div class="mbr-name">Store Setup, QA &amp; Launch</div></td>
-        <td class="mbr-desc">Domain, settings, taxes &amp; policies · SEO basics &amp; speed optimisation · Cross-device QA · Go-live &amp; support window</td>
-        <td><div class="mbr-price">₹12,000</div></td>
-      </tr>
-      <tr class="mbr-total">
-        <td class="mbr-num"></td>
-        <td colspan="2" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ts);padding-top:20px;">All 5 modules · Bundle price</td>
-        <td><div class="mbr-price" style="color:var(--caramel);font-size:26px;">₹65,000</div></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
 <!-- TIMELINE -->
 <section class="sec">
   <div class="sec-hd">
-    <span class="sec-num">03</span>
+    <span class="sec-num">04</span>
     <span class="sec-tag">Timeline</span>
   </div>
   <div class="sec-title reveal">Delivered in <em>30–40 days.</em></div>
@@ -585,7 +567,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <!-- TERMS -->
 <section class="sec">
   <div class="sec-hd">
-    <span class="sec-num">04</span>
+    <span class="sec-num">05</span>
     <span class="sec-tag">Terms</span>
   </div>
   <div class="sec-title reveal">Simple <em>terms.</em></div>
@@ -620,19 +602,14 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <!-- PAYMENT SCHEDULE -->
   <div class="pay-cards reveal d2">
     <div class="pay-card">
-      <div class="pay-card-label">50% · To begin</div>
+      <div class="pay-card-label">50% · Advance</div>
       <div class="pay-card-amt">₹32,500</div>
       <div class="pay-card-note">Kicks off design &amp; project setup</div>
     </div>
     <div class="pay-card">
-      <div class="pay-card-label">30% · Development handover</div>
-      <div class="pay-card-amt">₹19,500</div>
-      <div class="pay-card-note">On custom theme completion</div>
-    </div>
-    <div class="pay-card">
-      <div class="pay-card-label">20% · On go-live</div>
-      <div class="pay-card-amt">₹13,000</div>
-      <div class="pay-card-note">Final handover &amp; launch</div>
+      <div class="pay-card-label">50% · Before go-live</div>
+      <div class="pay-card-amt">₹32,500</div>
+      <div class="pay-card-note">Paid before the store is made live</div>
     </div>
   </div>
 </section>
