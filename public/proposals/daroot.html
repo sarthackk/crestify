@@ -138,6 +138,30 @@ nav {
 .work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); text-align: right; }
 .work-note { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); }
 
+/* LOGO WALL */
+.logowall { background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative; }
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.logowall-hd { text-align: center; margin-bottom: 30px; padding: 0 var(--pad); position: relative; z-index: 3; }
+.logowall-hd .lh-l { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
+.logowall-hd .lh-t { font-family: var(--serif); font-size: clamp(22px, 3.2vw, 34px); line-height: 1.1; }
+.logowall-hd .lh-t em { font-style: italic; color: var(--caramel); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+.lw-tile:hover img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.95; }
+@media (max-width: 639px) {
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
+}
+
 /* INVESTMENT (DARK) */
 .inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
 .inv-section::before {
@@ -504,6 +528,50 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     No juniors, no handoffs, no middle-man. The people who design your store are the people who build it — and they're still there after launch.
   </p>
 </section>
+
+<!-- LOGO WALL -->
+<div class="logowall">
+  <div class="logowall-hd">
+    <div class="lh-l">Trusted by</div>
+    <div class="lh-t">Brands we've <em>worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "6826d7c6719f6cc0563112b1-group-1-1.png","cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  var rows = [LOGOS.slice(0, mid), LOGOS.slice(mid)];
+  rows.forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = ''; img.loading = 'lazy';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
 
 <!-- INVESTMENT -->
 <div class="inv-section">
