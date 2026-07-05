@@ -1046,6 +1046,79 @@ function ContactCTA() {
   );
 }
 
+/* ─── Brand Wall (60+ stores) ───────────────────────────────────────────── */
+const BRAND_WALL_LOGOS = [
+  '6826d7c6719f6cc0563112b1-group-1-1.png', 'cafoco-logo-purple-on-transparent.png', 'dotty.png',
+  'ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png', 'ethartics.png', 'expressions-1-1-2.png',
+  'fabnor.png', 'gloat-logo-single-01-1-png.png', 'gourmet-logo-1.svg', 'group-1.png', 'group-56.png', 'group.png',
+  'house-of-pratap.png', 'image-1.png', 'image-13.svg', 'image-138.png', 'image-139.png', 'image-140.png',
+  'image-141.png', 'image-142.png', 'image-15.png', 'image-1857.png', 'image-1858.png', 'image-1859.svg',
+  'image-1860.svg', 'image-2.png', 'image-22.png', 'image-3.png', 'image-37.png',
+  'innovative-logo-transparent-edited-1.png', 'khaabka-logo-transparent-cmyk-sqaure-1.png',
+  'link-dignity-full-color-200x-png.png', 'logo-3.png', 'logo-er-1.png', 'main-logo-file-new-1.png', 'melfi.png',
+  'navlogo-cdr-gotb-1.png', 'nbc-1.png', 'new-logo-2.webp', 'olivia-new-logo512x512-3.png', 'prep-nest.png',
+  'screenshot-2025-03-08-at-1-04-57-pm-1.png', 'sectrio-logo-white.png', 'underated-logo-1.png',
+  'whatsapp-image-2024-03-03-at-16-20-3.png', 'wink-condoms-1207114599-1.png', 'xox-black-1.png',
+];
+const BRAND_WALL_INVERT = new Set(['sectrio-logo-white.png']);
+
+function BrandTile({ file }) {
+  const inv = BRAND_WALL_INVERT.has(file);
+  return (
+    <div style={{
+      flex: '0 0 auto', width: 152, height: 68, margin: '0 8px',
+      background: '#fff', border: '1px solid var(--line-strong)', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 20px',
+    }}>
+      <img src={`/brand-logos/${file}`} alt="" loading="lazy"
+        style={{
+          maxHeight: 40, maxWidth: 116, width: 'auto', objectFit: 'contain',
+          filter: inv ? 'invert(1) grayscale(1)' : 'grayscale(1)',
+          opacity: inv ? 0.72 : 0.62,
+        }} />
+    </div>
+  );
+}
+
+function LogoRow({ logos, duration, reverse }) {
+  const items = [...logos, ...logos];
+  const trackStyle = { gap: 0, alignItems: 'center', paddingRight: 0, animationDuration: duration, animationDirection: reverse ? 'reverse' : 'normal' };
+  return (
+    <div className="marquee">
+      <div className="marquee-track" style={trackStyle}>{items.map((f, i) => <BrandTile key={i} file={f} />)}</div>
+      <div className="marquee-track" aria-hidden style={trackStyle}>{items.map((f, i) => <BrandTile key={i} file={f} />)}</div>
+    </div>
+  );
+}
+
+function BrandWall() {
+  const half = Math.ceil(BRAND_WALL_LOGOS.length / 2);
+  const row1 = BRAND_WALL_LOGOS.slice(0, half);
+  const row2 = BRAND_WALL_LOGOS.slice(half);
+  return (
+    <section style={{ padding: 'clamp(60px, 9vw, 110px) 0', borderTop: '1px solid var(--line-strong)', background: 'var(--bg-elev)', overflow: 'hidden' }}>
+      <div className="container" style={{ marginBottom: 'clamp(40px, 5vw, 60px)' }}>
+        <div className="reveal" style={{ maxWidth: '22ch' }}>
+          <span className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Track record</span>
+          <h2 className="h2" style={{ marginTop: 14 }}>
+            The team that's worked on <span className="italic" style={{ color: 'var(--accent)' }}>60+ stores</span> altogether.
+          </h2>
+        </div>
+        <p className="body reveal" style={{ marginTop: 18, maxWidth: '48ch', color: 'var(--ink-3)' }}>
+          A selection of the brands we've designed, built, and shipped for — across e-commerce, SaaS, and everything in between.
+        </p>
+      </div>
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, var(--bg-elev), transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, var(--bg-elev), transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <LogoRow logos={row1} duration="80s" />
+        <div style={{ height: 14 }} />
+        <LogoRow logos={row2} duration="95s" reverse />
+      </div>
+    </section>
+  );
+}
+
 /* ─── Page ──────────────────────────────────────────────────────────────── */
 export default function Home() {
   useReveal();
@@ -1069,6 +1142,7 @@ export default function Home() {
       <Process />
       <Founders />
       <InternalProducts />
+      <BrandWall />
       <FAQ />
       <ContactCTA />
       <Footer />
