@@ -135,6 +135,18 @@ nav {
 .feat h4 span { color: var(--caramel); }
 .feat p { font-size: 12.5px; color: var(--ts); line-height: 1.65; }
 
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(198,75,50,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(28,16,19,0.08); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
 /* INVESTMENT (DARK) */
 .inv-section { background: var(--black); padding: clamp(40px, 6vw, 62px) var(--pad); position: relative; overflow: hidden; }
 .inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(212,154,60,0.18) 0%, transparent 60%); }
@@ -246,7 +258,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <span>AI Rakhi Greeting Experience</span><span class="dot">·</span>
     <span>28 Days to Go-Live</span><span class="dot">·</span>
     <span>₹1,90,000 + GST Build</span><span class="dot">·</span>
-    <span>Nano Banana + Claude</span><span class="dot">·</span>
+    <span>Powered by Google Gemini</span><span class="dot">·</span>
     <span>Live before Raksha Bandhan · 28 Aug</span><span class="dot">·</span>
     <span>Proposal · Valid 15 Days</span><span class="dot">·</span>
     <span>Crestify</span><span class="dot">·</span>
@@ -254,7 +266,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <span>AI Rakhi Greeting Experience</span><span class="dot">·</span>
     <span>28 Days to Go-Live</span><span class="dot">·</span>
     <span>₹1,90,000 + GST Build</span><span class="dot">·</span>
-    <span>Nano Banana + Claude</span><span class="dot">·</span>
+    <span>Powered by Google Gemini</span><span class="dot">·</span>
     <span>Live before Raksha Bandhan · 28 Aug</span><span class="dot">·</span>
   </div>
 </div>
@@ -335,7 +347,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
         <tr><td>Timeline</td><td>28 days from kickoff to production go-live (26–30 day window)</td></tr>
         <tr><td>One-Time Development</td><td>₹ 1,90,000 + GST</td></tr>
         <tr><td>Est. Monthly Running</td><td>₹ 32,000–38,000 + GST managed cost (image AI billed separately at actuals)</td></tr>
-        <tr><td>AI Stack</td><td>Google Gemini + Nano Banana (image); Anthropic Claude Haiku (text &amp; prompt orchestration)</td></tr>
+        <tr><td>AI Stack</td><td>Google Gemini end to end — Nano Banana (2.5 Flash Image) for artwork; Gemini 2.5 Flash for text &amp; prompt orchestration</td></tr>
         <tr><td>Campaign Readiness</td><td>Kickoff by 14 July → live by ~11 Aug → ~2.5 weeks of runway before Raksha Bandhan (Fri, 28 Aug 2026)</td></tr>
         <tr><td>Warranty</td><td>30-day post-launch bug-fix warranty included</td></tr>
       </tbody>
@@ -354,7 +366,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <ul class="plist reveal d2">
     <li><b>Serverless architecture</b> that scales from near-zero to thousands of concurrent users automatically — no capacity planning, no idle-server cost before or after the peak.</li>
     <li><b>A 28-day plan with a built-in buffer,</b> so the experience is live, tested, and stable well before rakhis reach consumers' hands.</li>
-    <li><b>A dual-AI pipeline</b> — Claude for warm, language-mirrored greeting text; Gemini's Nano Banana for unique, character-consistent comic-style artwork per user — tuned for the sibling, memory-driven prompt space.</li>
+    <li><b>A single-provider Gemini pipeline</b> — Gemini 2.5 Flash for warm, language-mirrored greeting text; Gemini's Nano Banana for unique, character-consistent comic-style artwork per user — one provider, one bill, tuned for the sibling, memory-driven prompt space.</li>
     <li><b>A card experience that always delivers</b> — every user gets a beautiful card every time, even if the image model rate-limits or fails. No error screens during the brand's biggest moment of the year.</li>
   </ul>
 </section>
@@ -377,7 +389,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 
   <div class="sub-h reveal d1"><span class="mono">3.2 · The generation pipeline</span>From memory to card in four steps</div>
   <div class="pipe-grid reveal d2">
-    <div class="pipe"><div class="pipe-n">01</div><h4>Prompt orchestration (Claude)</h4><p>Claude reads the memory and inputs, then builds an optimized image prompt — pulling out the moment, mood, and visual beats ("2 AM Maggi cooking," "whispered secret"). It also writes the greeting text and panel captions.</p></div>
+    <div class="pipe"><div class="pipe-n">01</div><h4>Prompt orchestration (Gemini)</h4><p>Gemini 2.5 Flash reads the memory and inputs, then builds an optimized image prompt — pulling out the moment, mood, and visual beats ("2 AM Maggi cooking," "whispered secret"). It also writes the greeting text and panel captions.</p></div>
     <div class="pipe"><div class="pipe-n">02</div><h4>Image generation (Nano Banana)</h4><p>The optimized prompt plus a fixed style guide ("warm storybook illustration, festive Rakhi palette, sibling characters, comic-panel layout") generates a unique branded card image in ~4 seconds.</p></div>
     <div class="pipe"><div class="pipe-n">03</div><h4>Branded framing</h4><p>The illustration is composited server-side into a branded frame — top banner ("Happy Raksha Bandhan!"), Real Greetings logo, closing tagline, share/download CTAs — at print quality (PNG + JPG).</p></div>
     <div class="pipe"><div class="pipe-n">04</div><h4>Safety &amp; fallback</h4><p>Every step is monitored: prompt version, latency, output pass/fail. Failed images trigger one automatic retry, then a graceful fallback to a curated illustrated template personalised with the user's name — no error state, ever.</p></div>
@@ -399,7 +411,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
       <tbody>
         <tr><td>Frontend</td><td>Next.js (React) + Tailwind CSS</td><td>Instant first paint on mid-range Android over mobile data; smooth multi-step wizard</td></tr>
         <tr><td>Backend / API</td><td>Serverless API routes (Node.js)</td><td>Auto-scales through the Rakhi-week burst; zero idle cost</td></tr>
-        <tr><td>Text AI</td><td>Anthropic Claude API (Haiku)</td><td>Prompt orchestration, greeting text, captions — warm tone, low cost</td></tr>
+        <tr><td>Text AI</td><td>Google Gemini API (2.5 Flash)</td><td>Prompt orchestration, greeting text, captions — warm tone, low cost, same provider as image</td></tr>
         <tr><td>Image AI</td><td>Google Gemini — Nano Banana (2.5 Flash Image)</td><td>Character-consistent illustrated cards in ~4s at low cost</td></tr>
         <tr><td>Card Engine</td><td>Server-side compositing (Satori / node-canvas)</td><td>Branded frame + AI image → print-quality PNG/JPG</td></tr>
         <tr><td>Database</td><td>Supabase (managed PostgreSQL)</td><td>Consent records, submissions, generation logs; CSV export built in</td></tr>
@@ -474,7 +486,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="sec-title reveal">Delivered in <em>28 days.</em></div>
   <div class="timeline">
     <div class="tl-row reveal"><div class="tl-week">Days 1–5</div><div class="tl-body"><div class="tl-name">Design &amp; Setup</div><div class="tl-desc">Kickoff, brand asset handover, UX flow, UI design of all screens, card frame design, initial image-prompt style guide. Milestone: signed-off designs.</div></div></div>
-    <div class="tl-row reveal d1"><div class="tl-week">Days 6–19</div><div class="tl-body"><div class="tl-name">Development</div><div class="tl-desc">Frontend wizard, backend, dual-AI pipeline (Claude orchestration + Nano Banana image gen), card compositing engine, consent &amp; data layer, analytics. Prompt-testing sprint in parallel. Milestone: staging demo (Day 19).</div></div></div>
+    <div class="tl-row reveal d1"><div class="tl-week">Days 6–19</div><div class="tl-body"><div class="tl-name">Development</div><div class="tl-desc">Frontend wizard, backend, Gemini pipeline (Gemini 2.5 Flash text orchestration + Nano Banana image gen), card compositing engine, consent &amp; data layer, analytics. Prompt-testing sprint in parallel. Milestone: staging demo (Day 19).</div></div></div>
     <div class="tl-row reveal d2"><div class="tl-week">Days 20–24</div><div class="tl-body"><div class="tl-name">QA &amp; UAT</div><div class="tl-desc">Cross-device testing (low-end Android priority), 10× load test, AI output review with brand team (image quality, tone, safety), UAT sign-off.</div></div></div>
     <div class="tl-row reveal d3"><div class="tl-week">Days 25–27</div><div class="tl-body"><div class="tl-name">Launch</div><div class="tl-desc">Production deployment, DNS/SSL, QR link verification, monitoring, documentation &amp; knowledge transfer. Milestone: go-live (Day 27).</div></div></div>
     <div class="tl-row reveal d4"><div class="tl-week">Days 28–30</div><div class="tl-body"><div class="tl-name">Buffer / Hypercare</div><div class="tl-desc">Contingency buffer and post-launch monitoring during first live traffic.</div></div></div>
@@ -507,7 +519,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <div class="inv-section">
   <div class="inv-label reveal">10 · Commercial Proposal</div>
   <div class="inv-heading reveal d1">One-time build,<br><em>transparent breakdown.</em></div>
-  <p class="inv-sub reveal d2">Fixed-price development covering design, engineering, dual-AI, analytics, QA, and deployment. All prices in INR, exclusive of GST at 18%.</p>
+  <p class="inv-sub reveal d2">Fixed-price development covering design, engineering, Gemini AI integration, analytics, QA, and deployment. All prices in INR, exclusive of GST at 18%.</p>
 
   <div class="dtbl-wrap reveal d1">
     <table class="dtable">
@@ -515,7 +527,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
       <tbody>
         <tr><td class="num">1</td><td>UI/UX Design &amp; Frontend Development — festive responsive microsite, 5-step journey, validations</td><td class="amt">52,000</td></tr>
         <tr><td class="num">2</td><td>Backend &amp; API Development — serverless APIs, database, consent &amp; data layer, export</td><td class="amt">30,000</td></tr>
-        <tr><td class="num">3</td><td>Dual AI Integration — Claude orchestration + Nano Banana image gen, style guide, moderation, fallback library</td><td class="amt">42,000</td></tr>
+        <tr><td class="num">3</td><td>Gemini AI Integration — Gemini 2.5 Flash text orchestration + Nano Banana image gen, style guide, moderation, fallback library</td><td class="amt">42,000</td></tr>
         <tr><td class="num">4</td><td>AI Card Engine — branded frame, server-side compositing, PNG/JPG rendering, print version, WhatsApp/native share</td><td class="amt">28,000</td></tr>
         <tr><td class="num">5</td><td>Analytics Setup — GA4 + GTM, full event taxonomy, per-SKU QR attribution</td><td class="amt">12,000</td></tr>
         <tr><td class="num">6</td><td>QA &amp; Testing — device matrix, 10× load test, AI output review across scenarios</td><td class="amt">13,000</td></tr>
@@ -554,7 +566,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
       <thead><tr><th class="num">#</th><th>Item</th><th class="amt">Monthly (₹)</th></tr></thead>
       <tbody>
         <tr><td class="num">1</td><td>Image AI — Nano Banana (~35K generations @ ~₹3/card)</td><td class="amt">1,00,000–1,10,000</td></tr>
-        <tr><td class="num">2</td><td>Text AI — Claude Haiku (orchestration + greeting text)</td><td class="amt">2,000–2,500</td></tr>
+        <tr><td class="num">2</td><td>Text AI — Gemini 2.5 Flash (orchestration + greeting text)</td><td class="amt">2,000–2,500</td></tr>
         <tr><td class="num">3</td><td>Cloud Hosting (Vercel Pro)</td><td class="amt">2,000</td></tr>
         <tr><td class="num">4</td><td>Database (Supabase Pro)</td><td class="amt">2,200</td></tr>
         <tr><td class="num">5</td><td>Storage &amp; CDN (generated cards)</td><td class="amt">1,500–2,000</td></tr>
@@ -595,7 +607,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <ul class="plist reveal d1">
     <li>Fully responsive festive campaign microsite with the complete 5-step journey and form validations</li>
     <li>Backend APIs, database schema, consent management, and data export</li>
-    <li>Dual-AI pipeline: Claude prompt orchestration + Nano Banana image generation, with language mirroring, moderation, retry logic, and template fallback</li>
+    <li>Gemini pipeline: Gemini 2.5 Flash text orchestration + Nano Banana image generation, with language mirroring, moderation, retry logic, and template fallback</li>
     <li>AI card engine: branded frame, server-side compositing, PNG/JPG download, print-friendly version, WhatsApp/native sharing, gift CTA hook</li>
     <li>Configurable image-AI budget cap toggle</li>
     <li>GA4 + GTM analytics with full funnel taxonomy and per-SKU QR attribution</li>
@@ -649,20 +661,77 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </ul>
 </section>
 
+<!-- 15 RELEVANT WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">15</span><span class="sec-tag">Relevant Work</span></div>
+  <div class="sec-title reveal">We've shipped <em>this shape of thing.</em></div>
+  <p class="sec-lead reveal d1">Production AI pipelines, consumer web at scale, and campaigns for names you know — the exact ingredients this Rakhi activation needs.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://crestify.co/work/mockzy" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/mockzy.png" alt="Mockzy" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Mockzy</div>
+        <div class="work-sector">AI Creative Studio</div>
+        <span class="work-note">Production AI image pipeline — smartphone photo in, ad-grade visuals out, with moderation &amp; batch generation.</span>
+      </div>
+    </a>
+    <a class="work-card reveal d2" href="https://crestify.co/work/match-trackers" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/matchtrackers.png" alt="Match Trackers" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Match Trackers</div>
+        <div class="work-sector">Sports Tech · Real-time</div>
+        <span class="work-note">100k+ users, held through Asia Cup traffic with zero downtime — exactly the burst a festival campaign brings.</span>
+      </div>
+    </a>
+    <a class="work-card reveal d3" href="https://crestify.co/work/prepnest" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/prepnest.png" alt="Prepnest" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Prepnest</div>
+        <div class="work-sector">Career Tech · AI</div>
+        <span class="work-note">AI scoring in production across four portals — AI woven into a real, commercial product journey.</span>
+      </div>
+    </a>
+    <a class="work-card reveal d1" href="https://giva.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Giva</div>
+        <div class="work-sector">Jewellery · E-commerce</div>
+        <span class="work-note">Embedded dev retainer across multiple Shopify storefronts for India's fastest-growing fine jewellery brand.</span>
+      </div>
+    </a>
+    <a class="work-card reveal d2" href="https://crestify.co/kaart/haldirams" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/haldirams-london.jpg" alt="Haldiram's UK" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Haldiram's UK</div>
+        <div class="work-sector">F&amp;B · Launch</div>
+        <span class="work-note">Launch design for one of India's most iconic brands entering the UK — brand-grade work at scale.</span>
+      </div>
+    </a>
+    <a class="work-card reveal d3" href="https://nirakaar.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/nirakaar.png" alt="Nirakaar" loading="lazy"></div>
+      <div class="work-meta">
+        <div class="work-name">Nirakaar</div>
+        <div class="work-sector">Home Décor · Content</div>
+        <span class="work-note">Full content engine — UGC, social, and paid — for a premium D2C brand, end to end.</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- CREDIBILITY -->
 <div class="dark-bar">
   <div class="stat reveal"><div class="sn">60+</div><div class="sl">Stores &amp; products</div></div>
   <div class="stat reveal d1"><div class="sn">50+</div><div class="sl">Brands served</div></div>
-  <div class="stat reveal d2"><div class="sn">Claude<span style="color:rgba(255,255,255,0.3)"> + </span>Gemini</div><div class="sl">AI pipelines shipped</div></div>
+  <div class="stat reveal d2"><div class="sn">Multimodal</div><div class="sl">AI pipelines shipped</div></div>
   <div class="stat stat-accent reveal d3"><div class="sn">100%</div><div class="sl">Founder-led</div></div>
 </div>
 
 <!-- 15 WHY CRESTIFY -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">15</span><span class="sec-tag">Why Crestify</span></div>
+  <div class="sec-hd"><span class="sec-num">16</span><span class="sec-tag">Why Crestify</span></div>
   <div class="sec-title reveal">One team, <em>one festival deadline.</em></div>
   <p class="sec-lead reveal d1">
-    Crestify is a full-stack product development studio with direct experience shipping QR-driven consumer web experiences and production AI pipelines — both text (Claude) and multimodal (Gemini) — including moderation and fallback handling. One accountable team across design, engineering, AI, and analytics is what makes a 28-day festival deadline realistic.
+    Crestify is a full-stack product development studio with direct experience shipping QR-driven consumer web experiences and production AI pipelines — text and multimodal image generation, including moderation and fallback handling. One accountable team across design, engineering, AI, and analytics is what makes a 28-day festival deadline realistic.
   </p>
   <p class="sec-lead reveal d2">We'd be glad to walk your team through this proposal and demonstrate comparable work.</p>
 </section>
