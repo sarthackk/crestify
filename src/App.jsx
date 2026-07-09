@@ -41,7 +41,7 @@ function AnnouncementBar() {
   const Item = () => (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginRight: 60, fontSize: 12, letterSpacing: '0.01em', color: '#fff', fontWeight: 500, whiteSpace: 'nowrap' }}>
       <span aria-hidden style={{ opacity: 0.85 }}>✦</span>
-      We're building <strong style={{ fontWeight: 700 }}>Eatops</strong> — a new café ERP, automation &amp; loyalty platform · <span style={{ textDecoration: 'underline', textUnderlineOffset: 2 }}>live soon at eatops.vercel.app&nbsp;↗</span>
+      We're building <strong style={{ fontWeight: 700 }}>Eatops</strong> — a new café ERP, automation &amp; loyalty platform · will be live soon
     </span>
   );
   const Track = ({ hidden }) => (
@@ -50,13 +50,12 @@ function AnnouncementBar() {
     </div>
   );
   return (
-    <a href="https://eatops.vercel.app" target="_blank" rel="noopener noreferrer"
-      style={{ display: 'block', background: 'linear-gradient(90deg, #0f9d63, #10a56d 50%, #0d9b6a)', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.12)', position: 'relative', zIndex: 200 }}>
+    <div style={{ background: 'linear-gradient(90deg, #0f9d63, #10a56d 50%, #0d9b6a)', borderBottom: '1px solid rgba(0,0,0,0.12)', position: 'relative', zIndex: 200 }}>
       <div className="marquee" style={{ padding: '8px 0' }}>
         <Track />
         <Track hidden />
       </div>
-    </a>
+    </div>
   );
 }
 
