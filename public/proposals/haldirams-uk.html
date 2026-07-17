@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kaart Studio × Crestify — Haldiram's UK · Shopify × Sipup Fulfilment Integration</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #0C1712;
+  --black10: rgba(12,23,18,0.1);
+  --green:   #0D9B6A;
+  --orange:  #0D9B6A;
+  --cream:   #F3F2EC;
+  --white:   #FFFFFF;
+  --tp:      #12160F;
+  --ts:      #4C544E;
+  --caramel: #0A7D54;
+  --amber:   #C99A34;
+  --gold:    #5CC79C;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 40s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(243,242,236,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--gold); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(243,242,236,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 14px; font-weight: 600; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--caramel); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--green); }
+
+/* HERO */
+.hero { padding: clamp(56px, 8vw, 92px) var(--pad) clamp(44px, 6vw, 66px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 15%, rgba(13,155,106,0.13) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 8% 85%, rgba(201,154,52,0.06) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 28px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(243,242,236,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(34px, 5.4vw, 72px); font-weight: 400; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 22px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 580px; margin-bottom: 46px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 26px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 24px; font-style: italic; }
+.hm-v.green  { color: var(--green); }
+.hm-v.amber  { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(13,155,106,0.2) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(26px, 4.2vw, 40px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 62px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 40px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 660px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+.sub-h { font-family: var(--serif); font-size: 20px; margin: 34px 0 14px; }
+.sub-h .mono { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-family: var(--sans); display: block; margin-bottom: 4px; }
+
+/* TABLE */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--black10); border-radius: 8px; background: #fff; }
+.ptable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+.ptable thead tr { background: var(--black); }
+.ptable th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding: 13px 18px; font-weight: 400; white-space: nowrap; }
+.ptable td { padding: 15px 18px; vertical-align: top; color: var(--ts); line-height: 1.65; border-bottom: 1px solid var(--black10); }
+.ptable tbody tr:last-child td { border-bottom: none; }
+.ptable tbody tr:hover { background: rgba(13,155,106,0.03); }
+.ptable td:first-child { color: var(--tp); font-family: var(--serif); font-size: 15px; }
+.ptable .amt { text-align: right; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--tp); white-space: nowrap; }
+.ptable th.amt { text-align: right; }
+.ptable .row-total td { background: rgba(13,155,106,0.06); font-family: var(--serif); color: var(--tp); font-size: 15px; border-top: 2px solid var(--black10); }
+.ptable .row-total .amt { color: var(--caramel); font-size: 19px; }
+
+/* LIST */
+.plist { list-style: none; display: flex; flex-direction: column; gap: 13px; max-width: 740px; }
+.plist li { position: relative; padding-left: 26px; font-size: 13.5px; color: var(--ts); line-height: 1.72; }
+.plist li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--green); transform: rotate(45deg); }
+.plist li b { color: var(--tp); font-weight: 500; }
+
+/* FLOW / PIPELINE CARDS */
+.pipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: var(--black10); border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; }
+.pipe { background: #fff; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+.pipe-n { font-family: monospace; font-size: 16px; color: var(--green); }
+.pipe h4 { font-family: var(--serif); font-size: 16px; font-weight: 400; }
+.pipe p { font-size: 12.5px; color: var(--ts); line-height: 1.6; }
+
+/* FEATURE CARDS */
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.feat { background: #fff; border: 1px solid var(--black10); border-radius: 8px; padding: 22px 24px; }
+.feat h4 { font-family: var(--serif); font-size: 17px; font-weight: 400; margin-bottom: 6px; }
+.feat p { font-size: 12.5px; color: var(--ts); line-height: 1.65; }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(13,155,106,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(12,23,18,0.08); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* CALLOUT */
+.callout { background: rgba(13,155,106,0.06); border: 1px solid rgba(13,155,106,0.2); border-left: 3px solid var(--green); border-radius: 6px; padding: 22px 26px; margin-top: 26px; }
+.callout .co-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
+.callout p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 62px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(13,155,106,0.2) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 560px; line-height: 1.7; }
+.dtbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.dtable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 420px; }
+.dtable thead tr { border-bottom: 1px solid rgba(255,255,255,0.12); }
+.dtable th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 11px 16px 11px 0; font-weight: 400; }
+.dtable th.amt, .dtable td.amt { text-align: right; padding-right: 0; }
+.dtable td { padding: 16px 16px 16px 0; color: rgba(255,255,255,0.68); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; line-height: 1.5; }
+.dtable td.amt { font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(255,255,255,0.9); white-space: nowrap; }
+.dtable tbody tr:last-child td { border-bottom: none; }
+.dtable .row-total td { border-top: 1px solid rgba(255,255,255,0.15); border-bottom: none; padding-top: 18px; color: #fff; font-family: var(--serif); font-size: 16px; }
+.dtable .row-total td.amt { color: var(--gold); font-size: 24px; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 92px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(13,155,106,0.14) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(34px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 38px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+/* FOOTER */
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .work-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Kaart Studio × Crestify</span><span class="dot">·</span>
+    <span>Haldiram's UK</span><span class="dot">·</span>
+    <span>Shopify × Sipup Fulfilment Integration</span><span class="dot">·</span>
+    <span>60 &amp; 90-Minute Delivery</span><span class="dot">·</span>
+    <span>2 Phases · ₹2,20,000 One-Off</span><span class="dot">·</span>
+    <span>Phase 1 Go-Live in 1–2 Days</span><span class="dot">·</span>
+    <span>Kaart Studio × Crestify</span><span class="dot">·</span>
+    <span>Haldiram's UK</span><span class="dot">·</span>
+    <span>Shopify × Sipup Fulfilment Integration</span><span class="dot">·</span>
+    <span>60 &amp; 90-Minute Delivery</span><span class="dot">·</span>
+    <span>2 Phases · ₹2,20,000 One-Off</span><span class="dot">·</span>
+    <span>Phase 1 Go-Live in 1–2 Days</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">K</div>
+    Kaart Studio <span style="color:var(--ts);font-size:12px;">× Crestify</span>
+  </a>
+  <span class="nav-badge">Technical Integration Proposal</span>
+  <div class="nav-right">Valid <span>30 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Haldiram's UK · Fulfilment Partner: Sipup
+  </div>
+  <h1 class="reveal d1">
+    Shopify Fulfilment<br>
+    <em>Integration</em><br>
+    &amp; Rapid Delivery
+  </h1>
+  <p class="hero-sub reveal d2">
+    Automatically route every Shopify order to Sipup's London dark-store network — inventory, tracking and status flowing back into Shopify with zero interruption to trading — then launch 60 &amp; 90-minute delivery across London. Built as one integration engine that scales to chilled/frozen and new cities without a rebuild.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Engagement</div>
+      <div class="hm-v">2-Phase Integration</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">One-Off Total</div>
+      <div class="hm-v green">₹2,20,000</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Phase 1 Go-Live</div>
+      <div class="hm-v amber">1–2 Days</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">2</div><div class="sl">Phases</div></div>
+  <div class="stat reveal d1"><div class="sn">₹2.2L</div><div class="sl">One-off total</div></div>
+  <div class="stat reveal d2"><div class="sn">60 / 90</div><div class="sl">Minute delivery</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">7–8</div><div class="sl">Sipup dark stores</div></div>
+</div>
+
+<!-- 01 UNDERSTANDING -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">Our Understanding</span></div>
+  <div class="sec-title reveal">From in-house DHL to <em>Sipup's dark stores.</em></div>
+  <p class="sec-lead reveal d1">
+    Haldiram's UK currently fulfils all Shopify orders in-house — picked, packed and dispatched via DHL from your own warehouse. You're transitioning fulfilment to Sipup, whose network of 7–8 dark-store warehouses across London opens the door to rapid delivery.
+  </p>
+  <div class="feat-grid reveal d2" style="margin-top:28px;">
+    <div class="feat"><h4>Phase 1 — Business-critical</h4><p>Automatically route every Shopify order to Sipup, with acknowledgement, inventory, tracking and status flowing back into Shopify — no interruption to trading, no visible change for customers.</p></div>
+    <div class="feat"><h4>Phase 2 — Rapid delivery</h4><p>Launch 60-minute and 90-minute delivery across London: postcode-based eligibility, dynamic delivery pricing, and automatic routing of each order to the nearest Sipup warehouse.</p></div>
+  </div>
+  <p class="sec-lead reveal d2" style="margin-top:26px;">Everything is architected to extend to chilled/frozen ranges and geographies beyond London without a rebuild.</p>
+</section>
+
+<!-- 02 ARCHITECTURE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Recommended Architecture</span></div>
+  <div class="sec-title reveal">A private app that <em>owns the wiring.</em></div>
+  <p class="sec-lead reveal d1">
+    We recommend a dedicated integration layer built as a <b style="color:var(--tp);font-weight:500;">private Shopify app</b> — a lightweight, cloud-hosted service that sits between Shopify and Sipup and owns all communication between the two. Sipup runs its own dark-store technology rather than an off-the-shelf 3PL platform, so a purpose-built layer is the most reliable path: full control over routing, retries, error handling and logging — and it becomes the same engine that powers Phase 2's multi-warehouse routing.
+  </p>
+  <div class="callout reveal d2">
+    <div class="co-l">Why not a plug-and-play connector?</div>
+    <p>Off-the-shelf iPaaS tools (Patchworks, Alloy, Zapier-class) assume the 3PL runs a supported platform. They add monthly licensing, and none of them can express Phase 2's postcode-to-warehouse routing logic. A private app has no per-month platform fee, is owned by you, and handles both phases in one codebase.</p>
+  </div>
+</section>
+
+<!-- 03 PHASE 1 -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Phase 1 — Fulfilment Integration</span></div>
+  <div class="sec-title reveal">Every order, <em>routed and tracked.</em></div>
+
+  <div class="sub-h reveal d1"><span class="mono">Order lifecycle · end to end</span>Nothing is ever lost</div>
+  <div class="pipe-grid reveal d2">
+    <div class="pipe"><div class="pipe-n">01</div><h4>Order placed</h4><p>Customer orders on haldiramuk.com — checkout is untouched.</p></div>
+    <div class="pipe"><div class="pipe-n">02</div><h4>Captured</h4><p>Shopify fires a paid-order webhook to the integration layer within seconds. The order enters a persistent queue — nothing is lost, even if Sipup is momentarily unreachable.</p></div>
+    <div class="pipe"><div class="pipe-n">03</div><h4>Transmitted</h4><p>The order is mapped to Sipup's format (SKUs, quantities, address, delivery notes) and pushed to Sipup's order API.</p></div>
+    <div class="pipe"><div class="pipe-n">04</div><h4>Acknowledged</h4><p>Sipup's confirmation is recorded. If none arrives in a defined window, the push retries automatically with escalating delays; persistent failures raise an alert.</p></div>
+    <div class="pipe"><div class="pipe-n">05</div><h4>Fulfilled</h4><p>Sipup picks, packs and hands the parcel to their courier network.</p></div>
+    <div class="pipe"><div class="pipe-n">06</div><h4>Tracking synced</h4><p>Dispatch event, courier and tracking number are written back to Shopify via the Fulfillment API — order marked fulfilled, Shopify's own email goes out, exactly as today.</p></div>
+    <div class="pipe"><div class="pipe-n">07</div><h4>Delivered</h4><p>Further status events (out for delivery, delivered) update the order timeline in Shopify.</p></div>
+  </div>
+
+  <div class="sub-h reveal d1">Inventory synchronisation</div>
+  <p class="sec-lead reveal d2">Sipup's warehouse becomes a fulfilment location in Shopify. Stock levels sync from Sipup on a schedule (typically every 10–15 minutes, or real time if Sipup supports stock webhooks), so the storefront never oversells and never blocks a sale on stale data. During cutover we reconcile your current stock file against Sipup's intake count before switching.</p>
+
+  <div class="sub-h reveal d1">Error handling, alerts &amp; reporting</div>
+  <ul class="plist reveal d2">
+    <li><b>Classified failures</b> — every failure mode is classified: unreachable API, rejected order, unknown SKU, address-validation failure, partial stock.</li>
+    <li><b>Instant notifications</b> — failed orders alert your team by email (and Slack/WhatsApp if preferred) immediately, with a plain-language reason and a one-click retry.</li>
+    <li><b>Reconciliation view</b> — a simple ops dashboard lists every order's journey (received → pushed → acknowledged → dispatched), so daily reconciliation takes minutes, not spreadsheets.</li>
+  </ul>
+
+  <div class="sub-h reveal d1"><span class="mono">What we need from Sipup</span>Three scenarios — a discovery question, not a risk</div>
+  <div class="tbl-wrap reveal d2">
+    <table class="ptable">
+      <thead><tr><th>Scenario</th><th>Integration method</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td>A · Documented API</td><td>Direct real-time integration as diagrammed — the recommended path.</td><td>Fastest; 1–2 day Phase 1 holds.</td></tr>
+        <tr><td>B · WMS with connectors</td><td>We integrate with the WMS's API; same architecture, different endpoint.</td><td>Comparable timeline.</td></tr>
+        <tr><td>C · No API yet</td><td>Interim automated file exchange (scheduled CSV over SFTP / email-parse) while Sipup exposes endpoints — orders still flow automatically from day one.</td><td>Go-live unaffected; real-time upgrade follows.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h reveal d1">Seamless cutover — zero interruption</div>
+  <ul class="plist reveal d2">
+    <li>Full workflow rehearsed with test orders in a sandbox against Sipup's system.</li>
+    <li><b>Parallel run</b> — live orders route to Sipup while your warehouse remains on standby as fallback.</li>
+    <li>Cutover during a low-traffic window; the DHL process is retired only once the Sipup flow is verified on real orders.</li>
+  </ul>
+</section>
+
+<!-- 04 PHASE 2 -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">04</span><span class="sec-tag">Phase 2 — 60 &amp; 90-Minute Delivery</span></div>
+  <div class="sec-title reveal">Rapid delivery, <em>routed by postcode.</em></div>
+
+  <div class="feat-grid reveal d1">
+    <div class="feat"><h4>Postcode eligibility checker</h4><p>A postcode entry on the storefront (home and product pages) validates against UK postcode data, resolves to coordinates, and checks each Sipup warehouse's coverage zone. Eligible customers see "60 &amp; 90-minute delivery available in your area"; others see standard messaging. Zones are configurable per warehouse — switch a new site on with no code change.</p></div>
+    <div class="feat"><h4>Dynamic delivery pricing</h4><p>Using Shopify's Carrier Service API, checkout requests live rates from our pricing engine per order. It calculates fees from postcode, distance and zone relative to the serving warehouse, returning Standard, 60-Minute and 90-Minute — each with its own charge. Pricing rules live in a config panel you control.</p></div>
+    <div class="feat"><h4>Warehouse allocation &amp; routing</h4><p>Locate the nearest covered warehouse → live stock-check every line item (fall through to next-nearest if short) → load-balance to cap orders per warehouse per window → route with the delivery deadline attached and flag rapid orders for priority picking.</p></div>
+    <div class="feat"><h4>Live order status</h4><p>Customers get the same confirmation, dispatch, tracking and delivery updates built in Phase 1 — rapid orders simply move through faster, with courier tracking from Sipup's delivery network.</p></div>
+  </div>
+
+  <div class="callout reveal d2">
+    <div class="co-l">Built for what's next</div>
+    <p><b style="color:var(--tp);font-weight:500;">Chilled &amp; frozen</b> — products carry a temperature-class attribute; routing automatically restricts chilled/frozen items to equipped warehouses. <b style="color:var(--tp);font-weight:500;">Beyond London</b> — new cities are new zones and warehouses in configuration; the routing and pricing engine is location-agnostic.</p>
+  </div>
+</section>
+
+<!-- 05 DATA SYNC -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Data Synchronisation Spec</span></div>
+  <div class="sec-title reveal">What flows <em>where, and when.</em></div>
+  <div class="tbl-wrap reveal d1">
+    <table class="ptable">
+      <thead><tr><th>Data</th><th>Direction</th><th>Trigger</th><th>Mechanism</th></tr></thead>
+      <tbody>
+        <tr><td>New orders</td><td>Shopify → Sipup</td><td>Real time, on payment</td><td>Order webhook → queued push</td></tr>
+        <tr><td>Order acknowledgement</td><td>Sipup → Shopify</td><td>On receipt</td><td>API response / callback, logged</td></tr>
+        <tr><td>Stock levels</td><td>Sipup → Shopify</td><td>Every 10–15 min</td><td>Scheduled sync to fulfilment location</td></tr>
+        <tr><td>Dispatch + tracking no.</td><td>Sipup → Shopify</td><td>Real time, on dispatch</td><td>Fulfillment API writeback</td></tr>
+        <tr><td>Order status updates</td><td>Sipup → Shopify</td><td>On each event</td><td>Status events → order timeline</td></tr>
+        <tr><td>Failed orders</td><td>Integration → your team</td><td>Immediate</td><td>Email / Slack alert + dashboard</td></tr>
+        <tr><td>Delivery rates (Phase 2)</td><td>Engine → checkout</td><td>Live, per checkout</td><td>Carrier Service API</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 06 REQUIREMENTS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Shopify App &amp; Third-Party Requirements</span></div>
+  <div class="sec-title reveal">Owned by you, <em>no per-order fees.</em></div>
+  <ul class="plist reveal d1">
+    <li><b>Shopify apps</b> — one private custom app (the integration layer). No public app-store apps, no per-order fees, and the code is owned by Haldiram's UK.</li>
+    <li><b>Third-party software</b> — cloud hosting for the integration service and its database (a modest footprint, billed at cost — typically a small monthly infrastructure charge). UK postcode lookup uses open data at no licence cost.</li>
+    <li><b>APIs involved</b> — Shopify Admin API, Webhooks, Fulfillment &amp; Inventory APIs (Phase 1); Carrier Service API and storefront theme extension (Phase 2); Sipup's order/stock endpoints as confirmed at discovery.</li>
+    <li><b>Plan note (Phase 2)</b> — live carrier-calculated rates require Shopify Advanced/Plus, or the carrier-rates add-on on other plans — we confirm your store's plan readiness during discovery, before any Phase 2 work begins.</li>
+  </ul>
+</section>
+
+<!-- 07 TESTING -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">07</span><span class="sec-tag">Testing Approach</span></div>
+  <div class="sec-title reveal">Proven before it touches <em>a real order.</em></div>
+  <ul class="plist reveal d1">
+    <li><b>Component tests</b> — every payload mapping and pricing rule is unit-tested before it touches an order.</li>
+    <li><b>End-to-end sandbox</b> — full order lifecycle rehearsed against Sipup's sandbox (place → push → acknowledge → dispatch → track → notify), including deliberate failure injections (bad SKU, timeout, out-of-stock) to prove alerts fire.</li>
+    <li><b>UAT</b> — structured scripts for your team and Sipup's: real test orders through the live store, verified at every checkpoint. Phase 2 adds postcode-matrix testing across zones, boundaries and ineligible areas.</li>
+    <li><b>Go-live verification</b> — first live orders monitored order-by-order jointly with both teams.</li>
+  </ul>
+</section>
+
+<!-- 08 DEPLOYMENT -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Deployment &amp; Go-Live</span></div>
+  <div class="sec-title reveal">Staged and <em>reversible at every step.</em></div>
+  <p class="sec-lead reveal d1">
+    Deployment is staged and reversible: sandbox first, then a parallel-run window with your warehouse on standby, then full cutover in a low-traffic window. Rollback is a single switch back to the current process — at no point is the store's ability to take and fulfil orders at risk. Phase 2 features ship behind flags: the postcode checker and rapid-delivery options are enabled zone by zone, so launch can start with one warehouse's catchment and expand smoothly.
+  </p>
+</section>
+
+<!-- 09 SUPPORT -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">09</span><span class="sec-tag">Documentation, Training &amp; Support</span></div>
+  <div class="sec-title reveal">Handed over <em>properly.</em></div>
+  <ul class="plist reveal d1">
+    <li><b>Documentation</b> — integration specification, architecture notes, and an operations runbook (what each alert means and what to do).</li>
+    <li><b>Training</b> — a live handover session for your team plus short recorded walkthroughs of the dashboard, alerts and Phase 2 configuration panel.</li>
+    <li><b>Post-launch</b> — 30 days of hypercare after each phase's go-live: priority response, proactive monitoring, and fixes included. Ongoing support &amp; maintenance retainer available thereafter.</li>
+  </ul>
+</section>
+
+<!-- 10 TIMELINE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">10</span><span class="sec-tag">Timeline</span></div>
+  <div class="sec-title reveal">Phase 1 in <em>days,</em> Phase 2 in weeks.</div>
+  <div class="tbl-wrap reveal d1">
+    <table class="ptable">
+      <thead><tr><th>Phase</th><th>Duration</th><th>Breakdown</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 1</td><td>1–2 business days</td><td>Day 1: discovery call with Sipup's tech team, integration build &amp; sandbox testing · Day 2: UAT with live test orders, cutover &amp; go-live support</td></tr>
+        <tr><td>Phase 2</td><td>15–18 working days</td><td>Discovery &amp; zone mapping: 2–3 days · Development: 8–9 days · Testing: 2–3 days · UAT: 2 days · Go-live: 1 day</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sec-lead reveal d2" style="margin-top:20px;">The Phase 1 timeline assumes Sipup's API documentation and a sandbox are available at kickoff (Scenario A). Under Scenario C we still go live on the same schedule via the interim automated exchange, upgrading to real-time integration as Sipup's endpoints become available.</p>
+</section>
+
+<!-- 11 COMMERCIAL (DARK) -->
+<div class="inv-section">
+  <div class="inv-label reveal">11 · Commercial Proposal</div>
+  <div class="inv-heading reveal d1">Two phases,<br><em>one clear price.</em></div>
+  <p class="inv-sub reveal d2">A one-off implementation cost per phase. No monthly recurring fees are payable to us for the integration itself.</p>
+  <div class="dtbl-wrap reveal d1">
+    <table class="dtable">
+      <thead><tr><th>Item</th><th class="amt">Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 1 — Fulfilment Integration</td><td class="amt">₹ 40,000</td></tr>
+        <tr><td>Phase 2 — 60 &amp; 90-Minute Delivery</td><td class="amt">₹ 1,80,000</td></tr>
+        <tr class="row-total"><td>Total one-off implementation</td><td class="amt">₹ 2,20,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="plist reveal d2" style="margin-top:28px;">
+    <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Recurring costs</b> — no monthly recurring fees are payable to us for the integration itself.</li>
+    <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Support &amp; maintenance</b> — 30 days of post-go-live hypercare per phase included; ongoing retainer available on request.</li>
+    <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Third-party costs</b> — cloud hosting and any Shopify plan add-on are billed directly by the provider at cost — no markup.</li>
+  </ul>
+</div>
+<style>.inv-section .plist li::before { background: var(--gold); }</style>
+
+<!-- 12 EXPERIENCE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">12</span><span class="sec-tag">Relevant Experience</span></div>
+  <div class="sec-title reveal">We've built <em>this shape of thing.</em></div>
+  <p class="sec-lead reveal d1">Kaart Studio is the ecommerce arm of Crestify, a full-stack product development studio. Recent work relevant to this engagement:</p>
+  <ul class="plist reveal d1">
+    <li>Custom Shopify feature development using Shopify's admin and customer-account GraphQL APIs, metafields-driven functionality and theme customisation for D2C brands.</li>
+    <li>Shopify order-document and workflow automation for retail brands, including tax-compliant order-printing pipelines.</li>
+    <li>Multi-outlet hospitality operations platforms covering order management, inventory workflows and role-based routing across locations — directly analogous to multi-warehouse order routing.</li>
+    <li>End-to-end product builds spanning API integrations, real-time sync, and operational dashboards for ecommerce and SaaS clients.</li>
+  </ul>
+  <div class="work-grid reveal d2" style="margin-top:32px;">
+    <a class="work-card" href="https://crestify.co/kaart/haldirams" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/haldirams-london.jpg" alt="Haldiram's UK" loading="lazy"></div>
+      <div class="work-meta"><div class="work-name">Haldiram's UK</div><div class="work-sector">F&amp;B · Launch</div><span class="work-note">Already your design &amp; digital partner for the UK launch.</span></div>
+    </a>
+    <a class="work-card" href="https://giva.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva" loading="lazy"></div>
+      <div class="work-meta"><div class="work-name">Giva</div><div class="work-sector">Jewellery · Shopify</div><span class="work-note">Embedded Shopify dev retainer across multiple stores.</span></div>
+    </a>
+    <a class="work-card" href="https://commontime.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/commontime.png" alt="Common Time" loading="lazy"></div>
+      <div class="work-meta"><div class="work-name">Common Time</div><div class="work-sector">Café · Custom Shopify</div><span class="work-note">Custom-designed and built e-commerce store, end to end.</span></div>
+    </a>
+    <a class="work-card" href="https://jamesaston.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/jamesaston.png" alt="James Aston" loading="lazy"></div>
+      <div class="work-meta"><div class="work-name">James Aston</div><div class="work-sector">Leather · Shopify</div><span class="work-note">Custom storefront build for a premium D2C brand.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- 13 NEXT STEPS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">13</span><span class="sec-tag">Next Steps</span></div>
+  <div class="sec-title reveal">Three steps to <em>go-live.</em></div>
+  <ul class="plist reveal d1">
+    <li><b>1 — Discovery call</b> — a short three-way call with Haldiram's UK and Sipup's technical team to confirm which integration scenario applies.</li>
+    <li><b>2 — Sign-off</b> — on Phase 1 scope and commercial terms.</li>
+    <li><b>3 — Phase 1 kickoff</b> — go-live within 1–2 business days of API access.</li>
+  </ul>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready when Sipup is</div>
+  <div class="cta-title reveal d1">Let's get orders<br><em>flowing.</em></div>
+  <p class="cta-sub reveal d2">Book the three-way discovery call and we can be live within 1–2 business days of API access.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="fl">Kaart Studio × Crestify · crestify.co · Proposal for Haldiram's UK · July 2026</span>
+  <span class="fr">Valid 30 days · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
