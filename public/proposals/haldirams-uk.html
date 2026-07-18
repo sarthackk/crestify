@@ -306,17 +306,8 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <li><b>Reconciliation view</b> — a simple ops dashboard lists every order's journey (received → pushed → acknowledged → dispatched), so daily reconciliation takes minutes, not spreadsheets.</li>
   </ul>
 
-  <div class="sub-h reveal d1"><span class="mono">What we need from Sipup</span>Three scenarios — a discovery question, not a risk</div>
-  <div class="tbl-wrap reveal d2">
-    <table class="ptable">
-      <thead><tr><th>Scenario</th><th>Integration method</th><th>Impact</th></tr></thead>
-      <tbody>
-        <tr><td>A · Documented API</td><td>Direct real-time integration as diagrammed — the recommended path.</td><td>Fastest; 1–2 day Phase 1 holds.</td></tr>
-        <tr><td>B · WMS with connectors</td><td>We integrate with the WMS's API; same architecture, different endpoint.</td><td>Comparable timeline.</td></tr>
-        <tr><td>C · No API yet</td><td>Interim automated file exchange (scheduled CSV over SFTP / email-parse) while Sipup exposes endpoints — orders still flow automatically from day one.</td><td>Go-live unaffected; real-time upgrade follows.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="sub-h reveal d1">What we need from Sipup</div>
+  <p class="sec-lead reveal d2">The exact wiring depends on what Sipup's system exposes — a discovery question, not a project risk. We've designed for whichever applies: if Sipup has an <b style="color:var(--tp);font-weight:500;">API</b> (or a WMS with connectors), we integrate directly and in real time. If <b style="color:var(--tp);font-weight:500;">no API is available yet</b>, an interim automated file exchange keeps orders flowing from day one, and we upgrade to real-time once Sipup's endpoints are ready. Either way, go-live is unaffected.</p>
 
   <div class="sub-h reveal d1">Seamless cutover — zero interruption</div>
   <ul class="plist reveal d2">
@@ -427,19 +418,30 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <!-- 11 COMMERCIAL (DARK) -->
 <div class="inv-section">
   <div class="inv-label reveal">11 · Commercial Proposal</div>
-  <div class="inv-heading reveal d1">Two phases,<br><em>one clear price.</em></div>
-  <p class="inv-sub reveal d2">A one-off implementation cost per phase. No monthly recurring fees are payable to us for the integration itself.</p>
-  <div class="dtbl-wrap reveal d1">
-    <table class="dtable">
-      <thead><tr><th>Item</th><th class="amt">Cost</th></tr></thead>
-      <tbody>
-        <tr><td>Phase 1 — Fulfilment Integration</td><td class="amt">₹ 40,000</td></tr>
-        <tr><td>Phase 2 — 60 &amp; 90-Minute Delivery</td><td class="amt">₹ 1,80,000</td></tr>
-        <tr class="row-total"><td>Total one-off implementation</td><td class="amt">₹ 2,20,000</td></tr>
-      </tbody>
-    </table>
+  <div class="inv-heading reveal d1">Both phases,<br><em>one clear price.</em></div>
+  <p class="inv-sub reveal d2">A single one-off implementation cost covering both phases. No monthly recurring fees are payable to us for the integration itself.</p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch;">
+    <div style="flex:1 1 280px; background:rgba(13,155,106,0.1); border:1px solid rgba(13,155,106,0.3); border-radius:8px; padding:30px 34px; display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Total one-off implementation</div>
+      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,66px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">₹2,20,000</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:12px;">Phase 1 + Phase 2 · + applicable taxes</div>
+    </div>
+    <div style="flex:1 1 240px; display:flex; flex-direction:column; gap:12px;">
+      <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:20px 24px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:6px;">50% · On kickoff</div>
+        <div style="font-family:var(--serif); font-style:italic; font-size:26px; color:var(--gold);">₹1,10,000</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">To begin the engagement</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:20px 24px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:6px;">50% · On go-live</div>
+        <div style="font-family:var(--serif); font-style:italic; font-size:26px; color:var(--gold);">₹1,10,000</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">On completion &amp; go-live</div>
+      </div>
+    </div>
   </div>
-  <ul class="plist reveal d2" style="margin-top:28px;">
+
+  <ul class="plist reveal d2" style="margin-top:30px;">
     <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Recurring costs</b> — no monthly recurring fees are payable to us for the integration itself.</li>
     <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Support &amp; maintenance</b> — 30 days of post-go-live hypercare per phase included; ongoing retainer available on request.</li>
     <li style="color:rgba(255,255,255,0.6);"><b style="color:#fff;">Third-party costs</b> — cloud hosting and any Shopify plan add-on are billed directly by the provider at cost — no markup.</li>
