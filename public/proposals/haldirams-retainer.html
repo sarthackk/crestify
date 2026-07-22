@@ -120,6 +120,20 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .tm-n { font-family: var(--serif); font-size: 17px; line-height: 1.2; }
 .tm-r { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); margin-top: 6px; }
 
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(13,155,106,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(12,23,18,0.08); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-img.logo-fit { display: flex; align-items: center; justify-content: center; padding: 26px; background: #fff; border-bottom: 1px solid var(--black10); }
+.work-img.logo-fit img { width: auto; height: auto; max-width: 78%; max-height: 62%; object-fit: contain; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 15px 18px; }
+.work-name { font-family: var(--serif); font-size: 18px; }
+.work-sector { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 8px; line-height: 1.5; }
+
 /* CALLOUT */
 .callout { background: rgba(13,155,106,0.06); border: 1px solid rgba(13,155,106,0.2); border-left: 3px solid var(--green); border-radius: 6px; padding: 20px 24px; margin-top: 24px; }
 .callout p { font-size: 13px; color: var(--ts); line-height: 1.7; }
@@ -382,9 +396,38 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </div>
 </section>
 
+<!-- 06 OUR WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Our Work</span></div>
+  <div class="sec-title reveal">Stores we <em>run and build.</em></div>
+  <p class="sec-lead reveal d1">A sample of the brands we work with — several on the same standing-retainer model proposed here.</p>
+  <div class="work-grid reveal d2">
+    <a class="work-card" href="https://giva.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva"></div>
+      <div class="work-meta"><div class="work-name">Giva</div><div class="work-sector">Jewellery · Shopify</div><span class="work-note">Embedded dev retainer across multiple stores.</span></div>
+    </a>
+    <a class="work-card" href="https://vedajewel.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/veda.png" alt="Veda Jewel"></div>
+      <div class="work-meta"><div class="work-name">Veda Jewel</div><div class="work-sector">Luxury Jewellery · Shopify</div><span class="work-note">Embedded dev support for a heritage store.</span></div>
+    </a>
+    <a class="work-card" href="https://jamesaston.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/jamesaston.png" alt="James Aston"></div>
+      <div class="work-meta"><div class="work-name">James Aston</div><div class="work-sector">Leather Goods · Shopify</div><span class="work-note">Custom storefront for a premium D2C brand.</span></div>
+    </a>
+    <a class="work-card" href="https://quickhunt.app" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/quickhunt.png" alt="Quickhunt"></div>
+      <div class="work-meta"><div class="work-name">Quickhunt</div><div class="work-sector">SaaS · Product Design</div><span class="work-note">Site and app redesign that lifted trial signups.</span></div>
+    </a>
+    <a class="work-card" href="https://upride.in" target="_blank" rel="noopener">
+      <div class="work-img logo-fit"><img src="/brand-logos/upride.svg" alt="Upride"></div>
+      <div class="work-meta"><div class="work-name">Upride</div><div class="work-sector">Mobility · Platform</div><span class="work-note">Product and platform development.</span></div>
+    </a>
+  </div>
+</section>
+
 <!-- 07 INVESTMENT -->
 <div class="inv-section">
-  <div class="inv-label reveal">06 · Investment</div>
+  <div class="inv-label reveal">07 · Investment</div>
   <div class="inv-heading reveal d1">One retainer,<br><em>standing capacity.</em></div>
   <p class="inv-sub reveal d2">Development, store management and conversion optimisation — everything in Section 03.</p>
   <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch;">
@@ -407,7 +450,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 
 <!-- 08 TERMS -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">07</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Terms</span></div>
   <div class="sec-title reveal">Simple <em>terms.</em></div>
   <ul class="plist reveal d1">
     <li>Billed monthly in advance; the month's work begins on receipt of payment.</li>
@@ -421,7 +464,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 
 <!-- 09 NEXT STEPS -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Next Steps</span></div>
+  <div class="sec-hd"><span class="sec-num">09</span><span class="sec-tag">Next Steps</span></div>
   <div class="sec-title reveal">A confirmation is <em>all we need.</em></div>
   <p class="sec-lead reveal d1">An email confirmation with the first month's retainer starts it. On confirmation we:</p>
   <ul class="plist reveal d2">
@@ -444,7 +487,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <script>
 (function () {
   var LOGOS = [
-    "6826d7c6719f6cc0563112b1-group-1-1.png","cafoco-logo-purple-on-transparent.png","dotty.png",
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","cafoco-logo-purple-on-transparent.png","dotty.png",
     "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
     "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
     "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
