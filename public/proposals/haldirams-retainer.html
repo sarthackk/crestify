@@ -14,7 +14,6 @@
   --black10: rgba(12,23,18,0.1);
   --green:   #0D9B6A;
   --cream:   #F3F2EC;
-  --white:   #FFFFFF;
   --tp:      #12160F;
   --ts:      #4C544E;
   --caramel: #0A7D54;
@@ -26,7 +25,6 @@
 }
 body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
 
-/* REVEAL */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; }
@@ -41,26 +39,26 @@ body { font-family: var(--sans); background: var(--cream); color: var(--tp); fon
 /* NAV */
 nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(243,242,236,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
 .nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
-.k-box { width: 28px; height: 28px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 600; font-family: var(--sans); flex-shrink: 0; transition: background 0.2s; }
-.nav-logo:hover .k-box { background: var(--caramel); }
+.k-box { width: 28px; height: 28px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 600; font-family: var(--sans); flex-shrink: 0; }
 .nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
 .nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
 .nav-right span { color: var(--green); }
 
 /* HERO */
 .hero { padding: clamp(56px, 8vw, 92px) var(--pad) clamp(44px, 6vw, 66px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 15%, rgba(13,155,106,0.13) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 8% 85%, rgba(201,154,52,0.06) 0%, transparent 70%); }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 15%, rgba(13,155,106,0.13) 0%, transparent 70%); }
 .hero > * { position: relative; z-index: 1; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 28px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(243,242,236,0.6); }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 28px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; }
 .hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
-.hero h1 { font-family: var(--serif); font-size: clamp(40px, 6.4vw, 84px); font-weight: 400; line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 24px; }
+.hero h1 { font-family: var(--serif); font-size: clamp(40px, 6.4vw, 84px); font-weight: 400; line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 22px; }
 .hero h1 em { font-style: italic; color: var(--caramel); }
-.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 580px; margin-bottom: 46px; }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.8; max-width: 540px; margin-bottom: 44px; }
 .hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 26px; }
 .hm { padding-right: 24px; }
 .hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
 .hm-v { font-family: var(--serif); font-size: 24px; font-style: italic; }
+.hm-v small { font-style: normal; font-family: var(--sans); font-size: 11px; color: var(--ts); display: block; margin-top: 3px; }
 .hm-v.green { color: var(--green); } .hm-v.amber { color: var(--amber); }
 
 /* DARK BAR */
@@ -72,76 +70,77 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .stat-accent .sn { color: var(--gold); }
 
 /* SECTIONS */
-.sec { padding: clamp(40px, 6vw, 62px) var(--pad); border-bottom: 1px solid var(--black10); }
-.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+.sec { padding: clamp(38px, 5.5vw, 58px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
 .sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
 .sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
-.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 40px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 38px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
 .sec-title em { font-style: italic; color: var(--caramel); }
-.sec-lead { font-size: 14px; color: var(--ts); max-width: 680px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 640px; line-height: 1.8; margin-bottom: 16px; }
 .sec-lead:last-child { margin-bottom: 0; }
-.sub-h { font-family: var(--serif); font-size: 21px; margin: 38px 0 8px; }
-.sub-h .mono { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-family: var(--sans); display: block; margin-bottom: 5px; }
-.sub-lead { font-size: 13px; color: var(--ts); line-height: 1.75; max-width: 640px; margin-bottom: 18px; }
+.sub-h { font-family: var(--serif); font-size: 19px; margin: 32px 0 12px; }
+.sub-h .mono { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-family: var(--sans); display: block; margin-bottom: 4px; }
 
 /* TABLE */
 .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--black10); border-radius: 8px; background: #fff; }
-.ptable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+.ptable { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
 .ptable thead tr { background: var(--black); }
-.ptable th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding: 13px 16px; font-weight: 400; white-space: nowrap; }
-.ptable td { padding: 15px 16px; vertical-align: top; color: var(--ts); line-height: 1.6; border-bottom: 1px solid var(--black10); }
+.ptable th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding: 12px 15px; font-weight: 400; white-space: nowrap; }
+.ptable td { padding: 13px 15px; vertical-align: top; color: var(--ts); line-height: 1.55; border-bottom: 1px solid var(--black10); }
 .ptable tbody tr:last-child td { border-bottom: none; }
 .ptable tbody tr:hover { background: rgba(13,155,106,0.03); }
-.ptable td:first-child { color: var(--tp); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
-.ptable td.wide { min-width: 200px; }
-.ptable .amt { text-align: right; font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--tp); white-space: nowrap; }
-.ptable th.amt { text-align: right; }
-.ptable .row-total td { background: rgba(13,155,106,0.06); font-family: var(--serif); color: var(--tp); font-size: 15px; border-top: 2px solid var(--black10); }
-.ptable .row-total .amt { color: var(--caramel); font-size: 19px; }
-.ptable code { font-family: monospace; font-size: 11.5px; background: rgba(12,23,18,0.05); padding: 1px 5px; border-radius: 3px; color: var(--tp); }
+.ptable td:first-child { color: var(--tp); font-family: var(--serif); font-size: 14.5px; white-space: nowrap; }
+.ptable code { font-family: monospace; font-size: 11px; background: rgba(12,23,18,0.06); padding: 1px 5px; border-radius: 3px; color: var(--tp); }
 
-/* PRIORITY BADGE */
+/* PRIORITY */
 .pri { display: inline-block; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
 .pri-1 { background: rgba(201,154,52,0.14); color: #8A6420; border: 1px solid rgba(201,154,52,0.4); }
 .pri-2 { background: rgba(13,155,106,0.1); color: var(--caramel); border: 1px solid rgba(13,155,106,0.3); }
 .pri-3 { background: rgba(12,23,18,0.05); color: var(--ts); border: 1px solid var(--black10); }
 
 /* LIST */
-.plist { list-style: none; display: flex; flex-direction: column; gap: 12px; max-width: 740px; }
-.plist li { position: relative; padding-left: 26px; font-size: 13.5px; color: var(--ts); line-height: 1.72; }
-.plist li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--green); transform: rotate(45deg); }
+.plist { list-style: none; display: flex; flex-direction: column; gap: 11px; max-width: 700px; }
+.plist li { position: relative; padding-left: 24px; font-size: 13.5px; color: var(--ts); line-height: 1.68; }
+.plist li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 2px; background: var(--green); transform: rotate(45deg); }
 .plist li b { color: var(--tp); font-weight: 500; }
 
 /* COVER GRID */
-.cover-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--black10); border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; }
-.cover { background: #fff; padding: 26px 28px; }
-.cover h4 { font-family: var(--serif); font-size: 19px; font-weight: 400; margin-bottom: 14px; }
-.cover ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.cover li { position: relative; padding-left: 18px; font-size: 12.5px; color: var(--ts); line-height: 1.6; }
+.cover-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--black10); border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; }
+.cover { background: #fff; padding: 24px 26px; }
+.cover h4 { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 12px; }
+.cover ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.cover li { position: relative; padding-left: 17px; font-size: 12.5px; color: var(--ts); line-height: 1.55; }
 .cover li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--green); opacity: 0.6; }
 
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.tm { background: #fff; border: 1px solid var(--black10); border-radius: 8px; padding: 26px 20px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+.tm:hover { border-color: rgba(13,155,106,0.4); transform: translateY(-2px); }
+.tm-av { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(140deg, var(--green), var(--caramel)); color: #fff; font-family: var(--serif); font-size: 19px; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.tm-n { font-family: var(--serif); font-size: 17px; line-height: 1.2; }
+.tm-r { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); margin-top: 6px; }
+
 /* CALLOUT */
-.callout { background: rgba(13,155,106,0.06); border: 1px solid rgba(13,155,106,0.2); border-left: 3px solid var(--green); border-radius: 6px; padding: 22px 26px; margin-top: 26px; }
-.callout .co-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
+.callout { background: rgba(13,155,106,0.06); border: 1px solid rgba(13,155,106,0.2); border-left: 3px solid var(--green); border-radius: 6px; padding: 20px 24px; margin-top: 24px; }
 .callout p { font-size: 13px; color: var(--ts); line-height: 1.7; }
 
 /* INVESTMENT */
-.inv-section { background: var(--black); padding: clamp(40px, 6vw, 62px) var(--pad); position: relative; overflow: hidden; }
+.inv-section { background: var(--black); padding: clamp(38px, 5.5vw, 58px) var(--pad); position: relative; overflow: hidden; }
 .inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(13,155,106,0.2) 0%, transparent 60%); }
 .inv-section > * { position: relative; }
 .inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
-.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 36px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
 .inv-heading em { font-style: italic; color: var(--gold); }
-.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 30px; max-width: 560px; line-height: 1.7; }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; max-width: 520px; line-height: 1.7; }
 
 /* LOGO WALL */
-.logowall { background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 46px) 0; overflow: hidden; position: relative; }
+.logowall { background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(28px, 4vw, 42px) 0; overflow: hidden; position: relative; }
 .logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
 .logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
 .logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
-.logowall-hd { text-align: center; margin-bottom: 28px; padding: 0 var(--pad); position: relative; z-index: 3; }
-.logowall-hd .lh-l { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
-.logowall-hd .lh-t { font-family: var(--serif); font-size: clamp(20px, 3vw, 30px); line-height: 1.1; }
+.logowall-hd { text-align: center; margin-bottom: 26px; padding: 0 var(--pad); position: relative; z-index: 3; }
+.logowall-hd .lh-l { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 9px; }
+.logowall-hd .lh-t { font-family: var(--serif); font-size: clamp(20px, 3vw, 28px); line-height: 1.1; }
 .logowall-hd .lh-t em { font-style: italic; color: var(--caramel); }
 .lw-track { display: flex; width: max-content; }
 .lw-row1 { animation: lw-move 95s linear infinite; }
@@ -154,21 +153,20 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
 
 /* CTA */
-.cta-section { background: var(--black); padding: clamp(56px, 9vw, 92px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section { background: var(--black); padding: clamp(52px, 8vw, 86px) var(--pad); text-align: center; position: relative; overflow: hidden; }
 .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(13,155,106,0.14) 0%, transparent 70%); }
 .cta-section > * { position: relative; }
-.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
-.cta-title { font-family: var(--serif); font-size: clamp(34px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+.cta-title { font-family: var(--serif); font-size: clamp(32px, 4.6vw, 56px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
 .cta-title em { font-style: italic; color: var(--gold); }
-.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 38px; }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 34px; }
 .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
 .btn-primary:hover { opacity: 0.88; }
-.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
 .btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
-/* FOOTER */
-footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer { padding: 26px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
 footer .fl { font-size: 11px; color: var(--ts); }
 footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
 
@@ -189,14 +187,14 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <span>Haldiram's UK</span><span class="dot">·</span>
     <span>Shopify Retainer</span><span class="dot">·</span>
     <span>24 Hours / Week</span><span class="dot">·</span>
-    <span>₹36,000 / Month</span><span class="dot">·</span>
-    <span>22 Findings from a Live Store Audit</span><span class="dot">·</span>
+    <span>£350 / Month</span><span class="dot">·</span>
+    <span>22 Findings from a Live Audit</span><span class="dot">·</span>
     <span>Kaart Studio</span><span class="dot">·</span>
     <span>Haldiram's UK</span><span class="dot">·</span>
     <span>Shopify Retainer</span><span class="dot">·</span>
     <span>24 Hours / Week</span><span class="dot">·</span>
-    <span>₹36,000 / Month</span><span class="dot">·</span>
-    <span>22 Findings from a Live Store Audit</span><span class="dot">·</span>
+    <span>£350 / Month</span><span class="dot">·</span>
+    <span>22 Findings from a Live Audit</span><span class="dot">·</span>
   </div>
 </div>
 
@@ -217,33 +215,21 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <span class="pulse"></span>
     Proposal · Haldiram's UK · haldiramuk.com
   </div>
-  <h1 class="reveal d1">
-    Shopify<br>
-    <em>Retainer</em>
-  </h1>
+  <h1 class="reveal d1">Shopify<br><em>Retainer</em></h1>
   <p class="hero-sub reveal d2">
-    Development, store management, and continuous conversion optimisation for Haldiram's UK — a dedicated Shopify team on standing weekly availability. Starting with <b style="color:var(--tp);font-weight:500;">22 specific findings</b> from a live review of your storefront.
+    Development, store management and conversion optimisation — a dedicated Shopify team on standing weekly availability. Starting with <b style="color:var(--tp);font-weight:500;">22 findings</b> from a live review of your store.
   </p>
   <div class="hero-meta reveal d3">
-    <div class="hm">
-      <div class="hm-l">Engagement</div>
-      <div class="hm-v">Monthly Retainer</div>
-    </div>
-    <div class="hm">
-      <div class="hm-l">Monthly Fee</div>
-      <div class="hm-v green">₹36,000</div>
-    </div>
-    <div class="hm">
-      <div class="hm-l">Capacity</div>
-      <div class="hm-v amber">24 hrs / week</div>
-    </div>
+    <div class="hm"><div class="hm-l">Engagement</div><div class="hm-v">Monthly Retainer</div></div>
+    <div class="hm"><div class="hm-l">Monthly Fee</div><div class="hm-v green">£350<small>≈ ₹36,000</small></div></div>
+    <div class="hm"><div class="hm-l">Capacity</div><div class="hm-v amber">24 hrs / week</div></div>
   </div>
 </section>
 
-<!-- STATS BAR -->
+<!-- STATS -->
 <div class="dark-bar">
   <div class="stat reveal"><div class="sn">24 hrs</div><div class="sl">Weekly capacity</div></div>
-  <div class="stat reveal d1"><div class="sn">₹36k</div><div class="sl">Per month</div></div>
+  <div class="stat reveal d1"><div class="sn">£350</div><div class="sl">Per month</div></div>
   <div class="stat reveal d2"><div class="sn">22</div><div class="sl">Findings identified</div></div>
   <div class="stat stat-accent reveal d3"><div class="sn">90 days</div><div class="sl">Proposed roadmap</div></div>
 </div>
@@ -253,52 +239,48 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">The Opportunity</span></div>
   <div class="sec-title reveal">Strong fundamentals. <em>No standing owner.</em></div>
   <p class="sec-lead reveal d1">
-    Haldiram's UK runs a well-built Shopify store with genuinely strong fundamentals: a clear category architecture, a tiered offer structure, an established review base, and a heritage brand that most competitors in the UK Indian-food category cannot match.
+    Haldiram's UK runs a well-built Shopify store — clear category architecture, a tiered offer structure, a strong review base, and a heritage brand few UK competitors can match.
   </p>
   <p class="sec-lead reveal d2">
-    What the store lacks is consistent, hands-on technical ownership. Ahead of preparing this proposal we reviewed the live storefront — the homepage and product pages — and found a series of specific, fixable issues that are quietly costing conversions every day. None of them are large problems. All of them are the kind of thing that only gets caught and fixed when someone is looking at the store every week.
-  </p>
-  <p class="sec-lead reveal d2">
-    That is what this retainer provides: a dedicated Shopify team on standing weekly availability, covering development, store management, and continuous conversion improvement — starting with the findings set out below.
+    What it lacks is standing technical ownership. We reviewed the live storefront on 22 July and found <b style="color:var(--tp);font-weight:500;">22 specific, fixable issues</b> quietly costing conversions. None are large. All are the kind only caught when someone looks at the store every week — which is exactly what this retainer provides.
   </p>
 </section>
 
-<!-- 02 WHAT WE FOUND -->
+<!-- 02 FINDINGS -->
 <section class="sec">
   <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">What We Found</span></div>
   <div class="sec-title reveal">A live audit of <em>your storefront.</em></div>
   <p class="sec-lead reveal d1">
-    Drawn from a review of the live site on 22 July 2026, grouped by theme and prioritised.
-    <span class="pri pri-1" style="margin-left:6px;">P1</span> recommended for the first month ·
-    <span class="pri pri-2">P2</span> for the second and third ·
+    From a review of the live site on 22 July 2026.
+    <span class="pri pri-1" style="margin-left:6px;">P1</span> first month ·
+    <span class="pri pri-2">P2</span> months two and three ·
     <span class="pri pri-3">P3</span> thereafter.
   </p>
 
-  <div class="sub-h reveal d1"><span class="mono">2.1</span>Trust &amp; credibility — immediate fixes</div>
-  <p class="sub-lead reveal d1">For a heritage food brand, small errors in customer-facing copy do disproportionate damage. Each of these is a sub-hour fix.</p>
+  <div class="sub-h reveal d1"><span class="mono">2.1</span>Trust &amp; credibility — each a sub-hour fix</div>
   <div class="tbl-wrap reveal d2">
     <table class="ptable">
       <thead><tr><th>Area</th><th>What we found</th><th>What we'd change</th><th>Pri.</th></tr></thead>
       <tbody>
-        <tr><td>Add-to-cart popup</td><td class="wide">Typos at the moment of purchase: <code>Max Quanity</code> and <code>limited this item to 4 quanties</code></td><td class="wide">Correct the copy and reframe the quantity limit positively rather than as an error</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Product page — buy box</td><td class="wide">"Variant sold out or unavailable" and "Sale Sold out" render on in-stock products</td><td class="wide">Fix theme conditional logic so these only appear when genuinely out of stock</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Newsletter block</td><td class="wide">Character-encoding bug renders <code>Haldiramâ€™s</code> instead of <code>Haldiram's</code></td><td class="wide">Replace the malformed characters and audit theme strings for the same issue</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Tea Snacks nav</td><td class="wide">"namkeens" misspelt as <code>nankeens</code>; description duplicated from Savouries</td><td class="wide">Correct spelling and write unique category copy</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Homepage blog grid</td><td class="wide">One article card renders its raw URL path instead of an image and title</td><td class="wide">Add the missing featured image and title to that article record</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Footer</td><td class="wide">The Corporate Office block renders twice on every page</td><td class="wide">Remove the duplicate section from the theme footer</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Add-to-cart popup</td><td>Typos at the moment of purchase: <code>Max Quanity</code>, <code>4 quanties</code></td><td>Fix the copy; frame the limit positively, not as an error</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Buy box</td><td>"Variant sold out" and "Sale Sold out" show on in-stock products</td><td>Fix theme conditional logic</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Newsletter block</td><td>Encoding bug renders <code>Haldiramâ€™s</code></td><td>Fix the characters; audit theme strings for the same issue</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Tea Snacks nav</td><td>"namkeens" misspelt <code>nankeens</code>; copy duplicated from Savouries</td><td>Fix spelling; write unique category copy</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Blog grid</td><td>One card renders a raw URL instead of an image and title</td><td>Add the missing image and title</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Footer</td><td>Corporate Office block renders twice on every page</td><td>Remove the duplicate</td><td><span class="pri pri-2">P2</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="sub-h reveal d1"><span class="mono">2.2</span>Offer communication — the largest revenue lever</div>
-  <p class="sub-lead reveal d1">The store already runs a well-designed tiered offer (free delivery over £50, 5% over £75, 10% over £100). The structure is right; the delivery of it is losing money.</p>
+  <p class="sec-lead reveal d1" style="margin-bottom:14px;">The tiered offer (free delivery over £50, 5% over £75, 10% over £100) is well designed. The delivery of it is losing money.</p>
   <div class="tbl-wrap reveal d2">
     <table class="ptable">
       <thead><tr><th>Area</th><th>What we found</th><th>What we'd change</th><th>Pri.</th></tr></thead>
       <tbody>
-        <tr><td>Announcement bar</td><td class="wide">All three offer tiers plus an exclusion compressed into a single long sentence shoppers are unlikely to read or retain</td><td class="wide">Split into a rotating or segmented bar with one clear message per tier; move the Gifting/Khaas exclusion to a tooltip</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Product page offers</td><td class="wide">Discounts require the shopper to manually apply codes at checkout ("Festive 5", "Festive 10")</td><td class="wide">Convert to Shopify automatic discounts so the saving applies itself — manual code entry is a well-documented drop-off point</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Cart drawer</td><td class="wide">No progress indicator toward any of the three thresholds</td><td class="wide">Add a live cart progress bar ("You're £12 away from free delivery") stepping through £50 / £75 / £100 — among the most reliable AOV levers in FMCG</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Announcement bar</td><td>All three tiers plus an exclusion crammed into one long sentence</td><td>Rotating bar, one message per tier; move the exclusion to a tooltip</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Product offers</td><td>Discounts require manually entering codes at checkout</td><td>Switch to Shopify automatic discounts — manual entry is a known drop-off point</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Cart drawer</td><td>No progress indicator toward any threshold</td><td>Live progress bar stepping through £50 / £75 / £100 — a reliable AOV lever</td><td><span class="pri pri-1">P1</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -308,11 +290,11 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <table class="ptable">
       <thead><tr><th>Area</th><th>What we found</th><th>What we'd change</th><th>Pri.</th></tr></thead>
       <tbody>
-        <tr><td>Hero slideshow</td><td class="wide">Banners are image-only — no headline, value proposition, or CTA button — and link generically to the all-products collection</td><td class="wide">Add headline, supporting line, and CTA per slide; link each to a specific collection or campaign</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Product cards</td><td class="wide">No star ratings shown despite a strong review base (147 reviews on Kaju Katli alone)</td><td class="wide">Surface review stars on cards across homepage, collections, and search</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Blog section</td><td class="wide">25+ article cards load on the homepage, pushing content down and adding significant page weight</td><td class="wide">Cap at 3–4 recent posts with a "View all" link</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Above the fold</td><td class="wide">The "since 1937, Bikaner" heritage story sits mid-page, below products</td><td class="wide">Bring a one-line heritage claim above the fold — the clearest differentiator against UK grocery competitors</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>Newsletter signup</td><td class="wide">Asks for an email but offers nothing in return</td><td class="wide">Add a first-order incentive and connect it to a welcome flow</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Hero slideshow</td><td>Image-only banners — no headline or CTA — linking generically to all products</td><td>Headline and CTA per slide, each linked to a specific collection</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Product cards</td><td>No star ratings despite 147 reviews on Kaju Katli alone</td><td>Surface stars across homepage, collections and search</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Blog section</td><td>25+ article cards load on the homepage, adding significant weight</td><td>Cap at 3–4 recent posts with a "View all" link</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Above the fold</td><td>The "since 1937, Bikaner" heritage story sits mid-page</td><td>Bring a one-line heritage claim above the fold</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Newsletter</td><td>Asks for an email but offers nothing in return</td><td>First-order incentive plus a welcome flow</td><td><span class="pri pri-2">P2</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -322,12 +304,12 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <table class="ptable">
       <thead><tr><th>Area</th><th>What we found</th><th>What we'd change</th><th>Pri.</th></tr></thead>
       <tbody>
-        <tr><td>Review display</td><td class="wide">Conflicting counts on one page — "13 reviews" near the title, "4.44 ★ (147)" lower down, with no review content visible</td><td class="wide">Fix the review app configuration and place a single consistent star rating beside the price</td><td><span class="pri pri-1">P1</span></td></tr>
-        <tr><td>Recommendations</td><td class="wide">Pickup-only products appear in "You may also like" with no flag until the shopper hits a dead end</td><td class="wide">Exclude pickup-only items from delivery-context carousels, or badge them clearly upfront</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>Quantity limit</td><td class="wide">The 4-unit cap is only communicated as an error after the shopper hits it</td><td class="wide">State it inline beforehand, with a direct link to the bulk order enquiry</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>Delivery promise</td><td class="wide">"Express Shipping available Monday to Thursday until 5PM" is static and easy to miss</td><td class="wide">Convert to a dynamic cutoff countdown and estimated delivery date</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>"Buy it with" block</td><td class="wide">Bundle suggestions display full product descriptions instead of concise card copy</td><td class="wide">Trim to name, image, price, and add button</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>Image gallery</td><td class="wide">Packaging disclaimer sits inside the product image flow</td><td class="wide">Move below the buy box or into the details accordion</td><td><span class="pri pri-3">P3</span></td></tr>
+        <tr><td>Review display</td><td>Conflicting counts on one page — "13 reviews" vs "4.44 ★ (147)", no reviews visible</td><td>Fix the review app; one consistent rating beside the price</td><td><span class="pri pri-1">P1</span></td></tr>
+        <tr><td>Recommendations</td><td>Pickup-only products appear with no flag until the shopper hits a dead end</td><td>Exclude from delivery carousels, or badge clearly upfront</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Quantity limit</td><td>The 4-unit cap only appears as an error after it's hit</td><td>State it inline, with a link to bulk enquiry</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Delivery promise</td><td>Static "Express Shipping … until 5PM" line, easy to miss</td><td>Dynamic cutoff countdown and estimated delivery date</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>"Buy it with"</td><td>Bundles show full product descriptions</td><td>Trim to name, image, price and add button</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Image gallery</td><td>Packaging disclaimer sits inside the image flow</td><td>Move below the buy box or into the accordion</td><td><span class="pri pri-3">P3</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -337,74 +319,67 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <table class="ptable">
       <thead><tr><th>Area</th><th>What we found</th><th>What we'd change</th><th>Pri.</th></tr></thead>
       <tbody>
-        <tr><td>Theme markup</td><td class="wide">Mobile and desktop navigation markup both load on every page, inflating DOM size</td><td class="wide">Audit and conditionally render — improves Core Web Vitals and mobile performance</td><td><span class="pri pri-2">P2</span></td></tr>
-        <tr><td>Page weight</td><td class="wide">The homepage is heavy: large blog section, full-size banner assets, duplicated markup</td><td class="wide">Lighthouse audit, lazy-load below-fold sections, resize hero assets, defer non-critical scripts</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Theme markup</td><td>Mobile and desktop navigation both load on every page</td><td>Conditionally render — improves Core Web Vitals</td><td><span class="pri pri-2">P2</span></td></tr>
+        <tr><td>Page weight</td><td>Heavy homepage: large blog section, full-size assets, duplicate markup</td><td>Lighthouse audit, lazy-load, resize assets, defer scripts</td><td><span class="pri pri-2">P2</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="sub-h reveal d1"><span class="mono">2.6</span>Requires store access to assess</div>
-  <p class="sub-lead reveal d1">The following cannot be evaluated from the public storefront and will be addressed in the first two weeks of the engagement:</p>
+  <div class="sub-h reveal d1"><span class="mono">2.6</span>Needs store access</div>
   <ul class="plist reveal d2">
-    <li><b>Funnel data</b> — Shopify Analytics will show whether the largest drop-off is homepage → collection, product → cart, or cart → checkout, allowing the priorities above to be re-ranked against real data.</li>
-    <li><b>Mobile experience</b> — sticky add-to-cart, drawer behaviour, tap-target sizing, and navigation tested on real devices.</li>
-    <li><b>Checkout configuration</b> — express payment wallets, shipping-rate display at checkout, and abandoned-checkout recovery.</li>
+    <li><b>Funnel data</b> — Analytics will show where the real drop-off is, letting us re-rank the priorities above against data.</li>
+    <li><b>Mobile experience</b> — sticky add-to-cart, drawer behaviour and tap targets tested on real devices.</li>
+    <li><b>Checkout</b> — express wallets, shipping-rate display and abandoned-checkout recovery.</li>
   </ul>
 </section>
 
-<!-- 03 FIRST 90 DAYS -->
+<!-- 03 90 DAYS -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Proposed First 90 Days</span></div>
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">First 90 Days</span></div>
   <div class="sec-title reveal">Visible progress from <em>week one.</em></div>
-  <p class="sec-lead reveal d1">Indicative sequencing based on the findings above. Priorities are confirmed with your team each month and re-ordered once funnel data is available.</p>
+  <p class="sec-lead reveal d1">Indicative sequencing — confirmed with your team each month and re-ordered once funnel data is in.</p>
   <div class="tbl-wrap reveal d2">
     <table class="ptable">
       <thead><tr><th>Period</th><th>Focus</th><th>Outcome</th></tr></thead>
       <tbody>
-        <tr><td>Month 1</td><td class="wide">All trust and credibility fixes; analytics and access audit; automatic discounts; cart progress bar; hero rebuild with CTAs; star ratings on product cards; homepage blog section trimmed</td><td class="wide">Store reads as polished; discount tiers work without customer effort; first conversion baseline established</td></tr>
-        <tr><td>Month 2</td><td class="wide">Product page work — review display, delivery countdown, quantity messaging, recommendation filtering, bundle block; heritage positioning above the fold; newsletter incentive and welcome flow</td><td class="wide">Product pages convert harder; email list begins compounding</td></tr>
-        <tr><td>Month 3</td><td class="wide">Performance and technical health — theme cleanup, page weight, Core Web Vitals; mobile refinements; ongoing campaign, catalogue, and merchandising support</td><td class="wide">Faster store, cleaner codebase, and a steady operating rhythm for campaigns</td></tr>
+        <tr><td>Month 1</td><td>All trust fixes; analytics and access audit; automatic discounts; cart progress bar; hero rebuild; star ratings; blog section trimmed</td><td>Store reads as polished; discounts apply themselves; conversion baseline set</td></tr>
+        <tr><td>Month 2</td><td>Product page — reviews, delivery countdown, quantity messaging, recommendations, bundles; heritage above the fold; newsletter incentive</td><td>Product pages convert harder; email list starts compounding</td></tr>
+        <tr><td>Month 3</td><td>Performance and technical health — theme cleanup, page weight, Core Web Vitals, mobile; ongoing campaign support</td><td>Faster store, cleaner codebase, steady campaign rhythm</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="callout reveal d2">
-    <div class="co-l">Flexes around your calendar</div>
-    <p>Festive and campaign periods take precedence over roadmap work when they arise — the plan flexes around your trading calendar.</p>
-  </div>
+  <div class="callout reveal d2"><p>Festive and campaign periods take precedence over roadmap work — the plan flexes around your trading calendar.</p></div>
 </section>
 
-<!-- 04 WHAT THE RETAINER COVERS -->
+<!-- 04 COVERAGE -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">04</span><span class="sec-tag">What the Retainer Covers</span></div>
-  <div class="sec-title reveal">The findings are the starting point, <em>not the boundary.</em></div>
-  <p class="sec-lead reveal d1">The retainer covers the full range of Kaart Studio's Shopify services.</p>
-  <div class="cover-grid reveal d2">
+  <div class="sec-hd"><span class="sec-num">04</span><span class="sec-tag">What It Covers</span></div>
+  <div class="sec-title reveal">The findings are the start, <em>not the boundary.</em></div>
+  <div class="cover-grid reveal d1">
     <div class="cover">
       <h4>Shopify development</h4>
       <ul>
-        <li>Custom theme development, section building, and design refinements</li>
-        <li>New features, custom functionality, and checkout / UX improvements</li>
-        <li>App setup, configuration, and third-party integrations</li>
-        <li>Maintenance and monitoring of existing integrations and automations</li>
-        <li>Bug fixes, performance optimisation, and technical SEO hygiene</li>
+        <li>Custom theme development, sections and design refinements</li>
+        <li>New features, custom functionality, checkout and UX improvements</li>
+        <li>App setup, configuration and third-party integrations</li>
+        <li>Bug fixes, performance optimisation and technical SEO hygiene</li>
       </ul>
     </div>
     <div class="cover">
       <h4>Store management</h4>
       <ul>
-        <li>Product uploads, catalogue updates, collections, pricing, and inventory settings</li>
-        <li>Discounts, offers, and campaign setup — festive pushes, launches, sale events</li>
-        <li>Banners, landing pages, and on-site content updates</li>
-        <li>Navigation, merchandising, and storefront housekeeping</li>
-        <li>Order-flow configuration, shipping settings, and store settings management</li>
+        <li>Product uploads, catalogue, collections, pricing and inventory</li>
+        <li>Discounts, offers and campaign setup — festive pushes, launches, sales</li>
+        <li>Banners, landing pages and on-site content</li>
+        <li>Navigation, merchandising, shipping and store settings</li>
       </ul>
     </div>
     <div class="cover">
       <h4>Conversion &amp; reporting</h4>
       <ul>
-        <li>Ongoing CRO review — new findings logged and prioritised each month</li>
+        <li>Ongoing CRO review — new findings logged and prioritised monthly</li>
         <li>Store health monitoring and proactive issue flagging</li>
-        <li>A monthly report covering hours used, work shipped, and recommendations for the month ahead</li>
+        <li>A monthly report: hours used, work shipped, what's next</li>
       </ul>
     </div>
   </div>
@@ -412,64 +387,77 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 
 <!-- 05 HOW WE WORK -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">How We Work Together</span></div>
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">How We Work</span></div>
   <div class="sec-title reveal">A steady <em>operating rhythm.</em></div>
   <ul class="plist reveal d1">
-    <li><b>Committed capacity</b> — 24 hours of dedicated work per week, Monday to Friday.</li>
-    <li><b>Prioritisation</b> — requests are logged in a shared tracker and prioritised with your team at the start of each month; store-breaking issues jump the queue immediately.</li>
-    <li><b>Communication</b> — a dedicated point of contact on WhatsApp and email, working IST with deliberate overlap into UK business hours.</li>
-    <li><b>Reporting</b> — a short monthly review covering what shipped, what it moved, and what comes next.</li>
-    <li><b>Out of scope</b> — larger builds (new integrations, full redesigns, or separate phases of existing projects) are scoped and quoted separately before any work begins, so there are no surprise costs.</li>
+    <li><b>Committed capacity</b> — 24 hours per week, Monday to Friday.</li>
+    <li><b>Prioritisation</b> — requests logged in a shared tracker and agreed monthly; store-breaking issues jump the queue.</li>
+    <li><b>Communication</b> — a dedicated contact on WhatsApp and email, working IST with deliberate overlap into UK hours.</li>
+    <li><b>Reporting</b> — a short monthly review: what shipped, what it moved, what's next.</li>
+    <li><b>Out of scope</b> — larger builds are scoped and quoted separately before any work begins. No surprise costs.</li>
   </ul>
 </section>
 
-<!-- 06 INVESTMENT -->
-<div class="inv-section">
-  <div class="inv-label reveal">06 · Investment</div>
-  <div class="inv-heading reveal d1">One retainer,<br><em>standing capacity.</em></div>
-  <p class="inv-sub reveal d2">Shopify development, store management, and conversion optimisation — all services listed in Section 04.</p>
+<!-- 06 TEAM -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Your Team</span></div>
+  <div class="sec-title reveal">The people <em>on your store.</em></div>
+  <p class="sec-lead reveal d1">A named, consistent team — not a rotating pool.</p>
+  <div class="team-grid reveal d2">
+    <div class="tm"><div class="tm-av">ST</div><div class="tm-n">Sarthak Tiwari</div><div class="tm-r">Founder · Engagement Lead</div></div>
+    <div class="tm"><div class="tm-av">AT</div><div class="tm-n">Aditya Tripathi</div><div class="tm-r">Shopify Developer</div></div>
+    <div class="tm"><div class="tm-av">H</div><div class="tm-n">Haneesh</div><div class="tm-r">Shopify Developer</div></div>
+    <div class="tm"><div class="tm-av">S</div><div class="tm-n">Shobhit</div><div class="tm-r">Shopify Developer</div></div>
+    <div class="tm"><div class="tm-av">A</div><div class="tm-n">Anshuman</div><div class="tm-r">Shopify Developer</div></div>
+  </div>
+</section>
 
+<!-- 07 INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">07 · Investment</div>
+  <div class="inv-heading reveal d1">One retainer,<br><em>standing capacity.</em></div>
+  <p class="inv-sub reveal d2">Development, store management and conversion optimisation — everything in Section 04.</p>
   <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch;">
     <div style="flex:1 1 300px; background:rgba(13,155,106,0.1); border:1px solid rgba(13,155,106,0.3); border-radius:8px; padding:30px 34px;">
       <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Monthly retainer</div>
-      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,66px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">₹36,000</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:12px;">per month · exclusive of applicable taxes</div>
+      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,66px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">£350</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:10px;">≈ ₹36,000 per month</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:6px;">Exclusive of applicable taxes</div>
     </div>
     <div style="flex:1 1 240px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:26px 30px; display:flex; flex-direction:column; justify-content:center;">
       <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Weekly capacity</div>
       <div style="font-family:var(--serif); font-style:italic; font-size:34px; color:var(--gold); line-height:1;">24 hours</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.6;">Dedicated work per week, Monday to Friday, across development, store management and CRO.</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.6;">Monday to Friday, across development, store management and CRO.</div>
     </div>
   </div>
-
-  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:22px; line-height:1.7; max-width:620px;">
-    Fee is exclusive of applicable taxes and of any third-party costs — paid apps, plugins, or services — which are billed at actuals with prior approval.
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:20px; line-height:1.7; max-width:600px;">
+    Third-party costs — paid apps, plugins or services — are billed at actuals with prior approval.
   </p>
 </div>
 
-<!-- 07 TERMS -->
+<!-- 08 TERMS -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">07</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Terms</span></div>
   <div class="sec-title reveal">Simple <em>terms.</em></div>
   <ul class="plist reveal d1">
-    <li>The retainer is billed monthly in advance; work for the month begins on receipt of payment.</li>
-    <li>Committed hours apply within the calendar month and do not carry forward.</li>
-    <li>Requests beyond the weekly capacity are either scheduled into the following week or quoted separately, at Haldiram's UK's preference.</li>
-    <li><b>Access required</b> — Shopify admin (staff account), theme access, and Analytics.</li>
+    <li>Billed monthly in advance; the month's work begins on receipt of payment.</li>
+    <li>Hours apply within the calendar month and don't carry forward.</li>
+    <li>Requests beyond weekly capacity are scheduled into the following week or quoted separately — your call.</li>
+    <li><b>Access required</b> — Shopify admin (staff account), theme access and Analytics.</li>
     <li>Either party may end the retainer with 30 days' written notice.</li>
-    <li>All work produced under the retainer belongs to Haldiram's UK on payment.</li>
+    <li>All work belongs to Haldiram's UK on payment.</li>
   </ul>
 </section>
 
-<!-- 08 NEXT STEPS -->
+<!-- 09 NEXT STEPS -->
 <section class="sec">
-  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Next Steps</span></div>
-  <div class="sec-title reveal">A confirmation is all <em>we need.</em></div>
-  <p class="sec-lead reveal d1">A confirmation on email along with the first month's retainer is all that's needed to begin. On confirmation we will:</p>
+  <div class="sec-hd"><span class="sec-num">09</span><span class="sec-tag">Next Steps</span></div>
+  <div class="sec-title reveal">A confirmation is <em>all we need.</em></div>
+  <p class="sec-lead reveal d1">An email confirmation with the first month's retainer starts it. On confirmation we:</p>
   <ul class="plist reveal d2">
     <li>Set up the shared request tracker and reporting format.</li>
-    <li>Complete the access and analytics audit within the first week.</li>
-    <li><b>Ship the Section 2.1 trust fixes in the first few days</b> — visible progress from week one.</li>
+    <li>Complete the access and analytics audit in week one.</li>
+    <li><b>Ship the Section 2.1 trust fixes in the first few days</b> — visible progress immediately.</li>
     <li>Agree the confirmed Month 1 priority list with your team.</li>
   </ul>
 </section>
@@ -502,8 +490,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   var wrap = document.getElementById('lwWrap');
   if (!wrap) return;
   var mid = Math.ceil(LOGOS.length / 2);
-  var rows = [LOGOS.slice(0, mid), LOGOS.slice(mid)];
-  rows.forEach(function (row, idx) {
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
     var track = document.createElement('div');
     track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
     row.concat(row).forEach(function (f) {
@@ -521,7 +508,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-eyebrow reveal">Ready to start</div>
-  <div class="cta-title reveal d1">Let's fix the first<br><em>six things this week.</em></div>
+  <div class="cta-title reveal d1">Let's fix the first six<br><em>things this week.</em></div>
   <p class="cta-sub reveal d2">Confirm by email with the first month's retainer and we begin immediately.</p>
   <div class="cta-btns reveal d3">
     <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
@@ -529,7 +516,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="fl">Kaart Studio · A Crestify Studio · crestify.co/kaart · Proposal for Haldiram's UK · 22 July 2026</span>
   <span class="fr">Confidential</span>
