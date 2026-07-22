@@ -96,8 +96,10 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 
 /* WORK GALLERY */
 .wk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
-.wk { background: #fff; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.wk { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
 .wk:hover { border-color: rgba(184,64,47,0.35); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(27,18,16,0.07); }
+.wk-view { position: absolute; bottom: 10px; right: 10px; z-index: 2; font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: #fff; background: rgba(27,18,16,0.82); padding: 5px 10px; border-radius: 3px; opacity: 0; transform: translateY(4px); transition: opacity 0.2s, transform 0.2s; }
+.wk:hover .wk-view { opacity: 1; transform: translateY(0); }
 .wk-top { aspect-ratio: 3 / 4; overflow: hidden; background: #f2ebe0; border-bottom: 1px solid var(--black10); position: relative; }
 .wk-top img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
 .wk:hover .wk-top img { transform: scale(1.04); }
@@ -223,7 +225,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="stat reveal"><div class="sn">₹40k</div><div class="sl">Per month</div></div>
   <div class="stat reveal d1"><div class="sn">4 hrs</div><div class="sl">Every working day</div></div>
   <div class="stat reveal d2"><div class="sn">3–5</div><div class="sl">Day turnaround</div></div>
-  <div class="stat stat-accent reveal d3"><div class="sn">2</div><div class="sl">Revision rounds</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">Print</div><div class="sl">Ready files</div></div>
 </div>
 
 <!-- 01 OPPORTUNITY -->
@@ -262,77 +264,77 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <p class="sec-lead reveal d1">A sample of similar print and in-store design delivered for other F&amp;B and hospitality brands — the same categories proposed above.</p>
   <div class="wk-grid reveal d2">
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/diwali.jpg" alt="Diwali festival menu"></div>
+    <a class="wk" href="/work-print/pdf/diwali.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/diwali.jpg" alt="Diwali festival menu"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Diwali Festival Menu</div>
         <div class="wk-brand">Menu Card · Kapai Coffee House</div>
         <div class="wk-desc">Festive pop-up menu — custom lettering, a full beverage and plates architecture, built for a short seasonal run.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Occasion Menu</div><img src="/work-print/navratri.jpg" alt="Navratri fasting menu"></div>
+    <a class="wk" href="/work-print/pdf/navratri.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Occasion Menu</div><img src="/work-print/navratri.jpg" alt="Navratri fasting menu"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Navratri Fasting Menu</div>
         <div class="wk-brand">Menu Card · F&amp;B</div>
         <div class="wk-desc">Occasion-led fasting menu — a restricted-item layout designed for a short, high-traffic window.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Standee</div><img src="/work-print/standee.jpg" alt="LooksMaxxing product launch standee"></div>
+    <a class="wk" href="/work-print/pdf/standee.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Standee</div><img src="/work-print/standee.jpg" alt="LooksMaxxing product launch standee"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">LooksMaxxing Launch</div>
         <div class="wk-brand">Standee · Sidewalk</div>
         <div class="wk-desc">Product launch standee for a three-city rollout — product photography, callouts and hierarchy legible at a distance.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Campaign Poster</div><img src="/work-print/backboard.jpg" alt="Offline campaign backboard"></div>
+    <a class="wk" href="/work-print/pdf/backboard.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Campaign Poster</div><img src="/work-print/backboard.jpg" alt="Offline campaign backboard"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Offline Backboard</div>
         <div class="wk-brand">Poster · Campaign</div>
         <div class="wk-desc">Large-format campaign backboard for in-store display and brand takeover moments.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Core Menu</div><img src="/work-print/dinein-menu.jpg" alt="Rosso Pizzeria dine-in menu"></div>
+    <a class="wk" href="/work-print/pdf/dinein-menu.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Core Menu</div><img src="/work-print/dinein-menu.jpg" alt="Rosso Pizzeria dine-in menu"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Rosso Pizzeria Menu</div>
         <div class="wk-brand">Menu Card · Pizzeria</div>
         <div class="wk-desc">Full dine-in menu system — category architecture, pricing hierarchy and a layout that survives reprints.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Specials Card</div><img src="/work-print/coffee-card.jpg" alt="Sweet Like Berry coffee card"></div>
+    <a class="wk" href="/work-print/pdf/coffee-card.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Specials Card</div><img src="/work-print/coffee-card.jpg" alt="Sweet Like Berry coffee card"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Single-Origin Coffee Card</div>
         <div class="wk-brand">Tent Card · Sidewalk</div>
         <div class="wk-desc">Counter-side tasting card — flavour notes, roast and origin in a compact, quick-reprint format.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Category Menu</div><img src="/work-print/baked-goods.jpg" alt="Baked goods menu"></div>
+    <a class="wk" href="/work-print/pdf/baked-goods.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Category Menu</div><img src="/work-print/baked-goods.jpg" alt="Baked goods menu"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Baked Goods Menu</div>
         <div class="wk-brand">Menu Card · Café</div>
         <div class="wk-desc">Counter menu with allergen tagging and a dense, scannable price column for a rotating bakery range.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="wk">
-      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/christmas-menu.jpg" alt="Christmas menu"></div>
+    <a class="wk" href="/work-print/pdf/christmas-menu.pdf" target="_blank" rel="noopener">
+      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/christmas-menu.jpg" alt="Christmas menu"><span class="wk-view">View PDF ↗</span></div>
       <div class="wk-meta">
         <div class="wk-name">Christmas Menu</div>
         <div class="wk-brand">Menu Card · Seasonal</div>
         <div class="wk-desc">Holiday menu refresh — seasonal styling applied over the core menu structure.</div>
       </div>
-    </div>
+    </a>
 
   </div>
   <div class="callout reveal d2">
@@ -363,7 +365,6 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <table class="dtable">
       <tbody>
         <tr><td>Committed hours</td><td>4 hours of dedicated design time per working day, Monday to Friday</td></tr>
-        <tr><td>Revisions</td><td>Up to 2 rounds of revisions per piece</td></tr>
         <tr><td>Turnaround</td><td>3–5 working days per piece, from brief to print-ready file</td></tr>
         <tr><td>Formats delivered</td><td>Print-ready PDFs (with bleed and crop marks) plus editable source files</td></tr>
         <tr><td>Prioritisation</td><td>Requests logged in a shared tracker and prioritised with your team; urgent in-store needs jump the queue</td></tr>
@@ -374,7 +375,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </div>
 
   <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:20px; line-height:1.7; max-width:620px;">
-    We commit hours rather than a fixed deliverable count — output in any given month depends on the complexity of what's briefed. Turnaround and revision rounds are our proposed starting point, and we're happy to adjust once we align on scope.
+    We commit hours rather than a fixed deliverable count — output in any given month depends on the complexity of what's briefed. Turnaround is our proposed starting point, and we're happy to adjust once we align on scope.
   </p>
 </div>
 
