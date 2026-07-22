@@ -95,18 +95,17 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .plist li b { color: var(--tp); font-weight: 500; }
 
 /* WORK GALLERY */
-.wk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.wk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
 .wk { background: #fff; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
 .wk:hover { border-color: rgba(184,64,47,0.35); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(27,18,16,0.07); }
-.wk-top { aspect-ratio: 5 / 6; background: linear-gradient(155deg, #fbf7f1 0%, #f2ebe0 100%); border-bottom: 1px solid var(--black10); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 22px; position: relative; }
-.wk-top::after { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(169,119,47,0.22); border-radius: 3px; pointer-events: none; }
-.wk-kind { font-size: 9px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 12px; }
-.wk-title { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.15; text-align: center; color: var(--tp); }
-.wk-title em { font-style: italic; color: var(--accent); }
-.wk-fmt { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ts); margin-top: 14px; opacity: 0.75; }
-.wk-meta { padding: 15px 18px; }
-.wk-brand { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); }
-.wk-desc { font-size: 12.5px; color: var(--ts); line-height: 1.6; margin-top: 6px; }
+.wk-top { aspect-ratio: 3 / 4; overflow: hidden; background: #f2ebe0; border-bottom: 1px solid var(--black10); position: relative; }
+.wk-top img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
+.wk:hover .wk-top img { transform: scale(1.04); }
+.wk-kind { position: absolute; top: 10px; left: 10px; z-index: 2; font-size: 8.5px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--tp); background: rgba(255,255,255,0.92); border: 1px solid var(--black10); padding: 4px 9px; border-radius: 3px; }
+.wk-meta { padding: 14px 16px; }
+.wk-name { font-family: var(--serif); font-size: 17px; line-height: 1.2; }
+.wk-brand { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); margin-top: 4px; }
+.wk-desc { font-size: 12px; color: var(--ts); line-height: 1.55; margin-top: 8px; }
 
 /* CALLOUT */
 .callout { background: rgba(184,64,47,0.05); border: 1px solid rgba(184,64,47,0.18); border-left: 3px solid var(--accent); border-radius: 6px; padding: 20px 24px; margin-top: 24px; }
@@ -180,14 +179,14 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     <span>Haldiram's</span><span class="dot">·</span>
     <span>Graphic Design Retainer</span><span class="dot">·</span>
     <span>Offline &amp; In-Store Print Collateral</span><span class="dot">·</span>
-    <span>₹50,000 / Month</span><span class="dot">·</span>
-    <span>Up to 6 Print-Ready Pieces</span><span class="dot">·</span>
+    <span>₹40,000 / Month</span><span class="dot">·</span>
+    <span>4 Hours Daily</span><span class="dot">·</span>
     <span>Crestify × Kaart Studio</span><span class="dot">·</span>
     <span>Haldiram's</span><span class="dot">·</span>
     <span>Graphic Design Retainer</span><span class="dot">·</span>
     <span>Offline &amp; In-Store Print Collateral</span><span class="dot">·</span>
-    <span>₹50,000 / Month</span><span class="dot">·</span>
-    <span>Up to 6 Print-Ready Pieces</span><span class="dot">·</span>
+    <span>₹40,000 / Month</span><span class="dot">·</span>
+    <span>4 Hours Daily</span><span class="dot">·</span>
   </div>
 </div>
 
@@ -214,15 +213,15 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </p>
   <div class="hero-meta reveal d3">
     <div class="hm"><div class="hm-l">Engagement</div><div class="hm-v">Monthly Retainer</div></div>
-    <div class="hm"><div class="hm-l">Monthly Fee</div><div class="hm-v accent">₹50,000</div></div>
-    <div class="hm"><div class="hm-l">Output</div><div class="hm-v amber">6 pieces / mo</div></div>
+    <div class="hm"><div class="hm-l">Monthly Fee</div><div class="hm-v accent">₹40,000</div></div>
+    <div class="hm"><div class="hm-l">Engagement</div><div class="hm-v amber">4 hrs / day</div></div>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="dark-bar">
-  <div class="stat reveal"><div class="sn">₹50k</div><div class="sl">Per month</div></div>
-  <div class="stat reveal d1"><div class="sn">6</div><div class="sl">Print-ready pieces</div></div>
+  <div class="stat reveal"><div class="sn">₹40k</div><div class="sl">Per month</div></div>
+  <div class="stat reveal d1"><div class="sn">4 hrs</div><div class="sl">Every working day</div></div>
   <div class="stat reveal d2"><div class="sn">3–5</div><div class="sl">Day turnaround</div></div>
   <div class="stat stat-accent reveal d3"><div class="sn">2</div><div class="sl">Revision rounds</div></div>
 </div>
@@ -264,74 +263,74 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="wk-grid reveal d2">
 
     <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">Festive Menu</div>
-        <div class="wk-title">Diwali<br><em>Collection</em></div>
-        <div class="wk-fmt">Multi-page · Print-ready</div>
-      </div>
+      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/diwali.jpg" alt="Diwali festival menu"></div>
       <div class="wk-meta">
+        <div class="wk-name">Diwali Festival Menu</div>
+        <div class="wk-brand">Menu Card · Kapai Coffee House</div>
+        <div class="wk-desc">Festive pop-up menu — custom lettering, a full beverage and plates architecture, built for a short seasonal run.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top"><div class="wk-kind">Occasion Menu</div><img src="/work-print/navratri.jpg" alt="Navratri fasting menu"></div>
+      <div class="wk-meta">
+        <div class="wk-name">Navratri Fasting Menu</div>
         <div class="wk-brand">Menu Card · F&amp;B</div>
-        <div class="wk-desc">Festive menu design for the Diwali season — occasion-led layout and typography across a full collection.</div>
+        <div class="wk-desc">Occasion-led fasting menu — a restricted-item layout designed for a short, high-traffic window.</div>
       </div>
     </div>
 
     <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">Occasion Menu</div>
-        <div class="wk-title">Navratri<br><em>Fasting Menu</em></div>
-        <div class="wk-fmt">Seasonal · Print-ready</div>
-      </div>
+      <div class="wk-top"><div class="wk-kind">Standee</div><img src="/work-print/standee.jpg" alt="LooksMaxxing product launch standee"></div>
       <div class="wk-meta">
-        <div class="wk-brand">Menu Card · F&amp;B</div>
-        <div class="wk-desc">Occasion-led fasting menu — a clean, restricted-item layout designed for a short, high-traffic window.</div>
+        <div class="wk-name">LooksMaxxing Launch</div>
+        <div class="wk-brand">Standee · Sidewalk</div>
+        <div class="wk-desc">Product launch standee for a three-city rollout — product photography, callouts and hierarchy legible at a distance.</div>
       </div>
     </div>
 
     <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">In-Store Standee</div>
-        <div class="wk-title">Product<br><em>Launch</em></div>
-        <div class="wk-fmt">Large format · Standee</div>
-      </div>
+      <div class="wk-top"><div class="wk-kind">Campaign Poster</div><img src="/work-print/backboard.jpg" alt="Offline campaign backboard"></div>
       <div class="wk-meta">
-        <div class="wk-brand">Standee · Retail</div>
-        <div class="wk-desc">Floor-standing launch unit built for entrance and counter placement, legible at a distance.</div>
-      </div>
-    </div>
-
-    <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">Campaign Poster</div>
-        <div class="wk-title">Offline<br><em>Backboard</em></div>
-        <div class="wk-fmt">Large format · Backboard</div>
-      </div>
-      <div class="wk-meta">
+        <div class="wk-name">Offline Backboard</div>
         <div class="wk-brand">Poster · Campaign</div>
-        <div class="wk-desc">Offline campaign backboard and poster set for in-store display and brand takeover moments.</div>
+        <div class="wk-desc">Large-format campaign backboard for in-store display and brand takeover moments.</div>
       </div>
     </div>
 
     <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">Core Menu</div>
-        <div class="wk-title">Dine-in<br><em>Menu</em></div>
-        <div class="wk-fmt">Multi-page · Print-ready</div>
-      </div>
+      <div class="wk-top"><div class="wk-kind">Core Menu</div><img src="/work-print/dinein-menu.jpg" alt="Rosso Pizzeria dine-in menu"></div>
       <div class="wk-meta">
+        <div class="wk-name">Rosso Pizzeria Menu</div>
         <div class="wk-brand">Menu Card · Pizzeria</div>
         <div class="wk-desc">Full dine-in menu system — category architecture, pricing hierarchy and a layout that survives reprints.</div>
       </div>
     </div>
 
     <div class="wk">
-      <div class="wk-top">
-        <div class="wk-kind">Specials Card</div>
-        <div class="wk-title">Festive<br><em>Drinks</em></div>
-        <div class="wk-fmt">Card · Table collateral</div>
-      </div>
+      <div class="wk-top"><div class="wk-kind">Specials Card</div><img src="/work-print/coffee-card.jpg" alt="Sweet Like Berry coffee card"></div>
       <div class="wk-meta">
-        <div class="wk-brand">Tent Card · Café</div>
-        <div class="wk-desc">Seasonal specials card for counter and table-top placement, sized for quick reprint cycles.</div>
+        <div class="wk-name">Single-Origin Coffee Card</div>
+        <div class="wk-brand">Tent Card · Sidewalk</div>
+        <div class="wk-desc">Counter-side tasting card — flavour notes, roast and origin in a compact, quick-reprint format.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top"><div class="wk-kind">Category Menu</div><img src="/work-print/baked-goods.jpg" alt="Baked goods menu"></div>
+      <div class="wk-meta">
+        <div class="wk-name">Baked Goods Menu</div>
+        <div class="wk-brand">Menu Card · Café</div>
+        <div class="wk-desc">Counter menu with allergen tagging and a dense, scannable price column for a rotating bakery range.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top"><div class="wk-kind">Festive Menu</div><img src="/work-print/christmas-menu.jpg" alt="Christmas menu"></div>
+      <div class="wk-meta">
+        <div class="wk-name">Christmas Menu</div>
+        <div class="wk-brand">Menu Card · Seasonal</div>
+        <div class="wk-desc">Holiday menu refresh — seasonal styling applied over the core menu structure.</div>
       </div>
     </div>
 
@@ -344,28 +343,30 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <!-- 04 RETAINER STRUCTURE -->
 <div class="inv-section">
   <div class="inv-label reveal">04 · Retainer Structure</div>
-  <div class="inv-heading reveal d1">A steady flow,<br><em>one monthly fee.</em></div>
-  <p class="inv-sub reveal d2">Sized for a consistent stream of offline collateral — without the overhead of scoping and quoting each piece individually.</p>
+  <div class="inv-heading reveal d1">Committed hours,<br><em>one monthly fee.</em></div>
+  <p class="inv-sub reveal d2">We commit dedicated design hours rather than a fixed piece count — so the retainer flexes to whatever the month actually needs, without scoping and quoting each piece individually.</p>
 
   <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch; margin-bottom:24px;">
     <div style="flex:1 1 280px; background:rgba(212,154,60,0.1); border:1px solid rgba(212,154,60,0.3); border-radius:8px; padding:30px 34px;">
       <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Monthly retainer</div>
-      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,64px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">₹50,000</div>
+      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,64px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">₹40,000</div>
       <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px;">per month · billed in advance</div>
     </div>
     <div style="flex:1 1 240px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:26px 30px; display:flex; flex-direction:column; justify-content:center;">
-      <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Monthly output</div>
-      <div style="font-family:var(--serif); font-style:italic; font-size:34px; color:var(--gold); line-height:1;">6 pieces</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.6;">Menu cards, tent cards, posters or equivalent collateral.</div>
+      <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Committed capacity</div>
+      <div style="font-family:var(--serif); font-style:italic; font-size:34px; color:var(--gold); line-height:1;">4 hrs / day</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.6;">Dedicated design time every working day, Monday to Friday.</div>
     </div>
   </div>
 
   <div class="dtbl-wrap reveal d1">
     <table class="dtable">
       <tbody>
+        <tr><td>Committed hours</td><td>4 hours of dedicated design time per working day, Monday to Friday</td></tr>
         <tr><td>Revisions</td><td>Up to 2 rounds of revisions per piece</td></tr>
         <tr><td>Turnaround</td><td>3–5 working days per piece, from brief to print-ready file</td></tr>
         <tr><td>Formats delivered</td><td>Print-ready PDFs (with bleed and crop marks) plus editable source files</td></tr>
+        <tr><td>Prioritisation</td><td>Requests logged in a shared tracker and prioritised with your team; urgent in-store needs jump the queue</td></tr>
         <tr><td>Term</td><td>Month-to-month, cancellable with 15 days' written notice</td></tr>
         <tr><td>Payment</td><td>Billed monthly in advance</td></tr>
       </tbody>
@@ -373,7 +374,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   </div>
 
   <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:20px; line-height:1.7; max-width:620px;">
-    Piece counts, turnaround and revision rounds are our proposed starting point — happy to adjust based on Haldiram's actual monthly volume once we align on scope.
+    We commit hours rather than a fixed deliverable count — output in any given month depends on the complexity of what's briefed. Turnaround and revision rounds are our proposed starting point, and we're happy to adjust once we align on scope.
   </p>
 </div>
 
