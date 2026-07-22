@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Kaart — Haldiram's Graphic Design Retainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #1B1210;
+  --black10: rgba(27,18,16,0.1);
+  --accent:  #B8402F;
+  --cream:   #F6F1EA;
+  --tp:      #17110E;
+  --ts:      #574B45;
+  --caramel: #A9772F;
+  --amber:   #D49A3C;
+  --gold:    #E0B25E;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 42s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(246,241,234,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(246,241,234,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 600; font-family: var(--sans); flex-shrink: 0; }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--accent); }
+
+/* HERO */
+.hero { padding: clamp(56px, 8vw, 92px) var(--pad) clamp(44px, 6vw, 66px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 15%, rgba(212,154,60,0.14) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 8% 85%, rgba(184,64,47,0.07) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 28px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(38px, 6vw, 78px); font-weight: 400; line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 22px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.8; max-width: 560px; margin-bottom: 44px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 26px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 24px; font-style: italic; }
+.hm-v.accent { color: var(--accent); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(212,154,60,0.18) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(26px, 4.2vw, 40px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(38px, 5.5vw, 58px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 38px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 660px; line-height: 1.8; margin-bottom: 16px; }
+.sec-lead:last-child { margin-bottom: 0; }
+
+/* TABLE */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--black10); border-radius: 8px; background: #fff; }
+.ptable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+.ptable thead tr { background: var(--black); }
+.ptable th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding: 12px 16px; font-weight: 400; white-space: nowrap; }
+.ptable td { padding: 14px 16px; vertical-align: top; color: var(--ts); line-height: 1.6; border-bottom: 1px solid var(--black10); }
+.ptable tbody tr:last-child td { border-bottom: none; }
+.ptable tbody tr:hover { background: rgba(184,64,47,0.03); }
+.ptable td:first-child { color: var(--tp); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+
+/* LIST */
+.plist { list-style: none; display: flex; flex-direction: column; gap: 11px; max-width: 700px; }
+.plist li { position: relative; padding-left: 24px; font-size: 13.5px; color: var(--ts); line-height: 1.68; }
+.plist li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
+.plist li b { color: var(--tp); font-weight: 500; }
+
+/* WORK GALLERY */
+.wk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.wk { background: #fff; border: 1px solid var(--black10); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.wk:hover { border-color: rgba(184,64,47,0.35); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(27,18,16,0.07); }
+.wk-top { aspect-ratio: 5 / 6; background: linear-gradient(155deg, #fbf7f1 0%, #f2ebe0 100%); border-bottom: 1px solid var(--black10); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 22px; position: relative; }
+.wk-top::after { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(169,119,47,0.22); border-radius: 3px; pointer-events: none; }
+.wk-kind { font-size: 9px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 12px; }
+.wk-title { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.15; text-align: center; color: var(--tp); }
+.wk-title em { font-style: italic; color: var(--accent); }
+.wk-fmt { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ts); margin-top: 14px; opacity: 0.75; }
+.wk-meta { padding: 15px 18px; }
+.wk-brand { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ts); }
+.wk-desc { font-size: 12.5px; color: var(--ts); line-height: 1.6; margin-top: 6px; }
+
+/* CALLOUT */
+.callout { background: rgba(184,64,47,0.05); border: 1px solid rgba(184,64,47,0.18); border-left: 3px solid var(--accent); border-radius: 6px; padding: 20px 24px; margin-top: 24px; }
+.callout p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+
+/* INVESTMENT */
+.inv-section { background: var(--black); padding: clamp(38px, 5.5vw, 58px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(212,154,60,0.18) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 36px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; max-width: 540px; line-height: 1.7; }
+.dtbl-wrap { overflow-x: auto; }
+.dtable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 460px; }
+.dtable td { padding: 14px 16px 14px 0; color: rgba(255,255,255,0.68); border-bottom: 1px solid rgba(255,255,255,0.07); vertical-align: top; line-height: 1.55; }
+.dtable td:first-child { color: #fff; font-family: var(--serif); font-size: 15px; white-space: nowrap; width: 190px; }
+.dtable tbody tr:last-child td { border-bottom: none; }
+
+/* LOGO WALL */
+.logowall { background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(28px, 4vw, 42px) 0; overflow: hidden; position: relative; }
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.logowall-hd { text-align: center; margin-bottom: 26px; padding: 0 var(--pad); position: relative; z-index: 3; }
+.logowall-hd .lh-l { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 9px; }
+.logowall-hd .lh-t { font-family: var(--serif); font-size: clamp(20px, 3vw, 28px); line-height: 1.1; }
+.logowall-hd .lh-t em { font-style: italic; color: var(--caramel); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 150px; height: 66px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 38px; max-width: 114px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(52px, 8vw, 86px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,154,60,0.12) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+.cta-title { font-family: var(--serif); font-size: clamp(32px, 4.6vw, 56px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 34px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 26px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify × Kaart Studio</span><span class="dot">·</span>
+    <span>Haldiram's</span><span class="dot">·</span>
+    <span>Graphic Design Retainer</span><span class="dot">·</span>
+    <span>Offline &amp; In-Store Print Collateral</span><span class="dot">·</span>
+    <span>₹50,000 / Month</span><span class="dot">·</span>
+    <span>Up to 6 Print-Ready Pieces</span><span class="dot">·</span>
+    <span>Crestify × Kaart Studio</span><span class="dot">·</span>
+    <span>Haldiram's</span><span class="dot">·</span>
+    <span>Graphic Design Retainer</span><span class="dot">·</span>
+    <span>Offline &amp; In-Store Print Collateral</span><span class="dot">·</span>
+    <span>₹50,000 / Month</span><span class="dot">·</span>
+    <span>Up to 6 Print-Ready Pieces</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify <span style="color:var(--ts);font-size:12px;">× Kaart Studio</span>
+  </a>
+  <span class="nav-badge">Graphic Design Retainer</span>
+  <div class="nav-right">July <span>2026</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Haldiram's · Offline &amp; In-Store Collateral
+  </div>
+  <h1 class="reveal d1">Graphic Design<br><em>Retainer</em></h1>
+  <p class="hero-sub reveal d2">
+    Every counter, wall and table communicates the brand. This retainer covers the offline, printable collateral used across Haldiram's stores — menu cards, tent cards, posters, standees and festive campaign pieces — with the same design discipline as any digital campaign.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm"><div class="hm-l">Engagement</div><div class="hm-v">Monthly Retainer</div></div>
+    <div class="hm"><div class="hm-l">Monthly Fee</div><div class="hm-v accent">₹50,000</div></div>
+    <div class="hm"><div class="hm-l">Output</div><div class="hm-v amber">6 pieces / mo</div></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">₹50k</div><div class="sl">Per month</div></div>
+  <div class="stat reveal d1"><div class="sn">6</div><div class="sl">Print-ready pieces</div></div>
+  <div class="stat reveal d2"><div class="sn">3–5</div><div class="sl">Day turnaround</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">2</div><div class="sl">Revision rounds</div></div>
+</div>
+
+<!-- 01 OPPORTUNITY -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">The Opportunity</span></div>
+  <div class="sec-title reveal">The store <em>is the campaign.</em></div>
+  <p class="sec-lead reveal d1">
+    Haldiram's stores run on more than product — every counter, wall and table communicates the brand. Menu cards, tent cards, in-store posters and seasonal promotional pieces are touchpoints customers interact with directly, and they deserve the same design discipline as any digital campaign.
+  </p>
+  <p class="sec-lead reveal d2">
+    This proposal covers a dedicated design retainer for exactly that: the offline, printable collateral used across Haldiram's stores — distinct from social media or digital marketing assets, which are not part of this scope.
+  </p>
+</section>
+
+<!-- 02 SCOPE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Scope of Work</span></div>
+  <div class="sec-title reveal">What the retainer <em>produces.</em></div>
+  <div class="tbl-wrap reveal d1">
+    <table class="ptable">
+      <thead><tr><th>Category</th><th>Examples covered under the retainer</th></tr></thead>
+      <tbody>
+        <tr><td>Menu cards</td><td>Core menus, seasonal and festive menu refreshes, limited-time offer inserts</td></tr>
+        <tr><td>Tent cards &amp; table collateral</td><td>Table-top promotional cards, offer highlights, upsell prompts</td></tr>
+        <tr><td>In-store posters &amp; standees</td><td>Product launch posters, campaign backboards, entrance and window displays</td></tr>
+        <tr><td>Promotional print material</td><td>Festive campaign collateral, loyalty and offer cards, counter signage</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 03 RELEVANT WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Relevant Work</span></div>
+  <div class="sec-title reveal">Print collateral we've <em>already shipped.</em></div>
+  <p class="sec-lead reveal d1">A sample of similar print and in-store design delivered for other F&amp;B and hospitality brands — the same categories proposed above.</p>
+  <div class="wk-grid reveal d2">
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">Festive Menu</div>
+        <div class="wk-title">Diwali<br><em>Collection</em></div>
+        <div class="wk-fmt">Multi-page · Print-ready</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Menu Card · F&amp;B</div>
+        <div class="wk-desc">Festive menu design for the Diwali season — occasion-led layout and typography across a full collection.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">Occasion Menu</div>
+        <div class="wk-title">Navratri<br><em>Fasting Menu</em></div>
+        <div class="wk-fmt">Seasonal · Print-ready</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Menu Card · F&amp;B</div>
+        <div class="wk-desc">Occasion-led fasting menu — a clean, restricted-item layout designed for a short, high-traffic window.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">In-Store Standee</div>
+        <div class="wk-title">Product<br><em>Launch</em></div>
+        <div class="wk-fmt">Large format · Standee</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Standee · Retail</div>
+        <div class="wk-desc">Floor-standing launch unit built for entrance and counter placement, legible at a distance.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">Campaign Poster</div>
+        <div class="wk-title">Offline<br><em>Backboard</em></div>
+        <div class="wk-fmt">Large format · Backboard</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Poster · Campaign</div>
+        <div class="wk-desc">Offline campaign backboard and poster set for in-store display and brand takeover moments.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">Core Menu</div>
+        <div class="wk-title">Dine-in<br><em>Menu</em></div>
+        <div class="wk-fmt">Multi-page · Print-ready</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Menu Card · Pizzeria</div>
+        <div class="wk-desc">Full dine-in menu system — category architecture, pricing hierarchy and a layout that survives reprints.</div>
+      </div>
+    </div>
+
+    <div class="wk">
+      <div class="wk-top">
+        <div class="wk-kind">Specials Card</div>
+        <div class="wk-title">Festive<br><em>Drinks</em></div>
+        <div class="wk-fmt">Card · Table collateral</div>
+      </div>
+      <div class="wk-meta">
+        <div class="wk-brand">Tent Card · Café</div>
+        <div class="wk-desc">Seasonal specials card for counter and table-top placement, sized for quick reprint cycles.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="callout reveal d2">
+    <p>Full print-ready files for each of the above are available on request — happy to walk your team through the source artwork on a call.</p>
+  </div>
+</section>
+
+<!-- 04 RETAINER STRUCTURE -->
+<div class="inv-section">
+  <div class="inv-label reveal">04 · Retainer Structure</div>
+  <div class="inv-heading reveal d1">A steady flow,<br><em>one monthly fee.</em></div>
+  <p class="inv-sub reveal d2">Sized for a consistent stream of offline collateral — without the overhead of scoping and quoting each piece individually.</p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch; margin-bottom:24px;">
+    <div style="flex:1 1 280px; background:rgba(212,154,60,0.1); border:1px solid rgba(212,154,60,0.3); border-radius:8px; padding:30px 34px;">
+      <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Monthly retainer</div>
+      <div style="font-family:var(--serif); font-size:clamp(46px,6.5vw,64px); color:var(--gold); line-height:1; letter-spacing:-0.02em;">₹50,000</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px;">per month · billed in advance</div>
+    </div>
+    <div style="flex:1 1 240px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:26px 30px; display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Monthly output</div>
+      <div style="font-family:var(--serif); font-style:italic; font-size:34px; color:var(--gold); line-height:1;">6 pieces</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.6;">Menu cards, tent cards, posters or equivalent collateral.</div>
+    </div>
+  </div>
+
+  <div class="dtbl-wrap reveal d1">
+    <table class="dtable">
+      <tbody>
+        <tr><td>Revisions</td><td>Up to 2 rounds of revisions per piece</td></tr>
+        <tr><td>Turnaround</td><td>3–5 working days per piece, from brief to print-ready file</td></tr>
+        <tr><td>Formats delivered</td><td>Print-ready PDFs (with bleed and crop marks) plus editable source files</td></tr>
+        <tr><td>Term</td><td>Month-to-month, cancellable with 15 days' written notice</td></tr>
+        <tr><td>Payment</td><td>Billed monthly in advance</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:20px; line-height:1.7; max-width:620px;">
+    Piece counts, turnaround and revision rounds are our proposed starting point — happy to adjust based on Haldiram's actual monthly volume once we align on scope.
+  </p>
+</div>
+
+<!-- 05 WHY -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Why Crestify × Kaart</span></div>
+  <div class="sec-title reveal">Already <em>in your corner.</em></div>
+  <ul class="plist reveal d1">
+    <li>Full-stack product and design studio already familiar with hospitality and F&amp;B brand needs.</li>
+    <li><b>Prior collateral experience with Haldiram's</b> — including the window and door graphics delivered earlier this year.</li>
+    <li>A compact, senior team — no account-manager layers, direct access to the people doing the design work.</li>
+  </ul>
+</section>
+
+<!-- 06 NEXT STEPS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Next Steps</span></div>
+  <div class="sec-title reveal">Kick off <em>within a week.</em></div>
+  <p class="sec-lead reveal d1">
+    If this scope and structure work, we can start within a week — beginning with a short brand and store-format walkthrough so the first batch of designs reflects Haldiram's current guidelines.
+  </p>
+  <p class="sec-lead reveal d2">Looking forward to your thoughts.</p>
+</section>
+
+<!-- LOGO WALL -->
+<div class="logowall">
+  <div class="logowall-hd">
+    <div class="lh-l">Trusted by</div>
+    <div class="lh-t">Brands we've <em>worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready when you are</div>
+  <div class="cta-title reveal d1">Let's design the<br><em>first batch.</em></div>
+  <p class="cta-sub reveal d2">Confirm the scope and we'll start with a brand and store-format walkthrough.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Crestify · crestify.co · in partnership with Kaart Studio · Proposal for Haldiram's · July 2026</span>
+  <span class="fr">Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
