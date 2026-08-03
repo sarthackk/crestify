@@ -154,16 +154,21 @@ function StatsAbout() {
   );
 }
 
-const CLIENTS = ['LUMEN', 'HATCHWELL', 'MARIS', 'NORTHWIND', 'OBLIQUE', 'CASCADIA', 'AURELIA', 'POSTLAB', 'TRYHARD', 'KINSEY', 'RILEY/CO', 'VANTA'];
+const CLIENTS = [
+  'giva.png', 'haldirams.webp', 'commontime.jpg', 'quickhunt.png', 'upride.svg', 'veda-jewel.png',
+  'james-aston.png', 'nirakaar.svg', 'prep-nest.png', 'house-of-pratap.png', 'khaabka-logo-transparent-cmyk-sqaure-1.png', 'melfi.png',
+];
 
 function Clients() {
   return (
     <section className="section-pad-sm" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
         <div className="dot-divider" style={{ marginBottom: 32 }}>Trusted by — selected partners</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, border: '1px solid var(--line-strong)', borderRadius: 4, overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, border: '1px solid var(--line-strong)', borderRadius: 4, overflow: 'hidden', background: '#fff' }}>
           {CLIENTS.map((c, i) => (
-            <div key={c} style={{ padding: '24px 10px', borderRight: (i + 1) % 6 === 0 ? 'none' : '1px solid var(--line-strong)', borderBottom: i < 6 ? '1px solid var(--line-strong)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--serif)', fontSize: 'clamp(14px, 2vw, 22px)', color: 'var(--ink-3)', letterSpacing: '0.04em', textAlign: 'center' }}>{c}</div>
+            <div key={c} style={{ padding: '24px 18px', minHeight: 96, borderRight: (i + 1) % 6 === 0 ? 'none' : '1px solid var(--line-strong)', borderBottom: i < 6 ? '1px solid var(--line-strong)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src={`/brand-logos/${c}`} alt="" loading="lazy" style={{ maxHeight: 34, maxWidth: '100%', width: 'auto', objectFit: 'contain', filter: 'grayscale(1)', opacity: 0.6 }} />
+            </div>
           ))}
         </div>
       </div>
