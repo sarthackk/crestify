@@ -827,7 +827,7 @@ function Founders() {
 /* ─── Internal Products ─────────────────────────────────────────────────── */
 const PRODUCTS = [
   { name: 'Mockzy',      desc: 'AI creative studio. Smartphone photo in, photorealistic ad-grade mockups, lifestyle images, and video out. Built for D2C brands.', meta: 'Live · 2025', href: 'https://mockzy.app',             status: 'live', img: '/mockzy.png' },
-  { name: 'Sked',        desc: 'Scheduling infrastructure for teams and creators. Book, manage, and automate time — without the back-and-forth.',                  meta: 'Coming soon', href: 'https://sked.club',              status: 'soon', img: '/sked.png' },
+  { name: 'Eatops',      desc: 'Café ERP, automation & loyalty platform. Live orders, kitchen ops, and guest loyalty — built for new cafés and restaurants.',        meta: 'Live · 2025',  href: 'https://eatops.co',              status: 'live', img: '/eatops.png' },
   { name: 'Distrute',    desc: 'Distribution OS for SaaS founders. Run targeted influencer campaigns built specifically for software products. Currently in alpha.', meta: 'Alpha · 2025', href: 'https://distrute.vercel.app', status: 'soon', img: '/distrute.png' },
   { name: 'Grit School', desc: 'A school for the skills no one teaches. Practical, no-fluff programs for founders, operators, and people who want to build real things.', meta: 'Coming soon', href: 'https://grit-school.vercel.app/', status: 'soon', img: '/gritschool.png' },
 ];
