@@ -1097,14 +1097,14 @@ function BrandWall() {
   const row2 = BRAND_WALL_LOGOS.slice(half);
   return (
     <section style={{ padding: 'clamp(60px, 9vw, 110px) 0', borderTop: '1px solid var(--line-strong)', background: 'var(--bg-elev)', overflow: 'hidden' }}>
-      <div className="container" style={{ marginBottom: 'clamp(40px, 5vw, 60px)' }}>
-        <div className="reveal" style={{ maxWidth: '22ch' }}>
+      <div className="container brandwall-head" style={{ marginBottom: 'clamp(40px, 5vw, 60px)' }}>
+        <div className="reveal" style={{ flex: '1 1 520px', minWidth: 0 }}>
           <span className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Track record</span>
-          <h2 className="h2" style={{ marginTop: 14 }}>
+          <h2 className="h2" style={{ marginTop: 14, maxWidth: '15ch' }}>
             The team that's worked on <span className="italic" style={{ color: 'var(--accent)' }}>60+ stores</span> altogether.
           </h2>
         </div>
-        <p className="body reveal" style={{ marginTop: 18, maxWidth: '48ch', color: 'var(--ink-3)' }}>
+        <p className="body reveal" style={{ flex: '0 1 360px', maxWidth: '42ch', color: 'var(--ink-3)' }}>
           A selection of the brands we've designed, built, and shipped for — across e-commerce, SaaS, and everything in between.
         </p>
       </div>
