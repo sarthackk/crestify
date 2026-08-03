@@ -48,7 +48,15 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(wait)",
-      "Bash(git commit -m 'Update brand count to 50+ across Sarthak portfolio page *)"
+      "Bash(git commit -m 'Update brand count to 50+ across Sarthak portfolio page *)",
+      "mcp__Apify__apify--rag-web-browser",
+      "WebFetch(domain:documenso.com)",
+      "WebFetch(domain:docs.documenso.com)",
+      "WebFetch(domain:openapi.documenso.com)",
+      "WebFetch(domain:app.documenso.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx vite *)"
     ]
   }
 }

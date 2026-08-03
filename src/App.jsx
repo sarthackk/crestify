@@ -39,10 +39,10 @@ import MVPDevelopment from './pages/seo/MVPDevelopment.jsx';
 
 function AnnouncementBar() {
   const Item = () => (
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginRight: 60, fontSize: 12, letterSpacing: '0.01em', color: '#fff', fontWeight: 500, whiteSpace: 'nowrap' }}>
+    <a href="https://eatops.co" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginRight: 60, fontSize: 12, letterSpacing: '0.01em', color: '#fff', fontWeight: 500, whiteSpace: 'nowrap', textDecoration: 'none' }}>
       <span aria-hidden style={{ opacity: 0.85 }}>✦</span>
-      We're building <strong style={{ fontWeight: 700 }}>Eatops</strong> — a new café ERP, automation &amp; loyalty platform · will be live soon
-    </span>
+      <strong style={{ fontWeight: 700 }}>Eatops</strong> is live — a new café ERP, automation &amp; loyalty platform · <span style={{ textDecoration: 'underline', textUnderlineOffset: 2 }}>visit eatops.co&nbsp;→</span>
+    </a>
   );
   const Track = ({ hidden }) => (
     <div className="marquee-track" aria-hidden={hidden} style={{ gap: 0, paddingRight: 0, animationDuration: '34s' }}>
