@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Wags &amp; Tails — Mobile Application Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #16211C;
+  --black10: rgba(22,33,28,0.1);
+  --orange:  #2E7D5B;
+  --cream:   #F2F0E8;
+  --white:   #FFFFFF;
+  --tp:      #16211C;
+  --ts:      #4E5A52;
+  --caramel: #3D7A5E;
+  --amber:   #E0A44A;
+  --gold:    #EDBE6B;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; } .reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 42s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(242,240,232,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(242,240,232,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--caramel); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero { padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(224,164,74,0.12) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(46,125,91,0.09) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 32px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(242,240,232,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 540px; margin-bottom: 28px; }
+.proto-link { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; letter-spacing: 0.3px; color: var(--orange); text-decoration: none; border: 1px solid rgba(46,125,91,0.3); background: rgba(46,125,91,0.06); padding: 9px 16px; border-radius: 40px; margin-bottom: 46px; transition: background 0.2s, border-color 0.2s; }
+.proto-link:hover { background: rgba(46,125,91,0.12); border-color: rgba(46,125,91,0.5); }
+.proto-link .pd { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange { color: var(--orange); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(224,164,74,0.16) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 620px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+.proto-callout { margin-top: 24px; background: rgba(46,125,91,0.06); border: 1px solid rgba(46,125,91,0.2); border-left: 3px solid var(--orange); border-radius: 6px; padding: 20px 24px; max-width: 620px; }
+.proto-callout .pc-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 6px; }
+.proto-callout .pc-t { font-size: 13.5px; color: var(--ts); line-height: 1.7; }
+.proto-callout a { color: var(--orange); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(46,125,91,0.4); }
+
+/* MODULE GRID */
+.module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.mod { background: var(--cream); padding: 28px 32px; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.mod:hover { border-left-color: var(--caramel); background: #fff; }
+.mod-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); }
+.mod-phase { display: inline-block; font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; }
+.mod-phase.pri { background: rgba(46,125,91,0.14); color: var(--caramel); }
+.mod-phase.p2 { background: rgba(224,164,74,0.16); color: #a97a2b; }
+.mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+.mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.mod-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.mod:hover .mod-tag { border-color: rgba(46,125,91,0.35); color: var(--caramel); }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(46,125,91,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(22,33,28,0.09); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(224,164,74,0.16) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 560px; line-height: 1.7; }
+.bundle-card { background: rgba(224,164,74,0.1); border: 1px solid rgba(224,164,74,0.3); border-radius: 6px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(224,164,74,0.18); color: var(--gold); border: 1px solid rgba(224,164,74,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-price { font-family: var(--serif); font-size: clamp(44px, 6vw, 60px); color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+.bundle-save { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* PAYMENT CARDS */
+.pay-cards { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.pay-card { flex: 1 1 180px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; padding: 20px 22px; }
+.pay-card-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.pay-card-amt { font-family: var(--serif); font-size: 26px; color: var(--gold); font-style: italic; margin-bottom: 4px; }
+.pay-card-note { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--black10); align-items: start; }
+.tl-row:last-child { border-bottom: none; }
+.tl-week { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-weight: 500; padding-top: 3px; }
+.tl-name { font-family: var(--serif); font-size: 17px; margin-bottom: 4px; }
+.tl-desc { font-size: 12.5px; color: var(--ts); line-height: 1.7; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+.notinc { margin-top: 22px; max-width: 720px; }
+.notinc-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
+.notinc-t { font-size: 13px; color: var(--ts); line-height: 1.8; }
+.notinc-t b { color: var(--tp); font-weight: 500; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(224,164,74,0.1) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .module-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .tl-row { grid-template-columns: 90px 1fr; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Wags &amp; Tails</span><span class="dot">·</span>
+    <span>Customer + Partner Apps</span><span class="dot">·</span>
+    <span>iOS &amp; Android</span><span class="dot">·</span>
+    <span>Grooming &amp; Dog Walking</span><span class="dot">·</span>
+    <span>₹1,10,000 All-In</span><span class="dot">·</span>
+    <span>30–50 Days</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Wags &amp; Tails</span><span class="dot">·</span>
+    <span>Customer + Partner Apps</span><span class="dot">·</span>
+    <span>iOS &amp; Android</span><span class="dot">·</span>
+    <span>Grooming &amp; Dog Walking</span><span class="dot">·</span>
+    <span>₹1,10,000 All-In</span><span class="dot">·</span>
+    <span>30–50 Days</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>30 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Wags &amp; Tails Mobile App
+  </div>
+  <h1 class="reveal d1">
+    Grooming &amp;<br>
+    <em>dog walking,</em><br>
+    on demand.
+  </h1>
+  <p class="hero-sub reveal d2">
+    Two native apps for Wags &amp; Tails — a customer app where pet parents book home grooming and on-demand walks, and a partner app where your groomers and walkers pick up and complete those jobs. Built around the pet profile, on iOS and Android, from one codebase.
+  </p>
+  <a class="proto-link reveal d2" href="https://wags-and-tails.vercel.app" target="_blank" rel="noopener">
+    <span class="pd"></span> View the working prototype — wags-and-tails.vercel.app ↗
+  </a>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Scope</div>
+      <div class="hm-v">Customer + Partner Apps</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Project Cost</div>
+      <div class="hm-v orange">₹1,10,000</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Timeline</div>
+      <div class="hm-v amber">30–50 Days</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">2</div><div class="sl">Native apps</div></div>
+  <div class="stat reveal d1"><div class="sn">3</div><div class="sl">Roles · customer, walker, groomer</div></div>
+  <div class="stat reveal d2"><div class="sn">iOS + Android</div><div class="sl">One codebase, both stores</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">Day 30</div><div class="sl">First release, live</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">00</span><span class="sec-tag">Overview</span></div>
+  <div class="sec-title reveal">Built around the <em>pet profile.</em></div>
+  <p class="sec-lead reveal d1">
+    A mobile platform that lets pet parents book grooming at home and dog walks on demand — and lets your groomers and walkers pick up and complete those jobs from their own app. Everything hangs off the pet: breed, age, weight, vaccination status, allergies, temperament and care notes. Bookings are made for a pet, history is kept against a pet, and the owner's care notes are surfaced directly to whoever turns up. That single thread is the difference between a booking tool and a service your customers stay with.
+  </p>
+  <p class="sec-lead reveal d2">
+    We release in <b style="color:var(--tp);font-weight:500;">three working milestones, walking first</b>. Dog walking is a new service line that genuinely needs an app to exist — an on-demand, GPS-tracked walk isn't something you can run over WhatsApp — so it goes live first and starts earning while the grooming module is still in build. Grooming already works today; the app makes it better rather than making it possible.
+  </p>
+  <div class="proto-callout reveal d3">
+    <div class="pc-l">Working prototype</div>
+    <div class="pc-t">A clickable prototype of all three roles is live at <a href="https://wags-and-tails.vercel.app" target="_blank" rel="noopener">wags-and-tails.vercel.app</a> — use the role switcher, top right, to move between the customer, groomer and walker apps. This is design intent, not the finished product; flows, wording and visuals are open to your input before development starts.</div>
+  </div>
+</section>
+
+<!-- SCOPE MODULES -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">Scope of Work</span></div>
+  <div class="sec-title reveal">What we're <em>building.</em></div>
+  <p class="sec-lead reveal d1">Two apps, three roles, both platforms — delivered as six connected modules on a single codebase.</p>
+
+  <div class="module-grid">
+    <div class="mod reveal d1">
+      <div class="mod-num">01</div>
+      <h3>Customer App</h3>
+      <p>Phone-number sign-up, multiple pet profiles per account, a service catalogue with package inclusions, grooming booking (package, add-ons, slot), on-demand and scheduled walk booking, live walk tracking on a map, in-app payments, booking history with one-tap rebooking, and ratings for partners.</p>
+      <div class="mod-tags"><span class="mod-tag">Pet Profiles</span><span class="mod-tag">Bookings</span><span class="mod-tag">Live Tracking</span><span class="mod-tag">Payments</span></div>
+    </div>
+
+    <div class="mod reveal d2">
+      <div class="mod-num">02</div>
+      <h3>Partner App — Walker <span class="mod-phase pri">Priority</span></h3>
+      <p>Partner sign-up and profile, an online/offline availability toggle, incoming walk requests with a countdown to accept or decline, pet details and owner care notes on arrival, GPS route tracking with live duration, distance and pace, photo capture during the walk, an issue-report, end-of-walk summary, and an earnings dashboard.</p>
+      <div class="mod-tags"><span class="mod-tag">Availability</span><span class="mod-tag">GPS Route</span><span class="mod-tag">Live Session</span><span class="mod-tag">Earnings</span></div>
+    </div>
+
+    <div class="mod reveal d3">
+      <div class="mod-num">03</div>
+      <h3>Partner App — Groomer <span class="mod-phase p2">Phase 2</span></h3>
+      <p>Availability and service area, an open job feed with payout and distance, job claiming with auto-assignment to schedule, job detail with pet profile and care notes, navigation to the address, a checklist generated from the booked package with add-ons tracked separately, before/after photo capture, completion gated on a finished checklist, a day/week schedule, and earnings.</p>
+      <div class="mod-tags"><span class="mod-tag">Job Feed</span><span class="mod-tag">Package Checklist</span><span class="mod-tag">Before/After</span><span class="mod-tag">Schedule</span></div>
+    </div>
+
+    <div class="mod reveal d4">
+      <div class="mod-num">04</div>
+      <h3>The Pet Profile</h3>
+      <p>The spine of the product. Every pet a customer owns — breed, age, weight, sex, photo, vaccination records and due dates, allergies, coat type, temperament, vet contact and microchip details. Care notes written by the owner are carried through to the groomer or walker who turns up, so the service always knows the animal.</p>
+      <div class="mod-tags"><span class="mod-tag">Vaccinations</span><span class="mod-tag">Allergies</span><span class="mod-tag">Care Notes</span><span class="mod-tag">Multi-pet</span></div>
+    </div>
+
+    <div class="mod reveal d5">
+      <div class="mod-num">05</div>
+      <h3>Backend, Payments &amp; Notifications</h3>
+      <p>Backend, database, authentication, media storage, in-app payment integration and push notifications across the journey — all included. One codebase compiled and released to both the App Store and the Google Play Store, so customers and partners are covered on every device.</p>
+      <div class="mod-tags"><span class="mod-tag">Auth &amp; DB</span><span class="mod-tag">Media Storage</span><span class="mod-tag">Payments</span><span class="mod-tag">Push</span></div>
+    </div>
+
+    <div class="mod reveal d5">
+      <div class="mod-num">06</div>
+      <h3>AI Pet Assistant &amp; Polish</h3>
+      <p>An AI pet assistant on the pet profile for care questions, plus ratings and reviews, vaccination reminders, and performance, notification and edge-case hardening across both apps — followed by final store submissions and a clean handover.</p>
+      <div class="mod-tags"><span class="mod-tag">AI Assistant</span><span class="mod-tag">Ratings</span><span class="mod-tag">Reminders</span><span class="mod-tag">Hardening</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Selected Work</span></div>
+  <div class="sec-title reveal">Products we've <em>built.</em></div>
+  <p class="sec-lead reveal d1">We don't just ship marketing sites — we build real, operational products: live order feeds, tracked sessions, dashboards and payments. Exactly the machinery a two-sided app like this runs on.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://eatops.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/eatops.png" alt="Eatops"></div>
+      <div class="work-meta"><div class="work-name">Eatops</div><div class="work-sector">Café ERP · Live Ops</div><span class="work-note">Real-time order &amp; kitchen operations — a live job-feed product, much like the partner app here.</span></div>
+    </a>
+    <a class="work-card reveal d2" href="https://mockzy.app" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/mockzy.png" alt="Mockzy"></div>
+      <div class="work-meta"><div class="work-name">Mockzy</div><div class="work-sector">AI Product · Mobile-first</div><span class="work-note">AI creative studio for D2C brands — image and video generation, end to end.</span></div>
+    </a>
+    <a class="work-card reveal d3" href="https://distrute.vercel.app" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/distrute.png" alt="Distrute"></div>
+      <div class="work-meta"><div class="work-name">Distrute</div><div class="work-sector">SaaS Platform · Two-sided</div><span class="work-note">Distribution OS matching founders with creators — a full two-sided marketplace build.</span></div>
+    </a>
+    <a class="work-card reveal d4" href="https://crestify.co/work" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/gritschool.png" alt="Grit School"></div>
+      <div class="work-meta"><div class="work-name">Grit School</div><div class="work-sector">Learning Platform</div><span class="work-note">A full learning product — designed, built and shipped by the same team.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">50+</div><div class="sl">Brands served</div></div>
+  <div class="stat reveal d1"><div class="sn">Full</div><div class="sl">Stack · design to release</div></div>
+  <div class="stat reveal d2"><div class="sn">iOS + Android</div><div class="sl">Cross-platform builds</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">100%</div><div class="sl">Founder-led</div></div>
+</div>
+
+<!-- WHO YOU'RE WORKING WITH -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Who You're Working With</span></div>
+  <div class="sec-title reveal">Not an agency.<br>A <em>build team.</em></div>
+  <p class="sec-lead reveal d1">
+    Crestify is a founder-led product studio in Kanpur. We design and ship real software — apps, marketplaces, SaaS and operational tools — for 50+ brands and our own products. We build custom when custom is the right call, on both mobile platforms, and we own it end to end.
+  </p>
+  <p class="sec-lead reveal d2">No juniors, no handoffs, no middle-man. The people who design your app are the people who build it — and they're still there after launch.</p>
+</section>
+
+<!-- LOGO WALL -->
+<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
+  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
+    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
+    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+<style>
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+@media (max-width: 639px) { .lw-tile { width: 128px; height: 58px; padding: 10px 16px; } .lw-tile img { max-height: 32px; max-width: 96px; } }
+</style>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">04 · Commercials</div>
+  <div class="inv-heading reveal d1">One project price.<br><em>Both apps, both stores.</em></div>
+  <p class="inv-sub reveal d2">Design, development, testing and release of both applications across iOS and Android, delivered in three milestones. Backend, database, authentication, media storage, push and payment integration are all included in the build.</p>
+
+  <div class="bundle-card reveal d1">
+    <div class="bundle-left">
+      <div class="bundle-badge">All-In · Customer + Partner Apps</div>
+      <div class="bundle-title">Total project cost</div>
+      <p class="bundle-desc">Two native apps, three roles, one codebase — designed, built, tested and shipped to the App Store and Play Store across three working milestones.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price">₹1,10,000</div>
+      <div class="bundle-save">Taxes as applicable</div>
+    </div>
+  </div>
+
+  <div class="pay-cards reveal d2">
+    <div class="pay-card">
+      <div class="pay-card-label">40% · Advance</div>
+      <div class="pay-card-amt">₹44,000</div>
+      <div class="pay-card-note">On sign-off, to begin work</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">30% · Milestone 1</div>
+      <div class="pay-card-amt">₹33,000</div>
+      <div class="pay-card-note">On release of the walking module</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">20% · Milestone 2</div>
+      <div class="pay-card-amt">₹22,000</div>
+      <div class="pay-card-note">On release of the grooming module</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">10% · Milestone 3</div>
+      <div class="pay-card-amt">₹11,000</div>
+      <div class="pay-card-note">On final handover</div>
+    </div>
+  </div>
+
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:22px; line-height:1.7; max-width:600px;">
+    Exclusive of applicable taxes. Third-party running costs — maps, SMS/OTP, push delivery, AI usage, cloud hosting and payment-gateway fees — are billed directly by the provider at cost.
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Timeline</span></div>
+  <div class="sec-title reveal">Three releases, <em>walking first.</em></div>
+  <p class="sec-lead reveal d1">Rather than building everything and shipping once at the end, we release in three working milestones — you get a usable product in customers' hands from day 30, and real usage shapes what comes next.</p>
+  <div class="timeline">
+    <div class="tl-row reveal"><div class="tl-week">Day 30 · M1</div><div class="tl-body"><div class="tl-name">Dog walking, live</div><div class="tl-desc">Customer app foundation — sign-up, pet profiles, customer profile, addresses. Complete walk journey: on-demand and scheduled walks, live map tracking, walk summary and payment. Complete walker app — availability, requests, accept/decline, GPS tracking, photos, completion, earnings. Push notifications. Released on both stores.</div></div></div>
+    <div class="tl-row reveal d1"><div class="tl-week">Day 42 · M2</div><div class="tl-body"><div class="tl-name">Grooming</div><div class="tl-desc">Service catalogue with all packages and add-ons. Grooming booking with package selection, add-ons, slot picker and address. Complete groomer app — job feed, claiming, job detail with care notes, package-driven checklist, before/after photos, schedule, earnings. Booking history and rebooking.</div></div></div>
+    <div class="tl-row reveal d2"><div class="tl-week">Day 50 · M3</div><div class="tl-body"><div class="tl-name">Assistant &amp; polish</div><div class="tl-desc">AI pet assistant on the pet profile. Ratings and reviews. Vaccination reminders. Performance, notification and edge-case hardening across both apps. Final store submissions and handover.</div></div></div>
+  </div>
+  <p class="sec-lead reveal d3" style="margin-top:24px;">Days are counted from kick-off, which begins on receipt of the advance and the brand assets. App Store and Play Store review time sits outside our control and is not counted here; we typically allow three to five days for first submission.</p>
+</section>
+
+<!-- TERMS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-title reveal">Simple <em>terms.</em></div>
+  <div class="terms-grid reveal d1">
+    <div class="tg"><div class="tg-l">Pricing</div><div class="tg-v">Fixed, milestone-based</div></div>
+    <div class="tg"><div class="tg-l">Currency</div><div class="tg-v">INR, taxes as applicable</div></div>
+    <div class="tg"><div class="tg-l">Platforms</div><div class="tg-v">iOS &amp; Android, one codebase</div></div>
+    <div class="tg"><div class="tg-l">Revisions</div><div class="tg-v">Two rounds per milestone</div></div>
+    <div class="tg"><div class="tg-l">Ownership</div><div class="tg-v">All code, files &amp; accounts to Wags &amp; Tails on final payment</div></div>
+    <div class="tg"><div class="tg-l">Support</div><div class="tg-v">30 days post-launch included</div></div>
+  </div>
+  <div class="notinc reveal d2">
+    <div class="notinc-l">Not included</div>
+    <div class="notinc-t">
+      <b>Web admin dashboard</b> for managing services, pricing, partners and bookings — recommended, quoted separately on request. Third-party running costs (maps, SMS/OTP, push, AI, hosting). Payment-gateway account and transaction fees. Apple Developer and Google Play accounts. Brand identity, photography and written content. Background verification of walkers and groomers. Marketing, ASO and user acquisition. Ongoing maintenance beyond the 30-day support window. Service is scoped for a single city at launch; gateway and store accounts are opened in your name, with our assistance.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to start?</div>
+  <div class="cta-title reveal d1">Let's get <em>Wags &amp; Tails</em><br>into the stores.</div>
+  <p class="cta-sub reveal d2">Walk through the prototype, confirm walk pricing and the launch city, and release the advance to begin.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wags-and-tails.vercel.app" target="_blank" rel="noopener" class="btn-secondary">View the prototype ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Crestify · Kanpur · Proposal for Wags &amp; Tails</span>
+  <span class="fr">Valid 30 days · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
