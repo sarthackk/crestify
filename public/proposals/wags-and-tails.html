@@ -95,6 +95,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .mod-phase { display: inline-block; font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; }
 .mod-phase.pri { background: rgba(46,125,91,0.14); color: var(--caramel); }
 .mod-phase.p2 { background: rgba(224,164,74,0.16); color: #a97a2b; }
+.mod-phase.web { background: rgba(22,33,28,0.08); color: var(--ts); }
 .mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
 .mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
 .mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
@@ -230,7 +231,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     on demand.
   </h1>
   <p class="hero-sub reveal d2">
-    Two native apps for Wags &amp; Tails — a customer app where pet parents book home grooming and on-demand walks, and a partner app where your groomers and walkers pick up and complete those jobs. Built around the pet profile, on iOS and Android, from one codebase.
+    Two native apps for Wags &amp; Tails — a customer app where pet parents book home grooming and on-demand walks, and a partner app where your groomers and walkers pick up and complete those jobs — plus two web portals: a staff booking desk for walk-in and phone customers, and a super-admin control room. Built around the pet profile, on iOS and Android.
   </p>
   <a class="proto-link reveal d2" href="https://wags-and-tails.vercel.app" target="_blank" rel="noopener">
     <span class="pd"></span> View the working prototype — wags-and-tails.vercel.app ↗
@@ -254,7 +255,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <!-- STATS BAR -->
 <div class="dark-bar">
   <div class="stat reveal"><div class="sn">2</div><div class="sl">Native apps</div></div>
-  <div class="stat reveal d1"><div class="sn">3</div><div class="sl">Roles · customer, walker, groomer</div></div>
+  <div class="stat reveal d1"><div class="sn">2</div><div class="sl">Web portals · staff + admin</div></div>
   <div class="stat reveal d2"><div class="sn">iOS + Android</div><div class="sl">One codebase, both stores</div></div>
   <div class="stat stat-accent reveal d3"><div class="sn">Day 40</div><div class="sl">First release, live</div></div>
 </div>
@@ -279,7 +280,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <section class="sec">
   <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">Scope of Work</span></div>
   <div class="sec-title reveal">What we're <em>building.</em></div>
-  <p class="sec-lead reveal d1">Two apps, three roles, both platforms — delivered as six connected modules on a single codebase.</p>
+  <p class="sec-lead reveal d1">Two native apps and two web portals — delivered as eight connected modules on a single stack.</p>
 
   <div class="module-grid">
     <div class="mod reveal d1">
@@ -322,6 +323,20 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
       <h3>AI Pet Assistant &amp; Polish</h3>
       <p>An AI pet assistant on the pet profile for care questions, plus ratings and reviews, vaccination reminders, and performance, notification and edge-case hardening across both apps — followed by final store submissions and a clean handover.</p>
       <div class="mod-tags"><span class="mod-tag">AI Assistant</span><span class="mod-tag">Ratings</span><span class="mod-tag">Reminders</span><span class="mod-tag">Hardening</span></div>
+    </div>
+
+    <div class="mod reveal d1">
+      <div class="mod-num">07</div>
+      <h3>Staff Booking Portal <span class="mod-phase web">Web</span></h3>
+      <p>A web portal for your team to book on a customer's behalf — for anyone who calls in or can't use the app. Look up or create a customer and pet, take a grooming or walk booking with package, add-ons and slot, assign a partner, and record payment or cash-on-service. Every manual booking flows into the same system the apps run on.</p>
+      <div class="mod-tags"><span class="mod-tag">Manual Booking</span><span class="mod-tag">Customer Lookup</span><span class="mod-tag">Assign Partner</span><span class="mod-tag">Web</span></div>
+    </div>
+
+    <div class="mod reveal d2">
+      <div class="mod-num">08</div>
+      <h3>Super Admin Portal <span class="mod-phase web">Web</span></h3>
+      <p>A web control room for the whole operation — manage services, packages and pricing; approve, verify and manage partners; view and manage every booking across the city; oversee customers and pets; track payments and partner payouts; and read the numbers with reporting and analytics. Full oversight, from one dashboard.</p>
+      <div class="mod-tags"><span class="mod-tag">Services &amp; Pricing</span><span class="mod-tag">Partner Management</span><span class="mod-tag">Payments &amp; Payouts</span><span class="mod-tag">Reporting</span></div>
     </div>
   </div>
 </section>
@@ -440,13 +455,13 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 <div class="inv-section">
   <div class="inv-label reveal">04 · Commercials</div>
   <div class="inv-heading reveal d1">One project price.<br><em>Both apps, both stores.</em></div>
-  <p class="inv-sub reveal d2">Design, development, testing and release of both applications across iOS and Android, delivered in three milestones. Backend, database, authentication, media storage, push and payment integration are all included in the build.</p>
+  <p class="inv-sub reveal d2">Design, development, testing and release of both applications across iOS and Android, plus the staff booking portal and super-admin portal, delivered in three milestones. Backend, database, authentication, media storage, push and payment integration are all included in the build.</p>
 
   <div class="bundle-card reveal d1">
     <div class="bundle-left">
       <div class="bundle-badge">All-In · Customer + Partner Apps</div>
       <div class="bundle-title">Total project cost</div>
-      <p class="bundle-desc">Two native apps, three roles, one codebase — designed, built, tested and shipped to the App Store and Play Store across three working milestones.</p>
+      <p class="bundle-desc">Two native apps and two web portals — designed, built, tested and shipped to the App Store and Play Store across three working milestones.</p>
     </div>
     <div class="bundle-right">
       <div class="bundle-price">₹95,000</div>
@@ -483,8 +498,8 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="sec-title reveal">Three releases, <em>walking first.</em></div>
   <p class="sec-lead reveal d1">Rather than building everything and shipping once at the end, we release in three working milestones — you get a usable product in customers' hands from day 40, and real usage shapes what comes next.</p>
   <div class="timeline">
-    <div class="tl-row reveal"><div class="tl-week">Day 40 · M1</div><div class="tl-body"><div class="tl-name">Dog walking, live</div><div class="tl-desc">Customer app foundation — sign-up, pet profiles, customer profile, addresses. Complete walk journey: on-demand and scheduled walks, live map tracking, walk summary and payment. Complete walker app — availability, requests, accept/decline, GPS tracking, photos, completion, earnings. Push notifications. Released on both stores.</div></div></div>
-    <div class="tl-row reveal d1"><div class="tl-week">Day 52 · M2</div><div class="tl-body"><div class="tl-name">Grooming</div><div class="tl-desc">Service catalogue with all packages and add-ons. Grooming booking with package selection, add-ons, slot picker and address. Complete groomer app — job feed, claiming, job detail with care notes, package-driven checklist, before/after photos, schedule, earnings. Booking history and rebooking.</div></div></div>
+    <div class="tl-row reveal"><div class="tl-week">Day 40 · M1</div><div class="tl-body"><div class="tl-name">Dog walking, live</div><div class="tl-desc">Customer app foundation — sign-up, pet profiles, customer profile, addresses. Complete walk journey: on-demand and scheduled walks, live map tracking, walk summary and payment. Complete walker app — availability, requests, accept/decline, GPS tracking, photos, completion, earnings. Push notifications. Web staff-booking portal so your team can create walk bookings for customers who can't use the app. Released on both stores.</div></div></div>
+    <div class="tl-row reveal d1"><div class="tl-week">Day 52 · M2</div><div class="tl-body"><div class="tl-name">Grooming</div><div class="tl-desc">Service catalogue with all packages and add-ons. Grooming booking with package selection, add-ons, slot picker and address. Complete groomer app — job feed, claiming, job detail with care notes, package-driven checklist, before/after photos, schedule, earnings. Web super-admin portal — services, pricing, partners, bookings, payments and reporting. Booking history and rebooking.</div></div></div>
     <div class="tl-row reveal d2"><div class="tl-week">Day 60 · M3</div><div class="tl-body"><div class="tl-name">Assistant &amp; polish</div><div class="tl-desc">AI pet assistant on the pet profile. Ratings and reviews. Vaccination reminders. Performance, notification and edge-case hardening across both apps. Final store submissions and handover.</div></div></div>
   </div>
   <p class="sec-lead reveal d3" style="margin-top:24px;">Days are counted from kick-off, which begins on receipt of the advance and the brand assets. App Store and Play Store review time sits outside our control and is not counted here; we typically allow three to five days for first submission.</p>
@@ -505,7 +520,7 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   <div class="notinc reveal d2">
     <div class="notinc-l">Not included</div>
     <div class="notinc-t">
-      <b>Web admin dashboard</b> for managing services, pricing, partners and bookings — recommended, quoted separately on request. Third-party running costs (maps, SMS/OTP, push, AI, hosting). Payment-gateway account and transaction fees. Apple Developer and Google Play accounts. Brand identity, photography and written content. Background verification of walkers and groomers. Marketing, ASO and user acquisition. Ongoing maintenance beyond the 30-day support window. Service is scoped for a single city at launch; gateway and store accounts are opened in your name, with our assistance.
+      Third-party running costs (maps, SMS/OTP, push, AI, hosting). Payment-gateway account and transaction fees. Apple Developer and Google Play accounts. Brand identity, photography and written content. Background verification of walkers and groomers. Marketing, ASO and user acquisition. Ongoing maintenance beyond the 30-day support window. Service is scoped for a single city at launch; gateway and store accounts are opened in your name, with our assistance.
     </div>
   </div>
 </section>
