@@ -314,56 +314,10 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
 </section>
 
 <!-- CREDIBILITY -->
-<div class="dark-bar">
-  <div class="stat reveal"><div class="sn">Already</div><div class="sl">Working with Haldiram's UK</div></div>
-  <div class="stat reveal d1"><div class="sn">50+</div><div class="sl">Brands served</div></div>
-  <div class="stat reveal d2"><div class="sn">Full</div><div class="sl">Design &amp; development</div></div>
-  <div class="stat stat-accent reveal d3"><div class="sn">100%</div><div class="sl">Founder-led</div></div>
+<div class="dark-bar" style="grid-template-columns: repeat(2, 1fr);">
+  <div class="stat reveal"><div class="sn">50+</div><div class="sl">Brands served</div></div>
+  <div class="stat stat-accent reveal d1"><div class="sn">Full</div><div class="sl">Design &amp; development</div></div>
 </div>
-
-<!-- LOGO WALL -->
-<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
-  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
-    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
-    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
-  </div>
-  <div id="lwWrap"></div>
-</div>
-
-<script>
-(function () {
-  var LOGOS = [
-    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
-    "cafoco-logo-purple-on-transparent.png","dotty.png",
-    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
-    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
-    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
-    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
-    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
-    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
-    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
-    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
-    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
-    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
-  ];
-  var INVERT = { "sectrio-logo-white.png": 1 };
-  var wrap = document.getElementById('lwWrap');
-  if (!wrap) return;
-  var mid = Math.ceil(LOGOS.length / 2);
-  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
-    var track = document.createElement('div');
-    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
-    row.concat(row).forEach(function (f) {
-      var tile = document.createElement('div'); tile.className = 'lw-tile';
-      var img = document.createElement('img');
-      img.src = '/brand-logos/' + f; img.alt = '';
-      if (INVERT[f]) img.className = 'lw-inv';
-      tile.appendChild(img); track.appendChild(tile);
-    });
-    wrap.appendChild(track);
-  });
-})();
-</script>
 
 <!-- INVESTMENT -->
 <div class="inv-section">
