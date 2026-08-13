@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Haldiram's UK — What's On, Digital Menu &amp; Booking Pages</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #241310;
+  --black10: rgba(36,19,16,0.1);
+  --orange:  #C1392B;
+  --cream:   #F7EFE5;
+  --white:   #FFFFFF;
+  --tp:      #241310;
+  --ts:      #5C4A42;
+  --caramel: #A5342A;
+  --amber:   #D98A34;
+  --gold:    #E2B44F;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; } .reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 40s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(247,239,229,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(247,239,229,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--caramel); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero { padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(226,180,79,0.14) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(193,57,43,0.08) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 32px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(247,239,229,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 84px); font-weight: 400; line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 540px; margin-bottom: 50px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange { color: var(--orange); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(226,180,79,0.16) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 620px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+
+/* MODULE GRID */
+.module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.mod { background: var(--cream); padding: 28px 32px; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.mod:hover { border-left-color: var(--caramel); background: #fff; }
+.mod-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); }
+.mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+.mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.mod-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.mod:hover .mod-tag { border-color: rgba(165,52,42,0.35); color: var(--caramel); }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(165,52,42,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(36,19,16,0.09); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(226,180,79,0.16) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 540px; line-height: 1.7; }
+.bundle-card { background: rgba(226,180,79,0.1); border: 1px solid rgba(226,180,79,0.3); border-radius: 6px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(226,180,79,0.18); color: var(--gold); border: 1px solid rgba(226,180,79,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-price { font-family: var(--serif); font-size: clamp(44px, 6vw, 60px); color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+.bundle-save { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* PAYMENT CARDS */
+.pay-cards { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.pay-card { flex: 1 1 220px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; padding: 22px 26px; }
+.pay-card-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.pay-card-amt { font-family: var(--serif); font-size: 28px; color: var(--gold); font-style: italic; margin-bottom: 4px; }
+.pay-card-note { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--black10); align-items: start; }
+.tl-row:last-child { border-bottom: none; }
+.tl-week { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-weight: 500; padding-top: 3px; }
+.tl-name { font-family: var(--serif); font-size: 17px; margin-bottom: 4px; }
+.tl-desc { font-size: 12.5px; color: var(--ts); line-height: 1.7; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+.notinc { margin-top: 22px; max-width: 720px; }
+.notinc-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 10px; }
+.notinc-t { font-size: 13px; color: var(--ts); line-height: 1.8; }
+.notinc-t b { color: var(--tp); font-weight: 500; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(226,180,79,0.1) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+/* LOGO WALL */
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .module-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .tl-row { grid-template-columns: 90px 1fr; gap: 16px; }
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Haldiram's UK</span><span class="dot">·</span>
+    <span>What's On Page</span><span class="dot">·</span>
+    <span>Digital Menu · Filters &amp; Tags</span><span class="dot">·</span>
+    <span>Enquire &amp; Book Panel</span><span class="dot">·</span>
+    <span>Design + Development</span><span class="dot">·</span>
+    <span>£500</span><span class="dot">·</span>
+    <span>3 Weeks</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Haldiram's UK</span><span class="dot">·</span>
+    <span>What's On Page</span><span class="dot">·</span>
+    <span>Digital Menu · Filters &amp; Tags</span><span class="dot">·</span>
+    <span>Enquire &amp; Book Panel</span><span class="dot">·</span>
+    <span>Design + Development</span><span class="dot">·</span>
+    <span>£500</span><span class="dot">·</span>
+    <span>3 Weeks</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>30 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Haldiram's UK
+  </div>
+  <h1 class="reveal d1">
+    What's on,<br>
+    <em>the menu,</em><br>
+    and booking.
+  </h1>
+  <p class="hero-sub reveal d2">
+    Three new pages for Haldiram's UK — designed and developed end to end. A What's On page that keeps guests up to date, a digital menu they can filter, sort and browse by tag, and a custom Enquire &amp; Book panel that takes real outlet bookings. On-brand, responsive, and built into your existing site.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Scope</div>
+      <div class="hm-v">3 Pages · Design + Dev</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Investment</div>
+      <div class="hm-v orange">£500</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Timeline</div>
+      <div class="hm-v amber">3 Weeks</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">3</div><div class="sl">Pages · designed &amp; built</div></div>
+  <div class="stat reveal d1"><div class="sn">Filters</div><div class="sl">Sort &amp; tags on the menu</div></div>
+  <div class="stat reveal d2"><div class="sn">Book</div><div class="sl">Real outlet enquiries</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">3 Wks</div><div class="sl">Design to handover</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">00</span><span class="sec-tag">Overview</span></div>
+  <div class="sec-title reveal">Three pages that <em>do a job.</em></div>
+  <p class="sec-lead reveal d1">
+    Each of these pages earns its place. The <b style="color:var(--tp);font-weight:500;">What's On</b> page gives guests a reason to come back — events, offers and seasonal specials, always current. The <b style="color:var(--tp);font-weight:500;">digital menu</b> makes a large menu easy to navigate, with filtering, sorting and tags doing the work. And the <b style="color:var(--tp);font-weight:500;">Enquire &amp; Book</b> panel turns interest into a real booking at the outlet, not just a phone number to call.
+  </p>
+  <p class="sec-lead reveal d2">
+    We design and develop all three — on Haldiram's UK branding, fully responsive, and slotted cleanly into your current site so they feel native, not bolted on.
+  </p>
+</section>
+
+<!-- SCOPE MODULES -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">Scope of Work</span></div>
+  <div class="sec-title reveal">What we're <em>building.</em></div>
+  <p class="sec-lead reveal d1">Three pages, designed and developed — plus the on-brand system that ties them together.</p>
+
+  <div class="module-grid">
+    <div class="mod reveal d1">
+      <div class="mod-num">01</div>
+      <h3>What's On Page</h3>
+      <p>A living page for events, offers, festivals and seasonal specials — clean cards with imagery, dates and short detail, laid out so guests can scan what's happening at a glance. Structured so your team can keep it current without a redesign each time.</p>
+      <div class="mod-tags"><span class="mod-tag">Events &amp; Offers</span><span class="mod-tag">Seasonal</span><span class="mod-tag">Responsive</span></div>
+    </div>
+
+    <div class="mod reveal d2">
+      <div class="mod-num">02</div>
+      <h3>Digital Menu · Filters, Sort &amp; Tags</h3>
+      <p>The full menu as a fast, browsable page. Filter by category and dietary tags (veg, vegan, spicy, gluten-free and more), sort the list, and search — so a large menu never feels overwhelming. Rich item cards with images, price and description.</p>
+      <div class="mod-tags"><span class="mod-tag">Filtering</span><span class="mod-tag">Sorting</span><span class="mod-tag">Dietary Tags</span><span class="mod-tag">Search</span></div>
+    </div>
+
+    <div class="mod reveal d3">
+      <div class="mod-num">03</div>
+      <h3>Custom Enquire &amp; Book Panel</h3>
+      <p>A custom booking panel that takes real outlet enquiries — pick an outlet, date, time slot and party size, add contact details and a note, and submit. The request lands with your team by email/notification so it can be confirmed at the outlet. Built bespoke to fit the flow you want.</p>
+      <div class="mod-tags"><span class="mod-tag">Outlet Booking</span><span class="mod-tag">Date &amp; Party Size</span><span class="mod-tag">Enquiry Routing</span><span class="mod-tag">Validation</span></div>
+    </div>
+
+    <div class="mod reveal d4">
+      <div class="mod-num">04</div>
+      <h3>Design System &amp; Integration</h3>
+      <p>All three pages designed on Haldiram's UK branding — type, colour and imagery consistent with the rest of the site — then developed, made fully responsive, integrated into your existing site, tested across devices and handed over.</p>
+      <div class="mod-tags"><span class="mod-tag">On-brand</span><span class="mod-tag">Responsive</span><span class="mod-tag">Site Integration</span><span class="mod-tag">QA</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Selected Work</span></div>
+  <div class="sec-title reveal">Menus, bookings &amp; <em>custom web.</em></div>
+  <p class="sec-lead reveal d1">We've built exactly this kind of thing — food menus, booking flows and custom pages designed to convert — for cafés, restaurants and D2C brands.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://commontime.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/commontime.png" alt="Common Time"></div>
+      <div class="work-meta"><div class="work-name">Common Time</div><div class="work-sector">Café · Custom Build</div><span class="work-note">Custom-designed and built café site, end to end — menu and all.</span></div>
+    </a>
+    <a class="work-card reveal d2" href="https://eatops.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/eatops.png" alt="Eatops"></div>
+      <div class="work-meta"><div class="work-name">Eatops</div><div class="work-sector">Café ERP · Menus &amp; Orders</div><span class="work-note">Digital menus, live orders and table ops — a full F&amp;B product.</span></div>
+    </a>
+    <a class="work-card reveal d3" href="https://crestify.co/kaart/giva" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva"></div>
+      <div class="work-meta"><div class="work-name">Giva</div><div class="work-sector">Jewellery · D2C</div><span class="work-note">Embedded development across multiple storefronts.</span></div>
+    </a>
+    <a class="work-card reveal d4" href="https://crestify.co/kaart/nirakaar" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/nirakaar.png" alt="Nirakaar"></div>
+      <div class="work-meta"><div class="work-name">Nirakaar</div><div class="work-sector">Lifestyle · E-commerce</div><span class="work-note">Full brand storefront designed and built end to end.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">Already</div><div class="sl">Working with Haldiram's UK</div></div>
+  <div class="stat reveal d1"><div class="sn">50+</div><div class="sl">Brands served</div></div>
+  <div class="stat reveal d2"><div class="sn">Full</div><div class="sl">Design &amp; development</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">100%</div><div class="sl">Founder-led</div></div>
+</div>
+
+<!-- LOGO WALL -->
+<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
+  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
+    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
+    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">03 · Investment</div>
+  <div class="inv-heading reveal d1">One price.<br><em>All three pages.</em></div>
+  <p class="inv-sub reveal d2">Design and development of the What's On page, the filterable digital menu, and the custom Enquire &amp; Book panel — on-brand, responsive, integrated and handed over.</p>
+
+  <div class="bundle-card reveal d1">
+    <div class="bundle-left">
+      <div class="bundle-badge">All-In · 3 Pages · Design + Dev</div>
+      <div class="bundle-title">Complete build, start to handover</div>
+      <p class="bundle-desc">What's On, the digital menu with filters/sort/tags, and the custom Enquire &amp; Book panel — designed, developed, integrated and delivered.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price">£500</div>
+      <div class="bundle-save">All-inclusive · 3 weeks</div>
+    </div>
+  </div>
+
+  <div class="pay-cards reveal d2">
+    <div class="pay-card">
+      <div class="pay-card-label">50% · Advance</div>
+      <div class="pay-card-amt">£250</div>
+      <div class="pay-card-note">On sign-off, to begin design</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">50% · On delivery</div>
+      <div class="pay-card-amt">£250</div>
+      <div class="pay-card-note">On integration &amp; handover</div>
+    </div>
+  </div>
+
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:22px; line-height:1.7; max-width:560px;">
+    Quoted in GBP. Any third-party costs — hosting, email/notification delivery, or a booking service if required — are billed directly by the provider at cost.
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">04</span><span class="sec-tag">Timeline</span></div>
+  <div class="sec-title reveal">Delivered in <em>three weeks.</em></div>
+  <div class="timeline">
+    <div class="tl-row reveal"><div class="tl-week">Week 1</div><div class="tl-body"><div class="tl-name">Design · all three pages</div><div class="tl-desc">Design for the What's On page, the digital menu, and the Enquire &amp; Book panel — on Haldiram's UK branding, signed off before development. Menu data structure and booking-flow logic agreed.</div></div></div>
+    <div class="tl-row reveal d1"><div class="tl-week">Week 2</div><div class="tl-body"><div class="tl-name">Build · What's On &amp; Menu</div><div class="tl-desc">The What's On page and the digital menu developed and made responsive — filtering, sorting, tags and search working against the real menu.</div></div></div>
+    <div class="tl-row reveal d2"><div class="tl-week">Week 3</div><div class="tl-body"><div class="tl-name">Build · Booking, integrate &amp; handover</div><div class="tl-desc">The custom Enquire &amp; Book panel built and wired to route enquiries to your team, all three pages integrated into the existing site, tested across devices, and handed over.</div></div></div>
+  </div>
+  <p class="sec-lead reveal d3" style="margin-top:24px;">The three weeks run from kick-off, which begins on receipt of the advance, the menu content and the brand assets. Two rounds of revision are included across the pages.</p>
+</section>
+
+<!-- TERMS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-title reveal">Simple <em>terms.</em></div>
+  <div class="terms-grid reveal d1">
+    <div class="tg"><div class="tg-l">Pricing</div><div class="tg-v">Fixed — £500 all-in</div></div>
+    <div class="tg"><div class="tg-l">Currency</div><div class="tg-v">GBP</div></div>
+    <div class="tg"><div class="tg-l">Scope</div><div class="tg-v">Three pages, as listed above</div></div>
+    <div class="tg"><div class="tg-l">Revisions</div><div class="tg-v">Two rounds across the pages</div></div>
+    <div class="tg"><div class="tg-l">Ownership</div><div class="tg-v">All design &amp; code to Haldiram's UK on final payment</div></div>
+    <div class="tg"><div class="tg-l">Content</div><div class="tg-v">Menu, imagery &amp; copy provided by Haldiram's UK</div></div>
+  </div>
+  <div class="notinc reveal d2">
+    <div class="notinc-l">Not included</div>
+    <div class="notinc-t">
+      Hosting and domain (existing site). Menu content, photography and written copy. Third-party running costs — email/notification delivery, or a booking service if one is used. Any work beyond the three pages listed, or a full site redesign. Ongoing maintenance beyond the support window — happy to fold this into the existing retainer.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to start?</div>
+  <div class="cta-title reveal d1">Let's build these<br><em>three pages.</em></div>
+  <p class="cta-sub reveal d2">Sign off, share the menu and brand assets, and we'll begin design this week.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Crestify · crestify.co · Proposal for Haldiram's UK</span>
+  <span class="fr">Valid 30 days · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
