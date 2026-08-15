@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Galli — Custom Shopify Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #131311;
+  --black10: rgba(19,19,17,0.1);
+  --orange:  #EE3311;
+  --cream:   #F0EEE9;
+  --white:   #FFFFFF;
+  --tp:      #17150F;
+  --ts:      #57544D;
+  --caramel: #C22A0E;
+  --amber:   #F0592A;
+  --gold:    #F5A623;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; } .reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 38s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,238,233,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(240,238,233,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--orange); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero { padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(238,51,17,0.10) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(245,166,35,0.09) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 32px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(240,238,233,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 540px; margin-bottom: 50px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange { color: var(--orange); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(238,51,17,0.18) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 620px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+
+/* MODULE GRID */
+.module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.mod { background: var(--cream); padding: 28px 32px; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.mod:hover { border-left-color: var(--orange); background: #fff; }
+.mod-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); }
+.mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+.mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.mod-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.mod:hover .mod-tag { border-color: rgba(238,51,17,0.35); color: var(--caramel); }
+
+/* FEATURE GRID */
+.feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.feat { background: var(--cream); padding: 20px 24px; display: flex; gap: 14px; align-items: flex-start; transition: background 0.15s; }
+.feat:hover { background: #fff; }
+.feat .fk { font-family: var(--serif); font-style: italic; color: var(--caramel); font-size: 18px; line-height: 1; flex-shrink: 0; width: 20px; }
+.feat h4 { font-size: 13px; font-weight: 500; color: var(--tp); margin-bottom: 3px; }
+.feat p { font-size: 12px; color: var(--ts); line-height: 1.6; }
+
+/* PLAIN LIST */
+.plist { border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; max-width: 720px; }
+.plist .pli { list-style: none; padding: 14px 20px; border-bottom: 1px solid var(--black10); font-size: 13px; color: var(--ts); display: flex; gap: 12px; align-items: flex-start; background: var(--cream); transition: background 0.15s; }
+.plist .pli:last-child { border-bottom: none; }
+.plist .pli:hover { background: #fff; }
+.plist .pli .m { color: var(--caramel); font-family: var(--serif); font-size: 15px; line-height: 1.3; flex-shrink: 0; }
+.plist .pli b { color: var(--tp); font-weight: 500; }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(238,51,17,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(19,19,17,0.09); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(238,51,17,0.18) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 540px; line-height: 1.7; }
+.bundle-card { background: rgba(238,51,17,0.1); border: 1px solid rgba(238,51,17,0.3); border-radius: 6px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(245,166,35,0.16); color: var(--gold); border: 1px solid rgba(245,166,35,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-price { font-family: var(--serif); font-size: clamp(44px, 6vw, 60px); color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+.bundle-save { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* PAYMENT CARDS */
+.pay-cards { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.pay-card { flex: 1 1 220px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; padding: 22px 26px; }
+.pay-card-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.pay-card-amt { font-family: var(--serif); font-size: 28px; color: var(--gold); font-style: italic; margin-bottom: 4px; }
+.pay-card-note { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--black10); align-items: start; }
+.tl-row:last-child { border-bottom: none; }
+.tl-week { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); font-weight: 500; padding-top: 3px; }
+.tl-name { font-family: var(--serif); font-size: 17px; margin-bottom: 4px; }
+.tl-desc { font-size: 12.5px; color: var(--ts); line-height: 1.7; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+
+/* CALLOUT */
+.callout { background: rgba(238,51,17,0.06); border: 1px solid rgba(238,51,17,0.2); border-left: 3px solid var(--orange); border-radius: 6px; padding: 24px 28px; max-width: 720px; }
+.callout .co-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 8px; }
+.callout .co-t { font-size: 14px; color: var(--ts); line-height: 1.8; }
+.callout .co-t b { color: var(--tp); font-weight: 500; }
+
+/* LOGO WALL */
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(238,51,17,0.12) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .module-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .tl-row { grid-template-columns: 96px 1fr; gap: 16px; }
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Galli</span><span class="dot">·</span>
+    <span>Custom Shopify Development</span><span class="dot">·</span>
+    <span>Custom Template · Not a Theme</span><span class="dot">·</span>
+    <span>6 Pages</span><span class="dot">·</span>
+    <span>₹32,000</span><span class="dot">·</span>
+    <span>5 Days · Mon–Fri</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Galli</span><span class="dot">·</span>
+    <span>Custom Shopify Development</span><span class="dot">·</span>
+    <span>Custom Template · Not a Theme</span><span class="dot">·</span>
+    <span>6 Pages</span><span class="dot">·</span>
+    <span>₹32,000</span><span class="dot">·</span>
+    <span>5 Days · Mon–Fri</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>till 29 Aug</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Galli · Shopify Development
+  </div>
+  <h1 class="reveal d1">
+    Design done.<br>
+    <em>We build the</em><br>
+    store.
+  </h1>
+  <p class="hero-sub reveal d2">
+    Galli's brand and website design are ready. This covers the development — translating your approved designs into a fully functional, custom-built Shopify storefront. Not an off-the-shelf theme: a custom template coded to your files, so the store looks exactly like the design. For streetwear, where the identity <em>is</em> the product, that difference matters.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Engagement</div>
+      <div class="hm-v">Custom Shopify Dev</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Investment</div>
+      <div class="hm-v orange">₹32,000</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Timeline</div>
+      <div class="hm-v amber">5 Days</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">6</div><div class="sl">Pages · full build</div></div>
+  <div class="stat reveal d1"><div class="sn">Custom</div><div class="sl">Template, not a theme</div></div>
+  <div class="stat reveal d2"><div class="sn">5 Days</div><div class="sl">Mon → Fri</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">₹32k</div><div class="sl">All-in build</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">00</span><span class="sec-tag">Overview</span></div>
+  <div class="sec-title reveal">Development, <em>done right.</em></div>
+  <p class="sec-lead reveal d1">
+    Galli has its brand and website design ready. This proposal covers the <b style="color:var(--tp);font-weight:500;">development side only</b> — turning the approved designs into a fully functional, custom-built Shopify storefront.
+  </p>
+  <p class="sec-lead reveal d2">
+    We're not customising an off-the-shelf theme. We build a <b style="color:var(--tp);font-weight:500;">custom template</b> from the ground up, coded to your design files, so the store looks exactly like the design — not the closest a marketplace theme can get. For a streetwear brand where the visual identity is the product, that difference is the whole point.
+  </p>
+</section>
+
+<!-- SCOPE MODULES -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">Scope · Pages</span></div>
+  <div class="sec-title reveal">Six pages, <em>fully built.</em></div>
+  <p class="sec-lead reveal d1">Every page coded pixel-accurate to your design, responsive, and editable from the Shopify admin.</p>
+
+  <div class="module-grid">
+    <div class="mod reveal d1">
+      <div class="mod-num">01</div>
+      <h3>Homepage</h3>
+      <p>Full custom build — hero, product showcases, lookbook / editorial sections, brand storytelling blocks, newsletter capture, and every other section in the design.</p>
+      <div class="mod-tags"><span class="mod-tag">Hero</span><span class="mod-tag">Lookbook</span><span class="mod-tag">Editable Sections</span></div>
+    </div>
+
+    <div class="mod reveal d2">
+      <div class="mod-num">02</div>
+      <h3>Collection Page</h3>
+      <p>Product grid with sorting and filtering — by size, colour, price and availability — plus pagination or infinite scroll, exactly as designed.</p>
+      <div class="mod-tags"><span class="mod-tag">Product Grid</span><span class="mod-tag">Filter &amp; Sort</span><span class="mod-tag">Pagination</span></div>
+    </div>
+
+    <div class="mod reveal d3">
+      <div class="mod-num">03</div>
+      <h3>Product Page · PDP</h3>
+      <p>Image gallery, variant selector (size / colour), size guide, add-to-cart, description tabs / accordions, and related products.</p>
+      <div class="mod-tags"><span class="mod-tag">Gallery</span><span class="mod-tag">Variants</span><span class="mod-tag">Size Guide</span><span class="mod-tag">Related</span></div>
+    </div>
+
+    <div class="mod reveal d4">
+      <div class="mod-num">04</div>
+      <h3>About</h3>
+      <p>The brand-story page built as designed — editorial layout, imagery and storytelling blocks that carry the Galli identity.</p>
+      <div class="mod-tags"><span class="mod-tag">Brand Story</span><span class="mod-tag">Editorial</span></div>
+    </div>
+
+    <div class="mod reveal d5">
+      <div class="mod-num">05</div>
+      <h3>Contact</h3>
+      <p>Contact page with a working form (submissions delivered), plus store and brand details laid out to design.</p>
+      <div class="mod-tags"><span class="mod-tag">Working Form</span><span class="mod-tag">Brand Details</span></div>
+    </div>
+
+    <div class="mod reveal d5">
+      <div class="mod-num">06</div>
+      <h3>FAQ</h3>
+      <p>Accordion-based FAQ, fully editable from the Shopify admin so your team can add and edit questions without touching code.</p>
+      <div class="mod-tags"><span class="mod-tag">Accordion</span><span class="mod-tag">Admin-editable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Included Across the Build</span></div>
+  <div class="sec-title reveal">Everything <em>that ships with it.</em></div>
+  <div class="feat-grid reveal d1">
+    <div class="feat"><span class="fk">✱</span><div><h4>Custom theme development</h4><p>Coded to your design files — pixel-accurate implementation, not a theme approximation.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Global components</h4><p>Header, navigation, mega menu (if designed), announcement bar and footer.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Cart</h4><p>Cart drawer or cart page, built as per the design.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Fully responsive</h4><p>Desktop, tablet and mobile breakpoints — tested on real devices.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Admin editability</h4><p>Key areas built as theme sections / blocks so your team can edit content, swap images and reorder blocks without code.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Store configuration</h4><p>Payment gateway, shipping zones, tax settings and domain connection.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Basic technical SEO</h4><p>Meta structure, alt tags, clean heading hierarchy and sitemap.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Speed optimisation</h4><p>Image compression, lazy loading and script cleanup.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Cross-browser QA</h4><p>Chrome, Safari, Firefox and Edge.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Launch support</h4><p>Go-live assistance and a walkthrough of the admin.</p></div></div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Selected Work</span></div>
+  <div class="sec-title reveal">Stores we've <em>built.</em></div>
+  <p class="sec-lead reveal d1">Custom Shopify and D2C storefronts for brands that live on their visual identity — fashion, jewellery and lifestyle.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://jamesaston.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/jamesaston.png" alt="James Aston"></div>
+      <div class="work-meta"><div class="work-name">James Aston</div><div class="work-sector">Leather &amp; Apparel · D2C</div><span class="work-note">Custom storefront for a premium leather goods label.</span></div>
+    </a>
+    <a class="work-card reveal d2" href="https://crestify.co/kaart/giva" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva"></div>
+      <div class="work-meta"><div class="work-name">Giva</div><div class="work-sector">Jewellery · D2C</div><span class="work-note">Embedded development across multiple storefronts.</span></div>
+    </a>
+    <a class="work-card reveal d3" href="https://crestify.co/kaart/nirakaar" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/nirakaar.png" alt="Nirakaar"></div>
+      <div class="work-meta"><div class="work-name">Nirakaar</div><div class="work-sector">Lifestyle · E-commerce</div><span class="work-note">Full brand storefront designed and built end to end.</span></div>
+    </a>
+    <a class="work-card reveal d4" href="https://commontime.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/commontime.png" alt="Common Time"></div>
+      <div class="work-meta"><div class="work-name">Common Time</div><div class="work-sector">Café · Custom Build</div><span class="work-note">Custom-designed and built store, end to end.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- LOGO WALL -->
+<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
+  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
+    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
+    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">04 · Investment</div>
+  <div class="inv-heading reveal d1">One price.<br><em>The whole store.</em></div>
+  <p class="inv-sub reveal d2">Custom Shopify theme development — all six pages, global components, store configuration and launch — delivered in five working days.</p>
+
+  <div class="bundle-card reveal d1">
+    <div class="bundle-left">
+      <div class="bundle-badge">All-In · Custom Shopify Build</div>
+      <div class="bundle-title">Six pages, full custom development</div>
+      <p class="bundle-desc">Homepage, Collection, PDP, About, Contact and FAQ — coded to your design, responsive, admin-editable and launched.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price">₹32,000</div>
+      <div class="bundle-save">All-inclusive · 5 days</div>
+    </div>
+  </div>
+
+  <div class="pay-cards reveal d2">
+    <div class="pay-card">
+      <div class="pay-card-label">50% · Advance</div>
+      <div class="pay-card-amt">₹16,000</div>
+      <div class="pay-card-note">To begin — kicks off Day 1</div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-card-label">50% · On delivery</div>
+      <div class="pay-card-amt">₹16,000</div>
+      <div class="pay-card-note">Before handover &amp; go-live</div>
+    </div>
+  </div>
+
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:22px; line-height:1.7; max-width:560px;">
+    Shopify subscription, domain, apps and any paid third-party integrations are billed directly to Galli and are not included above.
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Timeline</span></div>
+  <div class="sec-title reveal">Five days, <em>Monday to Friday.</em></div>
+  <p class="sec-lead reveal d1">Mon 17 Aug → Fri 21 Aug 2026. We share progress links daily, so you review as we build — not only at the end.</p>
+  <div class="timeline">
+    <div class="tl-row reveal"><div class="tl-week">Day 1 · Mon</div><div class="tl-body"><div class="tl-name">Setup &amp; foundation</div><div class="tl-desc">Store setup, theme scaffolding, design-system implementation (typography, colour tokens, spacing, buttons), and the header, footer and navigation.</div></div></div>
+    <div class="tl-row reveal d1"><div class="tl-week">Day 2 · Tue</div><div class="tl-body"><div class="tl-name">Homepage</div><div class="tl-desc">Every homepage section built, made editable and fully responsive.</div></div></div>
+    <div class="tl-row reveal d2"><div class="tl-week">Day 3 · Wed</div><div class="tl-body"><div class="tl-name">Collection &amp; PDP</div><div class="tl-desc">Collection page with filtering and sorting, the product page with variants and size guide, and the cart drawer.</div></div></div>
+    <div class="tl-row reveal d3"><div class="tl-week">Day 4 · Thu</div><div class="tl-body"><div class="tl-name">About, Contact &amp; FAQ</div><div class="tl-desc">The remaining pages, working forms, and cart &amp; checkout styling.</div></div></div>
+    <div class="tl-row reveal d4"><div class="tl-week">Day 5 · Fri</div><div class="tl-body"><div class="tl-name">QA, optimise &amp; launch</div><div class="tl-desc">Product-upload assistance, full QA, responsive and browser testing, speed optimisation, handover and go-live.</div></div></div>
+  </div>
+</section>
+
+<!-- WHAT WE NEED -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">What We Need From You</span></div>
+  <div class="sec-title reveal">To hit <em>five days.</em></div>
+  <p class="sec-lead reveal d1">These need to be with us before Day 1 — delays in receiving them shift the timeline correspondingly.</p>
+  <ul class="plist reveal d1">
+    <li class="pli"><span class="m">→</span><span><b>Final design files</b> — Figma preferred, with all pages and mobile screens.</span></li>
+    <li class="pli"><span class="m">→</span><span><b>Shopify store access</b> — or we set up a fresh store.</span></li>
+    <li class="pli"><span class="m">→</span><span><b>Brand assets</b> — logo files, fonts and their licences, image library.</span></li>
+    <li class="pli"><span class="m">→</span><span><b>Product data</b> — titles, descriptions, pricing, variants, images (a CSV or spreadsheet works).</span></li>
+    <li class="pli"><span class="m">→</span><span><b>Page content</b> — copy for About, Contact and FAQ.</span></li>
+    <li class="pli"><span class="m">→</span><span><b>A single point of contact</b> for feedback and approvals.</span></li>
+  </ul>
+</section>
+
+<!-- NOT INCLUDED -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">07</span><span class="sec-tag">Not Included</span></div>
+  <div class="sec-title reveal">Clear <em>boundaries.</em></div>
+  <p class="sec-lead reveal d1">Outside this scope — happy to quote any of these separately.</p>
+  <ul class="plist reveal d1">
+    <li class="pli"><span class="m">—</span><span>UI/UX design or design revisions (design is provided by Galli).</span></li>
+    <li class="pli"><span class="m">—</span><span>Copywriting and content creation.</span></li>
+    <li class="pli"><span class="m">—</span><span>Product photography or image retouching.</span></li>
+    <li class="pli"><span class="m">—</span><span>Custom app development or complex third-party integrations.</span></li>
+    <li class="pli"><span class="m">—</span><span>Bulk product data entry beyond initial catalogue upload.</span></li>
+    <li class="pli"><span class="m">—</span><span>Marketing, ads or email flow setup.</span></li>
+    <li class="pli"><span class="m">—</span><span>Ongoing maintenance and support beyond the post-launch window.</span></li>
+  </ul>
+</section>
+
+<!-- POST-LAUNCH -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">08</span><span class="sec-tag">Post-Launch Support</span></div>
+  <div class="sec-title reveal">We don't <em>disappear at handover.</em></div>
+  <div class="callout reveal d1">
+    <div class="co-l">Included</div>
+    <div class="co-t"><b>7 days of complimentary bug support</b> after handover — anything broken from our build, we fix at no cost. Beyond that, we run monthly retainers covering Shopify development, store management, new section builds and campaign landing pages. Happy to share details if useful.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Next steps</div>
+  <div class="cta-title reveal d1">Let's ship <em>Galli.</em></div>
+  <p class="cta-sub reveal d2">Approve the proposal, confirm the 50% advance, share the files — and we kick off Monday, 17 August.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Kaart Studio · an ecommerce practice by Crestify · Kanpur</span>
+  <span class="fr">Valid till 29 Aug · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
