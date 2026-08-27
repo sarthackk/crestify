@@ -15,48 +15,48 @@ const TRACKS = [
   {
     key: 'Stays',
     for: 'Homestays, hostels, boutique or newly opening properties.',
-    build: 'Property site, booking or enquiry flow, brand presence, and a content shoot.',
-    take: 'Travel for two from Kanpur, a minimum of 3 nights, meals, and full filming access.',
+    build: 'A property site, a booking or enquiry flow, some brand presence — and a proper content shoot while we’re there.',
+    take: 'Travel for two from Kanpur, a few nights, meals, and the freedom to film.',
   },
   {
     key: 'Events',
     for: 'Festivals, markets, community meetups, conferences.',
-    build: 'Event site, ticketing or registration, on-ground digital touchpoints, and event content.',
-    take: 'Travel, stay for the duration, and full access to the event and its people.',
+    build: 'An event site, ticketing or registration, on-ground digital bits, and content from the middle of it all.',
+    take: 'Travel, a place to stay for the run of it, and access to the event and its people.',
   },
   {
     key: 'Brands',
-    for: 'Early-stage product or D2C brands.',
-    build: 'Site, store, app, or internal systems — whatever the 10-day cap allows.',
-    take: 'Equity or revenue share — agreed and documented before any work starts.',
+    for: 'Early-stage product or D2C brands doing something interesting.',
+    build: 'A site, store, app, or the internal systems you’re missing — we figure out the right thing together.',
+    take: 'Equity or revenue share — nothing heavy, just written down before we start.',
   },
 ];
 
 const FITS = [
-  'Event site + ticketing / registration',
-  'Property site + booking flow',
-  'Digital menu + brand kit',
-  'Community platform or directory (small scope)',
-  'A content shoot — included in every residency',
+  'An event site with ticketing or registration',
+  'A property site with a booking flow',
+  'A digital menu and a little brand kit',
+  'A small community platform or directory',
+  'A content shoot — that comes with every one',
 ];
 
 const NEED = [
-  ['Travel', 'Return travel for two from Kanpur.'],
-  ['Stay', 'A place to sleep for the residency — 3 nights minimum for stays, the full duration for events.'],
-  ['Meals', 'Food while we’re there.'],
-  ['Filming access', 'Full permission to shoot reels, photos and a story on location.'],
-  ['A decision-maker', 'Someone available to answer questions and sign off, so the build doesn’t stall.'],
+  ['A place to land', 'Somewhere to stay while we’re there — a few nights for stays, the run of it for events.'],
+  ['Travel', 'A hand with getting two of us there and back from Kanpur.'],
+  ['Meals', 'Feed us and we’re happy.'],
+  ['Room to film', 'The freedom to shoot reels, photos and a little story on location.'],
+  ['Someone to talk to', 'A person we can bounce ideas off and get quick answers from, so it stays fun and moves.'],
 ];
 
-const NOT_FOR = [
-  'Anyone looking for a free agency.',
-  'Builds that need months, not days.',
-  'Work with no story in it — nothing to shoot, nothing to show.',
-  'Hosts who can’t cover travel, stay and meals.',
-  'Anyone expecting our paid rates to bend because of this.',
+/* A warm note on fit — not a rulebook. */
+const FIT = [
+  'A place or a brand with a story in it — something worth building and worth filming.',
+  'Work that fits in a week or two, not months.',
+  'People who are up for experimenting alongside us, not handing over a spec.',
+  'Somewhere we’d genuinely love to spend a little time.',
 ];
 
-/* One host a month. Twelve a year. Edit status: 'open' | 'taken' | 'live'. */
+/* Roughly one at a time, through the year. Edit status: 'open' | 'taken' | 'live'. */
 const SLOTS = [
   { month: 'Jan', status: 'open' },
   { month: 'Feb', status: 'open' },
@@ -98,15 +98,15 @@ function Hero() {
       <div className="container">
         <span className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)' }}>Crestify Residency</span>
         <h1 className="display" style={{ marginTop: 22, maxWidth: '18ch' }}>
-          We build for one host a month. Instead of paying us, they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
+          We go somewhere, build what they need, and instead of an invoice — they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
         </h1>
-        <p className="body-lg" style={{ marginTop: 26, maxWidth: '46ch', color: 'var(--ink-5)' }}>
-          We go somewhere — a café, a homestay, a new hostel, an event, an early brand — and build what they need. A site, a ticketing system, a menu, a booking flow. We shoot content there too. They don’t pay us. They host us.
+        <p className="body-lg" style={{ marginTop: 26, maxWidth: '48ch', color: 'var(--ink-5)' }}>
+          We’re looking for interesting places and people to work with — a café, a homestay, a new hostel, an event, an early brand. We come down, build something real together — a site, a menu, a ticketing flow — and shoot the story while we’re at it. You host us, we bring the studio.
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 38 }}>
-          <a href="#apply" className="btn btn-accent">Apply to host <span className="arr">→</span></a>
+          <a href="#apply" className="btn btn-accent">Tell us about your place <span className="arr">→</span></a>
           <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-4)' }}>
-            One a month · Ten days · Twelve a year
+            Roughly one at a time · around ten days
           </span>
         </div>
       </div>
@@ -117,10 +117,10 @@ function Hero() {
 /* ─── Numbers strip ──────────────────────────────────────────────────────── */
 function Numbers() {
   const items = [
-    ['1', 'host a month'],
-    ['10', 'working days, capped'],
-    ['3', 'nights minimum'],
-    ['12', 'slots a year'],
+    ['1', 'host at a time'],
+    ['~10', 'days of studio time'],
+    ['3', 'nights or so, for stays'],
+    ['12', 'or so a year'],
   ];
   return (
     <section style={{ background: 'var(--bg-deep-elev)', color: 'var(--bg)' }}>
@@ -140,7 +140,7 @@ function Numbers() {
 function Tracks() {
   return (
     <Sec index="02" tag="The three tracks">
-      <h2 className="h2" style={{ maxWidth: '20ch' }}>Three kinds of host. What we take back differs.</h2>
+      <h2 className="h2" style={{ maxWidth: '22ch' }}>Three kinds of collaboration. Each one trades a little differently.</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 16, marginTop: 'clamp(32px, 4vw, 48px)' }}>
         {TRACKS.map((t, i) => (
           <div key={t.key} className="reveal lift" style={{ border: '1px solid var(--line-strong)', borderRadius: 8, padding: 'clamp(24px, 3vw, 34px)', background: 'var(--bg-elev)', display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -150,11 +150,11 @@ function Tracks() {
             </div>
             <p className="body" style={{ color: 'var(--ink-3)' }}>{t.for}</p>
             <div>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 6 }}>We build</div>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 6 }}>What we’d build</div>
               <p className="body" style={{ color: 'var(--ink-2)' }}>{t.build}</p>
             </div>
             <div>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-4)', marginBottom: 6 }}>We take</div>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-4)', marginBottom: 6 }}>The exchange</div>
               <p className="body" style={{ color: 'var(--ink-2)' }}>{t.take}</p>
             </div>
           </div>
@@ -164,13 +164,13 @@ function Tracks() {
   );
 }
 
-/* ─── What fits in ten days ──────────────────────────────────────────────── */
+/* ─── What fits ──────────────────────────────────────────────────────────── */
 function Fits() {
   return (
-    <Sec index="03" tag="What fits in ten days">
-      <h2 className="h2" style={{ maxWidth: '22ch' }}>Up to ten working days of studio time. That’s the unit — effort, not a fixed list.</h2>
+    <Sec index="03" tag="Roughly what fits">
+      <h2 className="h2" style={{ maxWidth: '22ch' }}>Think of it as about ten days of studio time — a rough guide, not a contract.</h2>
       <p className="body-lg" style={{ marginTop: 18, maxWidth: '52ch', color: 'var(--ink-3)' }}>
-        It lets a café menu and an event ticketing platform both fit. Pitch us something realistic. These are examples, not a contract:
+        It’s enough for a café menu or an event platform, and we scope the real thing together. A few things that comfortably fit:
       </p>
       <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', borderTop: '1px solid var(--line)' }}>
         {FITS.map((f) => (
@@ -181,7 +181,7 @@ function Fits() {
         ))}
       </ul>
       <p className="body" style={{ marginTop: 24, color: 'var(--ink-3)', maxWidth: '54ch' }}>
-        Anything beyond ten days is a normal, paid Crestify conversation — <Link to="/contact" style={{ color: 'var(--accent)', textDecoration: 'none', borderBottom: '1px solid currentColor' }}>talk to us here</Link>.
+        If it grows into something bigger, that’s a good problem — and a normal paid Crestify conversation. <Link to="/contact" style={{ color: 'var(--accent)', textDecoration: 'none', borderBottom: '1px solid currentColor' }}>Say hi here</Link>.
       </p>
     </Sec>
   );
@@ -190,8 +190,8 @@ function Fits() {
 /* ─── Proof ──────────────────────────────────────────────────────────────── */
 function Proof() {
   return (
-    <Sec index="04" tag="Proof">
-      <h2 className="h2" style={{ maxWidth: '20ch' }}>We can actually build. Some of what we’ve shipped:</h2>
+    <Sec index="04" tag="A bit of our work">
+      <h2 className="h2" style={{ maxWidth: '20ch' }}>So you know we can actually build. Some of what we’ve shipped:</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16, marginTop: 'clamp(32px, 4vw, 48px)' }}>
         {PROOF.map((p) => {
           const inner = (
@@ -215,11 +215,11 @@ function Proof() {
   );
 }
 
-/* ─── What we need ───────────────────────────────────────────────────────── */
+/* ─── What makes it work ─────────────────────────────────────────────────── */
 function Need() {
   return (
-    <Sec index="05" tag="What we need from you">
-      <h2 className="h2" style={{ maxWidth: '18ch' }}>Requirements, not requests.</h2>
+    <Sec index="05" tag="What makes it work">
+      <h2 className="h2" style={{ maxWidth: '20ch' }}>A few things from your side, and we handle the rest.</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 1, marginTop: 'clamp(32px, 4vw, 48px)', background: 'var(--line-strong)', border: '1px solid var(--line-strong)', borderRadius: 8, overflow: 'hidden' }}>
         {NEED.map(([k, v]) => (
           <div key={k} style={{ background: 'var(--bg-elev)', padding: 'clamp(20px, 2.5vw, 28px)' }}>
@@ -232,21 +232,24 @@ function Need() {
   );
 }
 
-/* ─── Who this isn't for ─────────────────────────────────────────────────── */
-function NotFor() {
+/* ─── What makes a good fit ──────────────────────────────────────────────── */
+function Fit() {
   return (
     <section className="section-pad-sm" style={{ background: 'var(--bg-deep)', color: 'var(--bg)' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="06" light>Who this isn’t for</Eyebrow></div>
-        <h2 className="h2" style={{ maxWidth: '16ch' }}>Read this before you apply.</h2>
-        <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', maxWidth: '46ch' }}>
-          {NOT_FOR.map((n) => (
+        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="06" light>What makes a good fit</Eyebrow></div>
+        <h2 className="h2" style={{ maxWidth: '18ch' }}>The kind of thing we get excited about.</h2>
+        <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', maxWidth: '50ch' }}>
+          {FIT.map((n) => (
             <li key={n} style={{ display: 'flex', gap: 16, alignItems: 'baseline', padding: '16px 0', borderBottom: '1px solid #ffffff1a' }}>
-              <span className="mono" style={{ color: 'var(--accent)', fontSize: 14 }}>—</span>
+              <span className="mono" style={{ color: 'var(--accent)', fontSize: 14 }}>+</span>
               <span className="body-lg" style={{ color: 'var(--bg)' }}>{n}</span>
             </li>
           ))}
         </ul>
+        <p className="body-lg" style={{ marginTop: 24, color: 'var(--ink-5)', maxWidth: '46ch' }}>
+          It’s a trade, not free agency work — but if that sounds like a fun way to spend a week rather than a transaction, we’ll probably get along.
+        </p>
       </div>
     </section>
   );
@@ -260,10 +263,10 @@ function Calendar() {
     live: { label: 'Live now', dot: '#0d9b6a', muted: false },
   };
   return (
-    <Sec index="07" tag="The calendar">
-      <h2 className="h2" style={{ maxWidth: '20ch' }}>Twelve slots. One live at a time.</h2>
-      <p className="body-lg" style={{ marginTop: 18, maxWidth: '50ch', color: 'var(--ink-3)' }}>
-        A new residency doesn’t start until the last one is delivered. You apply whenever; we slot you into a month. Flexible start, hard end.
+    <Sec index="07" tag="Where we’re at">
+      <h2 className="h2" style={{ maxWidth: '20ch' }}>We usually take one at a time.</h2>
+      <p className="body-lg" style={{ marginTop: 18, maxWidth: '52ch', color: 'var(--ink-3)' }}>
+        That way we can actually be present for it. Reach out whenever — we’ll figure out a window that works for both of us. Here’s roughly where the year stands:
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 130px), 1fr))', gap: 10, marginTop: 'clamp(32px, 4vw, 48px)' }}>
         {SLOTS.map((s) => {
@@ -318,23 +321,23 @@ function Apply() {
   return (
     <section id="apply" className="section-pad-sm" style={{ borderTop: '1px solid var(--line-strong)', background: 'var(--bg-elev)' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="08">Application</Eyebrow></div>
+        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="08">Say hello</Eyebrow></div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(32px, 5vw, 72px)', alignItems: 'start' }}>
           <div>
-            <h2 className="h2" style={{ maxWidth: '14ch' }}>Apply to host a residency.</h2>
+            <h2 className="h2" style={{ maxWidth: '14ch' }}>Tell us about your place.</h2>
             <p className="body-lg" style={{ marginTop: 18, color: 'var(--ink-3)', maxWidth: '38ch' }}>
-              We select hosts — you apply. Tell us the place and what you’d want built. The last question is the one that matters most.
+              No formal pitch needed — just tell us where you are and what you’re thinking. The last question is the one we love most.
             </p>
             <p className="mono" style={{ marginTop: 24, fontSize: 10.5, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ink-4)' }}>
-              One host a month · Ten days · Scope agreed in writing
+              We read every one · we’ll write back either way
             </p>
           </div>
 
           {submitted ? (
             <div style={{ border: '1px solid var(--line-strong)', borderRadius: 10, padding: 'clamp(32px, 5vw, 56px)', background: 'var(--bg)', textAlign: 'left' }}>
-              <div className="serif" style={{ fontSize: 30 }}>Got it.</div>
+              <div className="serif" style={{ fontSize: 30 }}>Thanks — got it.</div>
               <p className="body-lg" style={{ marginTop: 12, color: 'var(--ink-3)', maxWidth: '34ch' }}>
-                Your application is in. If the place and the pitch fit a slot, we’ll be in touch to lock a month.
+                We’ll have a proper read and get back to you to see if there’s something fun here for both of us.
               </p>
             </div>
           ) : (
@@ -344,9 +347,9 @@ function Apply() {
                 <div><label style={label}>The place / brand *</label><input style={field} value={form.place} onChange={(e) => update('place', e.target.value)} placeholder="What it’s called" /></div>
               </div>
               <div style={{ ...row }}>
-                <label style={label}>What kind of host</label>
+                <label style={label}>What kind of thing is it</label>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {['Stay', 'Event', 'Brand'].map((h) => {
+                  {['Stay', 'Event', 'Brand', 'Something else'].map((h) => {
                     const on = form.hostType === h;
                     return (
                       <button type="button" key={h} onClick={() => update('hostType', h)} style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '9px 16px', borderRadius: 999, cursor: 'pointer', border: `1px solid ${on ? 'var(--accent)' : 'var(--line-strong)'}`, background: on ? 'var(--accent)' : 'transparent', color: on ? '#fff' : 'var(--ink-3)', transition: 'all 0.15s' }}>{h}</button>
@@ -355,15 +358,15 @@ function Apply() {
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 20, marginBottom: 20 }}>
-                <div><label style={label}>Location *</label><input style={field} value={form.location} onChange={(e) => update('location', e.target.value)} placeholder="City / where it is" /></div>
-                <div><label style={label}>Proposed dates</label><input style={field} value={form.dates} onChange={(e) => update('dates', e.target.value)} placeholder="A month or window that works" /></div>
+                <div><label style={label}>Where is it *</label><input style={field} value={form.location} onChange={(e) => update('location', e.target.value)} placeholder="City / where it is" /></div>
+                <div><label style={label}>Rough timing</label><input style={field} value={form.dates} onChange={(e) => update('dates', e.target.value)} placeholder="A month or window that suits you" /></div>
               </div>
-              <div style={row}><label style={label}>What you’re offering</label><input style={field} value={form.offering} onChange={(e) => update('offering', e.target.value)} placeholder="Travel, stay, meals, access — and equity/rev-share for brands" /></div>
-              <div style={row}><label style={label}>What you want built</label><textarea style={{ ...field, minHeight: 92, resize: 'vertical' }} value={form.build} onChange={(e) => update('build', e.target.value)} placeholder="Site, ticketing, menu, booking flow…" /></div>
+              <div style={row}><label style={label}>What you could offer</label><input style={field} value={form.offering} onChange={(e) => update('offering', e.target.value)} placeholder="Stay, meals, travel, access — or equity/rev-share for brands" /></div>
+              <div style={row}><label style={label}>What you’d love built (roughly)</label><textarea style={{ ...field, minHeight: 92, resize: 'vertical' }} value={form.build} onChange={(e) => update('build', e.target.value)} placeholder="A site, ticketing, a menu, a booking flow… or just a problem you have" /></div>
               <div style={row}><label style={label}>Links</label><input style={field} value={form.links} onChange={(e) => update('links', e.target.value)} placeholder="Instagram, current site, anything" /></div>
-              <div style={row}><label style={label}>Why this place is worth a residency *</label><textarea style={{ ...field, minHeight: 110, resize: 'vertical' }} value={form.why} onChange={(e) => update('why', e.target.value)} placeholder="The real question. What makes it worth a month of ours?" /></div>
+              <div style={row}><label style={label}>Why here? What makes it interesting? *</label><textarea style={{ ...field, minHeight: 110, resize: 'vertical' }} value={form.why} onChange={(e) => update('why', e.target.value)} placeholder="The bit we care about most — what’s the story of the place?" /></div>
               <button type="submit" className="btn btn-primary" disabled={!canSubmit || loading} style={{ opacity: !canSubmit || loading ? 0.5 : 1, cursor: !canSubmit || loading ? 'not-allowed' : 'pointer' }}>
-                {loading ? 'Sending…' : <>Send application <span className="arr">→</span></>}
+                {loading ? 'Sending…' : <>Send it over <span className="arr">→</span></>}
               </button>
             </form>
           )}
@@ -373,18 +376,18 @@ function Apply() {
   );
 }
 
-/* ─── Fine print ─────────────────────────────────────────────────────────── */
+/* ─── A few notes ────────────────────────────────────────────────────────── */
 function FinePrint() {
   const lines = [
-    'Up to 10 working days of studio time per residency. Anything beyond is a paid engagement.',
-    'One revision round included. Scope is agreed in writing before travel.',
-    'Content rights stay with Crestify. Hosts get full usage of everything we shoot.',
-    'Equity or revenue-share arrangements are documented before any work starts.',
+    'Think about ten working days of studio time — if it grows, that’s a normal paid conversation.',
+    'We keep it light: a round of revisions, and we shape the scope together before we travel.',
+    'We keep the content we shoot, and you get full use of all of it.',
+    'For brands, we write down any equity or revenue-share before we start — keeps it clean for everyone.',
   ];
   return (
     <section className="section-pad-sm" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}><Eyebrow index="09">Fine print</Eyebrow></div>
+        <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}><Eyebrow index="09">A few practical notes</Eyebrow></div>
         <ul style={{ listStyle: 'none', maxWidth: '60ch' }}>
           {lines.map((l) => (
             <li key={l} className="body" style={{ color: 'var(--ink-3)', padding: '12px 0', borderBottom: '1px solid var(--line)', display: 'flex', gap: 14 }}>
@@ -403,28 +406,28 @@ export default function Residency() {
   return (
     <div className="page">
       <SEO
-        title="Crestify Residency — one host a month, we build, they host us"
-        description="A Crestify programme: each month we take on one host — a café, homestay, hostel, event or early brand — and build what they need in up to 10 working days. They don’t pay us; they host us. Twelve slots a year, one at a time."
+        title="Crestify Residency — we build for a host, and they host us"
+        description="A Crestify programme: we team up with interesting places and people — a café, homestay, hostel, event or early brand — build what they need in around ten days, and shoot the story. You host us, we bring the studio. Roughly one at a time."
         canonical="/residency"
-        keywords="Crestify Residency, build in residence, studio on location, work trade, hospitality website build, event ticketing build"
+        keywords="Crestify Residency, build in residence, studio on location, collaboration, hospitality website build, event ticketing build"
       />
       <Nav />
       <Hero />
       <Numbers />
       <Sec index="01" tag="What this is">
-        <h2 className="h2" style={{ maxWidth: '24ch' }}>One host a month. We build, we shoot, and we work for something other than money.</h2>
+        <h2 className="h2" style={{ maxWidth: '24ch' }}>One host at a time. We build, we shoot, and we do it for the experience as much as anything.</h2>
         <p className="body-lg" style={{ marginTop: 20, maxWidth: '54ch', color: 'var(--ink-3)' }}>
-          We want to travel and work from places we wouldn’t otherwise get to. Content is newer for us than client work, and we want reps in real locations. We’d rather build something interesting for a small place than another safe deliverable for a large one.
+          Honestly? We want to work from places we wouldn’t otherwise get to, meet people doing interesting things, and get better at telling stories on camera. So instead of another safe deliverable for a big client, we’d rather build something real for a small place — and see where it goes.
         </p>
         <p className="body-lg" style={{ marginTop: 18, maxWidth: '54ch', color: 'var(--ink-3)' }}>
-          This is a residency, not free work. We select hosts; they apply. It runs adjacent to the studio — our paid work isn’t part of this trade.
+          It’s a trade, not free work, and it sits alongside the studio rather than under it. Both sides are experimenting a little — that’s the fun of it.
         </p>
       </Sec>
       <Tracks />
       <Fits />
       <Proof />
       <Need />
-      <NotFor />
+      <Fit />
       <Calendar />
       <Apply />
       <FinePrint />
