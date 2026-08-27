@@ -11,10 +11,10 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw9sYMSCxNAVzLqS8MxAh
 
 /* ─── Editable data ──────────────────────────────────────────────────────── */
 
-const BUILD_WORDS = ['a booking flow', 'a digital menu', 'an event ticket system', 'a brand-new site', 'a little brand kit', 'a community app'];
+const BUILD_WORDS = ['a booking flow', 'a set of reels', 'a digital menu', 'a photo shoot', 'an event site', 'a launch film', 'a little brand kit'];
 const PLACES = ['Homestays', 'Hostels', 'Cafés', 'Festivals', 'Markets', 'New hotels', 'Early brands', 'Community events', 'Boutique stays', 'Meetups'];
 
-const WE_BRING = ['Design + code', 'A camera', '~10 days', 'Full attention'];
+const WE_BRING = ['Design + code', 'A camera + edit', 'Reels + photos', '~10 days'];
 const YOU_BRING = ['A place to stay', 'Meals', 'Room to film', 'A story'];
 
 const TRACKS = [
@@ -33,17 +33,17 @@ const TRACKS = [
   {
     key: 'Brands',
     for: 'Early-stage product or D2C brands doing something interesting.',
-    build: 'A site, store, app, or the internal systems you’re missing — we figure out the right thing together.',
+    build: 'A site, store, app or the systems you’re missing — plus the content to launch it with. We figure out the right mix together.',
     take: 'Equity or revenue share — nothing heavy, just written down before we start.',
   },
 ];
 
 const FITS = [
-  'An event site with ticketing or registration',
-  'A property site with a booking flow',
+  'A custom site, booking flow or event platform',
   'A digital menu and a little brand kit',
-  'A small community platform or directory',
-  'A content shoot — that comes with every one',
+  'A set of reels and photos for your socials',
+  'A short brand film or launch video',
+  'The full shoot — it comes with every one',
 ];
 
 const NEED = [
@@ -59,14 +59,6 @@ const FIT = [
   'Work that fits in a week or two, not months.',
   'People who are up for experimenting alongside us, not handing over a spec.',
   'Somewhere we’d genuinely love to spend a little time.',
-];
-
-/* Roughly one at a time, through the year. Edit status: 'open' | 'taken' | 'live'. */
-const SLOTS = [
-  { month: 'Jan', status: 'open' }, { month: 'Feb', status: 'open' }, { month: 'Mar', status: 'open' },
-  { month: 'Apr', status: 'open' }, { month: 'May', status: 'open' }, { month: 'Jun', status: 'open' },
-  { month: 'Jul', status: 'open' }, { month: 'Aug', status: 'open' }, { month: 'Sep', status: 'open' },
-  { month: 'Oct', status: 'open' }, { month: 'Nov', status: 'open' }, { month: 'Dec', status: 'open' },
 ];
 
 const PROOF = [
@@ -164,13 +156,13 @@ function Hero() {
           Crestify Residency · Studio on location
         </span>
         <h1 className="display" style={{ marginTop: 26, maxWidth: '18ch' }}>
-          We go somewhere, build what they need, and instead of an invoice — they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
+          We build it, shoot it, and instead of an invoice — they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
         </h1>
         <p className="serif" style={{ marginTop: 24, fontSize: 'clamp(22px, 3.4vw, 34px)', color: 'var(--bg)', lineHeight: 1.2 }}>
           This month, we could build you <Rotator words={BUILD_WORDS} />.
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 40 }}>
-          <a href="#apply" className="btn btn-accent">Tell us about your place <span className="arr">→</span></a>
+          <Link to="/contact" className="btn btn-accent">Tell us about your place <span className="arr">→</span></Link>
           <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-4)' }}>
             Roughly one at a time · around ten days
           </span>
@@ -372,113 +364,21 @@ function Fit() {
   );
 }
 
-/* ─── Calendar ───────────────────────────────────────────────────────────── */
-function Calendar() {
-  const meta = {
-    open: { label: 'Open', dot: 'var(--accent)', muted: false },
-    taken: { label: 'Taken', dot: 'var(--ink-4)', muted: true },
-    live: { label: 'Live now', dot: '#0d9b6a', muted: false },
-  };
+/* ─── Closing CTA ────────────────────────────────────────────────────────── */
+function ClosingCTA() {
   return (
-    <Sec index="07" tag="Where we’re at">
-      <h2 className="h2" style={{ maxWidth: '20ch' }}>We usually take one at a time.</h2>
-      <p className="body-lg" style={{ marginTop: 18, maxWidth: '52ch', color: 'var(--ink-3)' }}>
-        That way we can actually be present for it. Reach out whenever — we’ll figure out a window that works for both of us. Here’s roughly where the year stands:
-      </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 120px), 1fr))', gap: 10, marginTop: 'clamp(32px, 4vw, 48px)' }}>
-        {SLOTS.map((s) => {
-          const m = meta[s.status] || meta.open;
-          return (
-            <div key={s.month} className="lift" style={{ border: '1px solid var(--line-strong)', borderRadius: 8, padding: '18px 16px', background: m.muted ? 'transparent' : 'var(--bg-elev)', opacity: m.muted ? 0.5 : 1, borderTop: m.muted ? '1px solid var(--line-strong)' : `3px solid ${m.dot}` }}>
-              <div className="serif" style={{ fontSize: 22 }}>{s.month}</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 10 }}>
-                <span className={s.status === 'live' ? 'res-live' : ''} style={{ width: 7, height: 7, borderRadius: '50%', background: m.dot, flexShrink: 0 }} />
-                <span className="mono" style={{ fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ink-3)' }}>{m.label}</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </Sec>
-  );
-}
-
-/* ─── Application form ───────────────────────────────────────────────────── */
-function Apply() {
-  const [form, setForm] = useState({ name: '', place: '', hostType: '', location: '', dates: '', offering: '', build: '', links: '', why: '' });
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const update = (k, v) => setForm((f) => ({ ...f, [k]: v }));
-  const canSubmit = form.name && form.place && form.location && form.why;
-
-  const submit = async (e) => {
-    e.preventDefault();
-    if (!canSubmit || loading) return;
-    setLoading(true);
-    try {
-      await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, source: 'Residency Application' }) });
-    } catch (_) {}
-    setLoading(false);
-    setSubmitted(true);
-  };
-
-  const label = { display: 'block', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-4)', marginBottom: 8 };
-  const field = { width: '100%', padding: '13px 15px', border: '1px solid var(--line-strong)', borderRadius: 7, background: 'var(--bg-elev)', fontFamily: 'var(--sans)', fontSize: 15, color: 'var(--ink)', outline: 'none' };
-  const row = { marginBottom: 20 };
-
-  return (
-    <section id="apply" className="section-pad-sm" style={{ borderTop: '1px solid var(--line-strong)', background: 'var(--bg-elev)' }}>
-      <div className="container">
-        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="08">Say hello</Eyebrow></div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(32px, 5vw, 72px)', alignItems: 'start' }}>
-          <div>
-            <h2 className="h2" style={{ maxWidth: '14ch' }}>Tell us about your place.</h2>
-            <p className="body-lg" style={{ marginTop: 18, color: 'var(--ink-3)', maxWidth: '38ch' }}>
-              No formal pitch needed — just tell us where you are and what you’re thinking. The last question is the one we love most.
-            </p>
-            <p className="mono" style={{ marginTop: 24, fontSize: 10.5, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ink-4)' }}>
-              We read every one · we’ll write back either way
-            </p>
-          </div>
-
-          {submitted ? (
-            <div style={{ border: '1px solid var(--line-strong)', borderRadius: 10, padding: 'clamp(32px, 5vw, 56px)', background: 'var(--bg)', textAlign: 'left' }}>
-              <div className="serif" style={{ fontSize: 30 }}>Thanks — got it.</div>
-              <p className="body-lg" style={{ marginTop: 12, color: 'var(--ink-3)', maxWidth: '34ch' }}>
-                We’ll have a proper read and get back to you to see if there’s something fun here for both of us.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={submit}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 20, marginBottom: 20 }}>
-                <div><label style={label}>Your name *</label><input style={field} value={form.name} onChange={(e) => update('name', e.target.value)} placeholder="Who you are" /></div>
-                <div><label style={label}>The place / brand *</label><input style={field} value={form.place} onChange={(e) => update('place', e.target.value)} placeholder="What it’s called" /></div>
-              </div>
-              <div style={{ ...row }}>
-                <label style={label}>What kind of thing is it</label>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {['Stay', 'Event', 'Brand', 'Something else'].map((h) => {
-                    const on = form.hostType === h;
-                    return (
-                      <button type="button" key={h} onClick={() => update('hostType', h)} style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '9px 16px', borderRadius: 999, cursor: 'pointer', border: `1px solid ${on ? 'var(--accent)' : 'var(--line-strong)'}`, background: on ? 'var(--accent)' : 'transparent', color: on ? '#fff' : 'var(--ink-3)', transition: 'all 0.15s' }}>{h}</button>
-                    );
-                  })}
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 20, marginBottom: 20 }}>
-                <div><label style={label}>Where is it *</label><input style={field} value={form.location} onChange={(e) => update('location', e.target.value)} placeholder="City / where it is" /></div>
-                <div><label style={label}>Rough timing</label><input style={field} value={form.dates} onChange={(e) => update('dates', e.target.value)} placeholder="A month or window that suits you" /></div>
-              </div>
-              <div style={row}><label style={label}>What you could offer</label><input style={field} value={form.offering} onChange={(e) => update('offering', e.target.value)} placeholder="Stay, meals, travel, access — or equity/rev-share for brands" /></div>
-              <div style={row}><label style={label}>What you’d love built (roughly)</label><textarea style={{ ...field, minHeight: 92, resize: 'vertical' }} value={form.build} onChange={(e) => update('build', e.target.value)} placeholder="A site, ticketing, a menu, a booking flow… or just a problem you have" /></div>
-              <div style={row}><label style={label}>Links</label><input style={field} value={form.links} onChange={(e) => update('links', e.target.value)} placeholder="Instagram, current site, anything" /></div>
-              <div style={row}><label style={label}>Why here? What makes it interesting? *</label><textarea style={{ ...field, minHeight: 110, resize: 'vertical' }} value={form.why} onChange={(e) => update('why', e.target.value)} placeholder="The bit we care about most — what’s the story of the place?" /></div>
-              <button type="submit" className="btn btn-primary" disabled={!canSubmit || loading} style={{ opacity: !canSubmit || loading ? 0.5 : 1, cursor: !canSubmit || loading ? 'not-allowed' : 'pointer' }}>
-                {loading ? 'Sending…' : <>Send it over <span className="arr">→</span></>}
-              </button>
-            </form>
-          )}
+    <section style={{ background: 'var(--bg-deep)', color: 'var(--bg)', position: 'relative', overflow: 'hidden', padding: 'clamp(64px, 10vw, 130px) 0', textAlign: 'center', borderTop: '1px solid var(--line-strong)' }}>
+      <div className="res-dotgrid" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
+      <div className="res-glow" style={{ width: 420, height: 420, background: 'rgba(255,77,31,0.16)', top: -120, left: '50%', transform: 'translateX(-50%)' }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <h2 className="display" style={{ margin: '0 auto', maxWidth: '16ch' }}>
+          Know a place worth <span className="italic" style={{ color: 'var(--accent)' }}>a week of ours?</span>
+        </h2>
+        <p className="body-lg" style={{ margin: '20px auto 0', maxWidth: '42ch', color: 'var(--ink-5)' }}>
+          Tell us where it is and what you’re thinking — the build and the content. We read every one and write back either way.
+        </p>
+        <div style={{ marginTop: 34, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link to="/contact" className="btn btn-accent">Tell us about your place <span className="arr">→</span></Link>
         </div>
       </div>
     </section>
@@ -496,7 +396,7 @@ function FinePrint() {
   return (
     <section className="section-pad-sm" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}><Eyebrow index="09">A few practical notes</Eyebrow></div>
+        <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}><Eyebrow index="07">A few practical notes</Eyebrow></div>
         <ul style={{ listStyle: 'none', maxWidth: '60ch' }}>
           {lines.map((l) => (
             <li key={l} className="body" style={{ color: 'var(--ink-3)', padding: '12px 0', borderBottom: '1px solid var(--line)', display: 'flex', gap: 14 }}>
@@ -532,7 +432,7 @@ export default function Residency() {
           Honestly? We want to work from places we wouldn’t otherwise get to, meet people doing interesting things, and get better at telling stories on camera. So instead of another safe deliverable for a big client, we’d rather build something real for a small place — and see where it goes.
         </p>
         <p className="body-lg" style={{ marginTop: 18, maxWidth: '54ch', color: 'var(--ink-3)' }}>
-          It’s a trade, not free work, and it sits alongside the studio rather than under it. Both sides are experimenting a little — that’s the fun of it.
+          It’s never just a build. Every residency is the thing they need made — a site, a menu, a booking flow — <em className="serif italic">and</em> a proper content shoot: reels, photos and a story, all shot on location. It’s a trade, not free work, and it sits alongside the studio rather than under it.
         </p>
       </Sec>
       <Tracks />
@@ -540,8 +440,7 @@ export default function Residency() {
       <Proof />
       <Need />
       <Fit />
-      <Calendar />
-      <Apply />
+      <ClosingCTA />
       <FinePrint />
       <Footer />
     </div>
