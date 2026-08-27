@@ -166,13 +166,10 @@ function Hero() {
         <h1 className="display" style={{ marginTop: 26, maxWidth: '18ch' }}>
           We go somewhere, build what they need, and instead of an invoice — they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
         </h1>
-        <p className="serif" style={{ marginTop: 22, fontSize: 'clamp(22px, 3.4vw, 34px)', color: 'var(--bg)', lineHeight: 1.2 }}>
+        <p className="serif" style={{ marginTop: 24, fontSize: 'clamp(22px, 3.4vw, 34px)', color: 'var(--bg)', lineHeight: 1.2 }}>
           This month, we could build you <Rotator words={BUILD_WORDS} />.
         </p>
-        <p className="body-lg" style={{ marginTop: 22, maxWidth: '48ch', color: 'var(--ink-5)' }}>
-          We’re looking for interesting places and people to work with — a café, a homestay, a new hostel, an event, an early brand. We come down, build something real together, and shoot the story while we’re at it. You host us, we bring the studio.
-        </p>
-        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 38 }}>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 40 }}>
           <a href="#apply" className="btn btn-accent">Tell us about your place <span className="arr">→</span></a>
           <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-4)' }}>
             Roughly one at a time · around ten days
