@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/shared/SEO.jsx';
 import Nav from '../components/shared/Nav.jsx';
@@ -10,6 +10,12 @@ import { useReveal } from '../components/shared/useReveal.js';
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw9sYMSCxNAVzLqS8MxAhEqQchcZ349WIl1GukDyymNDUfHE3I0RUaHhBf1IVZsNtdc/exec';
 
 /* ─── Editable data ──────────────────────────────────────────────────────── */
+
+const BUILD_WORDS = ['a booking flow', 'a digital menu', 'an event ticket system', 'a brand-new site', 'a little brand kit', 'a community app'];
+const PLACES = ['Homestays', 'Hostels', 'Cafés', 'Festivals', 'Markets', 'New hotels', 'Early brands', 'Community events', 'Boutique stays', 'Meetups'];
+
+const WE_BRING = ['Design + code', 'A camera', '~10 days', 'Full attention'];
+const YOU_BRING = ['A place to stay', 'Meals', 'Room to film', 'A story'];
 
 const TRACKS = [
   {
@@ -48,7 +54,6 @@ const NEED = [
   ['Someone to talk to', 'A person we can bounce ideas off and get quick answers from, so it stays fun and moves.'],
 ];
 
-/* A warm note on fit — not a rulebook. */
 const FIT = [
   'A place or a brand with a story in it — something worth building and worth filming.',
   'Work that fits in a week or two, not months.',
@@ -58,18 +63,10 @@ const FIT = [
 
 /* Roughly one at a time, through the year. Edit status: 'open' | 'taken' | 'live'. */
 const SLOTS = [
-  { month: 'Jan', status: 'open' },
-  { month: 'Feb', status: 'open' },
-  { month: 'Mar', status: 'open' },
-  { month: 'Apr', status: 'open' },
-  { month: 'May', status: 'open' },
-  { month: 'Jun', status: 'open' },
-  { month: 'Jul', status: 'open' },
-  { month: 'Aug', status: 'open' },
-  { month: 'Sep', status: 'open' },
-  { month: 'Oct', status: 'open' },
-  { month: 'Nov', status: 'open' },
-  { month: 'Dec', status: 'open' },
+  { month: 'Jan', status: 'open' }, { month: 'Feb', status: 'open' }, { month: 'Mar', status: 'open' },
+  { month: 'Apr', status: 'open' }, { month: 'May', status: 'open' }, { month: 'Jun', status: 'open' },
+  { month: 'Jul', status: 'open' }, { month: 'Aug', status: 'open' }, { month: 'Sep', status: 'open' },
+  { month: 'Oct', status: 'open' }, { month: 'Nov', status: 'open' }, { month: 'Dec', status: 'open' },
 ];
 
 const PROOF = [
@@ -78,6 +75,69 @@ const PROOF = [
   { name: 'Eatops', sector: 'Café ERP · Product', img: '/eatops.png', href: 'https://eatops.co' },
   { name: 'Common Time', sector: 'Café · Custom Build', img: '/commontime.png', href: 'https://commontime.in' },
 ];
+
+/* ─── Scoped styles / motion ─────────────────────────────────────────────── */
+const CSS = `
+.res-dotgrid { background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 26px 26px; }
+.res-dotgrid-l { background-image: radial-gradient(rgba(14,14,14,0.06) 1px, transparent 1px); background-size: 26px 26px; }
+.res-glow { position:absolute; border-radius:50%; filter: blur(70px); pointer-events:none; }
+@keyframes res-marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.res-marquee { overflow:hidden; white-space:nowrap; display:flex; }
+.res-marq-track { display:inline-flex; align-items:center; animation: res-marq 40s linear infinite; }
+.res-marquee:hover .res-marq-track { animation-play-state: paused; }
+@keyframes res-word { 0%{opacity:0; transform:translateY(10px)} 12%{opacity:1; transform:translateY(0)} 88%{opacity:1; transform:translateY(0)} 100%{opacity:0; transform:translateY(-10px)} }
+.res-word { display:inline-block; animation: res-word 0.5s cubic-bezier(.2,.7,.2,1); }
+.res-postcard { position:relative; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s; }
+.res-postcard:hover { transform: translateY(-5px) rotate(-.5deg); box-shadow: 0 20px 44px rgba(14,14,14,.13); border-color: var(--accent) !important; }
+.res-stamp { position:absolute; top:16px; right:16px; width:40px; height:46px; border:1.5px dashed var(--line-strong); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:20px; color:var(--ink-4); transform: rotate(6deg); }
+.res-postcard:hover .res-stamp { border-color: var(--accent); color: var(--accent); }
+.res-polaroid { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; box-shadow: 0 8px 24px rgba(14,14,14,.12); }
+.res-polaroid:hover { transform: rotate(0deg) translateY(-6px) scale(1.02) !important; box-shadow: 0 22px 50px rgba(14,14,14,.2); z-index:2; }
+.res-tape { position:absolute; top:-9px; left:50%; width:64px; height:20px; transform: translateX(-50%) rotate(-2deg); background: rgba(255,77,31,0.22); border:1px solid rgba(255,77,31,0.35); }
+@keyframes res-spin { to { transform: rotate(360deg); } }
+.res-spin { animation: res-spin 16s linear infinite; }
+@keyframes res-pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.4; transform:scale(.8)} }
+.res-live { animation: res-pulse 1.8s ease-in-out infinite; }
+.res-chip { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; padding:10px 14px; border:1px solid var(--line-strong); border-radius:999px; background:var(--bg-elev); }
+`;
+
+/* ─── Rotating word ──────────────────────────────────────────────────────── */
+function Rotator({ words }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % words.length), 2200);
+    return () => clearInterval(id);
+  }, [words.length]);
+  return (
+    <span style={{ display: 'inline-block', color: 'var(--accent)' }}>
+      <span key={i} className="res-word italic serif">{words[i]}</span>
+    </span>
+  );
+}
+
+/* ─── Count-up ───────────────────────────────────────────────────────────── */
+function CountUp({ to, prefix = '', suffix = '' }) {
+  const [n, setN] = useState(0);
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const dur = 900, start = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - start) / dur);
+        setN(Math.round(p * p * (3 - 2 * p) * to));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.5 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to]);
+  return <span ref={ref}>{prefix}{n}{suffix}</span>;
+}
 
 /* ─── Section wrapper ────────────────────────────────────────────────────── */
 function Sec({ index, tag, children, style }) {
@@ -94,14 +154,23 @@ function Sec({ index, tag, children, style }) {
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <section style={{ background: 'var(--bg-deep)', color: 'var(--bg)', paddingTop: 'clamp(72px, 12vw, 150px)', paddingBottom: 'clamp(56px, 9vw, 120px)' }}>
-      <div className="container">
-        <span className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)' }}>Crestify Residency</span>
-        <h1 className="display" style={{ marginTop: 22, maxWidth: '18ch' }}>
+    <section style={{ background: 'var(--bg-deep)', color: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 'clamp(72px, 12vw, 140px)', paddingBottom: 'clamp(52px, 8vw, 104px)' }}>
+      <div className="res-dotgrid" style={{ position: 'absolute', inset: 0, opacity: 0.6 }} />
+      <div className="res-glow" style={{ width: 460, height: 460, background: 'rgba(255,77,31,0.22)', top: -140, right: -80 }} />
+      <div className="res-glow" style={{ width: 380, height: 380, background: 'rgba(255,77,31,0.10)', bottom: -160, left: -120 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <span className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid #ffffff1f', borderRadius: 999, padding: '7px 14px' }}>
+          <span className="res-live" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block' }} />
+          Crestify Residency · Studio on location
+        </span>
+        <h1 className="display" style={{ marginTop: 26, maxWidth: '18ch' }}>
           We go somewhere, build what they need, and instead of an invoice — they <span className="italic" style={{ color: 'var(--accent)' }}>host us.</span>
         </h1>
-        <p className="body-lg" style={{ marginTop: 26, maxWidth: '48ch', color: 'var(--ink-5)' }}>
-          We’re looking for interesting places and people to work with — a café, a homestay, a new hostel, an event, an early brand. We come down, build something real together — a site, a menu, a ticketing flow — and shoot the story while we’re at it. You host us, we bring the studio.
+        <p className="serif" style={{ marginTop: 22, fontSize: 'clamp(22px, 3.4vw, 34px)', color: 'var(--bg)', lineHeight: 1.2 }}>
+          This month, we could build you <Rotator words={BUILD_WORDS} />.
+        </p>
+        <p className="body-lg" style={{ marginTop: 22, maxWidth: '48ch', color: 'var(--ink-5)' }}>
+          We’re looking for interesting places and people to work with — a café, a homestay, a new hostel, an event, an early brand. We come down, build something real together, and shoot the story while we’re at it. You host us, we bring the studio.
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 38 }}>
           <a href="#apply" className="btn btn-accent">Tell us about your place <span className="arr">→</span></a>
@@ -114,21 +183,71 @@ function Hero() {
   );
 }
 
+/* ─── Marquee band ───────────────────────────────────────────────────────── */
+function MarqueeBand() {
+  const row = [...PLACES, ...PLACES];
+  return (
+    <div className="res-marquee" style={{ background: 'var(--accent)', color: '#fff', padding: '13px 0', borderBottom: '1px solid rgba(0,0,0,0.12)' }}>
+      {[0, 1].map((k) => (
+        <div key={k} className="res-marq-track" aria-hidden={k === 1}>
+          {row.map((p, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', marginRight: 34 }}>
+              {p}<span style={{ opacity: 0.55, marginLeft: 34 }}>✦</span>
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ─── The trade (exchange visual) ────────────────────────────────────────── */
+function Trade() {
+  const Col = ({ title, items, accent }) => (
+    <div style={{ flex: '1 1 240px', border: '1px solid var(--line-strong)', borderRadius: 12, padding: 'clamp(22px, 3vw, 32px)', background: 'var(--bg-elev)' }}>
+      <div className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent ? 'var(--accent)' : 'var(--ink-4)', marginBottom: 16 }}>{title}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
+        {items.map((it) => <span key={it} className="res-chip" style={{ color: 'var(--ink-2)' }}>{it}</span>)}
+      </div>
+    </div>
+  );
+  return (
+    <section className="section-pad-sm res-dotgrid-l" style={{ borderTop: '1px solid var(--line-strong)' }}>
+      <div className="container">
+        <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}><Eyebrow>The trade, in one look</Eyebrow></div>
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: 18, flexWrap: 'wrap' }}>
+          <Col title="We bring the studio" items={WE_BRING} accent />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 auto', minWidth: 72 }}>
+            <div className="res-spin" style={{ width: 58, height: 58, borderRadius: '50%', border: '1.5px dashed var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', fontSize: 22 }}>⇄</div>
+          </div>
+          <Col title="You host us" items={YOU_BRING} />
+        </div>
+        <p className="body" style={{ marginTop: 22, color: 'var(--ink-3)', maxWidth: '52ch' }}>
+          No invoice changes hands. For brands, the exchange is a little equity or revenue share instead — written down before we start.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Numbers strip ──────────────────────────────────────────────────────── */
 function Numbers() {
   const items = [
-    ['1', 'host at a time'],
-    ['~10', 'days of studio time'],
-    ['3', 'nights or so, for stays'],
-    ['12', 'or so a year'],
+    { to: 1, label: 'host at a time' },
+    { to: 10, prefix: '~', label: 'days of studio time' },
+    { to: 3, label: 'nights or so, for stays' },
+    { to: 12, label: 'or so a year' },
   ];
   return (
-    <section style={{ background: 'var(--bg-deep-elev)', color: 'var(--bg)' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 0 }}>
-        {items.map(([n, l], i) => (
-          <div key={l} style={{ padding: 'clamp(28px, 4vw, 44px) 0', borderLeft: i === 0 ? 'none' : '1px solid #ffffff14', paddingLeft: i === 0 ? 0 : 'clamp(16px, 2vw, 28px)' }}>
-            <div className="serif" style={{ fontSize: 'clamp(38px, 5vw, 56px)', lineHeight: 1, color: 'var(--accent)' }}>{n}</div>
-            <div className="mono" style={{ fontSize: 10.5, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-5)', marginTop: 8 }}>{l}</div>
+    <section style={{ background: 'var(--bg-deep-elev)', color: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+      <div className="res-dotgrid" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
+      <div className="container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 0 }}>
+        {items.map((it, i) => (
+          <div key={it.label} style={{ padding: 'clamp(30px, 4vw, 48px) 0', borderLeft: i === 0 ? 'none' : '1px solid #ffffff14', paddingLeft: i === 0 ? 0 : 'clamp(16px, 2vw, 28px)' }}>
+            <div className="serif" style={{ fontSize: 'clamp(40px, 5.4vw, 62px)', lineHeight: 1, color: 'var(--accent)' }}>
+              <CountUp to={it.to} prefix={it.prefix || ''} />
+            </div>
+            <div className="mono" style={{ fontSize: 10.5, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-5)', marginTop: 10 }}>{it.label}</div>
           </div>
         ))}
       </div>
@@ -136,18 +255,16 @@ function Numbers() {
   );
 }
 
-/* ─── Tracks ─────────────────────────────────────────────────────────────── */
+/* ─── Tracks (postcards) ─────────────────────────────────────────────────── */
 function Tracks() {
   return (
     <Sec index="02" tag="The three tracks">
       <h2 className="h2" style={{ maxWidth: '22ch' }}>Three kinds of collaboration. Each one trades a little differently.</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 16, marginTop: 'clamp(32px, 4vw, 48px)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginTop: 'clamp(32px, 4vw, 48px)' }}>
         {TRACKS.map((t, i) => (
-          <div key={t.key} className="reveal lift" style={{ border: '1px solid var(--line-strong)', borderRadius: 8, padding: 'clamp(24px, 3vw, 34px)', background: 'var(--bg-elev)', display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-              <span className="serif" style={{ fontSize: 26 }}>{t.key}</span>
-              <span className="mono" style={{ fontSize: 10, color: 'var(--ink-4)' }}>0{i + 1}</span>
-            </div>
+          <div key={t.key} className="reveal res-postcard" style={{ border: '1px solid var(--line-strong)', borderRadius: 10, padding: 'clamp(24px, 3vw, 34px)', background: 'var(--bg-elev)', display: 'flex', flexDirection: 'column', gap: 18, borderTop: '3px solid var(--accent)' }}>
+            <div className="res-stamp">0{i + 1}</div>
+            <span className="serif" style={{ fontSize: 27 }}>{t.key}</span>
             <p className="body" style={{ color: 'var(--ink-3)' }}>{t.for}</p>
             <div>
               <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 6 }}>What we’d build</div>
@@ -173,8 +290,9 @@ function Fits() {
         It’s enough for a café menu or an event platform, and we scope the real thing together. A few things that comfortably fit:
       </p>
       <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', borderTop: '1px solid var(--line)' }}>
-        {FITS.map((f) => (
-          <li key={f} className="reveal" style={{ display: 'flex', gap: 16, alignItems: 'baseline', padding: '18px 0', borderBottom: '1px solid var(--line)' }}>
+        {FITS.map((f, i) => (
+          <li key={f} className="reveal" style={{ display: 'flex', gap: 18, alignItems: 'baseline', padding: '18px 0', borderBottom: '1px solid var(--line)' }}>
+            <span className="mono" style={{ color: 'var(--ink-4)', fontSize: 12, minWidth: 24 }}>0{i + 1}</span>
             <span className="mono" style={{ color: 'var(--accent)', fontSize: 13 }}>+</span>
             <span className="body-lg" style={{ color: 'var(--ink-2)' }}>{f}</span>
           </li>
@@ -187,28 +305,30 @@ function Fits() {
   );
 }
 
-/* ─── Proof ──────────────────────────────────────────────────────────────── */
+/* ─── Proof (polaroids) ──────────────────────────────────────────────────── */
 function Proof() {
+  const rot = [-2.2, 1.8, -1.4, 2];
   return (
-    <Sec index="04" tag="A bit of our work">
-      <h2 className="h2" style={{ maxWidth: '20ch' }}>So you know we can actually build. Some of what we’ve shipped:</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16, marginTop: 'clamp(32px, 4vw, 48px)' }}>
-        {PROOF.map((p) => {
+    <Sec index="04" tag="A bit of our work" style={{ background: 'var(--bg-deep)', color: 'var(--bg)' }}>
+      <h2 className="h2" style={{ maxWidth: '20ch', color: 'var(--bg)' }}>So you know we can actually build. A few we’ve shipped:</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 'clamp(20px, 3vw, 34px)', marginTop: 'clamp(40px, 5vw, 60px)' }}>
+        {PROOF.map((p, i) => {
           const inner = (
             <>
-              <div style={{ aspectRatio: '16 / 10', overflow: 'hidden', background: 'var(--bg-deep)' }}>
+              <span className="res-tape" />
+              <div style={{ aspectRatio: '4 / 3', overflow: 'hidden', background: '#111' }}>
                 <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
-              <div style={{ padding: '14px 16px' }}>
-                <div className="serif" style={{ fontSize: 19 }}>{p.name}</div>
-                <div className="mono" style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-4)', marginTop: 3 }}>{p.sector}</div>
+              <div style={{ padding: '12px 6px 4px' }}>
+                <div className="serif" style={{ fontSize: 20, color: '#1a1a1a' }}>{p.name}</div>
+                <div className="mono" style={{ fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8a8a86', marginTop: 2 }}>{p.sector}</div>
               </div>
             </>
           );
-          const style = { display: 'block', textDecoration: 'none', color: 'inherit', border: '1px solid var(--line-strong)', borderRadius: 8, overflow: 'hidden', background: 'var(--bg-elev)' };
+          const style = { display: 'block', position: 'relative', textDecoration: 'none', background: '#fff', padding: 10, borderRadius: 3, transform: `rotate(${rot[i % rot.length]}deg)` };
           return p.to
-            ? <Link key={p.name} to={p.to} className="reveal lift" style={style}>{inner}</Link>
-            : <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="reveal lift" style={style}>{inner}</a>;
+            ? <Link key={p.name} to={p.to} className="reveal res-polaroid" style={style}>{inner}</Link>
+            : <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="reveal res-polaroid" style={style}>{inner}</a>;
         })}
       </div>
     </Sec>
@@ -235,19 +355,19 @@ function Need() {
 /* ─── What makes a good fit ──────────────────────────────────────────────── */
 function Fit() {
   return (
-    <section className="section-pad-sm" style={{ background: 'var(--bg-deep)', color: 'var(--bg)' }}>
+    <section className="section-pad-sm res-dotgrid-l" style={{ borderTop: '1px solid var(--line-strong)' }}>
       <div className="container">
-        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="06" light>What makes a good fit</Eyebrow></div>
+        <div style={{ marginBottom: 'clamp(28px, 4vw, 44px)' }}><Eyebrow index="06">What makes a good fit</Eyebrow></div>
         <h2 className="h2" style={{ maxWidth: '18ch' }}>The kind of thing we get excited about.</h2>
-        <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', maxWidth: '50ch' }}>
+        <ul style={{ listStyle: 'none', marginTop: 'clamp(28px, 4vw, 40px)', maxWidth: '52ch' }}>
           {FIT.map((n) => (
-            <li key={n} style={{ display: 'flex', gap: 16, alignItems: 'baseline', padding: '16px 0', borderBottom: '1px solid #ffffff1a' }}>
+            <li key={n} style={{ display: 'flex', gap: 16, alignItems: 'baseline', padding: '16px 0', borderBottom: '1px solid var(--line-strong)' }}>
               <span className="mono" style={{ color: 'var(--accent)', fontSize: 14 }}>+</span>
-              <span className="body-lg" style={{ color: 'var(--bg)' }}>{n}</span>
+              <span className="body-lg" style={{ color: 'var(--ink-2)' }}>{n}</span>
             </li>
           ))}
         </ul>
-        <p className="body-lg" style={{ marginTop: 24, color: 'var(--ink-5)', maxWidth: '46ch' }}>
+        <p className="body-lg" style={{ marginTop: 24, color: 'var(--ink-3)', maxWidth: '46ch' }}>
           It’s a trade, not free agency work — but if that sounds like a fun way to spend a week rather than a transaction, we’ll probably get along.
         </p>
       </div>
@@ -268,14 +388,14 @@ function Calendar() {
       <p className="body-lg" style={{ marginTop: 18, maxWidth: '52ch', color: 'var(--ink-3)' }}>
         That way we can actually be present for it. Reach out whenever — we’ll figure out a window that works for both of us. Here’s roughly where the year stands:
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 130px), 1fr))', gap: 10, marginTop: 'clamp(32px, 4vw, 48px)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 120px), 1fr))', gap: 10, marginTop: 'clamp(32px, 4vw, 48px)' }}>
         {SLOTS.map((s) => {
           const m = meta[s.status] || meta.open;
           return (
-            <div key={s.month} style={{ border: '1px solid var(--line-strong)', borderRadius: 8, padding: '18px 16px', background: m.muted ? 'transparent' : 'var(--bg-elev)', opacity: m.muted ? 0.55 : 1 }}>
+            <div key={s.month} className="lift" style={{ border: '1px solid var(--line-strong)', borderRadius: 8, padding: '18px 16px', background: m.muted ? 'transparent' : 'var(--bg-elev)', opacity: m.muted ? 0.5 : 1, borderTop: m.muted ? '1px solid var(--line-strong)' : `3px solid ${m.dot}` }}>
               <div className="serif" style={{ fontSize: 22 }}>{s.month}</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 10 }}>
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: m.dot, flexShrink: 0 }} />
+                <span className={s.status === 'live' ? 'res-live' : ''} style={{ width: 7, height: 7, borderRadius: '50%', background: m.dot, flexShrink: 0 }} />
                 <span className="mono" style={{ fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ink-3)' }}>{m.label}</span>
               </div>
             </div>
@@ -288,10 +408,7 @@ function Calendar() {
 
 /* ─── Application form ───────────────────────────────────────────────────── */
 function Apply() {
-  const [form, setForm] = useState({
-    name: '', place: '', hostType: '', location: '', dates: '',
-    offering: '', build: '', links: '', why: '',
-  });
+  const [form, setForm] = useState({ name: '', place: '', hostType: '', location: '', dates: '', offering: '', build: '', links: '', why: '' });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -303,12 +420,7 @@ function Apply() {
     if (!canSubmit || loading) return;
     setLoading(true);
     try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'Residency Application' }),
-      });
+      await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, source: 'Residency Application' }) });
     } catch (_) {}
     setLoading(false);
     setSubmitted(true);
@@ -405,6 +517,7 @@ export default function Residency() {
   useReveal();
   return (
     <div className="page">
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SEO
         title="Crestify Residency — we build for a host, and they host us"
         description="A Crestify programme: we team up with interesting places and people — a café, homestay, hostel, event or early brand — build what they need in around ten days, and shoot the story. You host us, we bring the studio. Roughly one at a time."
@@ -413,6 +526,8 @@ export default function Residency() {
       />
       <Nav />
       <Hero />
+      <MarqueeBand />
+      <Trade />
       <Numbers />
       <Sec index="01" tag="What this is">
         <h2 className="h2" style={{ maxWidth: '24ch' }}>One host at a time. We build, we shoot, and we do it for the experience as much as anything.</h2>
