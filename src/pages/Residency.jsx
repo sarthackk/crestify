@@ -521,7 +521,7 @@ export default function Residency() {
       <SEO
         title="Crestify Residency — we build for a host, and they host us"
         description="A Crestify programme: we team up with interesting places and people — a café, homestay, hostel, event or early brand — build what they need in around ten days, and shoot the story. You host us, we bring the studio. Roughly one at a time."
-        canonical="/residency"
+        canonical="/interesting"
         keywords="Crestify Residency, build in residence, studio on location, collaboration, hospitality website build, event ticketing build"
       />
       <Nav />

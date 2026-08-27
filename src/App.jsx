@@ -79,6 +79,7 @@ export default function App() {
       <Route path="/kaart/haldirams" element={<KaartHaldirams />} />
       <Route path="/sarthak" element={<Sarthak />} />
       <Route path="/toolkit" element={<Resources />} />
+      <Route path="/interesting" element={<Residency />} />
       <Route path="/residency" element={<Residency />} />
       <Route path="/trade" element={<Residency />} />
       <Route path="/toolkit/margin-calculator"  element={<MarginCalculator />} />
