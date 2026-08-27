@@ -17,6 +17,7 @@ import KaartNirakaar from './pages/KaartNirakaar.jsx';
 import KaartGiva from './pages/KaartGiva.jsx';
 import KaartHaldirams from './pages/KaartHaldirams.jsx';
 import Resources from './pages/Resources.jsx';
+import Residency from './pages/Residency.jsx';
 import Sarthak from './pages/Sarthak.jsx';
 import MarginCalculator from './pages/tools/MarginCalculator.jsx';
 import BudgetAllocator from './pages/tools/BudgetAllocator.jsx';
@@ -78,6 +79,8 @@ export default function App() {
       <Route path="/kaart/haldirams" element={<KaartHaldirams />} />
       <Route path="/sarthak" element={<Sarthak />} />
       <Route path="/toolkit" element={<Resources />} />
+      <Route path="/residency" element={<Residency />} />
+      <Route path="/trade" element={<Residency />} />
       <Route path="/toolkit/margin-calculator"  element={<MarginCalculator />} />
       <Route path="/toolkit/budget-allocator"   element={<BudgetAllocator />} />
       <Route path="/toolkit/ugc-brief"          element={<UGCBriefGenerator />} />
