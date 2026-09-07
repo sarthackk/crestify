@@ -93,6 +93,16 @@ export const CASE_STUDIES = [
     img: '/commontime.png',
     href: 'https://commontime.in',
   },
+  {
+    slug: 'galli',
+    n: '10', client: 'Galli', sector: 'Streetwear · E-commerce', year: '2026',
+    headline: 'Full custom Shopify development for a streetwear label — coded to design, not a theme.',
+    summary: "Galli is a streetwear clothing brand. We handled the full custom Shopify development — a bespoke theme coded to their design across home, collection, product, about, contact and FAQ, with filtering, variants and a mobile-first storefront built to match the brand exactly. Live at galli.co.in.",
+    metrics: [{ k: 'Custom', v: 'Shopify theme' }, { k: 'Full', v: 'Dev build' }, { k: 'Live', v: 'galli.co.in' }],
+    tag: 'Custom Shopify · Dev', size: 'large',
+    img: '/galli.png',
+    href: 'https://galli.co.in',
+  },
 ];
 
 function HeroWork() {
