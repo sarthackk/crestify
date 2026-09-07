@@ -766,6 +766,13 @@ const FOUNDERS = [
     photo: '/aditya.jpeg',
     socials: [{ label: 'Instagram', href: 'https://www.instagram.com/trippy_thi/' }],
   },
+  {
+    name: 'Aditya Pati', role: 'Head of AI', initials: 'AP',
+    bio: 'Aditya leads AI at Crestify — our go-to for AI consulting and AI builds. He helps teams work out where AI genuinely fits, then designs and ships it: agents, automations, and AI features that do real work in production.',
+    bio2: null,
+    photo: '/aditya-pati.jpg',
+    socials: [],
+  },
 ];
 
 function Founders() {
@@ -788,7 +795,7 @@ function Founders() {
           </div>
         </div>
 
-        <div className="grid-2" style={{ gap: 'var(--gap)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 'var(--gap)' }}>
           {FOUNDERS.map(f => (
             <article key={f.name} style={{ border: '1px solid var(--line-strong)', borderRadius: 4, background: 'var(--bg)', overflow: 'hidden' }}>
               {/* top photo band */}
@@ -808,13 +815,15 @@ function Founders() {
               <div style={{ padding: 'clamp(24px, 3vw, 36px)', display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <p className="body" style={{ fontSize: 15.5, color: 'var(--ink-2)', lineHeight: 1.7 }}>{f.bio}</p>
                 {f.bio2 && <p className="body" style={{ fontSize: 15.5, color: 'var(--ink-3)', lineHeight: 1.7 }}>{f.bio2}</p>}
-                <div style={{ display: 'flex', gap: 8, paddingTop: 8, borderTop: '1px solid var(--line)', flexWrap: 'wrap', marginTop: 'auto' }}>
-                  {f.socials.map(s => (
-                    s.internal
-                      ? <Link key={s.label} to={s.href} className="mono" style={{ fontSize: 11, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--accent)', padding: '7px 13px', borderRadius: 999 }}>{s.label} →</Link>
-                      : <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '7px 13px', borderRadius: 999 }}>{s.label} ↗</a>
-                  ))}
-                </div>
+                {f.socials.length > 0 && (
+                  <div style={{ display: 'flex', gap: 8, paddingTop: 8, borderTop: '1px solid var(--line)', flexWrap: 'wrap', marginTop: 'auto' }}>
+                    {f.socials.map(s => (
+                      s.internal
+                        ? <Link key={s.label} to={s.href} className="mono" style={{ fontSize: 11, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--accent)', padding: '7px 13px', borderRadius: 999 }}>{s.label} →</Link>
+                        : <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="mono" style={{ fontSize: 11, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid var(--line-strong)', padding: '7px 13px', borderRadius: 999 }}>{s.label} ↗</a>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           ))}
