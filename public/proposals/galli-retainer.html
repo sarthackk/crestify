@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Galli — Shopify Development Retainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #131311;
+  --black10: rgba(19,19,17,0.1);
+  --orange:  #EE3311;
+  --cream:   #F0EEE9;
+  --white:   #FFFFFF;
+  --tp:      #17150F;
+  --ts:      #57544D;
+  --caramel: #C22A0E;
+  --amber:   #F0592A;
+  --gold:    #F5A623;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; } .reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 38s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,238,233,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(240,238,233,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--orange); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero { padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(238,51,17,0.10) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(245,166,35,0.09) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 32px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(240,238,233,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 540px; margin-bottom: 50px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 26px; font-style: italic; }
+.hm-v.orange { color: var(--orange); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(238,51,17,0.18) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(30px, 4.6vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 620px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+
+/* FEATURE GRID */
+.feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.feat { background: var(--cream); padding: 20px 24px; display: flex; gap: 14px; align-items: flex-start; transition: background 0.15s; }
+.feat:hover { background: #fff; }
+.feat .fk { font-family: var(--serif); font-style: italic; color: var(--caramel); font-size: 18px; line-height: 1; flex-shrink: 0; width: 20px; }
+.feat h4 { font-size: 13px; font-weight: 500; color: var(--tp); margin-bottom: 3px; }
+.feat p { font-size: 12px; color: var(--ts); line-height: 1.6; }
+
+/* PLAIN LIST */
+.plist { border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; max-width: 720px; }
+.plist .pli { list-style: none; padding: 16px 22px; border-bottom: 1px solid var(--black10); font-size: 13.5px; color: var(--ts); display: flex; gap: 14px; align-items: flex-start; background: var(--cream); transition: background 0.15s; }
+.plist .pli:last-child { border-bottom: none; }
+.plist .pli:hover { background: #fff; }
+.plist .pli .m { color: var(--caramel); font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.1; flex-shrink: 0; width: 24px; }
+.plist .pli b { color: var(--tp); font-weight: 500; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(238,51,17,0.18) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 540px; line-height: 1.7; }
+.bundle-card { background: rgba(238,51,17,0.1); border: 1px solid rgba(238,51,17,0.3); border-radius: 6px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(245,166,35,0.16); color: var(--gold); border: 1px solid rgba(245,166,35,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-price { font-family: var(--serif); font-size: clamp(42px, 6vw, 58px); color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+.bundle-price small { font-size: 0.4em; font-style: normal; color: rgba(255,255,255,0.5); letter-spacing: 0; }
+.bundle-save { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+
+/* CALLOUT */
+.callout { background: rgba(238,51,17,0.06); border: 1px solid rgba(238,51,17,0.2); border-left: 3px solid var(--orange); border-radius: 6px; padding: 24px 28px; max-width: 720px; }
+.callout .co-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 8px; }
+.callout .co-t { font-size: 14px; color: var(--ts); line-height: 1.8; }
+.callout .co-t b { color: var(--tp); font-weight: 500; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(238,51,17,0.12) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Galli</span><span class="dot">·</span>
+    <span>Shopify Development Retainer</span><span class="dot">·</span>
+    <span>One Dedicated Developer</span><span class="dot">·</span>
+    <span>3–4 Hrs / Day</span><span class="dot">·</span>
+    <span>₹15,000 / Month</span><span class="dot">·</span>
+    <span>Rolling Monthly</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Galli</span><span class="dot">·</span>
+    <span>Shopify Development Retainer</span><span class="dot">·</span>
+    <span>One Dedicated Developer</span><span class="dot">·</span>
+    <span>3–4 Hrs / Day</span><span class="dot">·</span>
+    <span>₹15,000 / Month</span><span class="dot">·</span>
+    <span>Rolling Monthly</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>15 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Galli · Shopify Dev Retainer
+  </div>
+  <h1 class="reveal d1">
+    Your store,<br>
+    <em>always</em><br>
+    moving.
+  </h1>
+  <p class="hero-sub reveal d2">
+    A live streetwear store is never finished — there are drops to build, sections to add, fixes to make and speed to keep. This retainer puts a dedicated Shopify developer on Galli every working day, so changes ship in days, not weeks, and you never have to re-brief someone new.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Engagement</div>
+      <div class="hm-v">Shopify Dev Retainer</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Dedication</div>
+      <div class="hm-v orange">3–4 hrs / day</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Monthly</div>
+      <div class="hm-v amber">₹15,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">1</div><div class="sl">Dedicated developer</div></div>
+  <div class="stat reveal d1"><div class="sn">3–4 hrs</div><div class="sl">Every working day</div></div>
+  <div class="stat reveal d2"><div class="sn">~70</div><div class="sl">Hours a month</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">₹15k</div><div class="sl">Per month · rolling</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">00</span><span class="sec-tag">Overview</span></div>
+  <div class="sec-title reveal">A developer on Galli, <em>on tap.</em></div>
+  <p class="sec-lead reveal d1">
+    Instead of scoping and quoting every small change, you get an ongoing Shopify developer who already knows the store. Send requests through the week — a new drop page, a section tweak, a bug, a speed fix — and they get built and shipped as part of the daily hours.
+  </p>
+  <p class="sec-lead reveal d2">
+    <b style="color:var(--tp);font-weight:500;">One dedicated developer, 3–4 focused hours every working day</b> — roughly 70 hours a month on Galli. Rolling monthly, no long lock-in, and the same person throughout so nothing gets lost in handovers.
+  </p>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">What’s included</span></div>
+  <div class="sec-title reveal">What the hours <em>go on.</em></div>
+  <p class="sec-lead reveal d1">Whatever the store needs that month — here’s the kind of work that fits the retainer.</p>
+  <div class="feat-grid reveal d1">
+    <div class="feat"><span class="fk">✱</span><div><h4>New sections &amp; pages</h4><p>Homepage sections, content pages and layout changes, coded to brand.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Drop &amp; campaign pages</h4><p>Landing pages for launches, drops and collabs — built fast when you need them.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Product &amp; collection setup</h4><p>New products, variants, collections and merchandising, set up clean.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Fixes &amp; tweaks</h4><p>Bugs, layout issues and the small polish a live store always needs.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Speed &amp; performance</h4><p>Image, script and theme optimisation to keep load times sharp.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Apps &amp; integrations</h4><p>Installing, configuring and wiring in Shopify apps and third-party tools.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Design-to-code</h4><p>Turn your designs into live theme sections — pixel-accurate.</p></div></div>
+    <div class="feat"><span class="fk">✱</span><div><h4>Small features</h4><p>Filters, badges, upsells, custom blocks and the little conversion wins.</p></div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">How it works</span></div>
+  <div class="sec-title reveal">Simple <em>to run.</em></div>
+  <ol class="plist reveal d1">
+    <li class="pli"><span class="m">1</span><span>Send requests any time — <b>WhatsApp, email or a shared board</b>. No formal tickets needed.</span></li>
+    <li class="pli"><span class="m">2</span><span>We prioritise them into the day’s dev hours <b>with you</b>, so the most important work ships first.</span></li>
+    <li class="pli"><span class="m">3</span><span>The developer works the queue and <b>ships through the week</b> — you see changes land continuously.</span></li>
+    <li class="pli"><span class="m">4</span><span>A quick <b>weekly check-in</b> on what’s done and what’s next keeps everyone aligned.</span></li>
+  </ol>
+</section>
+
+<!-- HOURS & DEDICATION -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">Hours &amp; dedication</span></div>
+  <div class="sec-title reveal">One developer, <em>every day.</em></div>
+  <p class="sec-lead reveal d1">
+    <b style="color:var(--tp);font-weight:500;">3–4 focused hours a day, every working day</b> — roughly 70 hours a month, all on Galli. It’s a real, consistent block of development time, not on-call scraps. If a month runs bigger than the daily block allows, we flag it early and either spread the work across weeks or agree extra hours before doing them.
+  </p>
+  <div class="callout reveal d2">
+    <div class="co-l">Good to know</div>
+    <div class="co-t">The retainer is <b>development time</b>, not a fixed deliverable list — that’s what lets a drop page one week and a batch of fixes the next both fit. Larger, self-contained builds (a full new template, a big custom feature) can run as a separate fixed-price project alongside the retainer.</div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">04 · Investment</div>
+  <div class="inv-heading reveal d1">One monthly fee.<br><em>A developer on call.</em></div>
+  <p class="inv-sub reveal d2">A dedicated Shopify developer, 3–4 hours every working day, billed as a simple monthly retainer.</p>
+
+  <div class="bundle-card reveal d1">
+    <div class="bundle-left">
+      <div class="bundle-badge">Shopify Dev Retainer · Monthly</div>
+      <div class="bundle-title">One dedicated developer</div>
+      <p class="bundle-desc">3–4 focused hours a day, ~70 hours a month on Galli — new sections, drop pages, fixes, speed and small features, shipped continuously.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price">₹15,000<small> / mo</small></div>
+      <div class="bundle-save">Rolling monthly · cancel anytime</div>
+    </div>
+  </div>
+
+  <p class="reveal d2" style="font-size:12px; color:rgba(255,255,255,0.42); margin-top:22px; line-height:1.7; max-width:600px;">
+    Billed monthly in advance. Shopify subscription, paid apps and any third-party tools are billed directly to Galli and are not included above.
+  </p>
+</div>
+
+<!-- TERMS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">05</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-title reveal">Simple <em>terms.</em></div>
+  <div class="terms-grid reveal d1">
+    <div class="tg"><div class="tg-l">Commitment</div><div class="tg-v">Rolling monthly</div></div>
+    <div class="tg"><div class="tg-l">Currency</div><div class="tg-v">₹15,000 / month, INR</div></div>
+    <div class="tg"><div class="tg-l">Hours</div><div class="tg-v">3–4 hrs/day · ~70 hrs/month</div></div>
+    <div class="tg"><div class="tg-l">Notice</div><div class="tg-v">Cancel anytime with 15 days’ notice</div></div>
+    <div class="tg"><div class="tg-l">Ownership</div><div class="tg-v">All code &amp; work owned by Galli</div></div>
+    <div class="tg"><div class="tg-l">Externals</div><div class="tg-v">Shopify plan &amp; paid apps at actuals</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to start?</div>
+  <div class="cta-title reveal d1">Keep <em>Galli</em> moving.</div>
+  <p class="cta-sub reveal d2">Confirm the retainer and we’ll start on this month’s queue within the week.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Crestify · crestify.co · Retainer proposal for Galli</span>
+  <span class="fr">Valid 15 days · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
