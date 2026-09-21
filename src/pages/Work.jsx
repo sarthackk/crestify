@@ -103,6 +103,16 @@ export const CASE_STUDIES = [
     img: '/galli.png',
     href: 'https://galli.co.in',
   },
+  {
+    slug: 'art-of-motorcycles',
+    n: '11', client: 'Art of Motorcycles', sector: 'Motorcycle Parts · E-commerce', year: '2026',
+    headline: 'Custom Shopify store for a premium motorcycle-parts brand — shop by bike, built to convert.',
+    summary: "Art of Motorcycles (AOM) is a premium Indian aftermarket brand — CNC-machined accessories, protection gear and performance parts for Royal Enfield, KTM, BMW and more. We built their custom Shopify storefront end to end, with shop-by-bike filtering, rich product pages and a fast, editorial feel that matches the brand's precision-engineering positioning. Live at artofmotorcycles.co.",
+    metrics: [{ k: 'Custom', v: 'Shopify build' }, { k: 'Shop by', v: 'Bike model' }, { k: 'Live', v: 'artofmotorcycles.co' }],
+    tag: 'Custom Shopify · Dev', size: 'large',
+    img: '/artofmotorcycles.png',
+    href: 'https://artofmotorcycles.co',
+  },
 ];
 
 function HeroWork() {
