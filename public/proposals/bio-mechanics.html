@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crestify × Bio Mechanics — Marketing Retainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #15191F;
+  --black10: rgba(21,25,31,0.1);
+  --orange:  #2B6CF0;
+  --cream:   #EEF1F5;
+  --white:   #FFFFFF;
+  --tp:      #15191F;
+  --ts:      #525A66;
+  --caramel: #1F56C8;
+  --amber:   #4F8BF5;
+  --gold:    #76A9F7;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --sans:    'Inter', sans-serif;
+  --pad:     clamp(24px, 5vw, 56px);
+}
+body { font-family: var(--sans); background: var(--cream); color: var(--tp); font-size: 14px; line-height: 1.6; -webkit-print-color-adjust: exact; overflow-x: hidden; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; } .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; } .reveal.d5 { transition-delay: 0.40s; }
+
+/* TICKER */
+.ticker-wrap { background: var(--black); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker { display: inline-block; animation: tick 40s linear infinite; }
+.ticker span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(238,241,245,0.6); margin-right: 40px; }
+.ticker span.dot { color: var(--amber); }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px var(--pad); background: rgba(238,241,245,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 19px; color: var(--tp); text-decoration: none; }
+.k-box { width: 28px; height: 28px; background: var(--black); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; flex-shrink: 0; transition: background 0.2s; }
+.nav-logo:hover .k-box { background: var(--orange); }
+.nav-badge { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--black10); padding: 2px 7px; border-radius: 3px; color: var(--ts); }
+.nav-right { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ts); }
+.nav-right span { color: var(--orange); }
+
+/* HERO */
+.hero { padding: clamp(60px, 9vw, 96px) var(--pad) clamp(48px, 7vw, 72px); border-bottom: 1px solid var(--black10); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(118,169,247,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(43,108,240,0.08) 0%, transparent 70%); }
+.hero > * { position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ts); margin-bottom: 32px; padding: 6px 14px; border: 1px solid var(--black10); border-radius: 40px; background: rgba(238,241,245,0.6); }
+.hero-eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)} }
+.hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; color: var(--caramel); }
+.hero-sub { font-size: 15px; color: var(--ts); line-height: 1.85; max-width: 540px; margin-bottom: 50px; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black10); padding-top: 28px; }
+.hm { padding-right: 24px; }
+.hm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 5px; }
+.hm-v { font-family: var(--serif); font-size: 24px; font-style: italic; }
+.hm-v.orange { color: var(--orange); } .hm-v.amber { color: var(--amber); }
+
+/* DARK BAR */
+.dark-bar { background: var(--black); padding: clamp(28px, 5vw, 44px) var(--pad); display: grid; grid-template-columns: repeat(4, 1fr); position: relative; overflow: hidden; }
+.dark-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 120% at 80% 50%, rgba(118,169,247,0.18) 0%, transparent 70%); pointer-events: none; }
+.stat { position: relative; }
+.stat .sn { font-family: var(--serif); font-size: clamp(28px, 4.4vw, 44px); color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat .sl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.stat-accent .sn { color: var(--gold); }
+
+/* SECTIONS */
+.sec { padding: clamp(40px, 6vw, 64px) var(--pad); border-bottom: 1px solid var(--black10); }
+.sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.sec-num { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); }
+.sec-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); border: 1px solid var(--black10); padding: 3px 9px; border-radius: 3px; }
+.sec-title { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.sec-title em { font-style: italic; color: var(--caramel); }
+.sec-lead { font-size: 14px; color: var(--ts); max-width: 620px; line-height: 1.85; margin-bottom: 20px; }
+.sec-lead:last-child { margin-bottom: 0; }
+
+/* MODULE GRID */
+.module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.mod { background: var(--cream); padding: 28px 32px; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.mod:hover { border-left-color: var(--orange); background: #fff; }
+.mod-num { font-size: 9px; letter-spacing: 2px; color: var(--ts); }
+.mod h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+.mod p { font-size: 13px; color: var(--ts); line-height: 1.7; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.mod-tag { font-size: 10px; padding: 3px 9px; border: 1px solid var(--black10); border-radius: 3px; color: var(--ts); font-family: monospace; transition: border-color 0.15s, color 0.15s; }
+.mod:hover .mod-tag { border-color: rgba(43,108,240,0.35); color: var(--caramel); }
+
+/* FEATURE GRID */
+.feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.feat { background: var(--cream); padding: 20px 24px; display: flex; gap: 14px; align-items: flex-start; transition: background 0.15s; }
+.feat:hover { background: #fff; }
+.feat .fk { font-family: var(--serif); font-style: italic; color: var(--caramel); font-size: 18px; line-height: 1; flex-shrink: 0; width: 20px; }
+.feat h4 { font-size: 13px; font-weight: 500; color: var(--tp); margin-bottom: 3px; }
+.feat p { font-size: 12px; color: var(--ts); line-height: 1.6; }
+
+/* PLAIN LIST */
+.plist { border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; max-width: 760px; }
+.plist .pli { list-style: none; padding: 16px 22px; border-bottom: 1px solid var(--black10); font-size: 13.5px; color: var(--ts); display: flex; gap: 14px; align-items: flex-start; background: var(--cream); transition: background 0.15s; }
+.plist .pli:last-child { border-bottom: none; }
+.plist .pli:hover { background: #fff; }
+.plist .pli .m { color: var(--caramel); font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.1; flex-shrink: 0; width: 24px; }
+.plist .pli b { color: var(--tp); font-weight: 500; }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(43,108,240,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(21,25,31,0.09); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* INVESTMENT (DARK) */
+.inv-section { background: var(--black); padding: clamp(40px, 6vw, 64px) var(--pad); position: relative; overflow: hidden; }
+.inv-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(118,169,247,0.16) 0%, transparent 60%); }
+.inv-section > * { position: relative; }
+.inv-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.inv-heading { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 38px); color: #fff; margin-bottom: 8px; line-height: 1.1; }
+.inv-heading em { font-style: italic; color: var(--gold); }
+.inv-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 560px; line-height: 1.7; }
+.bundle-card { background: rgba(118,169,247,0.1); border: 1px solid rgba(118,169,247,0.3); border-radius: 6px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bundle-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; font-weight: 500; background: rgba(118,169,247,0.18); color: var(--gold); border: 1px solid rgba(118,169,247,0.4); margin-bottom: 12px; }
+.bundle-title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; }
+.bundle-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; }
+.bundle-right { text-align: right; flex-shrink: 0; }
+.bundle-price { font-family: var(--serif); font-size: clamp(42px, 6vw, 58px); color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+.bundle-price small { font-size: 0.4em; font-style: normal; color: rgba(255,255,255,0.5); letter-spacing: 0; }
+.bundle-save { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+.care-note { margin-top: 26px; font-size: 12.5px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 640px; }
+.care-note b { color: var(--gold); font-weight: 500; }
+
+/* TERMS */
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--black10); border: 1px solid var(--black10); }
+.tg { background: var(--cream); padding: 24px 28px; transition: background 0.15s; }
+.tg:hover { background: #fff; }
+.tg-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ts); margin-bottom: 8px; }
+.tg-v { font-family: var(--serif); font-size: 17px; }
+
+/* CALLOUT */
+.callout { background: rgba(43,108,240,0.06); border: 1px solid rgba(43,108,240,0.2); border-left: 3px solid var(--orange); border-radius: 6px; padding: 24px 28px; max-width: 760px; margin-top: 26px; }
+.callout .co-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 8px; }
+.callout .co-t { font-size: 13.5px; color: var(--ts); line-height: 1.8; }
+.callout .co-t b { color: var(--tp); font-weight: 500; }
+
+/* LOGO WALL */
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+
+/* CTA */
+.cta-section { background: var(--black); padding: clamp(56px, 9vw, 96px) var(--pad); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(118,169,247,0.12) 0%, transparent 70%); }
+.cta-section > * { position: relative; }
+.cta-eyebrow { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); color: #fff; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; text-decoration: none; transition: opacity 0.2s; font-weight: 500; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+footer { padding: 28px var(--pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--black10); gap: 12px; flex-wrap: wrap; }
+footer .fl { font-size: 11px; color: var(--ts); }
+footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
+
+@media (max-width: 639px) {
+  .hero-meta { grid-template-columns: 1fr; row-gap: 20px; }
+  .dark-bar { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .module-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { text-align: left; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Bio Mechanics</span><span class="dot">·</span>
+    <span>Marketing Retainer</span><span class="dot">·</span>
+    <span>Social · Content · Ads · Influencers</span><span class="dot">·</span>
+    <span>₹28,000 / Month</span><span class="dot">·</span>
+    <span>Rolling Monthly</span><span class="dot">·</span>
+    <span>Crestify</span><span class="dot">·</span>
+    <span>Bio Mechanics</span><span class="dot">·</span>
+    <span>Marketing Retainer</span><span class="dot">·</span>
+    <span>Social · Content · Ads · Influencers</span><span class="dot">·</span>
+    <span>₹28,000 / Month</span><span class="dot">·</span>
+    <span>Rolling Monthly</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="https://crestify.co" class="nav-logo">
+    <div class="k-box">C</div>
+    Crestify
+  </a>
+  <span class="nav-badge">Proposal</span>
+  <div class="nav-right">Valid <span>15 days</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow reveal">
+    <span class="pulse"></span>
+    Proposal · Bio Mechanics · Marketing Retainer
+  </div>
+  <h1 class="reveal d1">
+    Fill the floor.<br>
+    <em>Every month.</em>
+  </h1>
+  <p class="hero-sub reveal d2">
+    One team running the whole marketing engine for Bio Mechanics — social media, content, paid ads and influencer collabs, all pulling in the same direction. We make the gym impossible to miss online, and turn attention into walk-ins and memberships.
+  </p>
+  <div class="hero-meta reveal d3">
+    <div class="hm">
+      <div class="hm-l">Engagement</div>
+      <div class="hm-v">Marketing Retainer</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Scope</div>
+      <div class="hm-v orange">Social · Content · Ads · Influencers</div>
+    </div>
+    <div class="hm">
+      <div class="hm-l">Monthly</div>
+      <div class="hm-v amber">₹28,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="dark-bar">
+  <div class="stat reveal"><div class="sn">1</div><div class="sl">Team · whole marketing engine</div></div>
+  <div class="stat reveal d1"><div class="sn">4</div><div class="sl">Fronts · social, content, ads, creators</div></div>
+  <div class="stat reveal d2"><div class="sn">Monthly</div><div class="sl">Calendar, ads &amp; reporting</div></div>
+  <div class="stat stat-accent reveal d3"><div class="sn">₹28k</div><div class="sl">Per month · rolling</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">00</span><span class="sec-tag">Overview</span></div>
+  <div class="sec-title reveal">Your whole marketing, <em>handled.</em></div>
+  <p class="sec-lead reveal d1">
+    Running a gym is a full-time job — the marketing shouldn’t be another one. This retainer puts one team on <b style="color:var(--tp);font-weight:500;">everything</b>: the social presence, the content that feeds it, the paid ads that bring in leads, and the influencer collabs that build trust fast.
+  </p>
+  <p class="sec-lead reveal d2">
+    It all works together — a reel shot at the gym becomes an ad becomes an influencer’s story — so every rupee and every post pushes the same goal: more people walking through the door. One monthly fee, rolling, same team throughout.
+  </p>
+</section>
+
+<!-- WHAT WE RUN -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">01</span><span class="sec-tag">What we run</span></div>
+  <div class="sec-title reveal">The full <em>engine.</em></div>
+  <p class="sec-lead reveal d1">Six fronts, run as one coordinated effort every month.</p>
+  <div class="module-grid">
+    <div class="mod reveal d1">
+      <div class="mod-num">01</div>
+      <h3>Social Media Management</h3>
+      <p>Instagram and Facebook run end to end — content calendar, scheduling, posting, captions, hashtags and stories, with a consistent, on-brand presence that actually gets seen.</p>
+      <div class="mod-tags"><span class="mod-tag">Calendar</span><span class="mod-tag">Posting</span><span class="mod-tag">Stories</span></div>
+    </div>
+    <div class="mod reveal d2">
+      <div class="mod-num">02</div>
+      <h3>Content Creation</h3>
+      <p>Reels, photos and graphics shot and made for the gym — workouts, transformations, trainers, classes and offers — the scroll-stopping content that fuels everything else.</p>
+      <div class="mod-tags"><span class="mod-tag">Reels</span><span class="mod-tag">Photos</span><span class="mod-tag">Graphics</span></div>
+    </div>
+    <div class="mod reveal d3">
+      <div class="mod-num">03</div>
+      <h3>Paid Ads</h3>
+      <p>Meta and Google ad campaigns built for memberships — audience targeting, ad creatives, lead forms and continuous optimisation, so the budget brings in real enquiries.</p>
+      <div class="mod-tags"><span class="mod-tag">Meta &amp; Google</span><span class="mod-tag">Lead Gen</span><span class="mod-tag">Optimisation</span></div>
+    </div>
+    <div class="mod reveal d4">
+      <div class="mod-num">04</div>
+      <h3>Influencer Collaborations</h3>
+      <p>Local fitness and lifestyle creators sourced, briefed and coordinated — collabs that put Bio Mechanics in front of the right audience with trust built in.</p>
+      <div class="mod-tags"><span class="mod-tag">Outreach</span><span class="mod-tag">Briefing</span><span class="mod-tag">Coordination</span></div>
+    </div>
+    <div class="mod reveal d5">
+      <div class="mod-num">05</div>
+      <h3>Strategy &amp; Reporting</h3>
+      <p>A monthly plan and a clear monthly report — what went out, what worked, what the ads returned and what we’re doing next. No vanity metrics, just what matters.</p>
+      <div class="mod-tags"><span class="mod-tag">Monthly Plan</span><span class="mod-tag">Reporting</span></div>
+    </div>
+    <div class="mod reveal d5">
+      <div class="mod-num">06</div>
+      <h3>Community &amp; Engagement</h3>
+      <p>Comments, DMs and enquiries responded to, and the community kept warm — so interest turns into conversations, and conversations into members.</p>
+      <div class="mod-tags"><span class="mod-tag">DMs &amp; Comments</span><span class="mod-tag">Enquiries</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EACH MONTH -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">02</span><span class="sec-tag">Each month</span></div>
+  <div class="sec-title reveal">What lands <em>every month.</em></div>
+  <div class="feat-grid reveal d1">
+    <div class="feat"><span class="fk">✦</span><div><h4>Content calendar</h4><p>A planned month of posts, reels and stories, approved before it goes out.</p></div></div>
+    <div class="feat"><span class="fk">✦</span><div><h4>Reels &amp; posts</h4><p>A steady flow of shot-and-edited reels, photos and graphics across the month.</p></div></div>
+    <div class="feat"><span class="fk">✦</span><div><h4>Ad campaigns, managed</h4><p>Meta/Google campaigns set up, run and optimised on your ad budget.</p></div></div>
+    <div class="feat"><span class="fk">✦</span><div><h4>Influencer collabs</h4><p>Creator collaborations lined up and coordinated through the month.</p></div></div>
+    <div class="feat"><span class="fk">✦</span><div><h4>A content shoot</h4><p>On-location shooting at the gym to keep the content fresh and real.</p></div></div>
+    <div class="feat"><span class="fk">✦</span><div><h4>Monthly report</h4><p>A clear read on reach, leads and what the ads returned — and the next plan.</p></div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">03</span><span class="sec-tag">How it works</span></div>
+  <div class="sec-title reveal">Simple <em>to run.</em></div>
+  <ol class="plist reveal d1">
+    <li class="pli"><span class="m">1</span><span>We start with a quick <b>brand &amp; goals session</b> — who you want in the door, offers, and the look &amp; voice.</span></li>
+    <li class="pli"><span class="m">2</span><span>Each month we plan a <b>content calendar</b> and ad angle, and share it for a quick approval.</span></li>
+    <li class="pli"><span class="m">3</span><span>We <b>shoot, create, post and run the ads</b> — and line up influencer collabs through the month.</span></li>
+    <li class="pli"><span class="m">4</span><span>We handle <b>comments, DMs and enquiries</b>, and send you a <b>monthly report</b> with what’s next.</span></li>
+  </ol>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">04</span><span class="sec-tag">Selected Work</span></div>
+  <div class="sec-title reveal">We've built <em>content engines.</em></div>
+  <p class="sec-lead reveal d1">Social, content and ads run end to end for real brands — plus our own products we market daily.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://nirakaar.in" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/nirakaar.png" alt="Nirakaar"></div>
+      <div class="work-meta"><div class="work-name">Nirakaar</div><div class="work-sector">Content · UGC · Ads</div><span class="work-note">Full content engine — social, UGC and paid ads, end to end.</span></div>
+    </a>
+    <a class="work-card reveal d2" href="https://crestify.co/kaart/haldirams" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/haldirams-london.jpg" alt="Haldiram's"></div>
+      <div class="work-meta"><div class="work-name">Haldiram's</div><div class="work-sector">F&amp;B · Creative</div><span class="work-note">Digital and store creative for a household F&amp;B name.</span></div>
+    </a>
+    <a class="work-card reveal d3" href="https://eatops.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/eatops.png" alt="Eatops"></div>
+      <div class="work-meta"><div class="work-name">Eatops</div><div class="work-sector">Our Product · Brand</div><span class="work-note">Our own café platform — brand, content and go-to-market.</span></div>
+    </a>
+    <a class="work-card reveal d4" href="https://mockzy.app" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/mockzy.png" alt="Mockzy"></div>
+      <div class="work-meta"><div class="work-name">Mockzy</div><div class="work-sector">Our Product · Content</div><span class="work-note">AI content studio — built and marketed in-house.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- LOGO WALL -->
+<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
+  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
+    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
+    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
+
+<!-- INVESTMENT -->
+<div class="inv-section">
+  <div class="inv-label reveal">05 · Investment</div>
+  <div class="inv-heading reveal d1">One monthly fee.<br><em>The whole engine.</em></div>
+  <p class="inv-sub reveal d2">Social, content, ads, influencer collabs, strategy and reporting — one team on all of it, billed as a simple monthly retainer.</p>
+
+  <div class="bundle-card reveal d1">
+    <div class="bundle-left">
+      <div class="bundle-badge">Marketing Retainer · Monthly</div>
+      <div class="bundle-title">Social + content + ads + influencers</div>
+      <p class="bundle-desc">The full marketing engine run every month — content calendar, reels &amp; shoots, managed ad campaigns, influencer collabs and a monthly report.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price">₹28,000<small> / mo</small></div>
+      <div class="bundle-save">Rolling monthly · cancel anytime</div>
+    </div>
+  </div>
+
+  <p class="care-note reveal d2">
+    Billed monthly in advance. <b>Ad spend is separate</b> — the media budget you put behind Meta/Google ads, and any paid influencer fees, are set by you and paid to the platforms and creators directly. This retainer is the management, content and creative. Shoots are at the gym; travel for shoots outside the city is billed at actuals.
+  </p>
+</div>
+
+<!-- TERMS -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-num">06</span><span class="sec-tag">Terms</span></div>
+  <div class="sec-title reveal">Simple <em>terms.</em></div>
+  <div class="terms-grid reveal d1">
+    <div class="tg"><div class="tg-l">Commitment</div><div class="tg-v">Rolling monthly</div></div>
+    <div class="tg"><div class="tg-l">Fee</div><div class="tg-v">₹28,000 / month, INR</div></div>
+    <div class="tg"><div class="tg-l">Scope</div><div class="tg-v">Social, content, ads, influencers, reporting</div></div>
+    <div class="tg"><div class="tg-l">Ad spend</div><div class="tg-v">Separate — paid by Bio Mechanics</div></div>
+    <div class="tg"><div class="tg-l">Notice</div><div class="tg-v">Cancel anytime with 15 days’ notice</div></div>
+    <div class="tg"><div class="tg-l">Content rights</div><div class="tg-v">All content owned by Bio Mechanics</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to start?</div>
+  <div class="cta-title reveal d1">Let's grow <em>Bio Mechanics.</em></div>
+  <p class="cta-sub reveal d2">Confirm the retainer and we’ll kick off with your brand session and this month’s plan within the week.</p>
+  <div class="cta-btns reveal d3">
+    <a href="https://crestify.co/contact" class="btn-primary">Send a message →</a>
+    <a href="https://wa.me/919820611285" class="btn-secondary">WhatsApp us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Crestify · crestify.co · Marketing retainer proposal for Bio Mechanics</span>
+  <span class="fr">Valid 15 days · Confidential</span>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
