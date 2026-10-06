@@ -8,6 +8,7 @@ const COLS = [
       { label: 'About', to: '/about' },
       { label: 'Work', to: '/work' },
       { label: 'Services', to: '/services' },
+      { label: 'Careers', to: '/careers' },
       { label: 'Contact', to: '/contact' },
     ],
   },

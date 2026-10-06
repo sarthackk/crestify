@@ -18,6 +18,7 @@ import KaartGiva from './pages/KaartGiva.jsx';
 import KaartHaldirams from './pages/KaartHaldirams.jsx';
 import Resources from './pages/Resources.jsx';
 import Residency from './pages/Residency.jsx';
+import Careers from './pages/Careers.jsx';
 import Sarthak from './pages/Sarthak.jsx';
 import MarginCalculator from './pages/tools/MarginCalculator.jsx';
 import BudgetAllocator from './pages/tools/BudgetAllocator.jsx';
@@ -79,6 +80,7 @@ export default function App() {
       <Route path="/kaart/haldirams" element={<KaartHaldirams />} />
       <Route path="/sarthak" element={<Sarthak />} />
       <Route path="/toolkit" element={<Resources />} />
+      <Route path="/careers" element={<Careers />} />
       <Route path="/interesting" element={<Residency />} />
       <Route path="/residency" element={<Residency />} />
       <Route path="/trade" element={<Residency />} />
