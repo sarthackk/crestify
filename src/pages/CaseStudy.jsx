@@ -16,11 +16,23 @@ const DETAILS = {
     quote: { text: 'Four portals, one coherent product. They held the entire system in their heads and shipped it on time.', attr: 'Placement Director, Partner College' },
   },
   'pms-asset-builder': {
-    challenge: "The Cadet Labs maintains technical documentation for a fleet of commercial vessels. Each ship's manuals run to thousands of pages — every set formatted differently, scanned at wildly varying quality, and rarely searchable. Finding one procedure for one piece of equipment on one vessel meant an engineer losing hours to manual digging, often under time pressure that doesn't forgive delay.",
-    solution: 'We built an OCR ingestion pipeline that handles PDFs regardless of scan quality, extracts clean structured text, and passes it to an AI classification layer. Every document is automatically tagged by vessel, equipment category, and section type. The search interface returns the exact page — not a list of files to open one by one.',
-    outcome: 'Searches that used to take hours now resolve in seconds. The system runs across four active ship projects — MV Atlas, ZX Shipping, Blue Ocean, and Neptune Cargo — with more vessels onboarding, and the same pipeline scales to each new fleet without re-engineering.',
-    stack: ['Python', 'Tesseract OCR', 'OpenAI API', 'FastAPI', 'React', 'PostgreSQL'],
-    quote: { text: 'Our engineers used to dread document searches. Now they just search.', attr: 'Operations Lead, The Cadet Labs' },
+    challenge: "Every vessel carries thousands of pages of technical documentation — instruction manuals, O&M books, drawings — scanned at varying quality and formatted differently by every maker. Getting that into a Planned Maintenance System like AMOS, DANAOS or SHIPNET means a person manually reading each manual and keying components, jobs and spares into rigid, column-by-column templates. Across a fleet, that's months of slow, error-prone data entry before a single vessel's maintenance schedule is even usable.",
+    solution: 'We designed and built PMS Asset Builder for Cadet Labs — a web platform that moves documents from upload to PMS-ready export through one clear, guided pipeline: Digitise → Mark → Extract → Export. Work is organised by vessel project; documents are digitised into standardised, searchable pages; engineers mark pages as Job or Spare content with page-level filters; the system extracts structured fields; and the data exports to configurable Component, Job and Spare templates mapped to the client\'s target PMS software. A tools layer manages those export templates, a document library and a global glossary, and an analytics dashboard tracks every project\'s progress across the fleet.',
+    outcome: "Months of manual keying become a repeatable, trustworthy workflow — the same four steps handle any vessel and any PMS target without re-engineering. Admins see fleet-wide status at a glance (projects by client, Component / Job / Spare breakdown, live activity feed and completion tracking), and finished exports drop straight into AMOS, DANAOS or SHIPNET in the exact format each system expects.",
+    stack: ['React', 'Node.js', 'Python (OCR & extraction)', 'PostgreSQL', 'AWS'],
+    quote: { text: 'They turned a stack of ship manuals and a rigid PMS template into one clean workflow — onboarding a vessel stopped being something the team dreaded.', attr: 'Cadet Labs' },
+    gallery: [
+      { img: '/pms/login.webp',        label: 'Secure, branded access' },
+      { img: '/pms/dashboard.png',     label: 'Fleet-wide analytics dashboard' },
+      { img: '/pms/projects.png',      label: 'Projects organised by vessel' },
+      { img: '/pms/documents.png',     label: 'Every document, tracked' },
+      { img: '/pms/digitise.png',      label: '1 · Digitise — standardise & search' },
+      { img: '/pms/mark.png',          label: '2 · Mark — tag Job & Spare pages' },
+      { img: '/pms/extract.png',       label: '3 · Extract — structure the data' },
+      { img: '/pms/export.png',        label: '4 · Export — template & format' },
+      { img: '/pms/pms-software.png',  label: 'Mapped to AMOS, DANAOS & SHIPNET' },
+      { img: '/pms/viewer.png',        label: 'Page-level Job / Spare tagging' },
+    ],
   },
   'match-trackers': {
     challenge: "Live-sports fans treat a one-second delay as a broken product. At 100k concurrent users during a major tournament, most platforms either throttle their data feeds or watch their servers fall over. Match Trackers needed to cover both cricket and football with the full depth — rankings, tables, head-to-head, odds — not just a scoreline that updates late.",
@@ -152,13 +164,29 @@ export default function CaseStudy() {
             <p className="col-8 body-lg" style={{ maxWidth: '48ch' }}>{d.solution}</p>
           </div>
 
-          {/* Second image */}
-          <Placeholder
-            label={`${c.client.toUpperCase()} · Detail`}
-            dim="2400 × 900"
-            ratio="24 / 9"
-            dark={!c.dark}
-          />
+          {/* Gallery (if provided) — else a detail placeholder */}
+          {d.gallery ? (
+            <div>
+              <div style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}><Eyebrow>Inside the product</Eyebrow></div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 'clamp(14px, 2vw, 22px)' }}>
+                {d.gallery.map(g => (
+                  <figure key={g.img} style={{ margin: 0 }}>
+                    <div style={{ aspectRatio: '16 / 10', borderRadius: 6, overflow: 'hidden', border: '1px solid var(--line-strong)', background: '#eef1f0' }}>
+                      <img src={g.img} alt={g.label} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }} />
+                    </div>
+                    <figcaption className="mono" style={{ fontSize: 11, color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 10 }}>{g.label}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <Placeholder
+              label={`${c.client.toUpperCase()} · Detail`}
+              dim="2400 × 900"
+              ratio="24 / 9"
+              dark={!c.dark}
+            />
+          )}
 
           {/* Outcome */}
           <div className="grid" style={{ gap: 'var(--gap)', alignItems: 'start' }}>

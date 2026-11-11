@@ -30,12 +30,12 @@ export const CASE_STUDIES = [
   },
   {
     slug: 'pms-asset-builder',
-    n: '03', client: 'PMS Asset Builder', sector: 'Maritime · Enterprise', year: '2024',
-    headline: 'Turned thousands of ship manuals into a searchable, AI-classified library.',
-    summary: 'Enterprise internal tool for The Cadet Labs: OCR pipeline ingests heavy documentation, AI classifies by vessel and equipment type. What took hours now takes seconds across MV Atlas, ZX Shipping, Blue Ocean, and Neptune Cargo.',
-    metrics: [{ k: 'OCR', v: 'Doc ingestion' }, { k: 'AI', v: 'Classification' }, { k: '4+', v: 'Ship projects' }],
-    tag: 'Enterprise AI', size: 'medium', dark: true,
-    img: '/pms asset builder.png',
+    n: '03', client: 'PMS Asset Builder', sector: 'Maritime · Enterprise SaaS', year: '2025',
+    headline: 'A four-step pipeline that turns thousands of ship manuals into structured, PMS-ready data.',
+    summary: 'Enterprise platform for Cadet Labs: take vessel documentation from upload to PMS-ready export through one guided flow — Digitise, Mark, Extract, Export — with Component, Job and Spare templates mapped to AMOS, DANAOS and SHIPNET, a document library, glossary and a fleet-wide analytics dashboard.',
+    metrics: [{ k: '4-step', v: 'Digitise → Mark → Extract → Export' }, { k: '3', v: 'PMS systems mapped' }, { k: 'Fleet', v: 'Multi-vessel platform' }],
+    tag: 'Enterprise SaaS · Maritime', size: 'medium', dark: true,
+    img: '/pms/dashboard.png',
   },
   {
     slug: 'match-trackers',
