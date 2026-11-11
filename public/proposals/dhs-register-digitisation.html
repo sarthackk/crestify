@@ -222,6 +222,17 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   .lw-tile img { max-height: 32px; max-width: 96px; }
 }
 @media (min-width: 640px) and (max-width: 900px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+
+/* PRINT / PDF */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  html, body { background: #fff; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  nav { position: static !important; }
+  .ticker, .lw-track { animation: none !important; }
+  .mod, .feat, .work-card, .pay-card, .tl-row, .tg, .callout, .bundle-card, .tech-grid, .inc-list, .pay-cards, .logowall, .plist { break-inside: avoid; page-break-inside: avoid; }
+}
 </style>
 </head>
 <body>
