@@ -100,6 +100,32 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .feat h4 { font-size: 13px; font-weight: 500; color: var(--tp); margin-bottom: 3px; }
 .feat p { font-size: 12px; color: var(--ts); line-height: 1.6; }
 
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.work-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; background: #fff; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.work-card:hover { border-color: rgba(14,124,107,0.4); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(22,32,30,0.09); }
+.work-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--black); }
+.work-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+.work-card:hover .work-img img { transform: scale(1.03); }
+.work-meta { padding: 16px 18px; }
+.work-name { font-family: var(--serif); font-size: 19px; }
+.work-sector { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); margin-top: 3px; }
+.work-note { display: block; font-size: 11.5px; color: var(--caramel); margin-top: 9px; line-height: 1.5; }
+
+/* LOGO WALL */
+.logowall::before, .logowall::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 120px); z-index: 2; pointer-events: none; }
+.logowall::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.logowall::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+.lw-track { display: flex; width: max-content; }
+.lw-row1 { animation: lw-move 95s linear infinite; }
+.lw-row2 { animation: lw-move 110s linear infinite reverse; margin-top: 14px; }
+@keyframes lw-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logowall:hover .lw-track { animation-play-state: paused; }
+.lw-tile { flex: 0 0 auto; width: 152px; height: 68px; margin: 0 8px; background: #fff; border: 1px solid var(--black10); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
+.lw-tile img { max-height: 40px; max-width: 116px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
+.lw-tile:hover img { filter: grayscale(0); opacity: 1; }
+.lw-tile img.lw-inv { filter: invert(1) grayscale(1); opacity: 0.72; }
+
 /* PLAIN LIST */
 .plist { border: 1px solid var(--black10); border-radius: 6px; overflow: hidden; max-width: 780px; }
 .plist .pli { list-style: none; padding: 14px 20px; border-bottom: 1px solid var(--black10); font-size: 13px; color: var(--ts); display: flex; gap: 12px; align-items: flex-start; background: var(--cream); transition: background 0.15s; }
@@ -191,7 +217,11 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
   .tech-grid { grid-template-columns: 120px 1fr; }
   .terms-grid { grid-template-columns: 1fr; }
   .tl-row { grid-template-columns: 110px 1fr; gap: 16px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .lw-tile { width: 128px; height: 58px; padding: 10px 16px; }
+  .lw-tile img { max-height: 32px; max-width: 96px; }
 }
+@media (min-width: 640px) and (max-width: 900px) { .work-grid { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -276,6 +306,71 @@ footer .fr { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; 
     This proposal covers the complete, end-to-end digitisation of approximately <b style="color:var(--tp);font-weight:500;">4,150 physical surgical registers</b> — from secure collection through scanning, OCR, indexing, quality control and secure delivery. A defining principle of our approach: <b style="color:var(--tp);font-weight:500;">all AI and OCR processing runs locally</b>, on DHS-provided private servers, so no patient record is ever sent to a third party or the public cloud.
   </p>
 </section>
+
+<!-- SELECTED WORK -->
+<section class="sec">
+  <div class="sec-hd"><span class="sec-tag">Selected Work</span></div>
+  <div class="sec-title reveal">We've built this <em>kind of system.</em></div>
+  <p class="sec-lead reveal d1">From a document-digitisation platform for the maritime industry to full builds for household brands — here's a sample of our work.</p>
+  <div class="work-grid">
+    <a class="work-card reveal d1" href="https://crestify.co/work/pms-asset-builder" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/pms/dashboard.png" alt="PMS Asset Builder"></div>
+      <div class="work-meta"><div class="work-name">PMS Asset Builder</div><div class="work-sector">Maritime · Document Digitisation</div><span class="work-note">A Digitise → Mark → Extract → Export pipeline turning thousands of ship manuals into structured data — directly relevant here.</span></div>
+    </a>
+    <a class="work-card reveal d2" href="https://www.haldiramuk.com" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/haldiram-fmcg.png" alt="Haldiram's"></div>
+      <div class="work-meta"><div class="work-name">Haldiram's</div><div class="work-sector">F&amp;B · International</div><span class="work-note">Full international web, e-commerce and delivery engagement for a household name.</span></div>
+    </a>
+    <a class="work-card reveal d3" href="https://giva.co" target="_blank" rel="noopener">
+      <div class="work-img"><img src="/giva-store.png" alt="Giva"></div>
+      <div class="work-meta"><div class="work-name">Giva</div><div class="work-sector">Jewellery · D2C</div><span class="work-note">Embedded development across multiple storefronts for a fast-growing D2C brand.</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- LOGO WALL -->
+<div class="logowall" style="background: var(--cream); border-top: 1px solid var(--black10); border-bottom: 1px solid var(--black10); padding: clamp(30px, 4vw, 48px) 0; overflow: hidden; position: relative;">
+  <div class="logowall-hd" style="text-align:center; margin-bottom:30px; padding:0 var(--pad); position:relative; z-index:3;">
+    <div class="lh-l" style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ts); margin-bottom:10px;">Trusted by</div>
+    <div class="lh-t" style="font-family:var(--serif); font-size:clamp(22px,3.2vw,34px); line-height:1.1;">Brands we've <em style="font-style:italic; color:var(--caramel);">worked with.</em></div>
+  </div>
+  <div id="lwWrap"></div>
+</div>
+
+<script>
+(function () {
+  var LOGOS = [
+    "quickhunt.png","giva.png","veda-jewel.png","james-aston.png","upride.svg","haldirams.webp","commontime.jpg","nirakaar.svg",
+    "cafoco-logo-purple-on-transparent.png","dotty.png",
+    "ellement-co-black-logo-b62271a9-3e43-44dc-b79f-86808ac205f2-1.png","ethartics.png","expressions-1-1-2.png",
+    "fabnor.png","gloat-logo-single-01-1-png.png","gourmet-logo-1.svg","group-1.png","group-56.png","group.png",
+    "house-of-pratap.png","image-1.png","image-13.svg","image-138.png","image-139.png","image-140.png",
+    "image-141.png","image-142.png","image-15.png","image-1857.png","image-1858.png","image-1859.svg",
+    "image-1860.svg","image-2.png","image-22.png","image-3.png","image-37.png",
+    "innovative-logo-transparent-edited-1.png","khaabka-logo-transparent-cmyk-sqaure-1.png",
+    "link-dignity-full-color-200x-png.png","logo-3.png","logo-er-1.png","main-logo-file-new-1.png","melfi.png",
+    "navlogo-cdr-gotb-1.png","nbc-1.png","new-logo-2.webp","olivia-new-logo512x512-3.png","prep-nest.png",
+    "screenshot-2025-03-08-at-1-04-57-pm-1.png","sectrio-logo-white.png","underated-logo-1.png",
+    "whatsapp-image-2024-03-03-at-16-20-3.png","wink-condoms-1207114599-1.png","xox-black-1.png"
+  ];
+  var INVERT = { "sectrio-logo-white.png": 1 };
+  var wrap = document.getElementById('lwWrap');
+  if (!wrap) return;
+  var mid = Math.ceil(LOGOS.length / 2);
+  [LOGOS.slice(0, mid), LOGOS.slice(mid)].forEach(function (row, idx) {
+    var track = document.createElement('div');
+    track.className = 'lw-track ' + (idx === 0 ? 'lw-row1' : 'lw-row2');
+    row.concat(row).forEach(function (f) {
+      var tile = document.createElement('div'); tile.className = 'lw-tile';
+      var img = document.createElement('img');
+      img.src = '/brand-logos/' + f; img.alt = '';
+      if (INVERT[f]) img.className = 'lw-inv';
+      tile.appendChild(img); track.appendChild(tile);
+    });
+    wrap.appendChild(track);
+  });
+})();
+</script>
 
 <!-- APPROACH -->
 <section class="sec">
